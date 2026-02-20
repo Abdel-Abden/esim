@@ -8,6 +8,11 @@
     "scheme": "ilotel",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FFFFFF"
+    },
     "ios": {
       "supportsTablet": true
     },
@@ -18,6 +23,7 @@
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
+      "package": "com.ilotel.esim",
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false
     },
