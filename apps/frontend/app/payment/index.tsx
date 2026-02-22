@@ -1,3 +1,4 @@
+import { useStripe } from '@stripe/stripe-react-native';
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import {
@@ -14,12 +15,14 @@ import BackButton from '@/components/BackButton/BackButton';
 import Card from '@/components/Card/Card';
 import PrimaryButton from '@/components/PrimaryButton/PrimaryButton';
 import SuccessPopup from '@/components/SuccessPopup/SuccessPopup';
+import { createOrder } from '@/service/orders';
 import { useCartStore } from '@/store/useCartStore';
 import { styles } from './index.styles';
 
 export default function PaymentScreen() {
   const router = useRouter();
-  const { cart, setEsim } = useCartStore();
+  const { initPaymentSheet, presentPaymentSheet } = useStripe();
+  const { cart, setOrderId } = useCartStore();
 
   const [email, setEmail] = useState('');
   const [emailFocused, setEmailFocused] = useState(false);
@@ -39,25 +42,52 @@ export default function PaymentScreen() {
 
     setLoading(true);
 
-    // TODO: Intégrer Stripe ici
-    // const { paymentIntent } = await createPaymentIntent(cart.price);
-    // await stripe.confirmPayment(...)
+    // Étape 1 — Créer la commande + récupérer les clés Stripe
+    const { data, error } = await createOrder({ offerId: cart.offerId, email });
 
-    setTimeout(() => {
-      const iccid = '89883' + Math.floor(Math.random() * 99999999);
-      setEsim({
-        ...cart,
-        iccid,
-        activatedAt: new Date().toISOString(),
-      });
-
-      setShowSuccess(true);
+    if (error || !data) {
       setLoading(false);
+      Alert.alert('Erreur', error ?? 'Impossible de créer la commande.');
+      return;
+    }
 
-      setTimeout(() => {
-        router.replace('/details');
-      }, 1400);
-    }, 1200);
+    // Étape 2 — Initialiser la PaymentSheet Stripe
+    const { error: initError } = await initPaymentSheet({
+      merchantDisplayName: 'ILOTEL eSIM',
+      customerId: data.customerId,
+      customerEphemeralKeySecret: data.ephemeralKey,
+      paymentIntentClientSecret: data.clientSecret,
+      defaultBillingDetails: { email },
+      returnURL: 'ilotel://payment-complete',
+      // Permet d'afficher Apple Pay / Google Pay si dispo
+      applePay: { merchantCountryCode: 'FR' },
+      googlePay: { merchantCountryCode: 'FR', testEnv: __DEV__ },
+    });
+
+    if (initError) {
+      setLoading(false);
+      Alert.alert('Erreur', initError.message);
+      return;
+    }
+
+    // Étape 3 — Ouvrir la modale Stripe (saisie carte gérée par Stripe)
+    const { error: paymentError } = await presentPaymentSheet();
+
+    if (paymentError) {
+      setLoading(false);
+      if (paymentError.code !== 'Canceled') {
+        Alert.alert('Paiement refusé', paymentError.message);
+      }
+      return;
+    }
+
+    // Paiement confirmé côté client
+    // La commande est finalisée côté serveur via webhook Stripe
+    setOrderId(data.orderId);
+    setLoading(false);
+    setShowSuccess(true);
+
+    setTimeout(() => router.replace('/details'), 1400);
   };
 
   return (
@@ -74,34 +104,28 @@ export default function PaymentScreen() {
         showsVerticalScrollIndicator={false}
       >
         <BackButton />
-
         <Text style={styles.title}>Paiement</Text>
 
-        {/* Récapitulatif */}
+        {/* Récapitulatif commande */}
         <Card>
           <View style={styles.summaryRow}>
             <Text style={styles.summaryLabel}>Destination</Text>
-            <Text style={styles.summaryValue}>
-              {cart.flag} {cart.country}
-            </Text>
+            <Text style={styles.summaryValue}>{cart.flag} {cart.country}</Text>
           </View>
-
           <View style={styles.summaryRow}>
             <Text style={styles.summaryLabel}>Offre</Text>
             <Text style={styles.summaryValue}>{cart.offer}</Text>
           </View>
-
           <View style={styles.divider} />
-
           <View style={styles.summaryRow}>
             <Text style={styles.summaryLabel}>Total</Text>
             <Text style={styles.summaryPrice}>{cart.price.toFixed(2)}€</Text>
           </View>
         </Card>
 
-        {/* Formulaire */}
+        {/* Email */}
         <Card>
-          <Text style={styles.formLabel}>Email</Text>
+          <Text style={styles.formLabel}>Email de confirmation</Text>
           <TextInput
             style={[styles.input, emailFocused && styles.inputFocused]}
             value={email}
@@ -114,23 +138,18 @@ export default function PaymentScreen() {
             onBlur={() => setEmailFocused(false)}
           />
 
-          <Text style={styles.formLabel}>Carte bancaire</Text>
-          {/* TODO: Remplacer par <CardField /> de @stripe/stripe-react-native */}
-          <View style={styles.stripePlaceholder}>
-            <Text style={styles.stripeIcon}>💳</Text>
-            <Text style={styles.stripeText}>Stripe CardField (à intégrer)</Text>
-          </View>
-
           <View style={styles.stripeNote}>
-            <Text style={styles.stripeNoteText}>🔒 Paiement sécurisé par Stripe</Text>
+            <Text style={styles.stripeNoteText}>
+              🔒 La saisie de carte est gérée de façon sécurisée par Stripe
+            </Text>
           </View>
         </Card>
 
         <PrimaryButton
-          label={loading ? 'Traitement…' : 'Payer'}
+          label={loading ? 'Chargement...' : 'Choisir mon moyen de paiement'}
           onPress={handlePayment}
           loading={loading}
-          disabled={loading}
+          disabled={loading || !email.trim() || !email.includes('@')}
         />
       </ScrollView>
     </KeyboardAvoidingView>

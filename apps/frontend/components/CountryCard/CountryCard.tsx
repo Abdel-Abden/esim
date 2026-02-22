@@ -1,5 +1,5 @@
 import { useCartStore } from '@/store/useCartStore';
-import { Country, Offer } from '@/types';
+import { Country, Offer } from '@ilotel/shared';
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import {
