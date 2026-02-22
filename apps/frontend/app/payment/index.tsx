@@ -1,7 +1,7 @@
 // app/payment/index.tsx
 import { useStripe } from '@stripe/stripe-react-native';
 import { useRouter } from 'expo-router';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   Alert,
   KeyboardAvoidingView,
@@ -16,7 +16,7 @@ import BackButton from '@/components/BackButton/BackButton';
 import Card from '@/components/Card/Card';
 import PrimaryButton from '@/components/PrimaryButton/PrimaryButton';
 import SuccessPopup from '@/components/SuccessPopup/SuccessPopup';
-import { createOrder } from '@/service/orders';
+import { cancelOrder, createOrder } from '@/service/orders';
 import { useCartStore } from '@/store/useCartStore';
 import { styles } from './index.styles';
 
@@ -29,6 +29,19 @@ export default function PaymentScreen() {
   const [emailFocused, setEmailFocused] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+
+  // Référence vers l'orderId en cours — permet de l'annuler si l'écran est quitté
+  const pendingOrderId = useRef<string | null>(null);
+
+  // Annulation automatique si l'utilisateur quitte l'écran sans payer
+  useEffect(() => {
+    return () => {
+      if (pendingOrderId.current) {
+        cancelOrder(pendingOrderId.current);
+        pendingOrderId.current = null;
+      }
+    };
+  }, []);
 
   if (!cart) {
     router.replace('/');
@@ -43,7 +56,7 @@ export default function PaymentScreen() {
 
     setLoading(true);
 
-    // Étape 1 — Créer la commande + réserver l'eSIM + récupérer les clés Stripe
+    // Étape 1 — Créer la commande + réserver l'eSIM
     const { data, error } = await createOrder({ offerId: cart.offerId, email });
 
     if (error || !data) {
@@ -51,6 +64,9 @@ export default function PaymentScreen() {
       Alert.alert('Erreur', error ?? 'Impossible de créer la commande.');
       return;
     }
+
+    // Stocker l'orderId pour pouvoir l'annuler si besoin
+    pendingOrderId.current = data.orderId;
 
     // Étape 2 — Initialiser la PaymentSheet Stripe
     const { error: initError } = await initPaymentSheet({
@@ -65,23 +81,36 @@ export default function PaymentScreen() {
     });
 
     if (initError) {
+      // Libérer l'eSIM réservée
+      await cancelOrder(data.orderId);
+      pendingOrderId.current = null;
       setLoading(false);
       Alert.alert('Erreur', initError.message);
       return;
     }
 
-    // Étape 3 — Ouvrir la modale Stripe (carte, Apple Pay, Google Pay)
+    // Étape 3 — Ouvrir la modale Stripe
     const { error: paymentError } = await presentPaymentSheet();
 
     if (paymentError) {
-      setLoading(false);
-      if (paymentError.code !== 'Canceled') {
-        Alert.alert('Paiement refusé', paymentError.message);
+      if (paymentError.code === 'Canceled') {
+        // L'utilisateur a fermé la modale — on libère l'eSIM
+        await cancelOrder(data.orderId);
+        pendingOrderId.current = null;
+        setLoading(false);
+        return;
       }
+
+      // Paiement refusé — on libère l'eSIM pour qu'il puisse réessayer
+      await cancelOrder(data.orderId);
+      pendingOrderId.current = null;
+      setLoading(false);
+      Alert.alert('Paiement refusé', paymentError.message);
       return;
     }
 
-    // Paiement confirmé — l'eSIM est finalisée côté serveur via webhook
+    // Paiement confirmé — la commande est finalisée via webhook
+    pendingOrderId.current = null;
     setOrderId(data.orderId);
     setLoading(false);
     setShowSuccess(true);
@@ -105,7 +134,6 @@ export default function PaymentScreen() {
         <BackButton />
         <Text style={styles.title}>Paiement</Text>
 
-        {/* Récapitulatif commande */}
         <Card>
           <View style={styles.summaryRow}>
             <Text style={styles.summaryLabel}>Destination</Text>
@@ -118,10 +146,8 @@ export default function PaymentScreen() {
           <View style={styles.divider} />
           <View style={styles.summaryRow}>
             <Text style={styles.summaryLabel}>Total</Text>
-            {/* Affiche le prix final (après réduction éventuelle) */}
             <Text style={styles.summaryPrice}>{cart.finalPrice.toFixed(2)}€</Text>
           </View>
-          {/* Badge promo si réduction active */}
           {cart.isPromo && (
             <View style={styles.summaryRow}>
               <Text style={styles.summaryLabel}>Prix original</Text>
@@ -132,7 +158,6 @@ export default function PaymentScreen() {
           )}
         </Card>
 
-        {/* Email */}
         <Card>
           <Text style={styles.formLabel}>Email de confirmation</Text>
           <TextInput
