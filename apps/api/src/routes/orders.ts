@@ -1,12 +1,13 @@
 import {
+  CancelOrderResponse,
   CreateOrderRequest,
   CreateOrderResponse,
   GetOrderResponse,
 } from '@ilotel/shared';
 import { Hono } from 'hono';
-import { reserveEsim } from '../db/queries/esims.js';
+import { releaseEsim, reserveEsim } from '../db/queries/esims.js';
 import { getOfferById } from '../db/queries/offers.js';
-import { createOrder, deleteOrder, getOrderById } from '../db/queries/orders.js';
+import { createOrder, deleteOrder, getOrderById, updateOrderStatus } from '../db/queries/orders.js';
 import { stripe } from '../lib/stripe.js';
 
 export const orders = new Hono();
@@ -28,12 +29,10 @@ orders.post('/', async (c) => {
   const body = await c.req.json<CreateOrderRequest>();
   const { offerId, email } = body;
 
-  // 1. Validation basique
   if (!offerId || !email || !email.includes('@')) {
     return c.json({ message: 'offerId et email valide sont requis' }, 400);
   }
 
-  // 2. Récupérer l'offre — le prix est toujours lu en BDD, jamais fourni par le client
   const offer = await getOfferById(offerId);
   if (!offer) {
     return c.json({ message: 'Offre introuvable' }, 404);
@@ -45,33 +44,25 @@ orders.post('/', async (c) => {
   const finalPrice = offer.finalPrice;
   const discountId = offer.activeDiscount?.id ?? null;
 
-  // 3. Customer Stripe — réutilise si le mail existe déjà
   const existingCustomers = await stripe.customers.list({ email, limit: 1 });
   const customer =
     existingCustomers.data[0] ??
     (await stripe.customers.create({ email }));
 
-  // 4. EphemeralKey — permet à la PaymentSheet d'afficher les méthodes sauvegardées
   const ephemeralKey = await stripe.ephemeralKeys.create(
     { customer: customer.id },
     { apiVersion: '2025-01-27.acacia' }
   );
 
-  // 5. PaymentIntent — montant en centimes, calculé côté serveur
   const amountCents = Math.round(finalPrice * 100);
   const paymentIntent = await stripe.paymentIntents.create({
     amount: amountCents,
     currency: 'eur',
     customer: customer.id,
     automatic_payment_methods: { enabled: true },
-    metadata: {
-      offerId,
-      email,
-      discountId: discountId ?? '',
-    },
+    metadata: { offerId, email, discountId: discountId ?? '' },
   });
 
-  // 6. Commande en BDD
   const order = await createOrder({
     email,
     offerId,
@@ -80,17 +71,14 @@ orders.post('/', async (c) => {
     discountId,
   });
 
-  // 7. Réserver une eSIM — si plus de stock on annule tout de suite
+  // Réserver une eSIM — si plus de stock on annule tout
   const reserved = await reserveEsim(offer.esimId, order.id);
   if (!reserved) {
-    // Annuler le PaymentIntent Stripe pour ne pas laisser de PI orphelin
     await stripe.paymentIntents.cancel(paymentIntent.id);
-    // Supprimer la commande créée
     await deleteOrder(order.id);
     return c.json({ message: 'Stock épuisé pour cette offre' }, 409);
   }
 
-  // 8. Réponse
   const response: CreateOrderResponse = {
     orderId: order.id,
     customerId: customer.id,
@@ -115,4 +103,37 @@ orders.get('/:id', async (c) => {
   }
 
   return c.json<GetOrderResponse>(order);
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// POST /orders/:id/cancel
+// Annule une commande pending — libère l'eSIM réservée et annule le PaymentIntent
+// Appelé par le frontend si l'utilisateur abandonne le paiement
+// ─────────────────────────────────────────────────────────────────────────────
+orders.post('/:id/cancel', async (c) => {
+  const id = c.req.param('id');
+  const order = await getOrderById(id);
+
+  if (!order) {
+    return c.json({ message: 'Commande introuvable' }, 404);
+  }
+
+  // On ne peut annuler qu'une commande pending
+  if (order.status !== 'pending') {
+    return c.json({ message: `Impossible d'annuler une commande en statut ${order.status}` }, 409);
+  }
+
+  // Libérer l'eSIM réservée
+  await releaseEsim(id);
+
+  // Annuler le PaymentIntent Stripe
+  try {
+    await stripe.paymentIntents.cancel(order.stripePaymentIntentId);
+  } catch {
+    // Le PI peut déjà être annulé ou expiré — on continue quand même
+  }
+
+  await updateOrderStatus(id, 'failed');
+
+  return c.json<CancelOrderResponse>({ success: true });
 });

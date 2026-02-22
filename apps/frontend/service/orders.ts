@@ -1,5 +1,5 @@
 // service/orders.ts
-import { CreateOrderRequest, CreateOrderResponse, GetOrderResponse } from '@ilotel/shared';
+import { CancelOrderResponse, CreateOrderRequest, CreateOrderResponse, GetOrderResponse } from '@ilotel/shared';
 import { apiFetch } from './api';
 
 /**
@@ -19,4 +19,14 @@ export async function createOrder(payload: CreateOrderRequest) {
  */
 export async function fetchOrder(orderId: string) {
   return apiFetch<GetOrderResponse>(`/orders/${orderId}`);
+}
+
+/**
+ * Annule une commande pending — libère l'eSIM réservée.
+ * À appeler si l'utilisateur abandonne ou si le paiement échoue définitivement.
+ */
+export async function cancelOrder(orderId: string) {
+  return apiFetch<CancelOrderResponse>(`/orders/${orderId}/cancel`, {
+    method: 'POST',
+  });
 }

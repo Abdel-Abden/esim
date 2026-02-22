@@ -10,7 +10,6 @@ export async function apiFetch<T>(
   options?: RequestInit
 ): Promise<ApiResponse<T>> {
   try {
-    console.log(`DEBUG: url = ${BASE_URL}${path}`)
     const res = await fetch(`${BASE_URL}${path}`, {
       headers: {
         'Content-Type': 'application/json',

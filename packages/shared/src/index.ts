@@ -22,8 +22,7 @@ export interface Esim {
 /**
  * Table `offers`
  * Un forfait lié à une destination.
- * ⚠️  stripe_price_id est à ajouter en BDD :
- *     ALTER TABLE offers ADD COLUMN stripe_price_id TEXT;
+ * ⚠️  stripe_price_id se retrouve sur stripe 
  */
 export interface Offer {
   id: string;
@@ -71,7 +70,7 @@ export type InventoryStatus = 'available' | 'reserved' | 'sold';
 
 /**
  * Table `orders`
- * ⚠️  Table à créer — voir schema.sql
+ * Les différent commande enregistrer et leur état.
  */
 export interface Order {
   id: string;
@@ -119,6 +118,11 @@ export interface CreateOrderResponse {
   ephemeralKey: string; // Stripe EphemeralKey secret
   clientSecret: string; // Stripe PaymentIntent client_secret
   finalPrice: number;
+}
+
+// POST /orders/:id/cancel
+export interface CancelOrderResponse {
+  success: boolean;
 }
 
 // GET /esims

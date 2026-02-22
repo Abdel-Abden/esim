@@ -20,42 +20,51 @@ import { useCartStore } from '@/store/useCartStore';
 import { Esim, OfferWithDetails, formatOfferLabel } from '@ilotel/shared';
 import { styles } from './index.styles';
 
+// Offres préchargées indexées par esimId
+type OffersMap = Record<string, OfferWithDetails[]>;
+
 export default function HomeScreen() {
   const router = useRouter();
   const setCart = useCartStore((s) => s.setCart);
 
   const [esims, setEsims] = useState<Esim[]>([]);
+  const [offersMap, setOffersMap] = useState<OffersMap>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [search, setSearch] = useState('');
 
-  // Offres de la carte "monde" mise en avant
-  const [featuredOffers, setFeaturedOffers] = useState<OfferWithDetails[]>([]);
+  const load = async () => {
+    setLoading(true);
+    setError(null);
 
-  useEffect(() => {
-    const load = async () => {
-      const { data, error } = await fetchEsims();
+    const { data, error } = await fetchEsims();
 
-      if (error || !data) {
-        setError(error ?? 'Impossible de charger les destinations.');
-        setLoading(false);
-        return;
-      }
-
-      setEsims(data);
-
-      // Charger les offres de la destination "région" / "global" pour la mise en avant
-      const monde = data.find((e) => e.type === 'region' || e.type === 'global');
-      if (monde) {
-        const { data: offers } = await fetchOffers(monde.id);
-        if (offers) setFeaturedOffers(offers);
-      }
-
+    if (error || !data) {
+      setError(error ?? 'Impossible de charger les destinations.');
       setLoading(false);
-    };
+      return;
+    }
 
-    load();
-  }, []);
+    setEsims(data);
+
+    // Précharger toutes les offres en parallèle
+    const results = await Promise.all(
+      data.map(async (esim) => {
+        const { data: offers } = await fetchOffers(esim.id);
+        return { esimId: esim.id, offers: offers ?? [] };
+      })
+    );
+
+    const map: OffersMap = {};
+    results.forEach(({ esimId, offers }) => {
+      map[esimId] = offers;
+    });
+
+    setOffersMap(map);
+    setLoading(false);
+  };
+
+  useEffect(() => { load(); }, []);
 
   const filteredEsims = useMemo(() => {
     if (!search.trim()) return esims;
@@ -65,12 +74,12 @@ export default function HomeScreen() {
   }, [search, esims]);
 
   const monde = esims.find((e) => e.type === 'region' || e.type === 'global');
+  const featuredOffers = monde ? (offersMap[monde.id] ?? []) : [];
   const featuredOffer =
     featuredOffers.find((o) => o.activeDiscount !== null) ?? featuredOffers[0];
 
   const handleFeaturedOrder = () => {
     if (!monde || !featuredOffer) return;
-
     setCart({
       offerId: featuredOffer.id,
       esimId: monde.id,
@@ -81,23 +90,23 @@ export default function HomeScreen() {
       finalPrice: featuredOffer.finalPrice,
       isPromo: featuredOffer.activeDiscount !== null,
     });
-
     router.push('/payment');
   };
 
   if (loading) {
     return (
-      <View style={[styles.gradient, { justifyContent: 'center', alignItems: 'center' }]}>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: Colors.bg }}>
         <ActivityIndicator size="large" color={Colors.primary} />
+        <Text style={{ color: Colors.muted, marginTop: 12 }}>Chargement des destinations…</Text>
       </View>
     );
   }
 
   if (error) {
     return (
-      <View style={[styles.gradient, { justifyContent: 'center', alignItems: 'center', padding: 32 }]}>
-        <Text style={{ color: Colors.text, marginBottom: 16 }}>{error}</Text>
-        <PrimaryButton label="Réessayer" onPress={() => { setError(null); setLoading(true); }} />
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: Colors.bg, padding: 32 }}>
+        <Text style={{ color: Colors.text, marginBottom: 16, textAlign: 'center' }}>{error}</Text>
+        <PrimaryButton label="Réessayer" onPress={load} />
       </View>
     );
   }
@@ -128,7 +137,8 @@ export default function HomeScreen() {
                 <Text style={styles.featuredTitle}>{monde.name} (Recommandé)</Text>
               </View>
               <Text style={styles.featuredSub}>
-                Connectez-vous partout dès {Math.min(...featuredOffers.map((o) => o.finalPrice)).toFixed(2)}€
+                Connectez-vous partout dès{' '}
+                {Math.min(...featuredOffers.map((o) => o.finalPrice)).toFixed(2)}€
               </Text>
               <PrimaryButton label="Voir les offres" onPress={handleFeaturedOrder} />
             </View>
@@ -141,7 +151,11 @@ export default function HomeScreen() {
 
             <View style={styles.countriesList}>
               {filteredEsims.map((esim) => (
-                <CountryCard key={esim.id} esim={esim} />
+                <CountryCard
+                  key={esim.id}
+                  esim={esim}
+                  preloadedOffers={offersMap[esim.id]}
+                />
               ))}
             </View>
 

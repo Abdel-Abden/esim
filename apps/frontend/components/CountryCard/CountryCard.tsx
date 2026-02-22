@@ -3,9 +3,8 @@ import { fetchOffers } from '@/service/esims';
 import { useCartStore } from '@/store/useCartStore';
 import { Esim, OfferWithDetails, formatOfferLabel } from '@ilotel/shared';
 import { useRouter } from 'expo-router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-  ActivityIndicator,
   LayoutAnimation,
   Platform,
   Text,
@@ -23,17 +22,27 @@ if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental
 
 interface CountryCardProps {
   esim: Esim;
+  preloadedOffers?: OfferWithDetails[]; // fournies par le home screen
 }
 
-export default function CountryCard({ esim }: CountryCardProps) {
+export default function CountryCard({ esim, preloadedOffers }: CountryCardProps) {
   const router = useRouter();
   const setCart = useCartStore((s) => s.setCart);
 
   const [isOpen, setIsOpen] = useState(false);
-  const [offers, setOffers] = useState<OfferWithDetails[]>([]);
-  const [selectedOffer, setSelectedOffer] = useState<OfferWithDetails | null>(null);
-  const [loadingOffers, setLoadingOffers] = useState(false);
+  const [offers, setOffers] = useState<OfferWithDetails[]>(preloadedOffers ?? []);
+  const [selectedOffer, setSelectedOffer] = useState<OfferWithDetails | null>(
+    preloadedOffers?.[0] ?? null
+  );
   const [offersError, setOffersError] = useState<string | null>(null);
+
+  // Si les offres arrivent en retard via preloadedOffers
+  useEffect(() => {
+    if (preloadedOffers && preloadedOffers.length > 0 && offers.length === 0) {
+      setOffers(preloadedOffers);
+      setSelectedOffer(preloadedOffers[0]);
+    }
+  }, [preloadedOffers]);
 
   const hasPromo = offers.some((o) => o.activeDiscount !== null);
   const minPrice = offers.length > 0
@@ -43,21 +52,16 @@ export default function CountryCard({ esim }: CountryCardProps) {
   const toggleOpen = async () => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
 
+    // Fallback : si les offres ne sont pas encore chargées (ne devrait pas arriver)
     if (!isOpen && offers.length === 0) {
-      // Chargement lazy des offres à la première ouverture
-      setLoadingOffers(true);
       setOffersError(null);
-
       const { data, error } = await fetchOffers(esim.id);
-
       if (data && data.length > 0) {
         setOffers(data);
         setSelectedOffer(data[0]);
       } else {
         setOffersError(error ?? 'Aucune offre disponible.');
       }
-
-      setLoadingOffers(false);
     }
 
     setIsOpen((prev) => !prev);
@@ -65,7 +69,6 @@ export default function CountryCard({ esim }: CountryCardProps) {
 
   const handleOrder = () => {
     if (!selectedOffer) return;
-
     setCart({
       offerId: selectedOffer.id,
       esimId: esim.id,
@@ -76,13 +79,11 @@ export default function CountryCard({ esim }: CountryCardProps) {
       finalPrice: selectedOffer.finalPrice,
       isPromo: selectedOffer.activeDiscount !== null,
     });
-
     router.push('/payment');
   };
 
   return (
     <View style={styles.container}>
-      {/* En-tête cliquable */}
       <TouchableOpacity style={styles.header} onPress={toggleOpen} activeOpacity={0.7}>
         <View style={styles.left}>
           <Text style={styles.flag}>{esim.flag}</Text>
@@ -94,24 +95,22 @@ export default function CountryCard({ esim }: CountryCardProps) {
           )}
         </View>
 
-        {minPrice !== null && (
-          <Text style={styles.startingPrice}>Dès {minPrice.toFixed(2)}€</Text>
-        )}
+        {minPrice !== null
+          ? <Text style={styles.startingPrice}>Dès {minPrice.toFixed(2)}€</Text>
+          : <Text style={styles.startingPrice}>—</Text>
+        }
         <Text style={styles.chevron}>{isOpen ? '▲' : '▼'}</Text>
       </TouchableOpacity>
 
-      {/* Offres dépliables */}
       {isOpen && (
         <View style={styles.offersContainer}>
           <View style={styles.divider} />
-
-          {loadingOffers && <ActivityIndicator style={{ marginVertical: 12 }} />}
 
           {offersError && (
             <Text style={{ color: 'red', padding: 8 }}>{offersError}</Text>
           )}
 
-          {!loadingOffers && offers.map((offer) => (
+          {offers.map((offer) => (
             <OfferRow
               key={offer.id}
               offer={offer}
@@ -120,7 +119,7 @@ export default function CountryCard({ esim }: CountryCardProps) {
             />
           ))}
 
-          {!loadingOffers && offers.length > 0 && (
+          {offers.length > 0 && (
             <PrimaryButton
               label="Commander"
               onPress={handleOrder}
