@@ -1,8 +1,7 @@
 // service/api.ts
-// Helper fetch client — appelle les Expo API Routes (server-side)
-// Aucune clé secrète ici, tout passe par /api/*
+// Client HTTP de base — tous les appels vers l'API Hono passent par ici
 
-const BASE_URL = process.env.EXPO_PUBLIC_API_URL ?? '';
+const BASE_URL = process.env.EXPO_PUBLIC_API_URL ?? 'http://localhost:3000';
 
 type ApiResponse<T> = { data: T; error: null } | { data: null; error: string };
 
@@ -11,6 +10,7 @@ export async function apiFetch<T>(
   options?: RequestInit
 ): Promise<ApiResponse<T>> {
   try {
+    console.log(`DEBUG: url = ${BASE_URL}${path}`)
     const res = await fetch(`${BASE_URL}${path}`, {
       headers: {
         'Content-Type': 'application/json',
@@ -22,7 +22,7 @@ export async function apiFetch<T>(
     const json = await res.json();
 
     if (!res.ok) {
-      return { data: null, error: json.error ?? `Erreur ${res.status}` };
+      return { data: null, error: json.message ?? `Erreur ${res.status}` };
     }
 
     return { data: json as T, error: null };

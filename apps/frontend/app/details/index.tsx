@@ -7,15 +7,16 @@ import BackButton from '@/components/BackButton/BackButton';
 import Card from '@/components/Card/Card';
 import PrimaryButton from '@/components/PrimaryButton/PrimaryButton';
 import { Colors } from '@/constants/theme';
-import { fetchOrder, type OrderDetails } from '@/service/orders';
+import { fetchOrder } from '@/service/orders';
 import { useCartStore } from '@/store/useCartStore';
+import { OrderWithDetails } from '@ilotel/shared';
 import { styles } from './index.styles';
 
 export default function DetailsScreen() {
   const router = useRouter();
   const { orderId, clearCart } = useCartStore();
 
-  const [order, setOrder] = useState<OrderDetails | null>(null);
+  const [order, setOrder] = useState<OrderWithDetails | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [retries, setRetries] = useState(0);
@@ -27,7 +28,7 @@ export default function DetailsScreen() {
     const poll = async () => {
       const { data, error } = await fetchOrder(orderId);
 
-      if (data) {
+      if (data && data.status === 'provisioned') {
         setOrder(data);
         setLoading(false);
       } else if (retries < 5) {
@@ -64,7 +65,8 @@ export default function DetailsScreen() {
     );
   }
 
-  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${order.iccid}`;
+  const iccid = order.esimInventory?.iccid ?? '';
+  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${iccid}`;
 
   return (
     <View style={styles.container}>
@@ -76,54 +78,47 @@ export default function DetailsScreen() {
         <BackButton label="Accueil" onPress={() => router.replace('/')} />
         <Text style={styles.title}>Votre eSIM</Text>
 
-        {/* QR Code */}
         <Card style={styles.qrCard}>
           <Image source={{ uri: qrUrl }} style={styles.qrImage} resizeMode="contain" />
-          <Text style={styles.qrLabel}>
-            Scannez ce QR code dans vos paramètres réseau
-          </Text>
+          <Text style={styles.qrLabel}>Scannez ce QR code dans vos paramètres réseau</Text>
         </Card>
 
-        {/* Status */}
         <View style={styles.statusBadge}>
           <View style={styles.statusDot} />
           <Text style={styles.statusText}>Active</Text>
         </View>
 
-        {/* Détails */}
         <Card>
           <View style={styles.infoRow}>
             <Text style={styles.infoLabel}>Pays</Text>
-            <Text style={styles.infoValue}>{order.esim.flag} {order.esim.name}</Text>
+            <Text style={styles.infoValue}>{order.offer.esim.flag} {order.offer.esim.name}</Text>
           </View>
           <View style={styles.divider} />
 
           <View style={styles.infoRow}>
             <Text style={styles.infoLabel}>Offre</Text>
-            <Text style={styles.infoValue}>
-              {order.esim.dataGb}Go / {order.esim.durationDays}j
-            </Text>
+            <Text style={styles.infoValue}>{order.offer.dataGb} Go / {order.offer.durationDays}j</Text>
           </View>
           <View style={styles.divider} />
 
           <View style={styles.infoRow}>
             <Text style={styles.infoLabel}>Prix payé</Text>
             <Text style={[styles.infoValue, { color: Colors.primary, fontWeight: '800' }]}>
-              {Number(order.amount).toFixed(2)}€
+              {order.finalPrice.toFixed(2)}€
             </Text>
           </View>
           <View style={styles.divider} />
 
           <View style={styles.infoRow}>
             <Text style={styles.infoLabel}>ICCID</Text>
-            <Text style={styles.iccidValue}>{order.iccid}</Text>
+            <Text style={styles.iccidValue}>{iccid}</Text>
           </View>
           <View style={styles.divider} />
 
           <View style={styles.infoRow}>
             <Text style={styles.infoLabel}>Activée le</Text>
             <Text style={styles.infoValue}>
-              {new Date(order.paidAt).toLocaleDateString('fr-FR', {
+              {new Date(order.createdAt).toLocaleDateString('fr-FR', {
                 day: '2-digit', month: 'long', year: 'numeric',
               })}
             </Text>

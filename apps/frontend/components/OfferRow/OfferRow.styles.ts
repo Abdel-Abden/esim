@@ -50,4 +50,9 @@ export const styles = StyleSheet.create({
   promoPrice: {
     color: Colors.promoGreen,
   },
+  originalPrice: {
+    fontSize: 11,
+    color: Colors.muted,
+    textDecorationLine: 'line-through',
+  },
 });

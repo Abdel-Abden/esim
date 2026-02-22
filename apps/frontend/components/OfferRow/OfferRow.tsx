@@ -1,15 +1,18 @@
-import { Offer } from '@/types';
+// components/OfferRow/OfferRow.tsx
+import { OfferWithDetails } from '@ilotel/shared';
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { styles } from './OfferRow.styles';
 
 interface OfferRowProps {
-  offer: Offer;
+  offer: OfferWithDetails;
   selected: boolean;
-  onSelect: (offer: Offer) => void;
+  onSelect: (offer: OfferWithDetails) => void;
 }
 
 export default function OfferRow({ offer, selected, onSelect }: OfferRowProps) {
+  const isPromo = offer.activeDiscount !== null;
+
   return (
     <TouchableOpacity
       style={[styles.row, selected && styles.rowSelected]}
@@ -21,12 +24,19 @@ export default function OfferRow({ offer, selected, onSelect }: OfferRowProps) {
       </View>
 
       <Text style={styles.label}>
-        {offer.data} / {offer.duration}
+        {offer.dataGb} Go / {offer.durationDays}j
       </Text>
 
-      <Text style={[styles.price, offer.isPromo && styles.promoPrice]}>
-        {offer.price.toFixed(2)}€
-      </Text>
+      <View style={{ alignItems: 'flex-end' }}>
+        {isPromo && (
+          <Text style={styles.originalPrice}>
+            {offer.basePrice.toFixed(2)}€
+          </Text>
+        )}
+        <Text style={[styles.price, isPromo && styles.promoPrice]}>
+          {offer.finalPrice.toFixed(2)}€
+        </Text>
+      </View>
     </TouchableOpacity>
   );
 }

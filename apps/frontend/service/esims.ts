@@ -1,25 +1,18 @@
 // service/esims.ts
-// Client-side : récupère les eSIM produits avec leurs offres
-
+import { Esim, GetEsimsResponse, GetOffersResponse } from '@ilotel/shared';
 import { apiFetch } from './api';
 
-export interface ApiOffer {
-  id: string;
-  dataGb: number;
-  durationDays: number;
-  price: number;
-  isPromo: boolean;
-  inStock: boolean;
-}
-
-export interface ApiEsim {
-  id: string;
-  name: string;
-  type: 'country' | 'region';
-  flag: string;
-  offers: ApiOffer[];
-}
-
+/** Liste toutes les destinations disponibles */
 export async function fetchEsims() {
-  return apiFetch<ApiEsim[]>('/api/esims');
+  return apiFetch<GetEsimsResponse>('/esims');
+}
+
+/** Récupère une destination par son id */
+export async function fetchEsim(id: string) {
+  return apiFetch<Esim>(`/esims/${id}`);
+}
+
+/** Récupère les offres d'une destination avec réductions actives */
+export async function fetchOffers(esimId: string) {
+  return apiFetch<GetOffersResponse>(`/esims/${esimId}/offers`);
 }

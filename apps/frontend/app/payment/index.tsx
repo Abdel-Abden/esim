@@ -1,3 +1,4 @@
+// app/payment/index.tsx
 import { useStripe } from '@stripe/stripe-react-native';
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
@@ -42,7 +43,7 @@ export default function PaymentScreen() {
 
     setLoading(true);
 
-    // Étape 1 — Créer la commande + récupérer les clés Stripe
+    // Étape 1 — Créer la commande + réserver l'eSIM + récupérer les clés Stripe
     const { data, error } = await createOrder({ offerId: cart.offerId, email });
 
     if (error || !data) {
@@ -59,7 +60,6 @@ export default function PaymentScreen() {
       paymentIntentClientSecret: data.clientSecret,
       defaultBillingDetails: { email },
       returnURL: 'ilotel://payment-complete',
-      // Permet d'afficher Apple Pay / Google Pay si dispo
       applePay: { merchantCountryCode: 'FR' },
       googlePay: { merchantCountryCode: 'FR', testEnv: __DEV__ },
     });
@@ -70,7 +70,7 @@ export default function PaymentScreen() {
       return;
     }
 
-    // Étape 3 — Ouvrir la modale Stripe (saisie carte gérée par Stripe)
+    // Étape 3 — Ouvrir la modale Stripe (carte, Apple Pay, Google Pay)
     const { error: paymentError } = await presentPaymentSheet();
 
     if (paymentError) {
@@ -81,8 +81,7 @@ export default function PaymentScreen() {
       return;
     }
 
-    // Paiement confirmé côté client
-    // La commande est finalisée côté serveur via webhook Stripe
+    // Paiement confirmé — l'eSIM est finalisée côté serveur via webhook
     setOrderId(data.orderId);
     setLoading(false);
     setShowSuccess(true);
@@ -119,8 +118,18 @@ export default function PaymentScreen() {
           <View style={styles.divider} />
           <View style={styles.summaryRow}>
             <Text style={styles.summaryLabel}>Total</Text>
-            <Text style={styles.summaryPrice}>{cart.price.toFixed(2)}€</Text>
+            {/* Affiche le prix final (après réduction éventuelle) */}
+            <Text style={styles.summaryPrice}>{cart.finalPrice.toFixed(2)}€</Text>
           </View>
+          {/* Badge promo si réduction active */}
+          {cart.isPromo && (
+            <View style={styles.summaryRow}>
+              <Text style={styles.summaryLabel}>Prix original</Text>
+              <Text style={[styles.summaryValue, { textDecorationLine: 'line-through' }]}>
+                {cart.basePrice.toFixed(2)}€
+              </Text>
+            </View>
+          )}
         </Card>
 
         {/* Email */}
@@ -137,7 +146,6 @@ export default function PaymentScreen() {
             onFocus={() => setEmailFocused(true)}
             onBlur={() => setEmailFocused(false)}
           />
-
           <View style={styles.stripeNote}>
             <Text style={styles.stripeNoteText}>
               🔒 La saisie de carte est gérée de façon sécurisée par Stripe

@@ -1,49 +1,82 @@
+// components/CountryCard/CountryCard.tsx
+import { fetchOffers } from '@/service/esims';
 import { useCartStore } from '@/store/useCartStore';
-import { Country, Offer } from '@ilotel/shared';
+import { Esim, OfferWithDetails, formatOfferLabel } from '@ilotel/shared';
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import {
+  ActivityIndicator,
   LayoutAnimation,
   Platform,
   Text,
   TouchableOpacity,
   UIManager,
-  View
+  View,
 } from 'react-native';
 import OfferRow from '../OfferRow/OfferRow';
 import PrimaryButton from '../PrimaryButton/PrimaryButton';
 import { styles } from './CountryCard.styles';
 
-// Active LayoutAnimation sur Android
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
   UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
 interface CountryCardProps {
-  country: Country;
+  esim: Esim;
 }
 
-export default function CountryCard({ country }: CountryCardProps) {
+export default function CountryCard({ esim }: CountryCardProps) {
   const router = useRouter();
   const setCart = useCartStore((s) => s.setCart);
 
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOffer, setSelectedOffer] = useState<Offer>(country.offers[0]);
+  const [offers, setOffers] = useState<OfferWithDetails[]>([]);
+  const [selectedOffer, setSelectedOffer] = useState<OfferWithDetails | null>(null);
+  const [loadingOffers, setLoadingOffers] = useState(false);
+  const [offersError, setOffersError] = useState<string | null>(null);
 
-  const minPrice = Math.min(...country.offers.map((o) => o.price));
+  const hasPromo = offers.some((o) => o.activeDiscount !== null);
+  const minPrice = offers.length > 0
+    ? Math.min(...offers.map((o) => o.finalPrice))
+    : null;
 
-  const toggleOpen = () => {
+  const toggleOpen = async () => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+
+    if (!isOpen && offers.length === 0) {
+      // Chargement lazy des offres à la première ouverture
+      setLoadingOffers(true);
+      setOffersError(null);
+
+      const { data, error } = await fetchOffers(esim.id);
+
+      if (data && data.length > 0) {
+        setOffers(data);
+        setSelectedOffer(data[0]);
+      } else {
+        setOffersError(error ?? 'Aucune offre disponible.');
+      }
+
+      setLoadingOffers(false);
+    }
+
     setIsOpen((prev) => !prev);
   };
 
   const handleOrder = () => {
+    if (!selectedOffer) return;
+
     setCart({
-      country: country.name,
-      flag: country.flag,
-      offer: `${selectedOffer.data} / ${selectedOffer.duration}`,
-      price: selectedOffer.price,
+      offerId: selectedOffer.id,
+      esimId: esim.id,
+      country: esim.name,
+      flag: esim.flag,
+      offer: formatOfferLabel(selectedOffer),
+      basePrice: selectedOffer.basePrice,
+      finalPrice: selectedOffer.finalPrice,
+      isPromo: selectedOffer.activeDiscount !== null,
     });
+
     router.push('/payment');
   };
 
@@ -52,16 +85,18 @@ export default function CountryCard({ country }: CountryCardProps) {
       {/* En-tête cliquable */}
       <TouchableOpacity style={styles.header} onPress={toggleOpen} activeOpacity={0.7}>
         <View style={styles.left}>
-          <Text style={styles.flag}>{country.flag}</Text>
-          <Text style={styles.name}>{country.name}</Text>
-          {country.isPromo && (
+          <Text style={styles.flag}>{esim.flag}</Text>
+          <Text style={styles.name}>{esim.name}</Text>
+          {hasPromo && (
             <View style={styles.promoBadge}>
               <Text style={styles.promoText}>Promo</Text>
             </View>
           )}
         </View>
 
-        <Text style={styles.startingPrice}>Dès {minPrice.toFixed(2)}€</Text>
+        {minPrice !== null && (
+          <Text style={styles.startingPrice}>Dès {minPrice.toFixed(2)}€</Text>
+        )}
         <Text style={styles.chevron}>{isOpen ? '▲' : '▼'}</Text>
       </TouchableOpacity>
 
@@ -70,16 +105,28 @@ export default function CountryCard({ country }: CountryCardProps) {
         <View style={styles.offersContainer}>
           <View style={styles.divider} />
 
-          {country.offers.map((offer) => (
+          {loadingOffers && <ActivityIndicator style={{ marginVertical: 12 }} />}
+
+          {offersError && (
+            <Text style={{ color: 'red', padding: 8 }}>{offersError}</Text>
+          )}
+
+          {!loadingOffers && offers.map((offer) => (
             <OfferRow
               key={offer.id}
               offer={offer}
-              selected={selectedOffer.id === offer.id}
+              selected={selectedOffer?.id === offer.id}
               onSelect={setSelectedOffer}
             />
           ))}
 
-          <PrimaryButton label="Commander" onPress={handleOrder} style={{ marginTop: 4 }} />
+          {!loadingOffers && offers.length > 0 && (
+            <PrimaryButton
+              label="Commander"
+              onPress={handleOrder}
+              style={{ marginTop: 4 }}
+            />
+          )}
         </View>
       )}
     </View>
