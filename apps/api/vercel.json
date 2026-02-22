@@ -13,5 +13,11 @@
     }
   ],
   "installCommand": "cd ../.. && npm install",
-  "buildCommand": "cd apps/api && npm run build"
+  "buildCommand": "cd apps/api && npm run build",
+  "crons": [
+    {
+      "path": "/cron/release-expired",
+      "schedule": "*/5 * * * *"
+    }
+  ]
 }

@@ -1,7 +1,6 @@
-// components/CountryCard/CountryCard.tsx
 import { fetchOffers } from '@/service/esims';
 import { useCartStore } from '@/store/useCartStore';
-import { Esim, OfferWithDetails, formatOfferLabel } from '@ilotel/shared';
+import { Esim, OfferWithStock, formatOfferLabel } from '@ilotel/shared';
 import { useRouter } from 'expo-router';
 import React, { useEffect, useState } from 'react';
 import {
@@ -22,43 +21,43 @@ if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental
 
 interface CountryCardProps {
   esim: Esim;
-  preloadedOffers?: OfferWithDetails[]; // fournies par le home screen
+  preloadedOffers?: OfferWithStock[];
+  onStockExhausted?: (esimId: string) => void; // callback vers le home pour refresh
 }
 
-export default function CountryCard({ esim, preloadedOffers }: CountryCardProps) {
+export default function CountryCard({ esim, preloadedOffers, onStockExhausted }: CountryCardProps) {
   const router = useRouter();
   const setCart = useCartStore((s) => s.setCart);
 
   const [isOpen, setIsOpen] = useState(false);
-  const [offers, setOffers] = useState<OfferWithDetails[]>(preloadedOffers ?? []);
-  const [selectedOffer, setSelectedOffer] = useState<OfferWithDetails | null>(
-    preloadedOffers?.[0] ?? null
+  const [offers, setOffers] = useState<OfferWithStock[]>(preloadedOffers ?? []);
+  const [selectedOffer, setSelectedOffer] = useState<OfferWithStock | null>(
+    preloadedOffers?.find((o) => o.availableCount > 0) ?? null
   );
   const [offersError, setOffersError] = useState<string | null>(null);
 
-  // Si les offres arrivent en retard via preloadedOffers
   useEffect(() => {
     if (preloadedOffers && preloadedOffers.length > 0 && offers.length === 0) {
       setOffers(preloadedOffers);
-      setSelectedOffer(preloadedOffers[0]);
+      setSelectedOffer(preloadedOffers.find((o) => o.availableCount > 0) ?? null);
     }
   }, [preloadedOffers]);
 
-  const hasPromo = offers.some((o) => o.activeDiscount !== null);
-  const minPrice = offers.length > 0
-    ? Math.min(...offers.map((o) => o.finalPrice))
+  const hasPromo = offers.some((o) => o.activeDiscount !== null && o.availableCount > 0);
+  const availableOffers = offers.filter((o) => o.availableCount > 0);
+  const minPrice = availableOffers.length > 0
+    ? Math.min(...availableOffers.map((o) => o.finalPrice))
     : null;
 
   const toggleOpen = async () => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
 
-    // Fallback : si les offres ne sont pas encore chargées (ne devrait pas arriver)
     if (!isOpen && offers.length === 0) {
       setOffersError(null);
       const { data, error } = await fetchOffers(esim.id);
       if (data && data.length > 0) {
         setOffers(data);
-        setSelectedOffer(data[0]);
+        setSelectedOffer(data.find((o) => o.availableCount > 0) ?? null);
       } else {
         setOffersError(error ?? 'Aucune offre disponible.');
       }
@@ -69,6 +68,21 @@ export default function CountryCard({ esim, preloadedOffers }: CountryCardProps)
 
   const handleOrder = () => {
     if (!selectedOffer) return;
+
+    // Vérification stock au moment de commander
+    if (selectedOffer.availableCount === 0) {
+      // Rafraîchit le stock via le home
+      onStockExhausted?.(esim.id);
+      // Met à jour localement aussi
+      fetchOffers(esim.id).then(({ data }) => {
+        if (data) {
+          setOffers(data);
+          setSelectedOffer(data.find((o) => o.availableCount > 0) ?? null);
+        }
+      });
+      return;
+    }
+
     setCart({
       offerId: selectedOffer.id,
       esimId: esim.id,
@@ -79,8 +93,11 @@ export default function CountryCard({ esim, preloadedOffers }: CountryCardProps)
       finalPrice: selectedOffer.finalPrice,
       isPromo: selectedOffer.activeDiscount !== null,
     });
+
     router.push('/payment');
   };
+
+  const allExhausted = offers.length > 0 && availableOffers.length === 0;
 
   return (
     <View style={styles.container}>
@@ -93,11 +110,16 @@ export default function CountryCard({ esim, preloadedOffers }: CountryCardProps)
               <Text style={styles.promoText}>Promo</Text>
             </View>
           )}
+          {allExhausted && (
+            <View style={[styles.promoBadge, { backgroundColor: '#ccc' }]}>
+              <Text style={styles.promoText}>Épuisé</Text>
+            </View>
+          )}
         </View>
 
         {minPrice !== null
           ? <Text style={styles.startingPrice}>Dès {minPrice.toFixed(2)}€</Text>
-          : <Text style={styles.startingPrice}>—</Text>
+          : <Text style={styles.startingPrice}>Épuisé</Text>
         }
         <Text style={styles.chevron}>{isOpen ? '▲' : '▼'}</Text>
       </TouchableOpacity>
@@ -115,14 +137,19 @@ export default function CountryCard({ esim, preloadedOffers }: CountryCardProps)
               key={offer.id}
               offer={offer}
               selected={selectedOffer?.id === offer.id}
-              onSelect={setSelectedOffer}
+              onSelect={(o) => o.availableCount > 0 && setSelectedOffer(o)}
             />
           ))}
 
           {offers.length > 0 && (
             <PrimaryButton
-              label="Commander"
+              label={
+                !selectedOffer || selectedOffer.availableCount === 0
+                  ? 'Stock épuisé'
+                  : 'Commander'
+              }
               onPress={handleOrder}
+              disabled={!selectedOffer || selectedOffer.availableCount === 0}
               style={{ marginTop: 4 }}
             />
           )}

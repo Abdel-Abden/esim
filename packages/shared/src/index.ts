@@ -3,6 +3,8 @@
 // Source de vérité pour le frontend et l'API
 // =============================================================================
 
+export const RESERVATION_DURATION_MINUTES = 5;
+
 // -----------------------------------------------------------------------------
 // Entités BDD (reflètent exactement les tables Neon)
 // -----------------------------------------------------------------------------
@@ -129,7 +131,7 @@ export interface CancelOrderResponse {
 export type GetEsimsResponse = Esim[];
 
 // GET /esims/:id/offers
-export type GetOffersResponse = OfferWithDetails[];
+export type GetOffersResponse = OfferWithStock[];
 
 // GET /orders/:id
 export type GetOrderResponse = OrderWithDetails;
@@ -183,3 +185,36 @@ export function applyDiscount(
   }
   return Math.max(0, Math.round((basePrice - discount.value) * 100) / 100);
 }
+
+// ─── Stock ────────────────────────────────────────────────────────────────────
+
+/** Offre avec disponibilité — étend OfferWithDetails */
+export interface OfferWithStock extends OfferWithDetails {
+  availableCount: number; // 0 = épuisé
+}
+
+// POST /orders/reserve
+export interface ReserveOrderRequest {
+  offerId: string;
+}
+
+export interface ReserveOrderResponse {
+  orderId: string;
+  expiresAt: string; // timestamp ISO — réservation valide 5 minutes
+}
+
+// POST /orders/:id/checkout
+export interface CheckoutOrderRequest {
+  email: string;
+}
+
+export interface CheckoutOrderResponse {
+  orderId: string;
+  customerId: string;
+  ephemeralKey: string;
+  clientSecret: string;
+  finalPrice: number;
+}
+
+// GET /esims/:id/offers — remplace GetOffersResponse
+export type GetOffersWithStockResponse = OfferWithStock[];

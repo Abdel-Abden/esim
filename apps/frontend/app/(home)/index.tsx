@@ -1,9 +1,10 @@
-// app/(home)/index.tsx
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   ActivityIndicator,
+  AppState,
+  AppStateStatus,
   Image,
   ScrollView,
   StatusBar,
@@ -17,11 +18,12 @@ import SearchBar from '@/components/SearchBar/SearchBar';
 import { Colors } from '@/constants/theme';
 import { fetchEsims, fetchOffers } from '@/service/esims';
 import { useCartStore } from '@/store/useCartStore';
-import { Esim, OfferWithDetails, formatOfferLabel } from '@ilotel/shared';
+import { Esim, OfferWithStock, formatOfferLabel } from '@ilotel/shared';
 import { styles } from './index.styles';
 
-// Offres préchargées indexées par esimId
-type OffersMap = Record<string, OfferWithDetails[]>;
+type OffersMap = Record<string, OfferWithStock[]>;
+
+const MIN_RELOAD_INTERVAL_MS = 30_000; // 30 secondes entre deux rechargements
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -33,7 +35,15 @@ export default function HomeScreen() {
   const [error, setError] = useState<string | null>(null);
   const [search, setSearch] = useState('');
 
-  const load = async () => {
+  const lastLoadRef = useRef<number>(0);
+
+  const load = useCallback(async (force = false) => {
+    const now = Date.now();
+
+    // Évite les rechargements trop fréquents sauf si forcé (bouton réessayer)
+    if (!force && now - lastLoadRef.current < MIN_RELOAD_INTERVAL_MS) return;
+    lastLoadRef.current = now;
+
     setLoading(true);
     setError(null);
 
@@ -47,7 +57,7 @@ export default function HomeScreen() {
 
     setEsims(data);
 
-    // Précharger toutes les offres en parallèle
+    // Précharge toutes les offres en parallèle
     const results = await Promise.all(
       data.map(async (esim) => {
         const { data: offers } = await fetchOffers(esim.id);
@@ -56,15 +66,33 @@ export default function HomeScreen() {
     );
 
     const map: OffersMap = {};
-    results.forEach(({ esimId, offers }) => {
-      map[esimId] = offers;
-    });
+    results.forEach(({ esimId, offers }) => { map[esimId] = offers; });
 
     setOffersMap(map);
     setLoading(false);
-  };
+  }, []);
 
-  useEffect(() => { load(); }, []);
+  // Chargement initial
+  useEffect(() => { load(true); }, []);
+
+  // Rechargement au retour en foreground
+  useEffect(() => {
+    const subscription = AppState.addEventListener(
+      'change',
+      (nextState: AppStateStatus) => {
+        if (nextState === 'active') load();
+      }
+    );
+    return () => subscription.remove();
+  }, [load]);
+
+  // Rafraîchissement du stock après un refus de stock (appelé par CountryCard)
+  const handleStockExhausted = useCallback(async (esimId: string) => {
+    const { data: offers } = await fetchOffers(esimId);
+    if (offers) {
+      setOffersMap((prev) => ({ ...prev, [esimId]: offers }));
+    }
+  }, []);
 
   const filteredEsims = useMemo(() => {
     if (!search.trim()) return esims;
@@ -76,7 +104,8 @@ export default function HomeScreen() {
   const monde = esims.find((e) => e.type === 'region' || e.type === 'global');
   const featuredOffers = monde ? (offersMap[monde.id] ?? []) : [];
   const featuredOffer =
-    featuredOffers.find((o) => o.activeDiscount !== null) ?? featuredOffers[0];
+    featuredOffers.find((o) => o.activeDiscount !== null && o.availableCount > 0)
+    ?? featuredOffers.find((o) => o.availableCount > 0);
 
   const handleFeaturedOrder = () => {
     if (!monde || !featuredOffer) return;
@@ -93,7 +122,7 @@ export default function HomeScreen() {
     router.push('/payment');
   };
 
-  if (loading) {
+  if (loading && esims.length === 0) {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: Colors.bg }}>
         <ActivityIndicator size="large" color={Colors.primary} />
@@ -106,7 +135,7 @@ export default function HomeScreen() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: Colors.bg, padding: 32 }}>
         <Text style={{ color: Colors.text, marginBottom: 16, textAlign: 'center' }}>{error}</Text>
-        <PrimaryButton label="Réessayer" onPress={load} />
+        <PrimaryButton label="Réessayer" onPress={() => load(true)} />
       </View>
     );
   }
@@ -138,7 +167,7 @@ export default function HomeScreen() {
               </View>
               <Text style={styles.featuredSub}>
                 Connectez-vous partout dès{' '}
-                {Math.min(...featuredOffers.map((o) => o.finalPrice)).toFixed(2)}€
+                {Math.min(...featuredOffers.filter(o => o.availableCount > 0).map((o) => o.finalPrice)).toFixed(2)}€
               </Text>
               <PrimaryButton label="Voir les offres" onPress={handleFeaturedOrder} />
             </View>
@@ -155,6 +184,7 @@ export default function HomeScreen() {
                   key={esim.id}
                   esim={esim}
                   preloadedOffers={offersMap[esim.id]}
+                  onStockExhausted={handleStockExhausted}
                 />
               ))}
             </View>

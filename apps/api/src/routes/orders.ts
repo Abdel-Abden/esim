@@ -1,36 +1,31 @@
 import {
   CancelOrderResponse,
-  CreateOrderRequest,
-  CreateOrderResponse,
+  CheckoutOrderRequest,
+  CheckoutOrderResponse,
   GetOrderResponse,
+  RESERVATION_DURATION_MINUTES,
+  ReserveOrderRequest,
+  ReserveOrderResponse,
 } from '@ilotel/shared';
 import { Hono } from 'hono';
 import { releaseEsim, reserveEsim } from '../db/queries/esims.js';
 import { getOfferById } from '../db/queries/offers.js';
-import { createOrder, deleteOrder, getOrderById, updateOrderStatus } from '../db/queries/orders.js';
+import { createOrder, deleteOrder, getOrderById, updateOrderCheckout, updateOrderStatus } from '../db/queries/orders.js';
 import { stripe } from '../lib/stripe.js';
 
 export const orders = new Hono();
 
 // ─────────────────────────────────────────────────────────────────────────────
-// POST /orders
-// Crée une commande et initialise la PaymentSheet Stripe
-//
-// Flux :
-//   1. Valider la requête
-//   2. Récupérer l'offre en BDD (le prix vient toujours du serveur, jamais du client)
-//   3. Créer ou retrouver le Customer Stripe
-//   4. Créer l'EphemeralKey (nécessaire pour la PaymentSheet mobile)
-//   5. Créer le PaymentIntent avec le montant issu de la BDD
-//   6. Persister la commande en statut "pending"
-//   7. Retourner les clés au client
+// POST /orders/reserve
+// Étape 1 : réserve une eSIM dès l'arrivée sur la page payment
+// Pas d'email requis à ce stade — la réservation expire après 5 min
 // ─────────────────────────────────────────────────────────────────────────────
-orders.post('/', async (c) => {
-  const body = await c.req.json<CreateOrderRequest>();
-  const { offerId, email } = body;
+orders.post('/reserve', async (c) => {
+  const body = await c.req.json<ReserveOrderRequest>();
+  const { offerId } = body;
 
-  if (!offerId || !email || !email.includes('@')) {
-    return c.json({ message: 'offerId et email valide sont requis' }, 400);
+  if (!offerId) {
+    return c.json({ message: 'offerId est requis' }, 400);
   }
 
   const offer = await getOfferById(offerId);
@@ -38,11 +33,58 @@ orders.post('/', async (c) => {
     return c.json({ message: 'Offre introuvable' }, 404);
   }
   if (!offer.stripePriceId) {
-    return c.json({ message: 'Offre non disponible à la vente (stripe_price_id manquant)' }, 422);
+    return c.json({ message: 'Offre non disponible à la vente' }, 422);
+  }
+  if (offer.availableCount === 0) {
+    return c.json({ message: 'Stock épuisé pour cette offre' }, 409);
   }
 
-  const finalPrice = offer.finalPrice;
-  const discountId = offer.activeDiscount?.id ?? null;
+  const reservedUntil = new Date(
+    Date.now() + RESERVATION_DURATION_MINUTES * 60 * 1000
+  ).toISOString();
+
+  const order = await createOrder({
+    offerId,
+    finalPrice: offer.finalPrice,
+    discountId: offer.activeDiscount?.id ?? null,
+    reservedUntil,
+  });
+
+  // Réserver atomiquement une eSIM
+  const reserved = await reserveEsim(offer.esimId, order.id);
+  if (!reserved) {
+    await deleteOrder(order.id);
+    return c.json({ message: 'Stock épuisé pour cette offre' }, 409);
+  }
+
+  const response: ReserveOrderResponse = {
+    orderId: order.id,
+    expiresAt: reservedUntil,
+  };
+
+  return c.json(response, 201);
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// POST /orders/:id/checkout
+// Étape 2 : l'utilisateur saisit son email et lance le paiement
+// ─────────────────────────────────────────────────────────────────────────────
+orders.post('/:id/checkout', async (c) => {
+  const orderId = c.req.param('id');
+  const body = await c.req.json<CheckoutOrderRequest>();
+  const { email } = body;
+
+  if (!email || !email.includes('@')) {
+    return c.json({ message: 'Email valide requis' }, 400);
+  }
+
+  const order = await getOrderById(orderId);
+  if (!order) {
+    return c.json({ message: 'Commande introuvable' }, 404);
+  }
+  if (order.status !== 'pending') {
+    return c.json({ message: 'Cette réservation a expiré ou est déjà traitée' }, 409);
+  }
 
   const existingCustomers = await stripe.customers.list({ email, limit: 1 });
   const customer =
@@ -54,45 +96,30 @@ orders.post('/', async (c) => {
     { apiVersion: '2025-01-27.acacia' }
   );
 
-  const amountCents = Math.round(finalPrice * 100);
+  const amountCents = Math.round(order.finalPrice * 100);
   const paymentIntent = await stripe.paymentIntents.create({
     amount: amountCents,
     currency: 'eur',
     customer: customer.id,
     automatic_payment_methods: { enabled: true },
-    metadata: { offerId, email, discountId: discountId ?? '' },
+    metadata: { orderId, email },
   });
 
-  const order = await createOrder({
-    email,
-    offerId,
-    stripePaymentIntentId: paymentIntent.id,
-    finalPrice,
-    discountId,
-  });
+  await updateOrderCheckout(orderId, email, paymentIntent.id);
 
-  // Réserver une eSIM — si plus de stock on annule tout
-  const reserved = await reserveEsim(offer.esimId, order.id);
-  if (!reserved) {
-    await stripe.paymentIntents.cancel(paymentIntent.id);
-    await deleteOrder(order.id);
-    return c.json({ message: 'Stock épuisé pour cette offre' }, 409);
-  }
-
-  const response: CreateOrderResponse = {
-    orderId: order.id,
+  const response: CheckoutOrderResponse = {
+    orderId,
     customerId: customer.id,
     ephemeralKey: ephemeralKey.secret!,
     clientSecret: paymentIntent.client_secret!,
-    finalPrice,
+    finalPrice: order.finalPrice,
   };
 
-  return c.json(response, 201);
+  return c.json(response);
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
 // GET /orders/:id
-// Récupère une commande avec ses détails (offre + eSIM assignée)
 // ─────────────────────────────────────────────────────────────────────────────
 orders.get('/:id', async (c) => {
   const id = c.req.param('id');
@@ -107,8 +134,6 @@ orders.get('/:id', async (c) => {
 
 // ─────────────────────────────────────────────────────────────────────────────
 // POST /orders/:id/cancel
-// Annule une commande pending — libère l'eSIM réservée et annule le PaymentIntent
-// Appelé par le frontend si l'utilisateur abandonne le paiement
 // ─────────────────────────────────────────────────────────────────────────────
 orders.post('/:id/cancel', async (c) => {
   const id = c.req.param('id');
@@ -117,20 +142,18 @@ orders.post('/:id/cancel', async (c) => {
   if (!order) {
     return c.json({ message: 'Commande introuvable' }, 404);
   }
-
-  // On ne peut annuler qu'une commande pending
   if (order.status !== 'pending') {
     return c.json({ message: `Impossible d'annuler une commande en statut ${order.status}` }, 409);
   }
 
-  // Libérer l'eSIM réservée
   await releaseEsim(id);
 
-  // Annuler le PaymentIntent Stripe
-  try {
-    await stripe.paymentIntents.cancel(order.stripePaymentIntentId);
-  } catch {
-    // Le PI peut déjà être annulé ou expiré — on continue quand même
+  if (order.stripePaymentIntentId) {
+    try {
+      await stripe.paymentIntents.cancel(order.stripePaymentIntentId);
+    } catch {
+      // PI déjà annulé ou expiré
+    }
   }
 
   await updateOrderStatus(id, 'failed');

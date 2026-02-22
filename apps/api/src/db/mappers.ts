@@ -1,11 +1,12 @@
 import {
-    Discount,
-    Esim,
-    EsimInventory,
-    OfferWithDetails,
-    Order,
-    OrderStatus,
-    applyDiscount
+  applyDiscount,
+  Discount,
+  Esim,
+  EsimInventory,
+  OfferWithDetails,
+  OfferWithStock,
+  Order,
+  OrderStatus
 } from '@ilotel/shared';
 
 export function mapEsim(row: Record<string, unknown>): Esim {
@@ -80,5 +81,46 @@ export function mapOrder(row: Record<string, unknown>): Order {
     finalPrice: Number(row.final_price),
     discountId: (row.discount_id as string) ?? null,
     createdAt: String(row.created_at),
+  };
+}
+
+export function mapOfferWithStock(row: Record<string, unknown>): OfferWithStock {
+  const esim: Esim = {
+    id: row.esim_db_id as string,
+    name: row.esim_name as string,
+    type: row.esim_type as string,
+    flag: row.esim_flag as string,
+    createdAt: String(row.esim_created_at),
+  };
+
+  const activeDiscount: Discount | null = row.discount_id
+    ? {
+        id: row.discount_id as string,
+        offerId: row.id as string,
+        type: row.discount_type as 'percentage' | 'fixed',
+        value: Number(row.discount_value),
+        active: true,
+        startsAt: null,
+        endsAt: null,
+      }
+    : null;
+
+  const basePrice = Number(row.base_price);
+  const finalPrice = row.final_price
+    ? Number(row.final_price)
+    : applyDiscount(basePrice, activeDiscount);
+
+  return {
+    id: row.id as string,
+    esimId: row.esim_id as string,
+    dataGb: Number(row.data_gb),
+    durationDays: Number(row.duration_days),
+    basePrice,
+    stripePriceId: (row.stripe_price_id as string) ?? '',
+    createdAt: String(row.created_at),
+    esim,
+    activeDiscount,
+    finalPrice,
+    availableCount: Number(row.available_count ?? 0),
   };
 }

@@ -1,16 +1,17 @@
 import { EsimInventory, Order, OrderStatus, OrderWithDetails } from '@ilotel/shared';
 import { sql } from '../client.js';
-import { mapInventory, mapOrder } from "../mappers.js";
+import { mapInventory, mapOrder } from '../mappers.js';
 import { getOfferById } from './offers.js';
 
 // ─── Création ─────────────────────────────────────────────────────────────────
 
 export interface CreateOrderParams {
-  email: string;
   offerId: string;
-  stripePaymentIntentId: string;
+  stripePaymentIntentId?: string;
   finalPrice: number;
   discountId: string | null;
+  email?: string;
+  reservedUntil: string;
 }
 
 export async function createOrder(params: CreateOrderParams): Promise<Order> {
@@ -21,19 +22,20 @@ export async function createOrder(params: CreateOrderParams): Promise<Order> {
       stripe_payment_intent_id,
       final_price,
       discount_id,
-      status
+      status,
+      reserved_until
     )
     VALUES (
-      ${params.email},
+      ${params.email ?? null},
       ${params.offerId},
-      ${params.stripePaymentIntentId},
+      ${params.stripePaymentIntentId ?? null},
       ${params.finalPrice},
       ${params.discountId},
-      'pending'
+      'pending',
+      ${params.reservedUntil}
     )
     RETURNING *
   `;
-
   return mapOrder(rows[0]);
 }
 
@@ -47,8 +49,6 @@ export async function getOrderById(id: string): Promise<OrderWithDetails | null>
   if (!rows[0]) return null;
 
   const order = mapOrder(rows[0]);
-
-  // Jointures manuelles pour typer correctement
   const offer = await getOfferById(order.offerId);
   if (!offer) return null;
 
@@ -119,6 +119,48 @@ export async function assignEsimToOrder(
   return rows[0] ? mapInventory(rows[0]) : null;
 }
 
+/**
+ * Libère toutes les réservations expirées (reserved_until dépassé).
+ * Appelé par le cron job toutes les 5 minutes.
+ */
+export async function releaseExpiredReservations(): Promise<string[]> {
+  const rows = await sql`
+    SELECT id FROM orders
+    WHERE status = 'pending'
+      AND stripe_payment_intent_id IS NULL
+      AND reserved_until < NOW()
+  `;
+
+  const expiredIds = rows.map((r) => r.id as string);
+
+  if (expiredIds.length > 0) {
+    await sql`
+      UPDATE orders SET status = 'failed'
+      WHERE id = ANY(${expiredIds})
+    `;
+    await sql`
+      UPDATE esim_inventory
+      SET status = 'available', order_id = NULL, reserved_at = NULL
+      WHERE order_id = ANY(${expiredIds})
+        AND status = 'reserved'
+    `;
+  }
+
+  return expiredIds;
+}
+
+export async function updateOrderCheckout(
+  orderId: string,
+  email: string,
+  stripePaymentIntentId: string
+): Promise<void> {
+  await sql`
+    UPDATE orders
+    SET email = ${email},
+        stripe_payment_intent_id = ${stripePaymentIntentId}
+    WHERE id = ${orderId}
+  `;
+}
 
 // ─── Suppresion ───────────────────────────────────────────────────────────────
 

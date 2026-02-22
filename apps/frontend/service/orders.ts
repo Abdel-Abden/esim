@@ -1,30 +1,35 @@
-// service/orders.ts
-import { CancelOrderResponse, CreateOrderRequest, CreateOrderResponse, GetOrderResponse } from '@ilotel/shared';
+import {
+  CancelOrderResponse,
+  CheckoutOrderRequest,
+  CheckoutOrderResponse,
+  GetOrderResponse,
+  ReserveOrderRequest,
+  ReserveOrderResponse,
+} from '@ilotel/shared';
 import { apiFetch } from './api';
 
-/**
- * Crée une commande et réserve une eSIM.
- * Retourne les clés Stripe nécessaires à la PaymentSheet.
- */
-export async function createOrder(payload: CreateOrderRequest) {
-  return apiFetch<CreateOrderResponse>('/orders', {
+/** Étape 1 — réserve une eSIM dès l'arrivée sur la page payment */
+export async function reserveOrder(payload: ReserveOrderRequest) {
+  return apiFetch<ReserveOrderResponse>('/orders/reserve', {
     method: 'POST',
     body: JSON.stringify(payload),
   });
 }
 
-/**
- * Récupère les détails d'une commande après paiement.
- * Appelé en polling depuis la page details jusqu'à avoir status = 'provisioned'.
- */
+/** Étape 2 — lance le paiement Stripe avec l'email */
+export async function checkoutOrder(orderId: string, payload: CheckoutOrderRequest) {
+  return apiFetch<CheckoutOrderResponse>(`/orders/${orderId}/checkout`, {
+    method: 'POST',
+    body: JSON.stringify(payload),
+  });
+}
+
+/** Récupère les détails d'une commande (polling post-paiement) */
 export async function fetchOrder(orderId: string) {
   return apiFetch<GetOrderResponse>(`/orders/${orderId}`);
 }
 
-/**
- * Annule une commande pending — libère l'eSIM réservée.
- * À appeler si l'utilisateur abandonne ou si le paiement échoue définitivement.
- */
+/** Annule une commande pending et libère l'eSIM */
 export async function cancelOrder(orderId: string) {
   return apiFetch<CancelOrderResponse>(`/orders/${orderId}/cancel`, {
     method: 'POST',
