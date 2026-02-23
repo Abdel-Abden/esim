@@ -65,6 +65,7 @@ export interface EsimInventory {
   status: InventoryStatus;
   reservedAt: string | null;
   soldAt: string | null;
+  activationCode: string;
   orderId: string | null;   // FK → orders.id
 }
 

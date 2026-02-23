@@ -1,7 +1,7 @@
-// app/details/index.tsx
 import { useRouter } from 'expo-router';
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, Image, ScrollView, Text, View } from 'react-native';
+import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
+import QRCode from 'react-native-qrcode-svg';
 
 import BackButton from '@/components/BackButton/BackButton';
 import Card from '@/components/Card/Card';
@@ -24,7 +24,6 @@ export default function DetailsScreen() {
   useEffect(() => {
     if (!orderId) { router.replace('/'); return; }
 
-    // Le webhook Stripe peut avoir un léger délai — on retente jusqu'à 5 fois
     const poll = async () => {
       const { data, error } = await fetchOrder(orderId);
 
@@ -65,8 +64,31 @@ export default function DetailsScreen() {
     );
   }
 
-  const iccid = order.esimInventory?.iccid ?? '';
-  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${iccid}`;
+  // Paiement confirmé mais eSIM non assignée — problème de provisioning
+  if (!order.esimInventory) {
+    return (
+      <View style={styles.centered}>
+        <Text style={styles.errorText}>
+          Votre paiement a bien été reçu mais votre eSIM n'a pas pu être activée automatiquement.
+        </Text>
+        <Text style={[styles.errorText, { marginTop: 12, fontSize: 13, color: Colors.muted }]}>
+          Référence de commande :
+        </Text>
+        <Text style={[styles.iccidValue, { marginBottom: 24 }]}>
+          {order.id}
+        </Text>
+        <Text style={[styles.errorText, { fontSize: 13, color: Colors.muted, textAlign: 'center' }]}>
+          Contactez-nous à support@ilotel.com en indiquant cette référence.
+          Nous vous enverrons votre eSIM sous 24h.
+        </Text>
+        <PrimaryButton
+          label="Retour à l'accueil"
+          onPress={handleNewEsim}
+          style={{ marginTop: 24 }}
+        />
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -79,8 +101,22 @@ export default function DetailsScreen() {
         <Text style={styles.title}>Votre eSIM</Text>
 
         <Card style={styles.qrCard}>
-          <Image source={{ uri: qrUrl }} style={styles.qrImage} resizeMode="contain" />
-          <Text style={styles.qrLabel}>Scannez ce QR code dans vos paramètres réseau</Text>
+          {order.esimInventory.activationCode ? (
+            <>
+              <QRCode
+                value={order.esimInventory.activationCode}
+                size={180}
+              />
+              <Text style={styles.qrLabel}>
+                Scannez ce QR code dans vos paramètres réseau
+              </Text>
+            </>
+          ) : (
+            <Text style={styles.qrLabel}>
+              QR code non disponible — contactez le support en indiquant la référence{' '}
+              <Text style={{ fontWeight: '700' }}>{order.id}</Text>
+            </Text>
+          )}
         </Card>
 
         <View style={styles.statusBadge}>
@@ -91,13 +127,17 @@ export default function DetailsScreen() {
         <Card>
           <View style={styles.infoRow}>
             <Text style={styles.infoLabel}>Pays</Text>
-            <Text style={styles.infoValue}>{order.offer.esim.flag} {order.offer.esim.name}</Text>
+            <Text style={styles.infoValue}>
+              {order.offer.esim.flag} {order.offer.esim.name}
+            </Text>
           </View>
           <View style={styles.divider} />
 
           <View style={styles.infoRow}>
             <Text style={styles.infoLabel}>Offre</Text>
-            <Text style={styles.infoValue}>{order.offer.dataGb} Go / {order.offer.durationDays}j</Text>
+            <Text style={styles.infoValue}>
+              {order.offer.dataGb} Go / {order.offer.durationDays}j
+            </Text>
           </View>
           <View style={styles.divider} />
 
@@ -111,7 +151,7 @@ export default function DetailsScreen() {
 
           <View style={styles.infoRow}>
             <Text style={styles.infoLabel}>ICCID</Text>
-            <Text style={styles.iccidValue}>{iccid}</Text>
+            <Text style={styles.iccidValue}>{order.esimInventory.iccid}</Text>
           </View>
           <View style={styles.divider} />
 
