@@ -1,0 +1,54 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Stripe CLI",
+      "type": "shell",
+      "command": "stripe listen --forward-to http://192.168.122.1:3000/webhooks/stripe",
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": { "regexp": "^$" },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Getting ready",
+          "endsPattern": "whsec_"
+        }
+      }
+    },
+    {
+      "label": "API",
+      "type": "shell",
+      "command": "npm run api",
+      "isBackground": true,
+      "dependsOn": ["Stripe CLI"],
+      "problemMatcher": {
+        "pattern": { "regexp": "^$" },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".",
+          "endsPattern": "API ilotel sur http://localhost:3000"
+        }
+      }
+    },
+    {
+      "label": "Frontend",
+      "type": "shell",
+      "command": "npm run frontend",
+      "isBackground": true,
+      "dependsOn": ["API"],
+      "problemMatcher": {
+        "pattern": { "regexp": "^$" },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".",
+          "endsPattern": "Logs for your project will appear below"
+        }
+      }
+    },
+    {
+      "label": "Dev",
+      "dependsOn": ["Frontend"],
+      "group": { "kind": "build", "isDefault": true }
+    }
+  ]
+}
