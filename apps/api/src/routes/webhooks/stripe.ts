@@ -1,5 +1,5 @@
 import { Hono } from 'hono';
-import { confirmEsim } from '../../db/queries/esims.js';
+import { confirmEsim, releaseEsim } from '../../db/queries/esims.js';
 import {
   getOrderByPaymentIntentId,
   updateOrderStatus
