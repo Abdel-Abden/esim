@@ -15,7 +15,7 @@ const app = new Hono();
 app.use('*', logger());
 app.use('*', cors({
   origin: [
-    'https://ilotel.com', 
+    'https://www.api.ilotel.com',
     'http://localhost:8081'
   ],
   allowMethods: ['GET', 'POST', 'OPTIONS'],
