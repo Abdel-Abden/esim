@@ -151,9 +151,9 @@ export default function HomeScreen() {
           showsVerticalScrollIndicator={false}
         >
           <Image
-            source={require('@/assets/logo.png')}
+            source={require('@/assets/images/logo.png')}
             style={styles.logo}
-            defaultSource={require('@/assets/logo.png')}
+            defaultSource={require('@/assets/images/logo.png')}
           />
 
           <Text style={styles.title}>Choisissez votre eSIM</Text>
