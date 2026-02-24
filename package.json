@@ -9,6 +9,7 @@
   "scripts": {
     "frontend": "npm run start --workspace=apps/frontend",
     "api": "npm run dev --workspace=apps/api",
+    "build:shared": "npm run build --workspace=packages/shared",
     "lint": "npm run lint --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present"
   },
