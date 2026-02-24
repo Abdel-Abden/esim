@@ -68,6 +68,7 @@ export function mapInventory(row: Record<string, unknown>): EsimInventory {
     reservedAt: row.reserved_at ? String(row.reserved_at) : null,
     soldAt: row.sold_at ? String(row.sold_at) : null,
     orderId: (row.order_id as string) ?? null,
+    activationCode: row.activationCode as string
   };
 }
 
