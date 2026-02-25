@@ -63,6 +63,7 @@ export function mapInventory(row: Record<string, unknown>): EsimInventory {
   return {
     id: row.id as string,
     esimId: row.esim_id as string,
+    offerId: row.offer_id as string,
     iccid: row.iccid as string,
     status: row.status as 'available' | 'reserved' | 'sold',
     reservedAt: row.reserved_at ? String(row.reserved_at) : null,

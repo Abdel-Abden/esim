@@ -50,8 +50,8 @@ orders.post('/reserve', async (c) => {
     reservedUntil,
   });
 
-  // Réserver atomiquement une eSIM
-  const reserved = await reserveEsim(offer.esimId, order.id);
+  // Réserver atomiquement une eSIM pour cette offre précise
+  const reserved = await reserveEsim(offer.id, order.id);
   if (!reserved) {
     await deleteOrder(order.id);
     return c.json({ message: 'Stock épuisé pour cette offre' }, 409);

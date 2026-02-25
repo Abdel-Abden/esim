@@ -61,6 +61,7 @@ export type DiscountType = 'percentage' | 'fixed';
 export interface EsimInventory {
   id: string;
   esimId: string;           // FK → esims.id
+  offerId: string;          // FK → offers.id — carte liée à une offre précise
   iccid: string;            // identifiant unique de la carte eSIM
   status: InventoryStatus;
   reservedAt: string | null;

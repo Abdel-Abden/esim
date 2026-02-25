@@ -28,12 +28,12 @@ export async function getEsimById(id: string): Promise<Esim | null> {
 // ─── Mise à jour ──────────────────────────────────────────────────────────────
 
 /**
- * Réserve atomiquement une eSIM disponible pour une destination.
+ * Réserve atomiquement une eSIM disponible pour une offre précise.
  * Utilise FOR UPDATE SKIP LOCKED pour éviter les doublons en concurrence.
- * Retourne null si plus de stock.
+ * Retourne null si plus de stock pour cette offre.
  */
 export async function reserveEsim(
-  esimId: string,
+  offerId: string,
   orderId: string
 ): Promise<EsimInventory | null> {
   const rows = await sql`
@@ -44,8 +44,8 @@ export async function reserveEsim(
       reserved_at = NOW()
     WHERE id = (
       SELECT id FROM esim_inventory
-      WHERE esim_id = ${esimId}
-        AND status  = 'available'
+      WHERE offer_id = ${offerId}
+        AND status   = 'available'
       LIMIT 1
       FOR UPDATE SKIP LOCKED
     )

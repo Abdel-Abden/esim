@@ -27,12 +27,12 @@ export async function getOffersByEsimId(esimId: string): Promise<OfferWithStock[
       v.discount_type,
       v.discount_value,
       v.final_price,
-      -- Compte uniquement les eSIMs réellement disponibles
+      -- Compte uniquement les eSIMs disponibles pour cette offre précise
       COUNT(i.id) FILTER (WHERE i.status = 'available') AS available_count
     FROM offers o
     JOIN esims e ON e.id = o.esim_id
     LEFT JOIN offers_with_active_discount v ON v.id = o.id
-    LEFT JOIN esim_inventory i ON i.esim_id = o.esim_id
+    LEFT JOIN esim_inventory i ON i.offer_id = o.id
     WHERE o.esim_id = ${esimId}
     GROUP BY o.id, e.id, v.discount_id, v.discount_type, v.discount_value, v.final_price
     ORDER BY o.base_price ASC
@@ -67,7 +67,7 @@ export async function getOfferById(id: string): Promise<OfferWithStock | null> {
     FROM offers o
     JOIN esims e ON e.id = o.esim_id
     LEFT JOIN offers_with_active_discount v ON v.id = o.id
-    LEFT JOIN esim_inventory i ON i.esim_id = o.esim_id
+    LEFT JOIN esim_inventory i ON i.offer_id = o.id
     WHERE o.id = ${id}
     GROUP BY o.id, e.id, v.discount_id, v.discount_type, v.discount_value, v.final_price
     LIMIT 1
