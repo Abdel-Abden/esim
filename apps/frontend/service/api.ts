@@ -1,7 +1,7 @@
 // service/api.ts
 // Client HTTP de base — tous les appels vers l'API Hono passent par ici
 
-const BASE_URL = process.env.EXPO_PUBLIC_API_URL ?? 'http://localhost:3000';
+const BASE_URL = process.env.EXPO_PUBLIC_API_URL ?? 'http://10.0.2.2:3000'; // localhost pour émulateur android
 
 type ApiResponse<T> = { data: T; error: null } | { data: null; error: string };
 
@@ -26,6 +26,7 @@ export async function apiFetch<T>(
 
     return { data: json as T, error: null };
   } catch (err) {
+    console.log(`${BASE_URL}${path}`)
     console.error(`[apiFetch] ${path}`, err);
     return { data: null, error: 'Erreur réseau. Vérifiez votre connexion.' };
   }
