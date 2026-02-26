@@ -1,5 +1,5 @@
 import { Hono } from 'hono';
-import { confirmEsim, releaseEsim } from '../../db/queries/esims.js';
+import { confirmEsim } from '../../db/queries/esims.js';
 import {
   getOrderByPaymentIntentId,
   updateOrderStatus
@@ -61,7 +61,6 @@ stripeWebhook.post('/', async (c) => {
 
       const order = await getOrderByPaymentIntentId(paymentIntent.id);
       if (order) {
-        await releaseEsim(order.id); 
         await updateOrderStatus(order.id, 'failed');
         console.log(`[webhook] ❌ Paiement échoué — commande: ${order.id}`);
       }

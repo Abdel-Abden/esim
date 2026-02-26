@@ -91,7 +91,7 @@ export async function updateOrderStatus(
 }
 
 /**
- * Assigne une carte eSIM disponible à une commande payée.
+ * Assigne une carte eSIM disponible à une commande.
  * Choisit automatiquement la première carte disponible pour la destination.
  */
 export async function assignEsimToOrder(
