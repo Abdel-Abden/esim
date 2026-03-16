@@ -6,9 +6,11 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  StyleSheet,
   Text,
   TextInput,
-  View,
+  TouchableOpacity,
+  View
 } from 'react-native';
 
 import BackButton from '@/components/BackButton/BackButton';
@@ -28,15 +30,17 @@ export default function PaymentScreen() {
   const [email, setEmail] = useState('');
   const [emailFocused, setEmailFocused] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [reserving, setReserving] = useState(true); // réservation en cours à l'arrivée
+  const [reserving, setReserving] = useState(true);
   const [showSuccess, setShowSuccess] = useState(false);
   const [expiresAt, setExpiresAt] = useState<Date | null>(null);
   const [timeLeft, setTimeLeft] = useState<number>(RESERVATION_DURATION_MINUTES * 60);
 
-  // Référence vers l'orderId réservé — permet de l'annuler si l'écran est quitté
+  // ── Nouveau : consentement CGU ───────────────────────────────────────────────
+  const [cguAccepted, setCguAccepted] = useState(false);
+
   const pendingOrderId = useRef<string | null>(null);
 
-  // Réservation automatique à l'arrivée sur l'écran
+  // ── Réservation automatique ───────────────────────────────────────────────
   useEffect(() => {
     if (!cart) return;
 
@@ -48,7 +52,7 @@ export default function PaymentScreen() {
         setReserving(false);
         Alert.alert(
           'Stock épuisé',
-          error ?? 'Cette offre n\'est plus disponible.',
+          error ?? "Cette offre n'est plus disponible.",
           [{ text: 'Retour', onPress: () => router.back() }]
         );
         return;
@@ -62,7 +66,7 @@ export default function PaymentScreen() {
     reserve();
   }, []);
 
-  // Compte à rebours de la réservation
+  // ── Compte à rebours ──────────────────────────────────────────────────────
   useEffect(() => {
     if (!expiresAt) return;
 
@@ -87,7 +91,7 @@ export default function PaymentScreen() {
     return () => clearInterval(interval);
   }, [expiresAt]);
 
-  // Annulation si l'utilisateur quitte sans payer
+  // ── Annulation si l'utilisateur quitte ───────────────────────────────────
   useEffect(() => {
     return () => {
       if (pendingOrderId.current) {
@@ -108,9 +112,21 @@ export default function PaymentScreen() {
     return `${m}:${s.toString().padStart(2, '0')}`;
   };
 
+  const isPayable =
+    !loading &&
+    !reserving &&
+    email.trim() !== '' &&
+    email.includes('@') &&
+    timeLeft > 0 &&
+    cguAccepted; // ← condition supplémentaire
+
   const handlePayment = async () => {
     if (!email.trim() || !email.includes('@')) {
       Alert.alert('Email requis', 'Veuillez entrer un email valide.');
+      return;
+    }
+    if (!cguAccepted) {
+      Alert.alert('Conditions générales', 'Veuillez accepter les CGU pour continuer.');
       return;
     }
     if (!pendingOrderId.current) {
@@ -120,7 +136,6 @@ export default function PaymentScreen() {
 
     setLoading(true);
 
-    // Étape 1 — Initier le paiement Stripe avec l'email
     const { data, error } = await checkoutOrder(pendingOrderId.current, { email });
 
     if (error || !data) {
@@ -129,7 +144,6 @@ export default function PaymentScreen() {
       return;
     }
 
-    // Étape 2 — Initialiser la PaymentSheet
     const { error: initError } = await initPaymentSheet({
       merchantDisplayName: 'ILOTEL eSIM',
       customerId: data.customerId,
@@ -147,7 +161,6 @@ export default function PaymentScreen() {
       return;
     }
 
-    // Étape 3 — Ouvrir la modale Stripe
     const { error: paymentError } = await presentPaymentSheet();
 
     if (paymentError) {
@@ -155,12 +168,9 @@ export default function PaymentScreen() {
       if (paymentError.code !== 'Canceled') {
         Alert.alert('Paiement refusé', paymentError.message);
       }
-      // On ne libère PAS l'eSIM ici — l'utilisateur peut réessayer
-      // avec une autre carte dans le temps restant de réservation
       return;
     }
 
-    // Paiement confirmé
     pendingOrderId.current = null;
     setOrderId(data.orderId);
     setLoading(false);
@@ -210,7 +220,7 @@ export default function PaymentScreen() {
           )}
         </Card>
 
-        {/* Compte à rebours de réservation */}
+        {/* Compte à rebours */}
         {expiresAt && timeLeft > 0 && (
           <View style={{ alignItems: 'center', marginVertical: 8 }}>
             <Text style={{ color: timeLeft < 60 ? 'red' : '#888', fontSize: 13 }}>
@@ -240,13 +250,106 @@ export default function PaymentScreen() {
           </View>
         </Card>
 
+        {/* ── CGU ──────────────────────────────────────────────────────────── */}
+        <TouchableOpacity
+          style={cguStyles.row}
+          onPress={() => setCguAccepted((v) => !v)}
+          activeOpacity={0.7}
+        >
+          {/* Checkbox personnalisée */}
+          <View style={[cguStyles.checkbox, cguAccepted && cguStyles.checkboxChecked]}>
+            {cguAccepted && <Text style={cguStyles.checkmark}>✓</Text>}
+          </View>
+
+          {/* Texte + lien */}
+          <Text style={cguStyles.label}>
+            J'ai lu et j'accepte les{' '}
+            <Text
+              style={cguStyles.link}
+              onPress={() => router.push('/cgu')}
+            >
+              Conditions Générales de Vente
+            </Text>
+            {' '}et la{' '}
+            <Text
+              style={cguStyles.link}
+              onPress={() => router.push('/privacy')}
+            >
+              Politique de confidentialité
+            </Text>
+            .
+          </Text>
+        </TouchableOpacity>
+
+        {/* Note droit de rétractation (contenu numérique) */}
+        <Text style={cguStyles.withdrawalNote}>
+          Conformément à l'article L221-28 du Code de la consommation, vous reconnaissez que la fourniture de l'eSIM débute immédiatement après le paiement et renoncez expressément à votre droit de rétractation.
+        </Text>
+
         <PrimaryButton
-          label={reserving ? 'Réservation en cours…' : loading ? 'Chargement...' : 'Choisir mon moyen de paiement'}
+          label={
+            reserving
+              ? 'Réservation en cours…'
+              : loading
+              ? 'Chargement...'
+              : 'Choisir mon moyen de paiement'
+          }
           onPress={handlePayment}
           loading={loading || reserving}
-          disabled={loading || reserving || !email.trim() || !email.includes('@') || timeLeft === 0}
+          disabled={!isPayable}
         />
       </ScrollView>
     </KeyboardAvoidingView>
   );
 }
+
+// ─── Styles CGU ───────────────────────────────────────────────────────────────
+const cguStyles = StyleSheet.create({
+  row: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    marginVertical: 12,
+    paddingHorizontal: 4,
+    gap: 10,
+  },
+  checkbox: {
+    width: 22,
+    height: 22,
+    borderRadius: 6,
+    borderWidth: 2,
+    borderColor: '#C0C4D0',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 1,
+    flexShrink: 0,
+  },
+  checkboxChecked: {
+    backgroundColor: '#0066FF',
+    borderColor: '#0066FF',
+  },
+  checkmark: {
+    color: '#FFF',
+    fontSize: 13,
+    fontWeight: '700',
+    lineHeight: 16,
+  },
+  label: {
+    flex: 1,
+    fontSize: 13,
+    color: '#555',
+    lineHeight: 19,
+  },
+  link: {
+    color: '#0066FF',
+    fontWeight: '600',
+    textDecorationLine: 'underline',
+  },
+  withdrawalNote: {
+    fontSize: 11,
+    color: '#999',
+    lineHeight: 16,
+    marginBottom: 16,
+    paddingHorizontal: 4,
+    fontStyle: 'italic',
+  },
+});
