@@ -8,8 +8,9 @@
   ],
   "scripts": {
     "frontend": "npm run start --workspace=apps/frontend",
+    "android": "npm run build:android --workspace=apps/frontend",
+    "android:prod": "npm run build:android:prod --workspace=apps/frontend",
     "api": "npm run dev --workspace=apps/api",
-    "build:shared": "npm run build --workspace=packages/shared",
     "lint": "npm run lint --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present"
   },

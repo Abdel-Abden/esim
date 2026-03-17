@@ -7,9 +7,8 @@
     "icon": "./assets/images/icon.png",
     "scheme": "ilotel",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#FFFFFF"
     },
@@ -25,7 +24,6 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "package": "com.ilotel.esim",
-      "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false
     },
     "web": {
@@ -37,7 +35,7 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/images/splash.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff",
@@ -47,7 +45,7 @@
         }
       ],
       [
-        "@stripe/stripe-react-native",
+        "@stripe/stripe-react-native/app.plugin.js",
         {
           "merchantIdentifier": "merchant.com.ilotel.esim",
           "enableGooglePay": false

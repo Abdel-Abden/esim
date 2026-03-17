@@ -4,6 +4,8 @@
   "version": "1.0.0",
   "scripts": {
     "start": "expo start",
+    "build:android": "bash scripts/build-android.sh",
+    "build:android:prod": "bash scripts/build-android.sh .env.prod",
     "reset-project": "node ./scripts/reset-project.js",
     "android": "expo run:android",
     "ios": "expo run:ios",
