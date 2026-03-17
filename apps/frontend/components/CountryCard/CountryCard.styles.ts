@@ -1,64 +1,237 @@
-import { Colors, Radius, Spacing } from '@/constants/theme';
+import { Colors } from '@/constants/theme';
 import { StyleSheet } from 'react-native';
 
-export const styles = StyleSheet.create({
-  container: {
-    borderWidth: 1,
-    borderColor: Colors.border,
-    borderRadius: Radius.md,
-    overflow: 'hidden',
+export const cardStyles = StyleSheet.create({
+  card: {
     backgroundColor: Colors.white,
+    borderWidth: 2,
+    borderColor: Colors.border,
+    borderRadius: 18,
+    padding: 14,
+    marginBottom: 10,
+    shadowColor: Colors.primary,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 8,
+    elevation: 2,
+  },
+  cardAccent: {
+    backgroundColor: Colors.primaryLight,
+  },
+  cardExhausted: { opacity: 0.5 },
+  exhausted: {
+    fontSize: 19,
+    fontWeight: '600',
+    color: Colors.muted,
+  },
+
+  flag: { fontSize: 32, marginBottom: 8 },
+  name: { fontSize: 14, fontWeight: '800', color: Colors.text, marginBottom: 2 },
+  sub: { fontSize: 10, color: Colors.muted, marginBottom: 10, lineHeight: 14 },
+
+  footer: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    justifyContent: 'space-between',
+  },
+  from: { fontSize: 10, color: Colors.muted, lineHeight: 12 },
+  price: { fontSize: 19, fontWeight: '700', color: Colors.primary },
+  priceDark: { color: Colors.primaryDark },
+
+  promoBadge: {
+    backgroundColor: Colors.promoGreenLight,
+    borderRadius: 6,
+    paddingHorizontal: 7,
+    paddingVertical: 2,
+    alignSelf: 'flex-start',
+  },
+  promoText: { fontSize: 9, fontWeight: '800', color: Colors.promoGreen },
+});
+
+export const drawerStyles = StyleSheet.create({
+  backdrop: {
+    flex: 1,
+    backgroundColor: 'rgba(42,21,8,0.45)',
+    justifyContent: 'flex-end',
+  },
+  sheet: {
+    backgroundColor: Colors.white,
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    borderTopWidth: 3,
+    borderTopColor: Colors.primary,
+    paddingBottom: 32,
+    maxHeight: '85%',
+  },
+  handle: {
+    width: 40,
+    height: 4,
+    backgroundColor: Colors.border,
+    borderRadius: 2,
+    alignSelf: 'center',
+    marginTop: 12,
   },
   header: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
-    padding: Spacing.md,
+    justifyContent: 'space-between',
+    paddingHorizontal: 18,
+    paddingTop: 16,
+    paddingBottom: 8,
   },
-  left: {
+  countryRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
-    flex: 1,
+    gap: 12,
   },
-  flag: {
-    fontSize: 22,
-  },
-  name: {
-    fontSize: 15,
-    fontWeight: '600',
+  flag: { fontSize: 36 },
+  countryName: {
+    fontSize: 20,
+    fontWeight: '800',
     color: Colors.text,
   },
-  promoBadge: {
-    backgroundColor: 'rgba(139, 92, 246, 0.1)',
-    borderRadius: 8,
-    paddingHorizontal: 8,
-    paddingVertical: 2,
-  },
-  promoText: {
-    fontSize: 11,
-    fontWeight: '700',
-    color: Colors.accent,
-  },
-  startingPrice: {
-    fontSize: 13,
-    fontWeight: '700',
-    color: Colors.primary,
-  },
-  chevron: {
+  countrySub: {
     fontSize: 12,
     color: Colors.muted,
-    marginLeft: Spacing.sm,
+    marginTop: 2,
   },
-  offersContainer: {
-    paddingHorizontal: Spacing.md,
-    paddingBottom: Spacing.md,
-    gap: Spacing.sm,
-    flexDirection: 'column',
+  closeBtn: {
+    width: 30,
+    height: 30,
+    backgroundColor: Colors.surface,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: Colors.border,
+  },
+  closeTxt: {
+    fontSize: 13,
+    color: Colors.muted,
+    fontWeight: '700',
   },
   divider: {
     height: 1,
     backgroundColor: Colors.border,
-    marginBottom: Spacing.sm,
+    marginHorizontal: 18,
+    marginVertical: 4,
+  },
+  offersLabel: {
+    fontSize: 10,
+    fontWeight: '800',
+    letterSpacing: 2,
+    textTransform: 'uppercase',
+    color: Colors.muted,
+    paddingHorizontal: 18,
+    paddingTop: 12,
+    paddingBottom: 8,
+  },
+  errorText: {
+    color: Colors.errorRed,
+    textAlign: 'center',
+    padding: 20,
+    fontSize: 13,
+  },
+  offersList: {
+    paddingHorizontal: 18,
+    flexGrow: 0,
+  },
+  offerCard: {
+    backgroundColor: Colors.bg,
+    borderWidth: 2,
+    borderColor: Colors.border,
+    borderRadius: 16,
+    padding: 14,
+    marginBottom: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  offerCardSelected: {
+    borderColor: Colors.primary,
+    backgroundColor: Colors.primaryLight,
+  },
+  offerCardExhausted: {
+    opacity: 0.4,
+  },
+  offerLeft: { flex: 1 },
+  offerData: {
+    fontSize: 22,
+    fontWeight: '700',
+    color: Colors.text,
+  },
+  offerDays: {
+    fontSize: 12,
+    color: Colors.muted,
+    marginTop: 2,
+  },
+  offerRight: {
+    alignItems: 'flex-end',
+    marginRight: 12,
+  },
+  promoBadge: {
+    backgroundColor: Colors.promoGreenLight,
+    borderRadius: 5,
+    paddingHorizontal: 7,
+    paddingVertical: 2,
+    marginBottom: 4,
+  },
+  promoBadgeText: {
+    fontSize: 9,
+    fontWeight: '800',
+    color: Colors.promoGreen,
+  },
+  oldPrice: {
+    fontSize: 12,
+    color: Colors.muted,
+    textDecorationLine: 'line-through',
+  },
+  finalPrice: {
+    fontSize: 22,
+    fontWeight: '700',
+    color: Colors.primary,
+  },
+  finalPriceExhausted: {
+    fontSize: 13,
+    color: Colors.muted,
+  },
+  radio: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: Colors.border,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0,
+  },
+  radioSelected: {
+    borderColor: Colors.primary,
+    backgroundColor: Colors.primary,
+  },
+  radioDot: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: Colors.white,
+  },
+  cta: {
+    paddingHorizontal: 18,
+    paddingTop: 8,
+  },
+  ctaBtn: {
+    backgroundColor: Colors.primary,
+    borderRadius: 14,
+    paddingVertical: 15,
+    alignItems: 'center',
+    shadowColor: Colors.primary,
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.28,
+    shadowRadius: 16,
+    elevation: 5,
+  },
+  ctaBtnText: {
+    color: Colors.white,
+    fontSize: 15,
+    fontWeight: '800',
   },
 });
