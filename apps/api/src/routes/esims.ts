@@ -7,7 +7,8 @@ export const esims = new Hono();
 
 // ─────────────────────────────────────────────────────────────────────────────
 // GET /esims
-// Liste toutes les destinations disponibles
+// Toutes les destinations avec prix min + état promo/stock agrégés
+// → 1 seul appel réseau pour afficher toute la liste côté client
 // ─────────────────────────────────────────────────────────────────────────────
 esims.get('/', async (c) => {
   const destinations = await getAllEsims();
@@ -16,22 +17,18 @@ esims.get('/', async (c) => {
 
 // ─────────────────────────────────────────────────────────────────────────────
 // GET /esims/:id
-// Détail d'une destination
+// Détail d'une destination (utilisé pour la page détail si besoin)
 // ─────────────────────────────────────────────────────────────────────────────
 esims.get('/:id', async (c) => {
   const id = c.req.param('id');
   const esim = await getEsimById(id);
-
-  if (!esim) {
-    return c.json({ message: 'Destination introuvable' }, 404);
-  }
-
+  if (!esim) return c.json({ message: 'Destination introuvable' }, 404);
   return c.json(esim);
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
 // GET /esims/:id/offers
-// Offres disponibles pour une destination, avec réduction active si existante
+// Offres complètes d'une destination (chargées au tap, pas au démarrage)
 // ─────────────────────────────────────────────────────────────────────────────
 esims.get('/:id/offers', async (c) => {
   const esimId = c.req.param('id');
@@ -42,9 +39,7 @@ esims.get('/:id/offers', async (c) => {
   }
 
   const esim = await getEsimById(esimId);
-  if (!esim) {
-    return c.json({ message: 'Destination introuvable' }, 404);
-  }
+  if (!esim) return c.json({ message: 'Destination introuvable' }, 404);
 
   const offers = await getOffersByEsimId(esimId);
   return c.json<GetOffersResponse>(offers);
