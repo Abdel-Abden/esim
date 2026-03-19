@@ -3,6 +3,7 @@ import { useRouter } from 'expo-router';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   AppState, AppStateStatus,
+  Image,
   ScrollView, StatusBar,
   Text, TouchableOpacity, View,
 } from 'react-native';
@@ -29,19 +30,6 @@ const SEGS: { key: SegFilter; label: string }[] = [
   { key: 'africa',   label: '🌍 Afrique' },
   { key: 'promo',    label: '🔥 Promos' },
 ];
-
-function LogoBadge() {
-  return (
-    <Svg width={40} height={40} viewBox="0 0 40 40" fill="none">
-      <Path d="M0 12 Q0 0 12 0 L28 0 Q40 0 40 12 L40 28 Q40 40 28 40 L12 40 Q0 40 0 28 Z" fill={Colors.surface} />
-      <Path d="M20 20 m-13 0 a13 13 0 1 1 26 0 a13 13 0 1 1 -26 0" stroke={Colors.border} strokeWidth={1} fill="none" />
-      <Path d="M9 12 Q20 6 31 12 Q25 18 20 19 Q15 18 9 12Z" fill="rgba(232,98,42,0.12)" stroke={Colors.primaryDark} strokeWidth={2} strokeLinecap="round" />
-      <Path d="M7 22 Q14 18 20 20 Q26 22 33 18 Q31 27 20 32 Q9 27 7 22Z" fill="rgba(240,122,68,0.1)" stroke={Colors.primary} strokeWidth={1.8} strokeLinecap="round" />
-      <Path d="M11 29 Q15 33 20 34 Q25 33 29 29" fill="none" stroke={Colors.primaryMid} strokeWidth={1.5} strokeLinecap="round" />
-      <Path d="M20 19 m-2.5 0 a2.5 2.5 0 1 1 5 0 a2.5 2.5 0 1 1 -5 0" fill={Colors.accent} />
-    </Svg>
-  );
-}
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -116,12 +104,12 @@ export default function HomeScreen() {
         {/* ── Topbar ─────────────────────────────────────────────────── */}
         <View style={styles.topbar}>
           <View style={styles.logoArea}>
-            <LogoBadge />
-            <View>
-              <Text style={styles.logoName}>
-                ilo<Text style={styles.logoNameAccent}>tel</Text>
-              </Text>
-              <Text style={styles.logoTagline}>One eSIM · EveryWhere.</Text>
+            <View style={styles.logoBadgeWrap}>
+              <Image
+                source={require('@/assets/images/logo_left_writing.png')}
+                style={styles.logoBadge}
+                resizeMode="contain"
+              />
             </View>
           </View>
           <Text style={styles.esimTag}>eSIM</Text>

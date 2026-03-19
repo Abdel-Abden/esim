@@ -30,10 +30,18 @@ export const styles = StyleSheet.create({
     elevation: 3,
     zIndex: 10,
   },
-  logoArea: { flexDirection: 'row', alignItems: 'center', gap: 10 },
-  logoName: { fontSize: 17, fontWeight: '800', letterSpacing: -0.4 },
-  logoNameAccent: { color: Colors.primary },
-  logoTagline: { fontSize: 9, color: Colors.muted, fontWeight: '600', letterSpacing: 0.5, textTransform: 'uppercase' },
+  logoArea: { flexDirection: 'row', alignItems: 'center' },
+  logoBadgeWrap: {
+    width:    180,      // ← largeur fixe du conteneur
+    height:   52,
+    overflow: 'hidden',
+  },
+  logoBadge: {
+    width:    320,      // un peu plus large pour rogner le padding transparent
+    height:   160,
+    margin:   -46,
+    marginLeft: -100
+  },
   esimTag: {
     backgroundColor: Colors.primaryLight,
     color: Colors.primaryDark,
