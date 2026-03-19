@@ -16,7 +16,7 @@
     }
   ],
   "installCommand": "cd ../.. && npm install",
-  "buildCommand": "cd ../.. && npm run build:shared",
+  "buildCommand": "cd ../.. && npm run build:shared && cd apps/api && npx tsc",
   "crons": [
     {
       "path": "/cron/release-expired",

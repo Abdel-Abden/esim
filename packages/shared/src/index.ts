@@ -1,9 +1,9 @@
 /**
  * @ilotel/shared — point d'entrée unique
  */
-export * from './constants';
-export * from './contracts';
-export * from './entities/index';
-export * from './helpers';
-export * from './models/index';
+export * from './constants.js';
+export * from './contracts.js';
+export * from './entities/index.js';
+export * from './helpers.js';
+export * from './models/index.js';
 
