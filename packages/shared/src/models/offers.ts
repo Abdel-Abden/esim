@@ -1,11 +1,13 @@
 /**
  * Modèles d'offres enrichis — jointures avec esim + discount
  */
+import { Esim } from '../entities/esims.js';
 import type { Discount, Offer } from '../entities/offers.js';
 
 /** Offre avec destination + réduction active → GET /esims/:id/offers */
 export interface OfferWithDetails extends Offer {
   activeDiscount: Discount | null;
+  esim: Esim;
   finalPrice: number;
 }
 

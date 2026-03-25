@@ -74,6 +74,7 @@ export function mapOfferWithDetails(row: Record<string, unknown>): OfferWithDeta
     id: row.id as string,
     esimId: row.esim_id as string,
     dataGb: Number(row.data_gb),
+    esim: esim,
     durationDays: Number(row.duration_days),
     basePrice,
     stripePriceId: (row.stripe_price_id as string) ?? '',
