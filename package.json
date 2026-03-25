@@ -11,6 +11,7 @@
     "android": "npm run build:android --workspace=apps/frontend",
     "android:prod": "npm run build:android:prod --workspace=apps/frontend",
     "api": "npm run dev --workspace=apps/api",
+    "api:preprod" : "npm run preprod --workspace=apps/api",
     "lint": "npm run lint --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present"
   },

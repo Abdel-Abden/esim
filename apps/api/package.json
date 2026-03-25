@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "tsx watch --env-file=.env.local src/server.ts",
+    "dev": "bash ./scripts/startup.sh",
+    "preprod" : "bash ./scripts/startup.sh .env.preprod",
     "build": "tsc",
     "start": "node dist/index.js",
     "typecheck": "tsc --noEmit"
@@ -12,8 +13,13 @@
     "@hono/node-server": "^1.13.0",
     "@ilotel/shared": "*",
     "@neondatabase/serverless": "^1.0.2",
+    "@types/nodemailer": "^7.0.11",
+    "@types/qrcode": "^1.5.6",
     "dotenv": "^16.0.0",
     "hono": "^4.6.0",
+    "nodemailer": "^8.0.3",
+    "postgres": "^3.4.8",
+    "qrcode": "^1.5.4",
     "stripe": "^17.0.0"
   },
   "devDependencies": {
