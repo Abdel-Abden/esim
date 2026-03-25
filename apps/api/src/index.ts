@@ -8,14 +8,14 @@ import { esims } from './routes/esims.js';
 import { orders } from './routes/orders.js';
 import { stripeWebhook } from './routes/webhooks/stripe.js';
 
-const app = new Hono();
+const app = new Hono().basePath("/api");
 
 // ─── Middleware ───────────────────────────────────────────────────────────────
 
 app.use('*', logger());
 app.use('*', cors({
   origin: [
-    'https://www.api.ilotel.com',
+    'https://www.ilotel.com',
     'http://localhost:3000'
   ],
   allowMethods: ['GET', 'POST', 'OPTIONS'],
