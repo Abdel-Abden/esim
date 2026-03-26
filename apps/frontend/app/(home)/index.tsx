@@ -12,6 +12,7 @@ import Svg, { Path } from 'react-native-svg';
 
 import CountryCard from '@/components/CountryCard/CountryCard';
 import FeaturedCard from '@/components/CountryCard/FeaturedCard';
+import DebugPanel from '@/components/DebugPanel/DebugPanel';
 import PrimaryButton from '@/components/PrimaryButton/PrimaryButton';
 import SearchBar from '@/components/SearchBar/SearchBar';
 import { SkeletonList } from '@/components/SkeletonCard/SkeletonCard';
@@ -257,6 +258,9 @@ export default function HomeScreen() {
 
       {/* ── Tutoriel ─────────────────────────────────────────────────────── */}
       <TutorialModal visible={tutorialVisible} onClose={handleCloseTutorial} />
+
+      {/* ── Debug panel ─────────────────────────────────────────────────────── */}
+      <DebugPanel />
     </>
   );
 }
