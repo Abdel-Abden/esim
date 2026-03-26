@@ -42,17 +42,21 @@ export const styles = StyleSheet.create({
     margin:   -46,
     marginLeft: -100
   },
-  esimTag: {
-    backgroundColor: Colors.primaryLight,
-    color: Colors.primaryDark,
-    fontSize: 10,
-    fontWeight: '800',
-    paddingHorizontal: 11,
-    paddingVertical: 5,
-    borderRadius: 20,
+  helpBtn: {
+    width: 28,
+    height: 28,
+    borderRadius: 14,
+    backgroundColor: Colors.surface,
     borderWidth: 1.5,
     borderColor: Colors.border,
-    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  helpBtnText: {
+    fontSize: 13,
+    fontWeight: '800',
+    color: Colors.muted,
+    lineHeight: 15,
   },
 
   // ── Hero wave ───────────────────────────────────────────────────────────

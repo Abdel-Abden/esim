@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -14,12 +15,14 @@ import FeaturedCard from '@/components/CountryCard/FeaturedCard';
 import PrimaryButton from '@/components/PrimaryButton/PrimaryButton';
 import SearchBar from '@/components/SearchBar/SearchBar';
 import { SkeletonList } from '@/components/SkeletonCard/SkeletonCard';
+import TutorialModal from '@/components/TutorialModal/TutorialModal';
 import { Colors } from '@/constants/theme';
 import { fetchEsims } from '@/service/esims';
 import { EsimSummary } from '@ilotel/shared';
 import { styles } from './index.styles';
 
 const MIN_RELOAD_MS = 30_000;
+const TUTORIAL_DONE_KEY = '@ilotel_tutorial_done';
 
 type SegFilter = 'all' | 'europe' | 'asia' | 'americas' | 'africa' | 'promo';
 const SEGS: { key: SegFilter; label: string }[] = [
@@ -41,6 +44,31 @@ export default function HomeScreen() {
   const [activeFilter, setActiveFilter] = useState<SegFilter>('all');
   const lastLoadRef = useRef(0);
 
+  /* ── Tutoriel ── */
+  const [tutorialVisible, setTutorialVisible] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const done = await AsyncStorage.getItem(TUTORIAL_DONE_KEY);
+        if (done === null) {
+          // Petit délai pour laisser l'écran se charger
+          setTimeout(() => setTutorialVisible(true), 600);
+        }
+      } catch (_) {
+        // Si AsyncStorage échoue, on n'affiche pas le tuto
+      }
+    })();
+  }, []);
+
+  const handleCloseTutorial = useCallback(async () => {
+    setTutorialVisible(false);
+    try {
+      await AsyncStorage.setItem(TUTORIAL_DONE_KEY, '1');
+    } catch (_) {}
+  }, []);
+
+  /* ── Données ── */
   const load = useCallback(async (force = false) => {
     const now = Date.now();
     if (!force && now - lastLoadRef.current < MIN_RELOAD_MS) return;
@@ -112,7 +140,17 @@ export default function HomeScreen() {
               />
             </View>
           </View>
-          <Text style={styles.esimTag}>eSIM</Text>
+
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+            {/* Bouton aide / tutoriel */}
+            <TouchableOpacity
+              onPress={() => setTutorialVisible(true)}
+              activeOpacity={0.75}
+              style={styles.helpBtn}
+            >
+              <Text style={styles.helpBtnText}>?</Text>
+            </TouchableOpacity>
+          </View>
         </View>
 
         <ScrollView
@@ -216,6 +254,9 @@ export default function HomeScreen() {
           </View>
         </ScrollView>
       </View>
+
+      {/* ── Tutoriel ─────────────────────────────────────────────────────── */}
+      <TutorialModal visible={tutorialVisible} onClose={handleCloseTutorial} />
     </>
   );
 }

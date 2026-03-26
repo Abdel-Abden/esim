@@ -1,16 +1,77 @@
+import * as Clipboard from 'expo-clipboard';
 import { useRouter } from 'expo-router';
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
+import {
+  ActivityIndicator,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View
+} from 'react-native';
 import QRCode from 'react-native-qrcode-svg';
 
+import { ActivationSteps } from '@/components/ActivationSteps/ActivationSteps';
 import BackButton from '@/components/BackButton/BackButton';
 import Card from '@/components/Card/Card';
 import PrimaryButton from '@/components/PrimaryButton/PrimaryButton';
+import { DEBUG_ORDER_ID, IS_LOCAL } from '@/constants/env';
 import { Colors } from '@/constants/theme';
 import { fetchOrder } from '@/service/orders';
 import { useCartStore } from '@/store/useCartStore';
 import { OrderWithDetails } from '@ilotel/shared';
 import { styles } from './index.styles';
+
+// ─── Composant code d'activation + QR + copie ────────────────────────────────
+
+function ActivationCodeBlock({ code }: { code: string }) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    await Clipboard.setStringAsync(code);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2500);
+  };
+
+  return (
+    <Card style={styles.codeCard}>
+      <Text style={styles.codeLabel}>🔑 Code d'activation</Text>
+      <Text style={styles.codeHint}>
+        Scannez le QR code ou copiez le code texte et saisissez-le manuellement dans les réglages.
+        Faites une capture d'écran pour le retrouver facilement.
+      </Text>
+
+      {/* QR Code */}
+      <View style={styles.qrWrap}>
+        <QRCode value={code} size={160} />
+        <Text style={styles.qrSub}>Scanner avec l'app Appareil photo ne fonctionne pas — utilisez les réglages réseau</Text>
+      </View>
+
+      {/* Séparateur */}
+      <View style={styles.codeSeparator}>
+        <View style={styles.codeSeparatorLine} />
+        <Text style={styles.codeSeparatorText}>ou saisir manuellement</Text>
+        <View style={styles.codeSeparatorLine} />
+      </View>
+
+      {/* Code texte sélectionnable */}
+      <View style={styles.codeBox}>
+        <Text style={styles.codeText} selectable>{code}</Text>
+      </View>
+
+      <TouchableOpacity
+        style={[styles.copyBtn, copied && styles.copyBtnDone]}
+        onPress={handleCopy}
+        activeOpacity={0.8}
+      >
+        <Text style={[styles.copyBtnText, copied && styles.copyBtnTextDone]}>
+          {copied ? '✓ Copié dans le presse-papier !' : '📋 Copier le code'}
+        </Text>
+      </TouchableOpacity>
+    </Card>
+  );
+}
+
+// ─── Écran principal ─────────────────────────────────────────────────────────
 
 export default function DetailsScreen() {
   const router = useRouter();
@@ -24,6 +85,21 @@ export default function DetailsScreen() {
   useEffect(() => {
     if (!orderId) { router.replace('/'); return; }
 
+    // ── Mode debug local ──────────────────────────────────────────────────
+    // IS_LOCAL est une constante littérale : Metro remplace
+    // process.env.EXPO_PUBLIC_ENVIRONMENT au bundle-time, puis Terser/Hermes
+    // supprime ce bloc entier en production (dead-code elimination).
+    // Le require() dynamique empêche debugFixtures d'être bundlé en prod.
+    if (IS_LOCAL && orderId === DEBUG_ORDER_ID) {
+      const { DEBUG_ORDER } = require('@/constants/debugFixtures');
+      const t = setTimeout(() => {
+        setOrder(DEBUG_ORDER);
+        setLoading(false);
+      }, 600);
+      return () => clearTimeout(t);
+    }
+
+    // ── Parcours normal ───────────────────────────────────────────────────
     const poll = async () => {
       const { data, error } = await fetchOrder(orderId);
 
@@ -98,32 +174,33 @@ export default function DetailsScreen() {
         showsVerticalScrollIndicator={false}
       >
         <BackButton label="Accueil" onPress={() => router.replace('/')} />
-        <Text style={styles.title}>Votre eSIM</Text>
 
-        <Card style={styles.qrCard}>
-          {order.esimInventory.activationCode ? (
-            <>
-              <QRCode
-                value={order.esimInventory.activationCode}
-                size={180}
-              />
-              <Text style={styles.qrLabel}>
-                Scannez ce QR code dans vos paramètres réseau
-              </Text>
-            </>
-          ) : (
-            <Text style={styles.qrLabel}>
-              QR code non disponible — contactez le support en indiquant la référence{' '}
-              <Text style={{ fontWeight: '700' }}>{order.id}</Text>
+        {/* ── Bandeau debug (local uniquement) ─────────────────────────── */}
+        {IS_LOCAL && orderId === DEBUG_ORDER_ID && (
+          <View style={styles.debugBanner}>
+            <Text style={styles.debugBannerText}>
+              🛠 Mode debug — données fictives · EXPO_PUBLIC_ENVIRONMENT=local
             </Text>
-          )}
-        </Card>
+          </View>
+        )}
 
+        <Text style={styles.title}>Votre eSIM est prête 🎉</Text>
+
+        {/* ── Badge statut ─────────────────────────────────────────────── */}
         <View style={styles.statusBadge}>
           <View style={styles.statusDot} />
           <Text style={styles.statusText}>Active</Text>
         </View>
 
+        {/* ── Rappel email ─────────────────────────────────────────────── */}
+        <View style={styles.emailBanner}>
+          <Text style={styles.emailBannerText}>
+            📧 Un email avec votre code d'activation a été envoyé à{' '}
+            <Text style={styles.emailBannerEmail}>{order.email}</Text>
+          </Text>
+        </View>
+
+        {/* ── Récapitulatif commande ───────────────────────────────────── */}
         <Card>
           <View style={styles.infoRow}>
             <Text style={styles.infoLabel}>Pays</Text>
@@ -164,6 +241,14 @@ export default function DetailsScreen() {
             </Text>
           </View>
         </Card>
+
+        {/* ── Code d'activation + copie ─────────────────────────────────── */}
+        {order.esimInventory.activationCode && (
+          <ActivationCodeBlock code={order.esimInventory.activationCode} />
+        )}
+
+        {/* ── Instructions par OS ──────────────────────────────────────── */}
+        <ActivationSteps />
 
         <PrimaryButton
           label="Commander une nouvelle eSIM"
