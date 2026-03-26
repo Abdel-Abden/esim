@@ -229,9 +229,19 @@ export const drawerStyles = StyleSheet.create({
     shadowRadius: 16,
     elevation: 5,
   },
+  ctaBtnDisabled: {
+    backgroundColor: Colors.muted,
+    shadowColor: Colors.muted,
+  },
+  ctaBtnContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6
+  },
   ctaBtnText: {
     color: Colors.white,
     fontSize: 15,
     fontWeight: '800',
+    includeFontPadding: false,
   },
 });

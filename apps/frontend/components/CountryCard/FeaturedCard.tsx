@@ -7,11 +7,12 @@
  * Partage useOfferDrawer et OfferDrawer avec CountryCard
  * sans dupliquer la logique métier.
  */
+import { Ionicons } from '@expo/vector-icons';
 import { EsimSummary } from '@ilotel/shared';
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
-import OfferDrawer from './OfferDrawer';
 import { featuredStyles as s } from './FeaturedCard.styles';
+import OfferDrawer from './OfferDrawer';
 import { useOfferDrawer } from './useOfferDrawer';
 
 interface FeaturedCardProps {
@@ -52,7 +53,7 @@ export default function FeaturedCard({ esim }: FeaturedCardProps) {
 
         {/* Bouton flèche */}
         <View style={s.arrowBtn}>
-          <Text style={s.arrowText}>→</Text>
+          <Ionicons name="arrow-forward" size={18} color="white" />
         </View>
       </TouchableOpacity>
 

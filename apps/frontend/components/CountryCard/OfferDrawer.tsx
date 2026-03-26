@@ -5,6 +5,7 @@
  * Ne contient aucune logique : c'est un composant purement visuel.
  */
 import { Colors } from '@/constants/theme';
+import { Ionicons } from '@expo/vector-icons';
 import { EsimSummary, OfferWithStock } from '@ilotel/shared';
 import React, { useEffect, useRef } from 'react';
 import {
@@ -46,6 +47,8 @@ export default function OfferDrawer({
 }: OfferDrawerProps) {
   const backdropOpacity = useRef(new Animated.Value(0)).current;
   const sheetTranslateY = useRef(new Animated.Value(SHEET_HEIGHT)).current;
+  const isOutOfStock = offers[selectedIdx]?.availableCount === 0;
+  const isDisabled = loading || !offers[selectedIdx] || isOutOfStock;
 
   useEffect(() => {
     if (visible) {
@@ -77,7 +80,6 @@ export default function OfferDrawer({
 
         <TouchableOpacity style={{ flex: 1 }} activeOpacity={1} onPress={onClose} />
 
-        {/* ← PAS de TouchableOpacity imbriqué ici, juste l'Animated.View */}
         <Animated.View style={[drawerStyles.sheet, { transform: [{ translateY: sheetTranslateY }] }]}>
           <View style={drawerStyles.handle} />
 
@@ -154,14 +156,22 @@ export default function OfferDrawer({
             <TouchableOpacity
               style={[
                 drawerStyles.ctaBtn,
-                (loading || offers[selectedIdx]?.availableCount === 0) &&
-                  drawerStyles.ctaBtnDisabled,
+                isDisabled && drawerStyles.ctaBtnDisabled,
               ]}
               onPress={onOrder}
               activeOpacity={0.85}
-              disabled={loading || !offers[selectedIdx] || offers[selectedIdx].availableCount === 0}
+              disabled={isDisabled}
             >
-              <Text style={drawerStyles.ctaBtnText}>Commander →</Text>
+              {loading ? (
+                <Text style={drawerStyles.ctaBtnText}>Chargement...</Text>
+              ) : isOutOfStock ? (
+                <Text style={drawerStyles.ctaBtnText}>Épuisé</Text>
+              ) : (
+                <View style={drawerStyles.ctaBtnContent}>
+                  <Text style={drawerStyles.ctaBtnText}>Commander</Text>
+                  <Ionicons name="arrow-forward" size={18} color="white" />
+                </View>
+              )}
             </TouchableOpacity>
           </View>
 

@@ -78,11 +78,6 @@ export const featuredStyles = StyleSheet.create({
     shadowRadius: 12,
     elevation: 4,
   },
-  arrowText: {
-    fontSize: 17,
-    color: Colors.white,
-    fontWeight: '700',
-  },
 
   // État épuisé
   exhausted: {
