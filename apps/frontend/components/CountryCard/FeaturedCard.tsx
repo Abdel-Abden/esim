@@ -38,7 +38,7 @@ export default function FeaturedCard({ esim }: FeaturedCardProps) {
         <View style={s.info}>
           <Text style={s.name} numberOfLines={1}>{esim.name}</Text>
           <Text style={s.desc} numberOfLines={1}>
-            {esim.subtitle ?? '190+ pays · 4G/5G partout'}
+            190+ pays · 4G/5G partout
           </Text>
           {esim.minPrice != null ? (
             <View style={s.priceTag}>
