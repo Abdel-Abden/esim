@@ -3,7 +3,7 @@ set -e
 
 CONTAINER_NAME="postgres-local-dev"
 ENV_FILE="${1:-.env.local}"
-STRIPE_FORWARD_TO="${STRIPE_FORWARD_TO:-localhost:3000/api/webhooks/stripe}"
+STRIPE_FORWARD_TO="${STRIPE_FORWARD_TO:-localhost:3000/webhooks/stripe}"
 
 STRIPE_PID=""
 STRIPE_WEBHOOK_SECRET=""

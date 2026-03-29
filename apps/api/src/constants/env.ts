@@ -8,7 +8,7 @@
 /** Retourne true si on tourne en environnement local (ou si ENVIRONMENT est absent). */
 export function isLocal(): boolean {
   const env = process.env.ENVIRONMENT;
-  return !env || env === 'local';
+  return !!env && (env === "local") ;
 }
 
 /**
