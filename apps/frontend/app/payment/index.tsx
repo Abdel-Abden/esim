@@ -4,9 +4,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import {
   Alert,
   KeyboardAvoidingView,
+  Linking,
   Platform,
   ScrollView,
-  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
@@ -20,7 +20,7 @@ import SuccessPopup from '@/components/SuccessPopup/SuccessPopup';
 import { cancelOrder, checkoutOrder, reserveOrder } from '@/service/orders';
 import { useCartStore } from '@/store/useCartStore';
 import { RESERVATION_DURATION_MINUTES } from '@ilotel/shared';
-import { styles } from './index.styles';
+import { cguStyles, styles } from './index.styles';
 
 export default function PaymentScreen() {
   const router = useRouter();
@@ -266,14 +266,14 @@ export default function PaymentScreen() {
             J'ai lu et j'accepte les{' '}
             <Text
               style={cguStyles.link}
-              onPress={() => router.push('/cgu')}
+              onPress={() => Linking.openURL('https://api.ilotel.com/legal/cgu')}
             >
               Conditions Générales de Vente
             </Text>
             {' '}et la{' '}
             <Text
               style={cguStyles.link}
-              onPress={() => router.push('/privacy')}
+              onPress={() => Linking.openURL('https://api.ilotel.com/legal/privacy')}
             >
               Politique de confidentialité
             </Text>
@@ -302,54 +302,3 @@ export default function PaymentScreen() {
     </KeyboardAvoidingView>
   );
 }
-
-// ─── Styles CGU ───────────────────────────────────────────────────────────────
-const cguStyles = StyleSheet.create({
-  row: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    marginVertical: 12,
-    paddingHorizontal: 4,
-    gap: 10,
-  },
-  checkbox: {
-    width: 22,
-    height: 22,
-    borderRadius: 6,
-    borderWidth: 2,
-    borderColor: '#C0C4D0',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 1,
-    flexShrink: 0,
-  },
-  checkboxChecked: {
-    backgroundColor: '#0066FF',
-    borderColor: '#0066FF',
-  },
-  checkmark: {
-    color: '#FFF',
-    fontSize: 13,
-    fontWeight: '700',
-    lineHeight: 16,
-  },
-  label: {
-    flex: 1,
-    fontSize: 13,
-    color: '#555',
-    lineHeight: 19,
-  },
-  link: {
-    color: '#0066FF',
-    fontWeight: '600',
-    textDecorationLine: 'underline',
-  },
-  withdrawalNote: {
-    fontSize: 11,
-    color: '#999',
-    lineHeight: 16,
-    marginBottom: 16,
-    paddingHorizontal: 4,
-    fontStyle: 'italic',
-  },
-});

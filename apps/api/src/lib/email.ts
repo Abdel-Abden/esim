@@ -11,7 +11,6 @@
  *   SMTP_USER=votre@domaine.com     # adresse email OVH complète
  *   SMTP_PASS=motdepasse            # mot de passe de la boîte mail OVH
  *   EMAIL_FROM="ILOTEL eSIM <noreply@votre-domaine.com>"
- *   SUPPORT_EMAIL=support@ilotel.com
  */
 
 import nodemailer from 'nodemailer';
@@ -66,6 +65,12 @@ export interface EsimEmailParams {
   purchasedAt: string;
 }
 
+export interface LegalDeleteParams {
+  customerEmail: string;
+  orderId: string | null;
+  reason: string | null;
+}
+
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 function stepRow(n: string, text: string, bg: string, textColor: string): string {
@@ -80,7 +85,6 @@ function stepRow(n: string, text: string, bg: string, textColor: string): string
 // ─── Template HTML ────────────────────────────────────────────────────────────
 
 async function buildHtml(p: EsimEmailParams): Promise<string> {
-  const supportMail = process.env.SUPPORT_EMAIL;
   const dateStr = new Date(p.purchasedAt).toLocaleDateString('fr-FR', {
     day: '2-digit', month: 'long', year: 'numeric',
   });
@@ -263,7 +267,7 @@ async function buildHtml(p: EsimEmailParams): Promise<string> {
     <tr><td style="background:#F5E0CC;border-radius:0 0 20px 20px;padding:20px 32px;text-align:center;">
       <p style="margin:0 0 4px;font-size:12px;color:#9A7A68;">
         Un problème ? Contactez-nous à
-        <a href="mailto:${supportMail}" style="color:#E8622A;text-decoration:none;">${supportMail}</a>
+        <a href="mailto:support@ilotel.com" style="color:#E8622A;text-decoration:none;">support@ilotel.com</a>
       </p>
       <p style="margin:0;font-size:11px;color:#B8957E;">© ${new Date().getFullYear()} ILOTEL · Tous droits réservés</p>
     </td></tr>
@@ -278,9 +282,10 @@ async function buildHtml(p: EsimEmailParams): Promise<string> {
 // ─── Envoi ────────────────────────────────────────────────────────────────────
 
 export async function sendEsimEmail(params: EsimEmailParams): Promise<void> {
-  if (!process.env.SUPPORT_EMAIL || !process.env.EMAIL_FROM) {
-    throw new Error('SUPPORT_EMAIL or EMAIL_FROM is not set');
+  if (!process.env.EMAIL_FROM) {
+    throw new Error('EMAIL_FROM is not set');
   }
+  console.log(`EMAIL FROM : ${process.env.EMAIL_FROM}`)
 
   const html = await buildHtml(params);
 
@@ -298,5 +303,19 @@ export async function sendEsimEmail(params: EsimEmailParams): Promise<void> {
         contentDisposition: 'inline',
       },
     ],
+  });
+}
+
+export async function sendLegalDeleteEmail(params: LegalDeleteParams) {
+  await transporter.sendMail({
+    from: process.env.EMAIL_FROM ?? process.env.SMTP_USER,
+    to: "dpo@ilotel.com",
+    subject: `[RGPD] Demande de suppression — ${params.customerEmail}`,
+    text: [
+      `Email : ${params.customerEmail}`,
+      `Référence commande : ${params.orderId || 'non renseignée'}`,
+      `Motif : ${params.reason || 'non renseigné'}`,
+      `Date : ${new Date().toISOString()}`,
+    ].join('\n'),
   });
 }

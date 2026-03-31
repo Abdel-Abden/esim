@@ -5,6 +5,7 @@ import { logger } from 'hono/logger';
 import { rateLimitMiddleware } from './middleware/rateLimit.js';
 import { cron } from './routes/cron.js';
 import { esims } from './routes/esims.js';
+import { legal } from './routes/legal.js';
 import { orders } from './routes/orders.js';
 import { stripeWebhook } from './routes/webhooks/stripe.js';
 
@@ -33,6 +34,7 @@ app.use('/orders/*', rateLimitMiddleware);
 app.route('/esims', esims);
 app.route('/orders', orders);
 app.route('/cron', cron);
+app.route('/legal', legal);
 app.route('/webhooks/stripe', stripeWebhook);
 
 // ─── Gestion d'erreurs globale ────────────────────────────────────────────────
