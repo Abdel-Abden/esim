@@ -10,6 +10,8 @@
     "frontend": "npm run start --workspace=apps/frontend",
     "android": "npm run build:android --workspace=apps/frontend",
     "android:prod": "npm run build:android:prod --workspace=apps/frontend",
+    "ios": "npm run build:ios --workspace=apps/frontend",
+    "ios:prod": "npm run build:ios:prod --workspace=apps/frontend",
     "api": "npm run dev --workspace=apps/api",
     "api:preprod" : "npm run preprod --workspace=apps/api",
     "lint": "npm run lint --workspaces --if-present",
