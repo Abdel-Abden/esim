@@ -298,7 +298,7 @@ export default function TutorialModal({ visible, onClose }: TutorialModalProps) 
             <Text style={styles.closeTxt}>{t('tutorial.close')}</Text>
           </TouchableOpacity>
           <View style={styles.illuWrap}><Illustration /></View>
-          <Svg width="110%" height={28} viewBox="0 0 400 28" preserveAspectRatio="none" style={styles.headerWave}>
+          <Svg width="120%" height={28} viewBox="0 0 400 28" preserveAspectRatio="none" style={styles.headerWave}>
             <Path d="M0 28 Q100 0 200 18 Q300 36 400 10 L400 28 Z" fill={Colors.white} />
           </Svg>
         </LinearGradient>
