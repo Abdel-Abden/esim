@@ -1,8 +1,6 @@
 /**
  * OfferDrawer — bottom sheet partagé entre CountryCard et FeaturedCard
- *
- * Reçoit toutes les props de useOfferDrawer + les infos de l'eSIM.
- * Ne contient aucune logique : c'est un composant purement visuel.
+ * Composant purement visuel — toute la logique est dans useOfferDrawer.
  */
 import { Colors } from '@/constants/theme';
 import { Ionicons } from '@expo/vector-icons';
@@ -18,6 +16,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { drawerStyles } from './CountryCard.styles';
 
 interface OfferDrawerProps {
@@ -32,7 +31,7 @@ interface OfferDrawerProps {
   onOrder: () => void;
 }
 
-const SHEET_HEIGHT = Dimensions.get('window').height; // ← hauteur réelle
+const SHEET_HEIGHT = Dimensions.get('window').height;
 
 export default function OfferDrawer({
   esim,
@@ -45,6 +44,7 @@ export default function OfferDrawer({
   onClose,
   onOrder,
 }: OfferDrawerProps) {
+  const { t } = useTranslation();
   const backdropOpacity = useRef(new Animated.Value(0)).current;
   const sheetTranslateY = useRef(new Animated.Value(SHEET_HEIGHT)).current;
   const isOutOfStock = offers[selectedIdx]?.availableCount === 0;
@@ -54,18 +54,8 @@ export default function OfferDrawer({
     if (visible) {
       backdropOpacity.setValue(0);
       sheetTranslateY.setValue(SHEET_HEIGHT);
-      Animated.timing(backdropOpacity, {
-        toValue: 1,
-        duration: 180,
-        useNativeDriver: true,
-      }).start();
-      Animated.spring(sheetTranslateY, {
-        toValue: 0,
-        damping: 28,
-        stiffness: 280,
-        mass: 0.8,
-        useNativeDriver: true,
-      }).start();
+      Animated.timing(backdropOpacity, { toValue: 1, duration: 180, useNativeDriver: true }).start();
+      Animated.spring(sheetTranslateY, { toValue: 0, damping: 28, stiffness: 280, mass: 0.8, useNativeDriver: true }).start();
     } else {
       Animated.parallel([
         Animated.timing(backdropOpacity, { toValue: 0, duration: 220, useNativeDriver: true }),
@@ -88,17 +78,17 @@ export default function OfferDrawer({
               <Text style={drawerStyles.flag}>{esim.flag}</Text>
               <View>
                 <Text style={drawerStyles.countryName}>{esim.name}</Text>
-                <Text style={drawerStyles.countrySub}>Choisissez votre forfait</Text>
+                <Text style={drawerStyles.countrySub}>{t('offerDrawer.choosePlan')}</Text>
               </View>
             </View>
             <TouchableOpacity style={drawerStyles.closeBtn} onPress={onClose}>
-              <Text style={drawerStyles.closeTxt}>✕</Text>
+              <Text style={drawerStyles.closeTxt}>{t('tutorial.close')}</Text>
             </TouchableOpacity>
           </View>
 
           <View style={drawerStyles.divider} />
 
-          <Text style={drawerStyles.offersLabel}>Forfaits disponibles</Text>
+          <Text style={drawerStyles.offersLabel}>{t('offerDrawer.availablePlans')}</Text>
 
           {loading ? (
             <ActivityIndicator size="large" color={Colors.primary} style={{ marginVertical: 32 }} />
@@ -123,12 +113,12 @@ export default function OfferDrawer({
                   >
                     <View style={drawerStyles.offerLeft}>
                       <Text style={drawerStyles.offerData}>{offer.dataGb} Go</Text>
-                      <Text style={drawerStyles.offerDays}>{offer.durationDays} jours</Text>
+                      <Text style={drawerStyles.offerDays}>{offer.durationDays} {t('offerDrawer.days')}</Text>
                     </View>
                     <View style={drawerStyles.offerRight}>
                       {isPromo && !isExhausted && (
                         <View style={drawerStyles.promoBadge}>
-                          <Text style={drawerStyles.promoBadgeText}>PROMO</Text>
+                          <Text style={drawerStyles.promoBadgeText}>{t('countryCard.promo').toUpperCase()}</Text>
                         </View>
                       )}
                       {isPromo && !isExhausted && (
@@ -140,7 +130,7 @@ export default function OfferDrawer({
                           isExhausted && drawerStyles.finalPriceExhausted,
                         ]}
                       >
-                        {isExhausted ? 'Épuisé' : `${offer.finalPrice.toFixed(2)}€`}
+                        {isExhausted ? t('offerDrawer.exhausted') : `${offer.finalPrice.toFixed(2)}€`}
                       </Text>
                     </View>
                     <View style={[drawerStyles.radio, isSelected && drawerStyles.radioSelected]}>
@@ -154,21 +144,18 @@ export default function OfferDrawer({
 
           <View style={drawerStyles.cta}>
             <TouchableOpacity
-              style={[
-                drawerStyles.ctaBtn,
-                isDisabled && drawerStyles.ctaBtnDisabled,
-              ]}
+              style={[drawerStyles.ctaBtn, isDisabled && drawerStyles.ctaBtnDisabled]}
               onPress={onOrder}
               activeOpacity={0.85}
               disabled={isDisabled}
             >
               {loading ? (
-                <Text style={drawerStyles.ctaBtnText}>Chargement...</Text>
+                <Text style={drawerStyles.ctaBtnText}>{t('payment.button.loading')}</Text>
               ) : isOutOfStock ? (
-                <Text style={drawerStyles.ctaBtnText}>Épuisé</Text>
+                <Text style={drawerStyles.ctaBtnText}>{t('offerDrawer.exhausted')}</Text>
               ) : (
                 <View style={drawerStyles.ctaBtnContent}>
-                  <Text style={drawerStyles.ctaBtnText}>Commander</Text>
+                  <Text style={drawerStyles.ctaBtnText}>{t('offerDrawer.order')}</Text>
                   <Ionicons name="arrow-forward" size={18} color="white" />
                 </View>
               )}

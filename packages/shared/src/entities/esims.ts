@@ -6,6 +6,7 @@
 export interface Esim {
   id: string;
   name: string;         // ex: "France", "Europe 30 pays"
+  code: string;         // ex: "fr", "eu", "af", "ar"
   type: string;         // "country" | "region" | "global"
   flag: string;         // emoji ou code ISO
   region: string;       // "europe" | "asia" | "americas" | "africa" | "global"

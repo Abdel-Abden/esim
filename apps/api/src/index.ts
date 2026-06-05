@@ -1,3 +1,4 @@
+import { ErrorCode } from '@ilotel/shared';
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import { HTTPException } from 'hono/http-exception';
@@ -5,7 +6,7 @@ import { logger } from 'hono/logger';
 import { rateLimitMiddleware } from './middleware/rateLimit.js';
 import { cron } from './routes/cron.js';
 import { esims } from './routes/esims.js';
-import { legal } from './routes/legal.js';
+import { legal } from './routes/legal/legal.js';
 import { orders } from './routes/orders.js';
 import { stripeWebhook } from './routes/webhooks/stripe.js';
 
@@ -42,14 +43,18 @@ app.route('/webhooks/stripe', stripeWebhook);
 app.onError((err, c) => {
   // Erreurs HTTP explicites (ex: 404, 422 levés manuellement)
   if (err instanceof HTTPException) {
-    return c.json({ message: err.message }, err.status);
+    console.error('[http exception]', err.status, err.message);
+    return c.json({ code: ErrorCode.INTERNAL_SERVER_ERROR }, err.status);
   }
 
   // Erreurs inattendues — ne pas exposer le détail en prod
   console.error('[api error]', err);
-  return c.json({ message: 'Erreur serveur interne' }, 500);
+  return c.json({ code: ErrorCode.INTERNAL_SERVER_ERROR }, 500);
 });
 
-app.notFound((c) => c.json({ message: 'Route introuvable' }, 404));
+app.notFound((c) => {
+  console.error('[api error]', c.req.method, c.req.url);
+  return c.json({ code: ErrorCode.INTERNAL_SERVER_ERROR }, 500)
+});
 
 export default app;

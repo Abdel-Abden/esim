@@ -1,0 +1,461 @@
+{
+  "home": {
+    "hero": {
+      "kicker": "📡 Sofortige Verbindung",
+      "title": "Reisen Sie vernetzt",
+      "italic": "ohne physische SIM-Karte",
+      "body": "Kaufen Sie Ihre eSIM online. Aktivierung in 2 Minuten, sofort in 190+ Ländern reisen.",
+      "pills": {
+        "countries": "✓ 190+ Länder",
+        "speed": "⚡ 2 Min.",
+        "security": "🔒 Stripe"
+      }
+    },
+    "featured": {
+      "label": "⭐ Empfohlenes Angebot"
+    },
+    "filters": {
+      "all": "🌐 Alle",
+      "europe": "🇪🇺 Europa",
+      "asia": "🌏 Asien",
+      "americas": "🌎 Amerika",
+      "africa": "🌍 Afrika",
+      "promo": "🔥 Aktionen"
+    },
+    "search": {
+      "placeholder": "Land suchen..."
+    },
+    "loading": "Reiseziele werden geladen…",
+    "empty": "Kein Reiseziel gefunden.",
+    "error": {
+      "retry": "Erneut versuchen"
+    }
+  },
+  "countryCard": {
+    "from": "ab",
+    "exhausted": "Ausverkauft",
+    "promo": "Aktion"
+  },
+  "offerDrawer": {
+    "exhausted": "Ausverkauft",
+    "choosePlan": "Tarif auswählen",
+    "availablePlans": "Verfügbare Tarife",
+    "days": "Tage",
+    "order": "Bestellen"
+  },
+  "payment": {
+    "title": "Zahlung",
+    "summary": {
+      "destination": "Reiseziel",
+      "offer": "Angebot",
+      "total": "Gesamt",
+      "originalPrice": "Originalpreis"
+    },
+    "reservation": {
+      "validFor": "Reservierung noch {time} gültig"
+    },
+    "email": {
+      "label": "Bestätigungs-E-Mail",
+      "placeholder": "ihre@email.com"
+    },
+    "stripeNote": "🔒 Die Karteneingabe wird sicher von Stripe verwaltet",
+    "cgu": {
+      "label": "Ich habe die {cguLink} und die {privacyLink} gelesen und akzeptiere sie.",
+      "cgu": "Allgemeinen Geschäftsbedingungen",
+      "privacy": "Datenschutzerklärung"
+    },
+    "withdrawalNote": "Gemäß den geltenden Verbraucherschutzvorschriften erkennen Sie an, dass die Bereitstellung der eSIM unmittelbar nach der Zahlung beginnt, und verzichten ausdrücklich auf Ihr Widerrufsrecht.",
+    "button": {
+      "reserving": "Reservierung läuft…",
+      "loading": "Wird geladen...",
+      "pay": "Zahlungsmethode auswählen"
+    },
+    "alerts": {
+      "emailRequired": {
+        "title": "E-Mail erforderlich",
+        "message": "Bitte geben Sie eine gültige E-Mail-Adresse ein."
+      },
+      "cguRequired": {
+        "title": "Allgemeine Geschäftsbedingungen",
+        "message": "Bitte akzeptieren Sie die AGB, um fortzufahren."
+      },
+      "reservationNotFound": {
+        "title": "Fehler",
+        "message": "Reservierung nicht gefunden, bitte erneut versuchen."
+      },
+      "paymentFailed": {
+        "title": "Zahlung abgelehnt"
+      },
+      "stockExhausted": {
+        "title": "Ausverkauft",
+        "message": "Dieses Angebot ist nicht mehr verfügbar.",
+        "back": "Zurück"
+      },
+      "reservationExpired": {
+        "title": "Reservierung abgelaufen",
+        "message": "Ihre Reservierung ist abgelaufen. Bitte erneut versuchen.",
+        "back": "Zurück"
+      }
+    }
+  },
+  "details": {
+    "title": "Ihre eSIM ist bereit 🎉",
+    "status": {
+      "active": "Aktiv"
+    },
+    "emailBanner": "📧 Eine E-Mail mit Ihrem Aktivierungscode wurde an gesendet",
+    "info": {
+      "country": "Land",
+      "offer": "Angebot",
+      "price": "Bezahlter Preis",
+      "iccid": "ICCID",
+      "activated": "Aktiviert am"
+    },
+    "activationCode": {
+      "label": "🔑 Aktivierungscode",
+      "hint": "Scannen Sie den QR-Code oder kopieren Sie den Textcode und geben Sie ihn manuell in den Einstellungen ein. Machen Sie einen Screenshot, um ihn leicht wiederzufinden.",
+      "separator": "oder manuell eingeben",
+      "copy": {
+        "default": "📋 Code kopieren",
+        "copied": "✓ In die Zwischenablage kopiert!"
+      }
+    },
+    "qrSub": "Scannen mit der Kamera-App funktioniert nicht — verwenden Sie die Netzwerkeinstellungen",
+    "newEsim": "Neue eSIM bestellen",
+    "loading": "Ihre eSIM wird fertiggestellt…",
+    "error": "Unbekannter Fehler.",
+    "provisioningError": {
+      "text": "Ihre Zahlung wurde erhalten, aber Ihre eSIM konnte nicht automatisch aktiviert werden.",
+      "reference": "Bestellreferenz:",
+      "contact": "Kontaktieren Sie uns unter support@ilotel.com mit dieser Referenz. Wir senden Ihnen Ihre eSIM innerhalb von 24 Stunden.",
+      "home": "Zurück zur Startseite"
+    }
+  },
+  "cgu": {
+    "back": "‹ Zurück",
+    "title": "Allgemeine Geschäftsbedingungen"
+  },
+  "privacy": {
+    "back": "‹ Zurück",
+    "title": "Datenschutzerklärung"
+  },
+  "tutorial": {
+    "close": "✕",
+    "skip": "Überspringen",
+    "next": {
+      "default": "Weiter →",
+      "last": "🚀 Los geht's!"
+    },
+    "back": "← Zurück",
+    "pages": {
+      "esim": {
+        "badge": "📡 Was ist das?",
+        "title": "Die eSIM — die SIM\nohne Karte",
+        "subtitle": "Eine digitale SIM-Karte, direkt in Ihr Telefon integriert.",
+        "bullets": [
+          "Keine physische Karte einzulegen — alles digital",
+          "Aktivieren Sie Ihren Tarif in 2 Minuten, noch vor der Abreise",
+          "Abdeckung in 190+ Ländern, ohne unerwartete Roaming-Gebühren"
+        ]
+      },
+      "compat": {
+        "badge": "📱 Kompatibilität",
+        "title_ios": "Ist Ihr iPhone\nkompatibel?",
+        "title_android": "Ist Ihr Android\nkompatibel?",
+        "subtitle_ios": "iPhone XS, XR (2018) und neuere Modelle unterstützen eSIM.",
+        "subtitle_android": "Die meisten High-End-Android-Geräte seit 2018 unterstützen eSIM.",
+        "bullets_ios": [
+          "iPhone XS/XR, 11, 12, 13, 14, 15 — alle Modelle (Pro, Plus, Max)",
+          "Einstellungen → Allgemein → Info → Mobilfunktarif verfügbar",
+          "Stellen Sie sicher, dass Ihr iPhone nicht netzseitig gesperrt ist"
+        ],
+        "bullets_android": [
+          "Pixel 3+, Samsung Galaxy S20+, Xiaomi 12+, OnePlus 11+…",
+          "Netzwerk & Internet → SIM → SIM hinzufügen (falls Option vorhanden)",
+          "Stellen Sie sicher, dass Ihr Gerät nicht netzseitig gesperrt ist"
+        ]
+      },
+      "destination": {
+        "badge": "🗺️ Reiseziel",
+        "title": "Finden Sie Ihr\nReiseziel",
+        "subtitle": "Suchen Sie nach einem Land oder filtern Sie nach Region, um Ihre ideale eSIM zu finden.",
+        "bullets": [
+          "Geben Sie den Ländernamen in die Suchleiste ein",
+          "Filtern Sie nach Region: Europa, Asien, Amerika, Afrika…",
+          "Prüfen Sie den Aktionen-Tab für die besten aktuellen Angebote"
+        ]
+      },
+      "offer": {
+        "badge": "🛒 Angebot",
+        "title": "Wählen Sie\nIhren Tarif",
+        "subtitle": "Jedes Reiseziel bietet mehrere Tarife je nach Ihren Bedürfnissen.",
+        "bullets": [
+          "Wählen Sie die Datenmenge (GB) und Laufzeit (Tage)",
+          "Aktionsangebote sind orange hervorgehoben",
+          "Tippen Sie auf Bestellen → und zahlen Sie sicher über Stripe"
+        ]
+      },
+      "activate": {
+        "badge": "🔑 Aktivierung",
+        "title_ios": "Ihre eSIM auf\ndem iPhone aktivieren",
+        "title_android": "Ihre eSIM auf\nAndroid aktivieren",
+        "subtitle": "Nach der Bestellung erhalten Sie per E-Mail und in der App einen Aktivierungscode.",
+        "bullets_ios": [
+          "Machen Sie einen Screenshot oder kopieren Sie den angezeigten Aktivierungscode",
+          "Einstellungen → Mobile Daten → Tarif hinzufügen → Daten manuell eingeben",
+          "Ihre eSIM aktiviert sich automatisch bei Ankunft im Land — Gute Reise!"
+        ],
+        "bullets_android": [
+          "Machen Sie einen Screenshot oder kopieren Sie den angezeigten Aktivierungscode",
+          "Netzwerk & Internet → SIM → SIM hinzufügen → Aktivierungscode eingeben",
+          "Ihre eSIM aktiviert sich automatisch bei Ankunft im Land — Gute Reise!"
+        ]
+      }
+    }
+  },
+  "debug": {
+    "fabTitle": "🛠",
+    "panelTitle": "🛠 Lokales Debug",
+    "panelSubtitle": "EXPO_PUBLIC_ENVIRONMENT=local",
+    "shortcuts": {
+      "details": {
+        "label": "🧾 Bestätigungsseite",
+        "description": "Simuliert eine provisionierte Bestellung"
+      }
+    }
+  },
+  "success": {
+    "message": "✅ Zahlung erfolgreich"
+  },
+  "backButton": {
+    "default": "‹ Zurück",
+    "home": "Startseite"
+  },
+  "mentionsLegales": {
+    "back": "‹ Zurück",
+    "title": "Impressum"
+  },
+  "featuredCard": {
+    "desc": "190+ Länder · 4G/5G überall"
+  },
+  "activationSteps": {
+    "osTag": {
+      "ios": "iPhone (iOS) spezifisch",
+      "android": "Android spezifisch"
+    },
+    "label": {
+      "ios": "Aktivierung auf iPhone (iOS)",
+      "android": "Aktivierung auf Android"
+    }
+  },
+  "errors": {
+    "OFFER_ID_REQUIRED": "Angebots-ID fehlt.",
+    "OFFER_NOT_FOUND": "Dieses Angebot existiert nicht.",
+    "OFFER_NOT_FOR_SALE": "Dieses Angebot ist nicht zum Verkauf verfügbar.",
+    "STOCK_EXHAUSTED": "Dieses Angebot ist ausverkauft.",
+    "ORDER_NOT_FOUND": "Bestellung nicht gefunden.",
+    "EMAIL_REQUIRED": "Eine gültige E-Mail-Adresse ist erforderlich.",
+    "RESERVATION_EXPIRED": "Diese Reservierung ist abgelaufen oder wurde bereits bearbeitet.",
+    "CANCEL_INVALID_STATUS": "Diese Bestellung kann nicht storniert werden.",
+    "DESTINATION_NOT_FOUND": "Reiseziel nicht gefunden.",
+    "INVALID_ID": "Ungültige ID.",
+    "INTERNAL_SERVER_ERROR": "Ein interner Fehler ist aufgetreten. Bitte erneut versuchen.",
+    "PATH_NOT_FOUND": "Die angeforderte Ressource wurde nicht gefunden."
+  },
+  "geography": {
+    "eu": "Europa",
+    "as": "Asien",
+    "af": "Afrika",
+    "am": "Amerika",
+    "oc": "Ozeanien",
+    "me": "Naher Osten",
+    "ww": "Welt",
+    "AF": "Afghanistan",
+    "ZA": "Südafrika",
+    "AL": "Albanien",
+    "DZ": "Algerien",
+    "DE": "Deutschland",
+    "AD": "Andorra",
+    "AO": "Angola",
+    "AG": "Antigua und Barbuda",
+    "SA": "Saudi-Arabien",
+    "AR": "Argentinien",
+    "AM": "Armenien",
+    "AU": "Australien",
+    "AT": "Österreich",
+    "AZ": "Aserbaidschan",
+    "BS": "Bahamas",
+    "BH": "Bahrain",
+    "BD": "Bangladesch",
+    "BB": "Barbados",
+    "BE": "Belgien",
+    "BZ": "Belize",
+    "BJ": "Benin",
+    "BT": "Bhutan",
+    "BY": "Weißrussland",
+    "BO": "Bolivien",
+    "BA": "Bosnien und Herzegowina",
+    "BW": "Botswana",
+    "BR": "Brasilien",
+    "BN": "Brunei",
+    "BG": "Bulgarien",
+    "BF": "Burkina Faso",
+    "BI": "Burundi",
+    "CV": "Kap Verde",
+    "KH": "Kambodscha",
+    "CM": "Kamerun",
+    "CA": "Kanada",
+    "CL": "Chile",
+    "CN": "China",
+    "CY": "Zypern",
+    "CO": "Kolumbien",
+    "KM": "Komoren",
+    "CG": "Kongo",
+    "CD": "Kongo (DRK)",
+    "KR": "Südkorea",
+    "CR": "Costa Rica",
+    "CI": "Elfenbeinküste",
+    "HR": "Kroatien",
+    "CU": "Kuba",
+    "DK": "Dänemark",
+    "DJ": "Dschibuti",
+    "DM": "Dominica",
+    "EG": "Ägypten",
+    "AE": "Vereinigte Arabische Emirate",
+    "EC": "Ecuador",
+    "ER": "Eritrea",
+    "ES": "Spanien",
+    "EE": "Estland",
+    "SZ": "Eswatini",
+    "ET": "Äthiopien",
+    "FJ": "Fidschi",
+    "FI": "Finnland",
+    "FR": "Frankreich",
+    "GA": "Gabun",
+    "GM": "Gambia",
+    "GE": "Georgien",
+    "GH": "Ghana",
+    "GR": "Griechenland",
+    "GD": "Grenada",
+    "GT": "Guatemala",
+    "GN": "Guinea",
+    "GW": "Guinea-Bissau",
+    "GQ": "Äquatorialguinea",
+    "GY": "Guyana",
+    "HT": "Haiti",
+    "HN": "Honduras",
+    "HU": "Ungarn",
+    "IN": "Indien",
+    "ID": "Indonesien",
+    "IQ": "Irak",
+    "IR": "Iran",
+    "IE": "Irland",
+    "IS": "Island",
+    "IL": "Israel",
+    "IT": "Italien",
+    "JM": "Jamaika",
+    "JP": "Japan",
+    "JO": "Jordanien",
+    "KZ": "Kasachstan",
+    "KE": "Kenia",
+    "KG": "Kirgisistan",
+    "KI": "Kiribati",
+    "KW": "Kuwait",
+    "LA": "Laos",
+    "LS": "Lesotho",
+    "LV": "Lettland",
+    "LB": "Libanon",
+    "LR": "Liberia",
+    "LY": "Libyen",
+    "LI": "Liechtenstein",
+    "LT": "Litauen",
+    "LU": "Luxemburg",
+    "MK": "Nordmazedonien",
+    "MG": "Madagaskar",
+    "MY": "Malaysia",
+    "MW": "Malawi",
+    "MV": "Malediven",
+    "ML": "Mali",
+    "MT": "Malta",
+    "MA": "Marokko",
+    "MH": "Marshallinseln",
+    "MU": "Mauritius",
+    "MR": "Mauretanien",
+    "MX": "Mexiko",
+    "FM": "Mikronesien",
+    "MD": "Moldau",
+    "MC": "Monaco",
+    "MN": "Mongolei",
+    "ME": "Montenegro",
+    "MZ": "Mosambik",
+    "NA": "Namibia",
+    "NR": "Nauru",
+    "NP": "Nepal",
+    "NI": "Nicaragua",
+    "NE": "Niger",
+    "NG": "Nigeria",
+    "NO": "Norwegen",
+    "NZ": "Neuseeland",
+    "OM": "Oman",
+    "UG": "Uganda",
+    "UZ": "Usbekistan",
+    "PK": "Pakistan",
+    "PW": "Palau",
+    "PA": "Panama",
+    "PG": "Papua-Neuguinea",
+    "PY": "Paraguay",
+    "NL": "Niederlande",
+    "PE": "Peru",
+    "PH": "Philippinen",
+    "PL": "Polen",
+    "PT": "Portugal",
+    "QA": "Katar",
+    "RO": "Rumänien",
+    "GB": "Vereinigtes Königreich",
+    "RU": "Russland",
+    "RW": "Ruanda",
+    "KN": "St. Kitts und Nevis",
+    "LC": "St. Lucia",
+    "VC": "St. Vincent und die Grenadinen",
+    "SB": "Salomonen",
+    "SV": "El Salvador",
+    "WS": "Samoa",
+    "ST": "São Tomé und Príncipe",
+    "SN": "Senegal",
+    "RS": "Serbien",
+    "SC": "Seychellen",
+    "SL": "Sierra Leone",
+    "SG": "Singapur",
+    "SK": "Slowakei",
+    "SI": "Slowenien",
+    "SO": "Somalia",
+    "SD": "Sudan",
+    "SS": "Südsudan",
+    "LK": "Sri Lanka",
+    "SE": "Schweden",
+    "CH": "Schweiz",
+    "SR": "Suriname",
+    "SY": "Syrien",
+    "TJ": "Tadschikistan",
+    "TZ": "Tansania",
+    "TD": "Tschad",
+    "CZ": "Tschechien",
+    "TH": "Thailand",
+    "TL": "Osttimor",
+    "TG": "Togo",
+    "TO": "Tonga",
+    "TT": "Trinidad und Tobago",
+    "TN": "Tunesien",
+    "TM": "Turkmenistan",
+    "TR": "Türkei",
+    "TV": "Tuvalu",
+    "UA": "Ukraine",
+    "UY": "Uruguay",
+    "VU": "Vanuatu",
+    "VE": "Venezuela",
+    "VN": "Vietnam",
+    "YE": "Jemen",
+    "ZM": "Sambia",
+    "ZW": "Simbabwe"
+  }
+}

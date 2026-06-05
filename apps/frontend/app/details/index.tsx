@@ -1,6 +1,7 @@
 import * as Clipboard from 'expo-clipboard';
 import { useRouter } from 'expo-router';
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   ActivityIndicator,
   ScrollView,
@@ -16,6 +17,7 @@ import Card from '@/components/Card/Card';
 import PrimaryButton from '@/components/PrimaryButton/PrimaryButton';
 import { DEBUG_ORDER_ID, IS_LOCAL } from '@/constants/env';
 import { Colors } from '@/constants/theme';
+import { apiError, DEFAULT_LANG, LOCALE_MAP } from '@/i18n/i18n';
 import { fetchOrder } from '@/service/orders';
 import { useCartStore } from '@/store/useCartStore';
 import { OrderWithDetails } from '@ilotel/shared';
@@ -24,6 +26,7 @@ import { styles } from './index.styles';
 // ─── Composant code d'activation + QR + copie ────────────────────────────────
 
 function ActivationCodeBlock({ code }: { code: string }) {
+  const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -34,26 +37,20 @@ function ActivationCodeBlock({ code }: { code: string }) {
 
   return (
     <Card style={styles.codeCard}>
-      <Text style={styles.codeLabel}>🔑 Code d'activation</Text>
-      <Text style={styles.codeHint}>
-        Scannez le QR code ou copiez le code texte et saisissez-le manuellement dans les réglages.
-        Faites une capture d'écran pour le retrouver facilement.
-      </Text>
+      <Text style={styles.codeLabel}>{t('details.activationCode.label')}</Text>
+      <Text style={styles.codeHint}>{t('details.activationCode.hint')}</Text>
 
-      {/* QR Code */}
       <View style={styles.qrWrap}>
         <QRCode value={code} size={160} />
-        <Text style={styles.qrSub}>Scanner avec l'app Appareil photo ne fonctionne pas — utilisez les réglages réseau</Text>
+        <Text style={styles.qrSub}>{t('details.qrSub')}</Text>
       </View>
 
-      {/* Séparateur */}
       <View style={styles.codeSeparator}>
         <View style={styles.codeSeparatorLine} />
-        <Text style={styles.codeSeparatorText}>ou saisir manuellement</Text>
+        <Text style={styles.codeSeparatorText}>{t('details.activationCode.separator')}</Text>
         <View style={styles.codeSeparatorLine} />
       </View>
 
-      {/* Code texte sélectionnable */}
       <View style={styles.codeBox}>
         <Text style={styles.codeText} selectable>{code}</Text>
       </View>
@@ -64,7 +61,9 @@ function ActivationCodeBlock({ code }: { code: string }) {
         activeOpacity={0.8}
       >
         <Text style={[styles.copyBtnText, copied && styles.copyBtnTextDone]}>
-          {copied ? '✓ Copié dans le presse-papier !' : '📋 Copier le code'}
+          {copied
+            ? t('details.activationCode.copy.copied')
+            : t('details.activationCode.copy.default')}
         </Text>
       </TouchableOpacity>
     </Card>
@@ -75,6 +74,7 @@ function ActivationCodeBlock({ code }: { code: string }) {
 
 export default function DetailsScreen() {
   const router = useRouter();
+  const { t, i18n } = useTranslation();
   const { orderId, clearCart } = useCartStore();
 
   const [order, setOrder] = useState<OrderWithDetails | null>(null);
@@ -92,16 +92,15 @@ export default function DetailsScreen() {
     // Le require() dynamique empêche debugFixtures d'être bundlé en prod.
     if (IS_LOCAL && orderId === DEBUG_ORDER_ID) {
       const { DEBUG_ORDER } = require('@/constants/debugFixtures');
-      const t = setTimeout(() => {
+      const timer = setTimeout(() => {
         setOrder(DEBUG_ORDER);
         setLoading(false);
       }, 600);
-      return () => clearTimeout(t);
+      return () => clearTimeout(timer);
     }
 
-    // ── Parcours normal ───────────────────────────────────────────────────
     const poll = async () => {
-      const { data, error } = await fetchOrder(orderId);
+      const { data, error: fetchError } = await fetchOrder(orderId);
 
       if (data && data.status === 'provisioned') {
         setOrder(data);
@@ -109,7 +108,7 @@ export default function DetailsScreen() {
       } else if (retries < 5) {
         setTimeout(() => setRetries((r) => r + 1), 1500);
       } else {
-        setError(error ?? 'Impossible de récupérer les détails.');
+        setError(fetchError ? apiError(fetchError, 'details.error') : t('details.error'));
         setLoading(false);
       }
     };
@@ -126,7 +125,7 @@ export default function DetailsScreen() {
     return (
       <View style={styles.centered}>
         <ActivityIndicator size="large" color={Colors.primary} />
-        <Text style={styles.loadingText}>Finalisation de votre eSIM…</Text>
+        <Text style={styles.loadingText}>{t('details.loading')}</Text>
       </View>
     );
   }
@@ -134,31 +133,25 @@ export default function DetailsScreen() {
   if (error || !order) {
     return (
       <View style={styles.centered}>
-        <Text style={styles.errorText}>{error ?? 'Erreur inconnue.'}</Text>
-        <PrimaryButton label="Retour à l'accueil" onPress={handleNewEsim} />
+        <Text style={styles.errorText}>{error ?? t('details.error')}</Text>
+        <PrimaryButton label={t('details.provisioningError.home')} onPress={handleNewEsim} />
       </View>
     );
   }
 
-  // Paiement confirmé mais eSIM non assignée — problème de provisioning
   if (!order.esimInventory) {
     return (
       <View style={styles.centered}>
-        <Text style={styles.errorText}>
-          Votre paiement a bien été reçu mais votre eSIM n'a pas pu être activée automatiquement.
-        </Text>
+        <Text style={styles.errorText}>{t('details.provisioningError.text')}</Text>
         <Text style={[styles.errorText, { marginTop: 12, fontSize: 13, color: Colors.muted }]}>
-          Référence de commande :
+          {t('details.provisioningError.reference')}
         </Text>
-        <Text style={[styles.iccidValue, { marginBottom: 24 }]}>
-          {order.id}
-        </Text>
+        <Text style={[styles.iccidValue, { marginBottom: 24 }]}>{order.id}</Text>
         <Text style={[styles.errorText, { fontSize: 13, color: Colors.muted, textAlign: 'center' }]}>
-          Contactez-nous à support@ilotel.com en indiquant cette référence.
-          Nous vous enverrons votre eSIM sous 24h.
+          {t('details.provisioningError.contact')}
         </Text>
         <PrimaryButton
-          label="Retour à l'accueil"
+          label={t('details.provisioningError.home')}
           onPress={handleNewEsim}
           style={{ marginTop: 24 }}
         />
@@ -173,9 +166,11 @@ export default function DetailsScreen() {
         contentContainerStyle={styles.content}
         showsVerticalScrollIndicator={false}
       >
-        <BackButton label="Accueil" onPress={() => router.replace('/')} />
+        <BackButton
+          label={t('backButton.home')}
+          onPress={() => router.replace('/')}
+        />
 
-        {/* ── Bandeau debug (local uniquement) ─────────────────────────── */}
         {IS_LOCAL && orderId === DEBUG_ORDER_ID && (
           <View style={styles.debugBanner}>
             <Text style={styles.debugBannerText}>
@@ -184,26 +179,23 @@ export default function DetailsScreen() {
           </View>
         )}
 
-        <Text style={styles.title}>Votre eSIM est prête 🎉</Text>
+        <Text style={styles.title}>{t('details.title')}</Text>
 
-        {/* ── Badge statut ─────────────────────────────────────────────── */}
         <View style={styles.statusBadge}>
           <View style={styles.statusDot} />
-          <Text style={styles.statusText}>Active</Text>
+          <Text style={styles.statusText}>{t('details.status.active')}</Text>
         </View>
 
-        {/* ── Rappel email ─────────────────────────────────────────────── */}
         <View style={styles.emailBanner}>
           <Text style={styles.emailBannerText}>
-            📧 Un email avec votre code d'activation a été envoyé à{' '}
+            {t('details.emailBanner')}
             <Text style={styles.emailBannerEmail}>{order.email}</Text>
           </Text>
         </View>
 
-        {/* ── Récapitulatif commande ───────────────────────────────────── */}
         <Card>
           <View style={styles.infoRow}>
-            <Text style={styles.infoLabel}>Pays</Text>
+            <Text style={styles.infoLabel}>{t('details.info.country')}</Text>
             <Text style={styles.infoValue}>
               {order.offer.esim.flag} {order.offer.esim.name}
             </Text>
@@ -211,7 +203,7 @@ export default function DetailsScreen() {
           <View style={styles.divider} />
 
           <View style={styles.infoRow}>
-            <Text style={styles.infoLabel}>Offre</Text>
+            <Text style={styles.infoLabel}>{t('details.info.offer')}</Text>
             <Text style={styles.infoValue}>
               {order.offer.dataGb} Go / {order.offer.durationDays}j
             </Text>
@@ -219,7 +211,7 @@ export default function DetailsScreen() {
           <View style={styles.divider} />
 
           <View style={styles.infoRow}>
-            <Text style={styles.infoLabel}>Prix payé</Text>
+            <Text style={styles.infoLabel}>{t('details.info.price')}</Text>
             <Text style={[styles.infoValue, { color: Colors.primary, fontWeight: '800' }]}>
               {order.finalPrice.toFixed(2)}€
             </Text>
@@ -227,31 +219,30 @@ export default function DetailsScreen() {
           <View style={styles.divider} />
 
           <View style={styles.infoRow}>
-            <Text style={styles.infoLabel}>ICCID</Text>
+            <Text style={styles.infoLabel}>{t('details.info.iccid')}</Text>
             <Text style={styles.iccidValue}>{order.esimInventory.iccid}</Text>
           </View>
           <View style={styles.divider} />
 
           <View style={styles.infoRow}>
-            <Text style={styles.infoLabel}>Activée le</Text>
+            <Text style={styles.infoLabel}>{t('details.info.activated')}</Text>
             <Text style={styles.infoValue}>
-              {new Date(order.createdAt).toLocaleDateString('fr-FR', {
-                day: '2-digit', month: 'long', year: 'numeric',
-              })}
+              {new Date(order.createdAt).toLocaleDateString(
+                LOCALE_MAP[i18n.language] ?? LOCALE_MAP[DEFAULT_LANG],
+                { day: '2-digit', month: 'long', year: 'numeric' }
+              )}
             </Text>
           </View>
         </Card>
 
-        {/* ── Code d'activation + copie ─────────────────────────────────── */}
         {order.esimInventory.activationCode && (
           <ActivationCodeBlock code={order.esimInventory.activationCode} />
         )}
 
-        {/* ── Instructions par OS ──────────────────────────────────────── */}
         <ActivationSteps />
 
         <PrimaryButton
-          label="Commander une nouvelle eSIM"
+          label={t('details.newEsim')}
           onPress={handleNewEsim}
           variant="secondary"
         />

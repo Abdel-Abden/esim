@@ -1,6 +1,7 @@
 import { useStripe } from '@stripe/stripe-react-native';
 import { useRouter } from 'expo-router';
 import React, { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Alert,
   KeyboardAvoidingView,
@@ -17,6 +18,7 @@ import BackButton from '@/components/BackButton/BackButton';
 import Card from '@/components/Card/Card';
 import PrimaryButton from '@/components/PrimaryButton/PrimaryButton';
 import SuccessPopup from '@/components/SuccessPopup/SuccessPopup';
+import { apiError } from '@/i18n/i18n';
 import { cancelOrder, checkoutOrder, reserveOrder } from '@/service/orders';
 import { useCartStore } from '@/store/useCartStore';
 import { RESERVATION_DURATION_MINUTES } from '@ilotel/shared';
@@ -24,6 +26,7 @@ import { cguStyles, styles } from './index.styles';
 
 export default function PaymentScreen() {
   const router = useRouter();
+  const { t } = useTranslation();
   const { initPaymentSheet, presentPaymentSheet } = useStripe();
   const { cart, setOrderId } = useCartStore();
 
@@ -34,8 +37,6 @@ export default function PaymentScreen() {
   const [showSuccess, setShowSuccess] = useState(false);
   const [expiresAt, setExpiresAt] = useState<Date | null>(null);
   const [timeLeft, setTimeLeft] = useState<number>(RESERVATION_DURATION_MINUTES * 60);
-
-  // ── Nouveau : consentement CGU ───────────────────────────────────────────────
   const [cguAccepted, setCguAccepted] = useState(false);
 
   const pendingOrderId = useRef<string | null>(null);
@@ -51,9 +52,9 @@ export default function PaymentScreen() {
       if (error || !data) {
         setReserving(false);
         Alert.alert(
-          'Stock épuisé',
-          error ?? "Cette offre n'est plus disponible.",
-          [{ text: 'Retour', onPress: () => router.back() }]
+          t('payment.alerts.stockExhausted.title'),
+          apiError(error, 'payment.alerts.stockExhausted.message'),
+          [{ text: t('payment.alerts.stockExhausted.back'), onPress: () => router.back() }]
         );
         return;
       }
@@ -81,9 +82,9 @@ export default function PaymentScreen() {
           pendingOrderId.current = null;
         }
         Alert.alert(
-          'Réservation expirée',
-          'Votre réservation a expiré. Veuillez recommencer.',
-          [{ text: 'Retour', onPress: () => router.back() }]
+          t('payment.alerts.reservationExpired.title'),
+          t('payment.alerts.reservationExpired.message'),
+          [{ text: t('payment.alerts.reservationExpired.back'), onPress: () => router.back() }]
         );
       }
     }, 1000);
@@ -118,19 +119,28 @@ export default function PaymentScreen() {
     email.trim() !== '' &&
     email.includes('@') &&
     timeLeft > 0 &&
-    cguAccepted; // ← condition supplémentaire
+    cguAccepted;
 
   const handlePayment = async () => {
     if (!email.trim() || !email.includes('@')) {
-      Alert.alert('Email requis', 'Veuillez entrer un email valide.');
+      Alert.alert(
+        t('payment.alerts.emailRequired.title'),
+        t('payment.alerts.emailRequired.message')
+      );
       return;
     }
     if (!cguAccepted) {
-      Alert.alert('Conditions générales', 'Veuillez accepter les CGU pour continuer.');
+      Alert.alert(
+        t('payment.alerts.cguRequired.title'),
+        t('payment.alerts.cguRequired.message')
+      );
       return;
     }
     if (!pendingOrderId.current) {
-      Alert.alert('Erreur', 'Réservation introuvable, veuillez recommencer.');
+      Alert.alert(
+        t('payment.alerts.reservationNotFound.title'),
+        t('payment.alerts.reservationNotFound.message')
+      );
       return;
     }
 
@@ -140,7 +150,7 @@ export default function PaymentScreen() {
 
     if (error || !data) {
       setLoading(false);
-      Alert.alert('Erreur', error ?? 'Impossible de lancer le paiement.');
+      Alert.alert(t('payment.alerts.paymentFailed.title'), apiError(error, 'payment.alerts.paymentFailed.title'));
       return;
     }
 
@@ -166,7 +176,7 @@ export default function PaymentScreen() {
     if (paymentError) {
       setLoading(false);
       if (paymentError.code !== 'Canceled') {
-        Alert.alert('Paiement refusé', paymentError.message);
+        Alert.alert(t('payment.alerts.paymentFailed.title'), paymentError.message);
       }
       return;
     }
@@ -193,26 +203,26 @@ export default function PaymentScreen() {
         showsVerticalScrollIndicator={false}
       >
         <BackButton />
-        <Text style={styles.title}>Paiement</Text>
+        <Text style={styles.title}>{t('payment.title')}</Text>
 
         {/* Récapitulatif */}
         <Card>
           <View style={styles.summaryRow}>
-            <Text style={styles.summaryLabel}>Destination</Text>
+            <Text style={styles.summaryLabel}>{t('payment.summary.destination')}</Text>
             <Text style={styles.summaryValue}>{cart.flag} {cart.country}</Text>
           </View>
           <View style={styles.summaryRow}>
-            <Text style={styles.summaryLabel}>Offre</Text>
+            <Text style={styles.summaryLabel}>{t('payment.summary.offer')}</Text>
             <Text style={styles.summaryValue}>{cart.offer}</Text>
           </View>
           <View style={styles.divider} />
           <View style={styles.summaryRow}>
-            <Text style={styles.summaryLabel}>Total</Text>
+            <Text style={styles.summaryLabel}>{t('payment.summary.total')}</Text>
             <Text style={styles.summaryPrice}>{cart.finalPrice.toFixed(2)}€</Text>
           </View>
           {cart.isPromo && (
             <View style={styles.summaryRow}>
-              <Text style={styles.summaryLabel}>Prix original</Text>
+              <Text style={styles.summaryLabel}>{t('payment.summary.originalPrice')}</Text>
               <Text style={[styles.summaryValue, { textDecorationLine: 'line-through' }]}>
                 {cart.basePrice.toFixed(2)}€
               </Text>
@@ -224,19 +234,19 @@ export default function PaymentScreen() {
         {expiresAt && timeLeft > 0 && (
           <View style={{ alignItems: 'center', marginVertical: 8 }}>
             <Text style={{ color: timeLeft < 60 ? 'red' : '#888', fontSize: 13 }}>
-              ⏱ Réservation valide encore {formatTimeLeft()}
+              ⏱ {t('payment.reservation.validFor', { time: formatTimeLeft() })}
             </Text>
           </View>
         )}
 
         {/* Email */}
         <Card>
-          <Text style={styles.formLabel}>Email de confirmation</Text>
+          <Text style={styles.formLabel}>{t('payment.email.label')}</Text>
           <TextInput
             style={[styles.input, emailFocused && styles.inputFocused]}
             value={email}
             onChangeText={setEmail}
-            placeholder="votre@email.com"
+            placeholder={t('payment.email.placeholder')}
             keyboardType="email-address"
             autoCapitalize="none"
             autoComplete="email"
@@ -244,55 +254,55 @@ export default function PaymentScreen() {
             onBlur={() => setEmailFocused(false)}
           />
           <View style={styles.stripeNote}>
-            <Text style={styles.stripeNoteText}>
-              🔒 La saisie de carte est gérée de façon sécurisée par Stripe
-            </Text>
+            <Text style={styles.stripeNoteText}>{t('payment.stripeNote')}</Text>
           </View>
         </Card>
 
-        {/* ── CGU ──────────────────────────────────────────────────────────── */}
+        {/* CGU */}
         <TouchableOpacity
           style={cguStyles.row}
           onPress={() => setCguAccepted((v) => !v)}
           activeOpacity={0.7}
         >
-          {/* Checkbox personnalisée */}
           <View style={[cguStyles.checkbox, cguAccepted && cguStyles.checkboxChecked]}>
             {cguAccepted && <Text style={cguStyles.checkmark}>✓</Text>}
           </View>
 
-          {/* Texte + lien */}
           <Text style={cguStyles.label}>
-            J'ai lu et j'accepte les{' '}
+            {t('payment.cgu.label')
+              .split('{cguLink}')[0]}
             <Text
               style={cguStyles.link}
               onPress={() => Linking.openURL('https://api.ilotel.com/legal/cgu')}
             >
-              Conditions Générales de Vente
+              {t('payment.cgu.cgu')}
             </Text>
-            {' '}et la{' '}
+            {t('payment.cgu.label')
+              .split('{cguLink}')[1]
+              ?.split('{privacyLink}')[0]}
             <Text
               style={cguStyles.link}
               onPress={() => Linking.openURL('https://api.ilotel.com/legal/privacy')}
             >
-              Politique de confidentialité
+              {t('payment.cgu.privacy')}
             </Text>
-            .
+            {t('payment.cgu.label')
+              .split('{privacyLink}')[1]}
           </Text>
         </TouchableOpacity>
 
-        {/* Note droit de rétractation (contenu numérique) */}
+        {/* Note droit de rétractation */}
         <Text style={cguStyles.withdrawalNote}>
-          Conformément à l'article L221-28 du Code de la consommation, vous reconnaissez que la fourniture de l'eSIM débute immédiatement après le paiement et renoncez expressément à votre droit de rétractation.
+          {t('payment.withdrawalNote')}
         </Text>
 
         <PrimaryButton
           label={
             reserving
-              ? 'Réservation en cours…'
+              ? t('payment.button.reserving')
               : loading
-              ? 'Chargement...'
-              : 'Choisir mon moyen de paiement'
+              ? t('payment.button.loading')
+              : t('payment.button.pay')
           }
           onPress={handlePayment}
           loading={loading || reserving}

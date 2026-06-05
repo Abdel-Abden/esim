@@ -6,6 +6,7 @@ import { OsTag } from '@/components/ActivationSteps/ActivationSteps';
 import { Colors } from '@/constants/theme';
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Animated,
   Modal,
@@ -134,7 +135,7 @@ function IlluActivation() {
   );
 }
 
-/* ─── Définition des pages ─────────────────────────────────────────────────── */
+/* ─── Définition des pages via i18n ────────────────────────────────────────── */
 
 interface TutorialPage {
   key: string;
@@ -146,96 +147,84 @@ interface TutorialPage {
   Illustration: React.FC;
 }
 
-function buildPages(): TutorialPage[] {
+function useTutorialPages(): TutorialPage[] {
+  const { t } = useTranslation();
+
   return [
     {
       key: 'esim',
-      badge: '📡 C\'est quoi ?',
-      title: 'L\'eSIM, la SIM\nsans la carte',
-      subtitle: 'Une carte SIM numérique, directement intégrée à votre téléphone.',
-      bullets: [
-        { icon: '💳', text: 'Aucune carte physique à insérer — tout est numérique' },
-        { icon: '⚡', text: 'Activez votre forfait en 2 minutes, avant même de partir' },
-        { icon: '🌍', text: 'Couverture dans 190+ pays, sans frais d\'itinérance surprises' },
-      ],
+      badge: t('tutorial.pages.esim.badge'),
+      title: t('tutorial.pages.esim.title'),
+      subtitle: t('tutorial.pages.esim.subtitle'),
+      bullets: (t('tutorial.pages.esim.bullets', { returnObjects: true }) as string[]).map(
+        (text, i) => ({ icon: ['💳', '⚡', '🌍'][i] ?? '•', text })
+      ),
       Illustration: IlluESIM,
     },
     IS_IOS
       ? {
           key: 'compat',
-          badge: '📱 Compatibilité',
-          title: 'Votre iPhone\nest-il compatible ?',
-          subtitle: 'Les iPhone XS, XR (2018) et versions ultérieures supportent l\'eSIM.',
+          badge: t('tutorial.pages.compat.badge'),
+          title: t('tutorial.pages.compat.title_ios'),
+          subtitle: t('tutorial.pages.compat.subtitle_ios'),
           osTag: true,
-          bullets: [
-            { icon: '✅', text: 'iPhone XS/XR, 11, 12, 13, 14, 15 — tous modèles (Pro, Plus, Max)' },
-            { icon: '⚙️', text: 'Réglages → Général → Informations → Plan cellulaire disponible' },
-            { icon: '🔓', text: 'Vérifiez que votre iPhone n\'est pas verrouillé opérateur' },
-          ],
+          bullets: (t('tutorial.pages.compat.bullets_ios', { returnObjects: true }) as string[]).map(
+            (text, i) => ({ icon: ['✅', '⚙️', '🔓'][i] ?? '•', text })
+          ),
           Illustration: IlluCompatIOS,
         }
       : {
           key: 'compat',
-          badge: '📱 Compatibilité',
-          title: 'Votre Android\nest-il compatible ?',
-          subtitle: 'La majorité des Android haut de gamme depuis 2018 supportent l\'eSIM.',
+          badge: t('tutorial.pages.compat.badge'),
+          title: t('tutorial.pages.compat.title_android'),
+          subtitle: t('tutorial.pages.compat.subtitle_android'),
           osTag: true,
-          bullets: [
-            { icon: '✅', text: 'Pixel 3+, Samsung Galaxy S20+, Xiaomi 12+, OnePlus 11+…' },
-            { icon: '⚙️', text: 'Réseaux et internet → SIM → Ajouter SIM (si l\'option existe)' },
-            { icon: '🔓', text: 'Vérifiez que votre appareil n\'est pas verrouillé opérateur' },
-          ],
+          bullets: (t('tutorial.pages.compat.bullets_android', { returnObjects: true }) as string[]).map(
+            (text, i) => ({ icon: ['✅', '⚙️', '🔓'][i] ?? '•', text })
+          ),
           Illustration: IlluCompatAndroid,
         },
     {
       key: 'destination',
-      badge: '🗺️ Destination',
-      title: 'Trouvez votre\ndestination',
-      subtitle: 'Recherchez un pays ou filtrez par région pour trouver votre eSIM idéale.',
-      bullets: [
-        { icon: '🔍', text: 'Tapez le nom du pays dans la barre de recherche' },
-        { icon: '🗂️', text: 'Filtrez par région : Europe, Asie, Amériques, Afrique…' },
-        { icon: '🔥', text: 'Consultez l\'onglet Promos pour les meilleures offres du moment' },
-      ],
+      badge: t('tutorial.pages.destination.badge'),
+      title: t('tutorial.pages.destination.title'),
+      subtitle: t('tutorial.pages.destination.subtitle'),
+      bullets: (t('tutorial.pages.destination.bullets', { returnObjects: true }) as string[]).map(
+        (text, i) => ({ icon: ['🔍', '🗂️', '🔥'][i] ?? '•', text })
+      ),
       Illustration: IlluDestination,
     },
     {
       key: 'offer',
-      badge: '🛒 Offre',
-      title: 'Choisissez\nvotre forfait',
-      subtitle: 'Chaque destination propose plusieurs forfaits selon vos besoins.',
-      bullets: [
-        { icon: '📶', text: 'Sélectionnez la quantité de data (Go) et la durée (jours)' },
-        { icon: '💰', text: 'Les offres en promo sont mises en avant en orange' },
-        { icon: '✅', text: 'Appuyez sur Commander → et payez en toute sécurité via Stripe' },
-      ],
+      badge: t('tutorial.pages.offer.badge'),
+      title: t('tutorial.pages.offer.title'),
+      subtitle: t('tutorial.pages.offer.subtitle'),
+      bullets: (t('tutorial.pages.offer.bullets', { returnObjects: true }) as string[]).map(
+        (text, i) => ({ icon: ['📶', '💰', '✅'][i] ?? '•', text })
+      ),
       Illustration: IlluOffer,
     },
     IS_IOS
       ? {
           key: 'activate',
-          badge: '🔑 Activation',
-          title: 'Activer votre eSIM\nsur iPhone',
-          subtitle: 'Après commande, vous recevez un code d\'activation par email et dans l\'app.',
+          badge: t('tutorial.pages.activate.badge'),
+          title: t('tutorial.pages.activate.title_ios'),
+          subtitle: t('tutorial.pages.activate.subtitle'),
           osTag: true,
-          bullets: [
-            { icon: '📸', text: 'Faites une capture d\'écran ou copiez le code d\'activation affiché' },
-            { icon: '📲', text: 'Réglages → Données cellulaires → Ajouter un forfait → Entrer les infos manuellement' },
-            { icon: '✈️', text: 'Votre eSIM s\'active automatiquement à l\'arrivée dans le pays — bon voyage !' },
-          ],
+          bullets: (t('tutorial.pages.activate.bullets_ios', { returnObjects: true }) as string[]).map(
+            (text, i) => ({ icon: ['📸', '📲', '✈️'][i] ?? '•', text })
+          ),
           Illustration: IlluActivation,
         }
       : {
           key: 'activate',
-          badge: '🔑 Activation',
-          title: 'Activer votre eSIM\nsur Android',
-          subtitle: 'Après commande, vous recevez un code d\'activation par email et dans l\'app.',
+          badge: t('tutorial.pages.activate.badge'),
+          title: t('tutorial.pages.activate.title_android'),
+          subtitle: t('tutorial.pages.activate.subtitle'),
           osTag: true,
-          bullets: [
-            { icon: '📸', text: 'Faites une capture d\'écran ou copiez le code d\'activation affiché' },
-            { icon: '📲', text: 'Réseaux et internet → SIM → Ajouter SIM → Entrer un code d\'activation' },
-            { icon: '✈️', text: 'Votre eSIM s\'active automatiquement à l\'arrivée dans le pays — bon voyage !' },
-          ],
+          bullets: (t('tutorial.pages.activate.bullets_android', { returnObjects: true }) as string[]).map(
+            (text, i) => ({ icon: ['📸', '📲', '✈️'][i] ?? '•', text })
+          ),
           Illustration: IlluActivation,
         },
   ];
@@ -249,7 +238,8 @@ interface TutorialModalProps {
 }
 
 export default function TutorialModal({ visible, onClose }: TutorialModalProps) {
-  const pages = buildPages();
+  const { t } = useTranslation();
+  const pages = useTutorialPages();
   const [pageIdx, setPageIdx] = useState(0);
   const slideAnim = useRef(new Animated.Value(300)).current;
   const backdropAnim = useRef(new Animated.Value(0)).current;
@@ -305,7 +295,7 @@ export default function TutorialModal({ visible, onClose }: TutorialModalProps) 
           style={styles.cardHeader}
         >
           <TouchableOpacity style={styles.closeBtn} onPress={onClose} activeOpacity={0.75}>
-            <Text style={styles.closeTxt}>✕</Text>
+            <Text style={styles.closeTxt}>{t('tutorial.close')}</Text>
           </TouchableOpacity>
           <View style={styles.illuWrap}><Illustration /></View>
           <Svg width="110%" height={28} viewBox="0 0 400 28" preserveAspectRatio="none" style={styles.headerWave}>
@@ -354,11 +344,11 @@ export default function TutorialModal({ visible, onClose }: TutorialModalProps) 
           <View style={styles.navRow}>
             {pageIdx > 0 ? (
               <TouchableOpacity style={styles.prevBtn} onPress={handlePrev} activeOpacity={0.75}>
-                <Text style={styles.prevBtnText}>← Retour</Text>
+                <Text style={styles.prevBtnText}>{t('tutorial.back')}</Text>
               </TouchableOpacity>
             ) : (
               <TouchableOpacity style={styles.skipBtn} onPress={onClose} activeOpacity={0.75}>
-                <Text style={styles.skipBtnText}>Passer</Text>
+                <Text style={styles.skipBtnText}>{t('tutorial.skip')}</Text>
               </TouchableOpacity>
             )}
 
@@ -369,7 +359,7 @@ export default function TutorialModal({ visible, onClose }: TutorialModalProps) 
                 style={styles.nextBtn}
               >
                 <Text style={styles.nextBtnText}>
-                  {isLast ? '🚀 C\'est parti !' : 'Suivant →'}
+                  {isLast ? t('tutorial.next.last') : t('tutorial.next.default')}
                 </Text>
               </LinearGradient>
             </TouchableOpacity>

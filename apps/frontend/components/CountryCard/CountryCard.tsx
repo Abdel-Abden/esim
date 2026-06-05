@@ -1,11 +1,9 @@
 /**
  * CountryCard — carte masonry (grille principale)
- *
- * Refactorisé : délègue la logique à useOfferDrawer
- * et le rendu du drawer à OfferDrawer.
  */
 import { EsimSummary } from '@ilotel/shared';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { cardStyles } from './CountryCard.styles';
 import OfferDrawer from './OfferDrawer';
@@ -18,6 +16,7 @@ interface CountryCardProps {
 
 export default function CountryCard({ esim, accent = false }: CountryCardProps) {
   const drawer = useOfferDrawer(esim);
+  const { t } = useTranslation();
 
   return (
     <>
@@ -31,13 +30,13 @@ export default function CountryCard({ esim, accent = false }: CountryCardProps) 
         activeOpacity={0.78}
       >
         <Text style={cardStyles.flag}>{esim.flag}</Text>
-        <Text style={cardStyles.name} numberOfLines={1}>{esim.name}</Text>
+        <Text style={cardStyles.name} numberOfLines={1}>{t(`geography.${esim.code}`)}</Text>
 
         <View style={cardStyles.footer}>
           <View>
             {esim.minPrice != null ? (
               <>
-                <Text style={cardStyles.from}>dès</Text>
+                <Text style={cardStyles.from}>{t('countryCard.from')}</Text>
                 <Text style={[cardStyles.price, accent && cardStyles.priceDark]}>
                   {esim.minPrice.toFixed(2)}€
                 </Text>
@@ -45,13 +44,13 @@ export default function CountryCard({ esim, accent = false }: CountryCardProps) 
             ) : (
               <>
                 <Text style={cardStyles.from}> </Text>
-                <Text style={cardStyles.exhausted}>Épuisé</Text>
+                <Text style={cardStyles.exhausted}>{t('countryCard.exhausted')}</Text>
               </>
             )}
           </View>
           {esim.hasPromo && (
             <View style={cardStyles.promoBadge}>
-              <Text style={cardStyles.promoText}>Promo</Text>
+              <Text style={cardStyles.promoText}>{t('countryCard.promo')}</Text>
             </View>
           )}
         </View>

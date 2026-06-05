@@ -1,6 +1,7 @@
 import { OfferWithStock } from '@ilotel/shared';
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { styles } from './OfferRow.styles';
 
 interface OfferRowProps {
@@ -10,6 +11,7 @@ interface OfferRowProps {
 }
 
 export default function OfferRow({ offer, selected, onSelect }: OfferRowProps) {
+  const { t } = useTranslation();
   const isPromo = offer.activeDiscount !== null;
   const isExhausted = offer.availableCount === 0;
 
@@ -28,15 +30,13 @@ export default function OfferRow({ offer, selected, onSelect }: OfferRowProps) {
       </View>
 
       <Text style={styles.label}>
-        {offer.dataGb} Go / {offer.durationDays}j
-        {isExhausted && '  · Épuisé'}
+        {offer.dataGb} Go / {offer.durationDays}{t('offerDrawer.days').charAt(0)}
+        {isExhausted && `  · ${t('countryCard.exhausted')}`}
       </Text>
 
       <View style={{ alignItems: 'flex-end' }}>
         {isPromo && !isExhausted && (
-          <Text style={styles.originalPrice}>
-            {offer.basePrice.toFixed(2)}€
-          </Text>
+          <Text style={styles.originalPrice}>{offer.basePrice.toFixed(2)}€</Text>
         )}
         <Text style={[styles.price, isPromo && !isExhausted && styles.promoPrice]}>
           {offer.finalPrice.toFixed(2)}€

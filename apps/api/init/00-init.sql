@@ -8,6 +8,7 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE TABLE public.esims (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     name TEXT NOT NULL,
+    code CHAR(2) NOT NULL,
     type TEXT NOT NULL DEFAULT 'country',
     flag TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT now(),

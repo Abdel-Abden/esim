@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   AppState, AppStateStatus,
   Image,
@@ -27,16 +28,17 @@ const TUTORIAL_DONE_KEY = '@ilotel_tutorial_done';
 
 type SegFilter = 'all' | 'europe' | 'asia' | 'americas' | 'africa' | 'promo';
 const SEGS: { key: SegFilter; label: string }[] = [
-  { key: 'all',      label: '🌐 Tous' },
-  { key: 'europe',   label: '🇪🇺 Europe' },
-  { key: 'asia',     label: '🌏 Asie' },
-  { key: 'americas', label: '🌎 Amériques' },
-  { key: 'africa',   label: '🌍 Afrique' },
-  { key: 'promo',    label: '🔥 Promos' },
+  { key: 'all',      label: '' },
+  { key: 'europe',   label: '' },
+  { key: 'asia',     label: '' },
+  { key: 'americas', label: '' },
+  { key: 'africa',   label: '' },
+  { key: 'promo',    label: '' },
 ];
 
 export default function HomeScreen() {
   const router = useRouter();
+  const { t } = useTranslation();
 
   const [esims, setEsims] = useState<EsimSummary[]>([]);
   const [loading, setLoading] = useState(true);
@@ -79,14 +81,14 @@ export default function HomeScreen() {
 
     const { data, error } = await fetchEsims();
     if (error || !data) {
-      setError(error ?? 'Erreur de chargement.');
+      setError(error ?? t('home.error.retry'));
       setLoading(false);
       return;
     }
 
     setEsims(data);
     setLoading(false);
-  }, []);
+  }, [t]);
 
   useEffect(() => { load(true); }, []);
   useEffect(() => {
@@ -120,7 +122,7 @@ export default function HomeScreen() {
     return (
       <View style={styles.errorContainer}>
         <Text style={styles.errorText}>{error}</Text>
-        <PrimaryButton label="Réessayer" onPress={() => load(true)} />
+        <PrimaryButton label={t('home.error.retry')} onPress={() => load(true)} />
       </View>
     );
   }
@@ -168,18 +170,18 @@ export default function HomeScreen() {
             style={styles.hero}
           >
             <View style={styles.heroBgCircle} />
-            <Text style={styles.heroKicker}>📡 Connexion instantanée</Text>
+            <Text style={styles.heroKicker}>{t('home.hero.kicker')}</Text>
             <Text style={styles.heroTitle}>
-              Voyagez connecté,{'\n'}
-              <Text style={styles.heroTitleItalic}>sans carte physique</Text>
+              { t('home.hero.title')},{'\n'}
+              <Text style={styles.heroTitleItalic}>{t('home.hero.italic')}</Text>
             </Text>
             <Text style={styles.heroBody}>
-              Achetez votre eSIM en ligne. Activez en 2 minutes, voyagez immédiatement dans 190+ pays.
+              {t('home.hero.body')}
             </Text>
             <View style={styles.heroPills}>
-              <View style={styles.heroPill}><Text style={styles.heroPillText}>✓ 190+ pays</Text></View>
-              <View style={styles.heroPill}><Text style={styles.heroPillText}>⚡ 2min</Text></View>
-              <View style={styles.heroPill}><Text style={styles.heroPillText}>🔒 Stripe</Text></View>
+              <View style={styles.heroPill}><Text style={styles.heroPillText}>{t('home.hero.pills.countries')}</Text></View>
+              <View style={styles.heroPill}><Text style={styles.heroPillText}>{t('home.hero.pills.speed')}</Text></View>
+              <View style={styles.heroPill}><Text style={styles.heroPillText}>{t('home.hero.pills.security')}</Text></View>
             </View>
             <Svg
               width="120%"
@@ -195,7 +197,7 @@ export default function HomeScreen() {
           {/* ── Featured "Monde entier" ───────────────────────────────── */}
           {!loading && monde && (
             <View style={styles.featuredZone}>
-              <Text style={styles.featLabel}>⭐ Offre recommandée</Text>
+              <Text style={styles.featLabel}>{t('home.featured.label')}</Text>
                 <FeaturedCard esim={monde} />
             </View>
           )}
@@ -215,7 +217,7 @@ export default function HomeScreen() {
                   activeOpacity={0.75}
                 >
                   <Text style={[styles.segBtnText, activeFilter === s.key && styles.segBtnTextActive]}>
-                    {s.label}
+                    {t(`home.filters.${s.key}`)}
                   </Text>
                 </TouchableOpacity>
               ))}
@@ -225,7 +227,7 @@ export default function HomeScreen() {
           {/* ── Search ───────────────────────────────────────────────── */}
           {!loading && (
             <View style={styles.searchZone}>
-              <SearchBar value={search} onChangeText={setSearch} />
+              <SearchBar value={search} onChangeText={setSearch} placeholder={t('home.search.placeholder')} />
             </View>
           )}
 
@@ -233,11 +235,11 @@ export default function HomeScreen() {
           <View style={styles.masonrySection}>
             {loading ? (
               <>
-                <Text style={styles.loadingText}>Chargement des destinations…</Text>
+                <Text style={styles.loadingText}>{t('home.loading')}</Text>
                 <SkeletonList count={6} />
               </>
             ) : filteredEsims.length === 0 ? (
-              <Text style={styles.emptyText}>Aucune destination trouvée.</Text>
+              <Text style={styles.emptyText}>{t('home.empty')}</Text>
             ) : (
               <View style={styles.masonryRow}>
                 <View style={styles.masonryCol}>
