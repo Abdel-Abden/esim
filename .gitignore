@@ -47,3 +47,6 @@ android
 *.ipa
 *.aab
 .idea
+
+# local AI
+.continue
