@@ -30,7 +30,7 @@ export default function CountryCard({ esim, accent = false }: CountryCardProps) 
         activeOpacity={0.78}
       >
         <Text style={cardStyles.flag}>{esim.flag}</Text>
-        <Text style={cardStyles.name} numberOfLines={1}>{t(`geography.${esim.code}`)}</Text>
+        <Text style={cardStyles.name} numberOfLines={1}>{t(`${esim.type}.${esim.code}`)}</Text>
 
         <View style={cardStyles.footer}>
           <View>

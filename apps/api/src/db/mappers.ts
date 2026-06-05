@@ -16,10 +16,10 @@ export function mapEsim(row: Record<string, unknown>): Esim {
   return {
     id: row.id as string,
     name: row.name as string,
+    code: row.code as string,
     type: row.type as string,
     flag: row.flag as string,
     region: (row.region as string) ?? '',
-    createdAt: String(row.created_at),
   };
 }
 
@@ -31,10 +31,10 @@ export function mapEsimSummary(row: Record<string, unknown>): EsimSummary {
   return {
     id: row.id as string,
     name: row.name as string,
+    code: row.code as string,
     type: row.type as string,
     flag: row.flag as string,
     region: (row.region as string) ?? '',
-    createdAt: String(row.created_at),
     minPrice: row.min_price != null ? Number(row.min_price) : null,
     hasPromo: Boolean(row.has_promo),
     hasStock: Boolean(row.has_stock),
@@ -47,10 +47,10 @@ export function mapOfferWithDetails(row: Record<string, unknown>): OfferWithDeta
   const esim: Esim = {
     id: row.esim_db_id as string,
     name: row.esim_name as string,
+    code: row.esim_code as string,
     type: row.esim_type as string,
     flag: row.esim_flag as string,
     region: (row.esim_region as string) ?? '',
-    createdAt: String(row.esim_created_at),
   };
 
   const activeDiscount: Discount | null = row.discount_id

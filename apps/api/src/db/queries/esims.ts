@@ -17,11 +17,10 @@ export async function getAllEsims(): Promise<EsimSummary[]> {
   const rows = await sql`
     SELECT
       e.id,
-      e.name,
+      e.code,
       e.type,
       e.flag,
       e.region,
-      e.created_at,
       MIN(v.final_price)
         FILTER (WHERE inv.available_count > 0)           AS min_price,
       BOOL_OR(v.discount_id IS NOT NULL
@@ -45,7 +44,7 @@ export async function getAllEsims(): Promise<EsimSummary[]> {
 
 export async function getEsimById(id: string): Promise<Esim | null> {
   const rows = await sql`
-    SELECT id, name, type, flag, region, created_at
+    SELECT id, code, type, flag, region
     FROM esims
     WHERE id = ${id}
     LIMIT 1
