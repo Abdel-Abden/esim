@@ -9,25 +9,26 @@
  * l'importer ici et l'ajouter dans LOCALES.
  */
 
-import { cgu as cguFr }         from './fr/cgu.js';
-import { privacy as privacyFr } from './fr/privacy.js';
+import { cgu as cguFr } from './fr/cgu.js';
 import { mentions as mentionsFr } from './fr/mentions.js';
+import { privacy as privacyFr } from './fr/privacy.js';
 import { ui as uiFr, type UiStrings } from './fr/ui.js';
 
-import { cgu as cguEn }         from './en/cgu.js';
-import { privacy as privacyEn } from './en/privacy.js';
+import { cgu as cguEn } from './en/cgu.js';
 import { mentions as mentionsEn } from './en/mentions.js';
-import { ui as uiEn }           from './en/ui.js';
+import { privacy as privacyEn } from './en/privacy.js';
+import { ui as uiEn } from './en/ui.js';
 
-import { cgu as cguDe }         from './de/cgu.js';
-import { privacy as privacyDe } from './de/privacy.js';
+import { cgu as cguDe } from './de/cgu.js';
 import { mentions as mentionsDe } from './de/mentions.js';
-import { ui as uiDe }           from './de/ui.js';
+import { privacy as privacyDe } from './de/privacy.js';
+import { ui as uiDe } from './de/ui.js';
 
-import { cgu as cguAr }         from './ar/cgu.js';
-import { privacy as privacyAr } from './ar/privacy.js';
+import { DEFAULT_LANG } from '@ilotel/shared';
+import { cgu as cguAr } from './ar/cgu.js';
 import { mentions as mentionsAr } from './ar/mentions.js';
-import { ui as uiAr }           from './ar/ui.js';
+import { privacy as privacyAr } from './ar/privacy.js';
+import { ui as uiAr } from './ar/ui.js';
 
 // ─── Registre des locales disponibles ────────────────────────────────────────
 
@@ -44,8 +45,6 @@ const LOCALES: Record<string, Locale> = {
   de: { cgu: cguDe, privacy: privacyDe, mentions: mentionsDe, ui: uiDe },
   ar: { cgu: cguAr, privacy: privacyAr, mentions: mentionsAr, ui: uiAr },
 };
-
-const DEFAULT_LANG = 'fr';
 
 // ─── Résolution de langue ─────────────────────────────────────────────────────
 

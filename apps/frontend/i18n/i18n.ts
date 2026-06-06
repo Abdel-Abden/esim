@@ -37,8 +37,6 @@ export const LOCALE_MAP: Record<string, string> = {
   ar: 'ar-SA',
 };
 
-export const DEFAULT_LANG = "en-EN"
-
 export const RTL_LANGS = new Set(['ar', 'he', 'fa', 'ur']);
 
 /** Traduit un code d'erreur API ou retourne le message brut en fallback */
