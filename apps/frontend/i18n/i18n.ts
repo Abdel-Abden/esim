@@ -3,17 +3,17 @@ import i18n, { t } from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { Platform } from 'react-native';
 
-import { ApiError } from '@ilotel/shared';
+import { ApiError, esimsTranslations } from '@ilotel/shared';
 import arTranslations from './locales/ar.json';
 import deTranslations from './locales/de.json';
 import enTranslations from './locales/en.json';
 import frTranslations from './locales/fr.json';
 
 const resources = {
-  fr: { translation: frTranslations },
-  en: { translation: enTranslations },
-  de: { translation: deTranslations },
-  ar: { translation: arTranslations },
+  fr: { translation: frTranslations, ...esimsTranslations.fr },
+  en: { translation: enTranslations, ...esimsTranslations.en },
+  de: { translation: deTranslations, ...esimsTranslations.de },
+  ar: { translation: arTranslations, ...esimsTranslations.ar },
 };
 
 i18n
