@@ -1,6 +1,6 @@
 // app/details/index.styles.ts
+import { Colors, Radius, Spacing, Typography } from '@ilotel/shared';
 import { Platform, StyleSheet } from 'react-native';
-import { Colors, Radius, Spacing, Typography } from '../../constants/theme';
 
 export const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: Colors.bg },

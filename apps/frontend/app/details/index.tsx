@@ -196,7 +196,7 @@ export default function DetailsScreen() {
           <View style={styles.infoRow}>
             <Text style={styles.infoLabel}>{t('details.info.country')}</Text>
             <Text style={styles.infoValue}>
-              {order.offer.esim.flag} {order.offer.esim.name}
+              {order.offer.esim.flag} {t(`${order.offer.esim.type}.${order.offer.esim.code}`)}
             </Text>
           </View>
           <View style={styles.divider} />
