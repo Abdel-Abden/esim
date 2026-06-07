@@ -115,6 +115,7 @@ export function mapOrder(row: Record<string, unknown>): Order {
     email: row.email as string,
     offerId: row.offer_id as string,
     status: row.status as OrderStatus,
+    lang: row.lang as string,
     stripePaymentIntentId: row.stripe_payment_intent_id as string,
     finalPrice: Number(row.final_price),
     discountId: (row.discount_id as string) ?? null,

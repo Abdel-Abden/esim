@@ -1,4 +1,4 @@
-import { EsimInventory, Order, OrderStatus, OrderWithDetails } from '@ilotel/shared';
+import { DEFAULT_LANG, EsimInventory, Order, OrderStatus, OrderWithDetails } from '@ilotel/shared';
 import { sql } from '../client.js';
 import { mapInventory, mapOrder } from '../mappers.js';
 import { getOfferById } from './offers.js';
@@ -7,6 +7,7 @@ import { getOfferById } from './offers.js';
 
 export interface CreateOrderParams {
   offerId: string;
+  lang: string;
   stripePaymentIntentId?: string;
   finalPrice: number;
   discountId: string | null;
@@ -20,6 +21,7 @@ export async function createOrder(params: CreateOrderParams): Promise<Order> {
       email,
       offer_id,
       stripe_payment_intent_id,
+      lang,
       final_price,
       discount_id,
       status,
@@ -29,6 +31,7 @@ export async function createOrder(params: CreateOrderParams): Promise<Order> {
       ${params.email ?? null},
       ${params.offerId},
       ${params.stripePaymentIntentId ?? null},
+      ${params.lang ?? DEFAULT_LANG},
       ${params.finalPrice},
       ${params.discountId},
       'pending',

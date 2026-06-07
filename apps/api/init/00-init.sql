@@ -51,6 +51,7 @@ CREATE TABLE public.discounts (
 CREATE TABLE public.orders (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     email TEXT,
+    lang CHAR(2) not null,
     offer_id UUID NOT NULL,
     status TEXT NOT NULL DEFAULT 'pending',
     stripe_payment_intent_id TEXT UNIQUE,
