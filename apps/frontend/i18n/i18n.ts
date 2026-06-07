@@ -30,15 +30,6 @@ i18n
 
 export default i18n;
 
-export const LOCALE_MAP: Record<string, string> = {
-  fr: 'fr-FR',
-  en: 'en-GB',
-  de: 'de-DE',
-  ar: 'ar-SA',
-};
-
-export const RTL_LANGS = new Set(['ar', 'he', 'fa', 'ur']);
-
 /** Traduit un code d'erreur API ou retourne le message brut en fallback */
 export function apiError(error: string | null, fallbackKey: string): string {
   if (!error) return t(fallbackKey);
