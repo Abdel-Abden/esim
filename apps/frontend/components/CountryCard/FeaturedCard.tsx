@@ -4,8 +4,8 @@
 import { Ionicons } from '@expo/vector-icons';
 import { EsimSummary } from '@ilotel/shared';
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { featuredStyles as s } from './FeaturedCard.styles';
 import OfferDrawer from './OfferDrawer';
 import { useOfferDrawer } from './useOfferDrawer';
@@ -30,7 +30,7 @@ export default function FeaturedCard({ esim }: FeaturedCardProps) {
         </View>
 
         <View style={s.info}>
-          <Text style={s.name} numberOfLines={1}>{esim.name}</Text>
+          <Text style={s.name} numberOfLines={1}>{t(`${esim.type}.${esim.code}`)}</Text>
           <Text style={s.desc} numberOfLines={1}>{t('featuredCard.desc')}</Text>
           {esim.minPrice != null ? (
             <View style={s.priceTag}>
