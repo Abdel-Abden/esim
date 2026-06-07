@@ -1,4 +1,4 @@
-import { Colors } from '@/constants/theme';
+import { Colors } from '@ilotel/shared';
 import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
 import {

@@ -4,7 +4,7 @@
  * Styles partagés pour le composant ActivationSteps et le OsTag.
  * Importé par TutorialModal (OsTag) et details/index (ActivationSteps).
  */
-import { Colors, Spacing, Typography } from '@/constants/theme';
+import { Colors } from '@ilotel/shared';
 import { StyleSheet } from 'react-native';
 
 export const activationStepsStyles = StyleSheet.create({

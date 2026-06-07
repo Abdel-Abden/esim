@@ -1,4 +1,4 @@
-import { Colors, Radius } from '@/constants/theme';
+import { Colors, Radius } from '@ilotel/shared';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({

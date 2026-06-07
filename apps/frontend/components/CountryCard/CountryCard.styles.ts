@@ -1,4 +1,4 @@
-import { Colors } from '@/constants/theme';
+import { Colors } from '@ilotel/shared';
 import { StyleSheet } from 'react-native';
 
 export const cardStyles = StyleSheet.create({

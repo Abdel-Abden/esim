@@ -2,10 +2,10 @@
  * OfferDrawer — bottom sheet partagé entre CountryCard et FeaturedCard
  * Composant purement visuel — toute la logique est dans useOfferDrawer.
  */
-import { Colors } from '@/constants/theme';
 import { Ionicons } from '@expo/vector-icons';
-import { EsimSummary, OfferWithStock } from '@ilotel/shared';
+import { Colors, EsimSummary, OfferWithStock } from '@ilotel/shared';
 import React, { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   ActivityIndicator,
   Animated,
@@ -16,7 +16,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { useTranslation } from 'react-i18next';
 import { drawerStyles } from './CountryCard.styles';
 
 interface OfferDrawerProps {

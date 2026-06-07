@@ -16,11 +16,10 @@ import BackButton from '@/components/BackButton/BackButton';
 import Card from '@/components/Card/Card';
 import PrimaryButton from '@/components/PrimaryButton/PrimaryButton';
 import { DEBUG_ORDER_ID, IS_LOCAL } from '@/constants/env';
-import { Colors } from '@/constants/theme';
 import { apiError, LOCALE_MAP } from '@/i18n/i18n';
 import { fetchOrder } from '@/service/orders';
 import { useCartStore } from '@/store/useCartStore';
-import { DEFAULT_LANG, OrderWithDetails } from '@ilotel/shared';
+import { Colors, DEFAULT_LANG, OrderWithDetails } from '@ilotel/shared';
 import { styles } from './index.styles';
 
 // ─── Composant code d'activation + QR + copie ────────────────────────────────

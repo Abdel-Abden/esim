@@ -1,4 +1,4 @@
-import { Colors, Radius, Shadow, Spacing, Typography } from '@/constants/theme';
+import { Colors, Radius, Shadow, Spacing, Typography } from '@ilotel/shared';
 import { Dimensions, Platform, StyleSheet } from 'react-native';
 
 const { width: W, height: H } = Dimensions.get('window');

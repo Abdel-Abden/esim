@@ -1,7 +1,7 @@
 /**
  * components/DebugPanel/DebugPanel.styles.ts
  */
-import { Colors, Radius, Shadow } from '@/constants/theme';
+import { Colors, Radius, Shadow } from '@ilotel/shared';
 import { Platform, StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({

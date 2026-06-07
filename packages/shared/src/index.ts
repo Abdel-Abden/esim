@@ -7,4 +7,5 @@ export * from './entities/index.js';
 export * from './errors.js';
 export * from './helpers.js';
 export * from './models/index.js';
+export * from './theme.js';
 

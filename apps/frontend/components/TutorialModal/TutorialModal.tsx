@@ -3,7 +3,7 @@
  * Pages compatibilité et activation adaptées à iOS / Android.
  */
 import { OsTag } from '@/components/ActivationSteps/ActivationSteps';
-import { Colors } from '@/constants/theme';
+import { Colors } from '@ilotel/shared';
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';

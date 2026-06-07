@@ -1,7 +1,7 @@
-import { Colors } from '@/constants/theme';
+import { Colors } from '@ilotel/shared';
 import React from 'react';
-import { Text, TextInput, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import { Text, TextInput, View } from 'react-native';
 import { styles } from './SearchBar.styles';
 
 interface SearchBarProps {
