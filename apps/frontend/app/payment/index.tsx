@@ -21,12 +21,12 @@ import SuccessPopup from '@/components/SuccessPopup/SuccessPopup';
 import { apiError } from '@/i18n/i18n';
 import { cancelOrder, checkoutOrder, reserveOrder } from '@/service/orders';
 import { useCartStore } from '@/store/useCartStore';
-import { RESERVATION_DURATION_MINUTES } from '@ilotel/shared';
+import { DEFAULT_LANG, RESERVATION_DURATION_MINUTES } from '@ilotel/shared';
 import { cguStyles, styles } from './index.styles';
 
 export default function PaymentScreen() {
   const router = useRouter();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { initPaymentSheet, presentPaymentSheet } = useStripe();
   const { cart, setOrderId } = useCartStore();
 
@@ -154,6 +154,8 @@ export default function PaymentScreen() {
       return;
     }
 
+    const lang = i18n.resolvedLanguage ?? DEFAULT_LANG;
+
     const { error: initError } = await initPaymentSheet({
       merchantDisplayName: 'ILOTEL eSIM',
       customerId: data.customerId,
@@ -161,8 +163,8 @@ export default function PaymentScreen() {
       paymentIntentClientSecret: data.clientSecret,
       defaultBillingDetails: { email },
       returnURL: 'ilotel://payment-complete',
-      applePay: { merchantCountryCode: 'FR' },
-      googlePay: { merchantCountryCode: 'FR', testEnv: __DEV__ },
+      applePay: { merchantCountryCode: lang },
+      googlePay: { merchantCountryCode: lang, testEnv: __DEV__ },
     });
 
     if (initError) {
