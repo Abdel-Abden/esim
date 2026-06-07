@@ -22,9 +22,12 @@ export const ErrorCode = {
   DESTINATION_NOT_FOUND:'DESTINATION_NOT_FOUND',
   INVALID_ID:           'INVALID_ID',
 
-  // ─── Serveur ────────────────────────────────────────────────────────
+  // ─── Serveur ─────────────────────────────────────────────────────────────
   INTERNAL_SERVER_ERROR: 'INTERNAL_SERVER_ERROR',
   PATH_NOT_FOUND: 'PATH_NOT_FOUND', 
+
+  // ─── API ─────────────────────────────────────────────────────────────────
+  NETWORK_ENAVABLE: 'NETWORK_ENAVABLE'
 } as const;
 
 export type ErrorCode = typeof ErrorCode[keyof typeof ErrorCode];

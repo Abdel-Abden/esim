@@ -1,7 +1,10 @@
 // service/api.ts
 // Client HTTP de base — tous les appels vers l'API Hono passent par ici
 
-const BASE_URL = process.env.EXPO_PUBLIC_API_URL ?? 'http://10.0.2.2:3000/api'; // localhost pour émulateur android
+import { ErrorCode } from "@ilotel/shared";
+import { t } from "i18next";
+
+const BASE_URL = process.env.EXPO_PUBLIC_API_URL ?? 'http://10.0.2.2:3000'; // localhost pour émulateur android
 
 type ApiResponse<T> = { data: T; error: null } | { data: null; error: string };
 
@@ -28,6 +31,6 @@ export async function apiFetch<T>(
   } catch (err) {
     console.log(`${BASE_URL}${path}`)
     console.error(`[apiFetch] ${path}`, err);
-    return { data: null, error: 'Erreur réseau. Vérifiez votre connexion.' };
+    return { data: null, error: t(`errors.${ErrorCode.NETWORK_ENAVABLE}`)}; // error: 'Erreur réseau. Vérifiez votre connexion.' 
   }
 }

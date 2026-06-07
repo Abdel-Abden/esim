@@ -260,6 +260,7 @@
     "DESTINATION_NOT_FOUND": "Reiseziel nicht gefunden.",
     "INVALID_ID": "Ungültige ID.",
     "INTERNAL_SERVER_ERROR": "Ein interner Fehler ist aufgetreten. Bitte erneut versuchen.",
-    "PATH_NOT_FOUND": "Die angeforderte Ressource wurde nicht gefunden."
+    "PATH_NOT_FOUND": "Die angeforderte Ressource wurde nicht gefunden.",
+    "NETWORK_ENAVABLE": "Netzwerkfehler. Bitte überprüfen Sie Ihre Verbindung."
   }
 }

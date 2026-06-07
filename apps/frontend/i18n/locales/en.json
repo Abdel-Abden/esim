@@ -260,6 +260,7 @@
     "DESTINATION_NOT_FOUND": "Destination not found.",
     "INVALID_ID": "Invalid identifier.",
     "INTERNAL_SERVER_ERROR": "An internal error occurred. Please try again.",
-    "PATH_NOT_FOUND": "The requested resource could not be found."
+    "PATH_NOT_FOUND": "The requested resource could not be found.",
+    "NETWORK_ENAVABLE": "Network error. Please check your connection."
   }
 }
