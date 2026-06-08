@@ -26,3 +26,19 @@ export function resolveEmailRecipient(realEmail: string): string {
 
   return isLocal() ? email : realEmail;
 }
+
+// ─── Constantes de marque ─────────────────────────────────────────────────────
+
+/**
+ * Constantes globales ILOTEL.
+ * Centralisées ici pour éviter toute duplication dans les fichiers de contenu.
+ * Un changement ici se répercute sur tous les templates mail et web.
+ */
+export const BRAND = {
+  name:        'ILOTEL',
+  appName:     'ILOTEL eSIM',
+  support:     'support@ilotel.com',
+  dpo:         'dpo@ilotel.com',
+  legalUrl:    'https://api.ilotel.com/legal',
+  year:        new Date().getFullYear(),
+} as const;
