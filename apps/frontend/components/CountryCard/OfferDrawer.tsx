@@ -3,7 +3,7 @@
  * Composant purement visuel — toute la logique est dans useOfferDrawer.
  */
 import { Ionicons } from '@expo/vector-icons';
-import { Colors, EsimSummary, OfferWithStock } from '@ilotel/shared';
+import { Colors, EsimSummary, getCountryName, OfferWithStock } from '@ilotel/shared';
 import React, { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
@@ -43,7 +43,7 @@ export default function OfferDrawer({
   onClose,
   onOrder,
 }: OfferDrawerProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const backdropOpacity = useRef(new Animated.Value(0)).current;
   const sheetTranslateY = useRef(new Animated.Value(SHEET_HEIGHT)).current;
   const isOutOfStock = offers[selectedIdx]?.availableCount === 0;
@@ -76,7 +76,7 @@ export default function OfferDrawer({
             <View style={drawerStyles.countryRow}>
               <Text style={drawerStyles.flag}>{esim.flag}</Text>
               <View>
-                <Text style={drawerStyles.countryName}>{esim.name}</Text>
+                <Text style={drawerStyles.countryName}>{getCountryName(esim.code, i18n.resolvedLanguage)}</Text>
                 <Text style={drawerStyles.countrySub}>{t('offerDrawer.choosePlan')}</Text>
               </View>
             </View>
@@ -92,7 +92,7 @@ export default function OfferDrawer({
           {loading ? (
             <ActivityIndicator size="large" color={Colors.primary} style={{ marginVertical: 32 }} />
           ) : loadError ? (
-            <Text style={drawerStyles.errorText}>{loadError}</Text>
+            <Text style={drawerStyles.errorText}>{t(`errors.${loadError}`)}</Text>
           ) : (
             <ScrollView style={drawerStyles.offersList} showsVerticalScrollIndicator={false}>
               {offers.map((offer, i) => {

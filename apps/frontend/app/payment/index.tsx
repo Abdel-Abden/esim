@@ -47,13 +47,13 @@ export default function PaymentScreen() {
 
     const reserve = async () => {
       setReserving(true);
-      const { data, error } = await reserveOrder({ offerId: cart.offerId });
+      const { data, errorCode } = await reserveOrder({ offerId: cart.offerId });
 
-      if (error || !data) {
+      if (errorCode || !data) {
         setReserving(false);
         Alert.alert(
           t('payment.alerts.stockExhausted.title'),
-          apiError(error, 'payment.alerts.stockExhausted.message'),
+          apiError(errorCode, 'payment.alerts.stockExhausted.message'),
           [{ text: t('payment.alerts.stockExhausted.back'), onPress: () => router.back() }]
         );
         return;
@@ -146,11 +146,11 @@ export default function PaymentScreen() {
 
     setLoading(true);
 
-    const { data, error } = await checkoutOrder(pendingOrderId.current, { email });
+    const { data, errorCode } = await checkoutOrder(pendingOrderId.current, { email });
 
-    if (error || !data) {
+    if (errorCode || !data) {
       setLoading(false);
-      Alert.alert(t('payment.alerts.paymentFailed.title'), apiError(error, 'payment.alerts.paymentFailed.title'));
+      Alert.alert(t('payment.alerts.paymentFailed.title'), apiError(errorCode, 'payment.alerts.paymentFailed.title'));
       return;
     }
 

@@ -4,9 +4,10 @@
  * Extrait tout l'état et les handlers du drawer pour éviter la duplication.
  * Chaque composant garde son propre rendu visuel mais délègue la logique ici.
  */
+import i18n, { apiError } from '@/i18n/i18n';
 import { fetchOffers } from '@/service/esims';
 import { useCartStore } from '@/store/useCartStore';
-import { EsimSummary, OfferWithStock, formatOfferLabel } from '@ilotel/shared';
+import { EsimSummary, OfferWithStock, formatOfferLabel, getCountryName } from '@ilotel/shared';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 
@@ -39,11 +40,11 @@ export function useOfferDrawer(esim: EsimSummary): UseOfferDrawerReturn {
     setDrawerOpen(true);
 
     setLoading(true);
-    const { data, error } = await fetchOffers(esim.id);
+    const { data, errorCode } = await fetchOffers(esim.id);
     if (data && data.length > 0) {
       setOffers(data);
     } else {
-      setLoadError(error ?? 'Aucune offre disponible.');
+      setLoadError(apiError(errorCode, 'errors.OFFER_NOT_FOR_SALE'));
     }
     setLoading(false);
   };
@@ -56,7 +57,7 @@ export function useOfferDrawer(esim: EsimSummary): UseOfferDrawerReturn {
     setCart({
       offerId: offer.id,
       esimId: esim.id,
-      country: esim.name,
+      country: getCountryName(esim.code, i18n.resolvedLanguage) ,
       flag: esim.flag,
       offer: formatOfferLabel(offer),
       basePrice: offer.basePrice,

@@ -2,7 +2,7 @@
  * FeaturedCard — bannière horizontale pour l'offre recommandée
  */
 import { Ionicons } from '@expo/vector-icons';
-import { EsimSummary } from '@ilotel/shared';
+import { EsimSummary, getCountryName } from '@ilotel/shared';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Text, TouchableOpacity, View } from 'react-native';
@@ -16,7 +16,7 @@ interface FeaturedCardProps {
 
 export default function FeaturedCard({ esim }: FeaturedCardProps) {
   const drawer = useOfferDrawer(esim);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <>
@@ -30,7 +30,7 @@ export default function FeaturedCard({ esim }: FeaturedCardProps) {
         </View>
 
         <View style={s.info}>
-          <Text style={s.name} numberOfLines={1}>{t(`${esim.type}.${esim.code}`)}</Text>
+          <Text style={s.name} numberOfLines={1}>{getCountryName(esim.code, i18n.resolvedLanguage)}</Text>
           <Text style={s.desc} numberOfLines={1}>{t('featuredCard.desc')}</Text>
           {esim.minPrice != null ? (
             <View style={s.priceTag}>

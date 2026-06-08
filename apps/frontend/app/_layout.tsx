@@ -1,7 +1,7 @@
 // app/_layout.tsx
 import SplashAnimation from '@/components/SplashAnimation/SplashAnimation';
-import i18n, { RTL_LANGS } from '@/i18n/i18n';
-import { Colors } from '@ilotel/shared';
+import i18n from '@/i18n/i18n';
+import { Colors, RTL_LANGS } from '@ilotel/shared';
 import { StripeProvider } from '@stripe/stripe-react-native';
 import { Stack } from 'expo-router';
 import * as Updates from 'expo-updates';

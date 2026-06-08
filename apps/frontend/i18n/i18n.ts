@@ -3,7 +3,7 @@ import i18n, { t } from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { Platform } from 'react-native';
 
-import { ApiError, esimsTranslations } from '@ilotel/shared';
+import { esimsTranslations } from '@ilotel/shared';
 import arTranslations from './locales/ar.json';
 import deTranslations from './locales/de.json';
 import enTranslations from './locales/en.json';
@@ -31,11 +31,10 @@ i18n
 export default i18n;
 
 /** Traduit un code d'erreur API ou retourne le message brut en fallback */
-export function apiError(error: string | null, fallbackKey: string): string {
-  if (!error) return t(fallbackKey);
+export function apiError(errorCode: string | null, fallbackKey: string): string {
+  if (!errorCode) return t(fallbackKey);
   try {
-    const parsed: ApiError = JSON.parse(error);
-    if (parsed.code) return t(`errors.${parsed.code}`);
+    return t(`errors.${errorCode}`);
   } catch {}
-  return error;
+  return errorCode;
 }

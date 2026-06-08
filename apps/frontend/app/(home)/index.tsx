@@ -18,6 +18,7 @@ import PrimaryButton from '@/components/PrimaryButton/PrimaryButton';
 import SearchBar from '@/components/SearchBar/SearchBar';
 import { SkeletonList } from '@/components/SkeletonCard/SkeletonCard';
 import TutorialModal from '@/components/TutorialModal/TutorialModal';
+import { apiError } from '@/i18n/i18n';
 import { fetchEsims } from '@/service/esims';
 import { Colors, EsimSummary } from '@ilotel/shared';
 import { styles } from './index.styles';
@@ -78,9 +79,10 @@ export default function HomeScreen() {
     setLoading(true);
     setError(null);
 
-    const { data, error } = await fetchEsims();
-    if (error || !data) {
-      setError(error ?? t('home.error.retry'));
+    const { data, errorCode } = await fetchEsims();
+    if (errorCode || !data) {
+      console.debug(errorCode)
+      setError(apiError(errorCode, 'home.error.retry'));
       setLoading(false);
       return;
     }

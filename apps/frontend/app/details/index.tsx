@@ -16,10 +16,10 @@ import BackButton from '@/components/BackButton/BackButton';
 import Card from '@/components/Card/Card';
 import PrimaryButton from '@/components/PrimaryButton/PrimaryButton';
 import { DEBUG_ORDER_ID, IS_LOCAL } from '@/constants/env';
-import { apiError, LOCALE_MAP } from '@/i18n/i18n';
+import { apiError } from '@/i18n/i18n';
 import { fetchOrder } from '@/service/orders';
 import { useCartStore } from '@/store/useCartStore';
-import { Colors, DEFAULT_LANG, OrderWithDetails } from '@ilotel/shared';
+import { Colors, DEFAULT_LANG, LOCALE_TIME_MAP, OrderWithDetails } from '@ilotel/shared';
 import { styles } from './index.styles';
 
 // ─── Composant code d'activation + QR + copie ────────────────────────────────
@@ -99,7 +99,7 @@ export default function DetailsScreen() {
     }
 
     const poll = async () => {
-      const { data, error: fetchError } = await fetchOrder(orderId);
+      const { data, errorCode: fetchError } = await fetchOrder(orderId);
 
       if (data && data.status === 'provisioned') {
         setOrder(data);
@@ -188,7 +188,7 @@ export default function DetailsScreen() {
         <View style={styles.emailBanner}>
           <Text style={styles.emailBannerText}>
             {t('details.emailBanner')}
-            <Text style={styles.emailBannerEmail}>{order.email}</Text>
+            <Text style={styles.emailBannerEmail}> {order.email}</Text>
           </Text>
         </View>
 
@@ -227,7 +227,7 @@ export default function DetailsScreen() {
             <Text style={styles.infoLabel}>{t('details.info.activated')}</Text>
             <Text style={styles.infoValue}>
               {new Date(order.createdAt).toLocaleDateString(
-                LOCALE_MAP[i18n.language] ?? LOCALE_MAP[DEFAULT_LANG],
+                LOCALE_TIME_MAP[i18n.language] ?? LOCALE_TIME_MAP[DEFAULT_LANG],
                 { day: '2-digit', month: 'long', year: 'numeric' }
               )}
             </Text>

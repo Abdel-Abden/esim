@@ -1,7 +1,7 @@
 /**
  * CountryCard — carte masonry (grille principale)
  */
-import { EsimSummary } from '@ilotel/shared';
+import { EsimSummary, getCountryName } from '@ilotel/shared';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Text, TouchableOpacity, View } from 'react-native';
@@ -16,7 +16,7 @@ interface CountryCardProps {
 
 export default function CountryCard({ esim, accent = false }: CountryCardProps) {
   const drawer = useOfferDrawer(esim);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <>
@@ -30,7 +30,7 @@ export default function CountryCard({ esim, accent = false }: CountryCardProps) 
         activeOpacity={0.78}
       >
         <Text style={cardStyles.flag}>{esim.flag}</Text>
-        <Text style={cardStyles.name} numberOfLines={1}>{t(`${esim.type}.${esim.code}`)}</Text>
+        <Text style={cardStyles.name} numberOfLines={1}>{getCountryName(esim.code, i18n.resolvedLanguage)}</Text>
 
         <View style={cardStyles.footer}>
           <View>
