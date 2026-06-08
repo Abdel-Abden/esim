@@ -53,7 +53,10 @@
           "merchantIdentifier": "merchant.com.ilotel.esim",
           "enableGooglePay": false
         }
-      ]
+      ],
+      "expo-font",
+      "expo-localization",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true,
