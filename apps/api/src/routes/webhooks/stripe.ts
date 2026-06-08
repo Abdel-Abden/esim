@@ -6,7 +6,7 @@ import {
   getOrderByPaymentIntentId,
   updateOrderStatus
 } from '../../db/queries/orders.js';
-import { sendEsimEmail } from '../../lib/email.js';
+import { sendEsimEmail } from '../../lib/email/index.js';
 import { stripe } from '../../lib/stripe.js';
 
 export const stripeWebhook = new Hono();
@@ -68,7 +68,8 @@ stripeWebhook.post('/', async (c) => {
             await sendEsimEmail({
               to: recipient,
               orderId: order.id,
-              country: fullOrder.offer.esim.name,
+              lang: order.lang,
+              code: fullOrder.offer.esim.code,
               flag: fullOrder.offer.esim.flag,
               dataGb: fullOrder.offer.dataGb,
               durationDays: fullOrder.offer.durationDays,
