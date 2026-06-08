@@ -27,7 +27,7 @@ export const ErrorCode = {
   PATH_NOT_FOUND: 'PATH_NOT_FOUND', 
 
   // ─── API ─────────────────────────────────────────────────────────────────
-  NETWORK_ENAVABLE: 'NETWORK_ENAVABLE'
+  NETWORK_UNAVAILABLE: 'NETWORK_UNAVAILABLE'
 } as const;
 
 export type ErrorCode = typeof ErrorCode[keyof typeof ErrorCode];

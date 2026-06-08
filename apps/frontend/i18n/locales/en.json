@@ -52,7 +52,7 @@
       "originalPrice": "Original price"
     },
     "reservation": {
-      "validFor": "Reservation valid for {time}"
+      "validFor": "Reservation valid for {{time}}"
     },
     "email": {
       "label": "Confirmation email",
@@ -132,11 +132,11 @@
     }
   },
   "cgu": {
-    "back": "‹ Back",
+    "back": "Back",
     "title": "Terms and Conditions"
   },
   "privacy": {
-    "back": "‹ Back",
+    "back": "Back",
     "title": "Privacy Policy"
   },
   "tutorial": {
@@ -228,11 +228,11 @@
     "message": "✅ Payment successful"
   },
   "backButton": {
-    "default": "‹ Back",
+    "default": "Back",
     "home": "Home"
   },
   "mentionsLegales": {
-    "back": "‹ Back",
+    "back": "Back",
     "title": "Legal Notices"
   },
   "featuredCard": {
@@ -261,6 +261,6 @@
     "INVALID_ID": "Invalid identifier.",
     "INTERNAL_SERVER_ERROR": "An internal error occurred. Please try again.",
     "PATH_NOT_FOUND": "The requested resource could not be found.",
-    "NETWORK_ENAVABLE": "Network error. Please check your connection."
+    "NETWORK_UNAVAILABLE": "Network error. Please check your connection."
   }
 }

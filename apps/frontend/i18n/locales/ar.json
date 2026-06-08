@@ -52,7 +52,7 @@
       "originalPrice": "السعر الأصلي"
     },
     "reservation": {
-      "validFor": "الحجز صالح لمدة {time}"
+      "validFor": "الحجز صالح لمدة {{time}}"
     },
     "email": {
       "label": "بريد إلكتروني للتأكيد",
@@ -132,11 +132,11 @@
     }
   },
   "cgu": {
-    "back": "رجوع ›",
+    "back": "رجوع",
     "title": "الشروط العامة للبيع"
   },
   "privacy": {
-    "back": "رجوع ›",
+    "back": "رجوع",
     "title": "سياسة الخصوصية"
   },
   "tutorial": {
@@ -228,11 +228,11 @@
     "message": "✅ تم الدفع بنجاح"
   },
   "backButton": {
-    "default": "رجوع ›",
+    "default": "رجوع",
     "home": "الرئيسية"
   },
   "mentionsLegales": {
-    "back": "رجوع ›",
+    "back": "رجوع",
     "title": "البيانات القانونية"
   },
   "featuredCard": {
@@ -261,6 +261,6 @@
     "INVALID_ID": "معرّف غير صالح.",
     "INTERNAL_SERVER_ERROR":"حدث خطأ داخلي. يُرجى المحاولة مرة أخرى.",
     "PATH_NOT_FOUND":"تعذّر العثور على المورد المطلوب.",
-    "NETWORK_ENAVABLE": "خطأ في الشبكة. يرجى التحقق من اتصالك."
+    "NETWORK_UNAVAILABLE": "خطأ في الشبكة. يرجى التحقق من اتصالك."
   }
 }

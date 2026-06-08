@@ -52,7 +52,7 @@
       "originalPrice": "Originalpreis"
     },
     "reservation": {
-      "validFor": "Reservierung noch {time} gültig"
+      "validFor": "Reservierung noch {{time}} gültig"
     },
     "email": {
       "label": "Bestätigungs-E-Mail",
@@ -132,11 +132,11 @@
     }
   },
   "cgu": {
-    "back": "‹ Zurück",
+    "back": "Zurück",
     "title": "Allgemeine Geschäftsbedingungen"
   },
   "privacy": {
-    "back": "‹ Zurück",
+    "back": "Zurück",
     "title": "Datenschutzerklärung"
   },
   "tutorial": {
@@ -228,11 +228,11 @@
     "message": "✅ Zahlung erfolgreich"
   },
   "backButton": {
-    "default": "‹ Zurück",
+    "default": "Zurück",
     "home": "Startseite"
   },
   "mentionsLegales": {
-    "back": "‹ Zurück",
+    "back": "Zurück",
     "title": "Impressum"
   },
   "featuredCard": {
@@ -261,6 +261,6 @@
     "INVALID_ID": "Ungültige ID.",
     "INTERNAL_SERVER_ERROR": "Ein interner Fehler ist aufgetreten. Bitte erneut versuchen.",
     "PATH_NOT_FOUND": "Die angeforderte Ressource wurde nicht gefunden.",
-    "NETWORK_ENAVABLE": "Netzwerkfehler. Bitte überprüfen Sie Ihre Verbindung."
+    "NETWORK_UNAVAILABLE": "Netzwerkfehler. Bitte überprüfen Sie Ihre Verbindung."
   }
 }

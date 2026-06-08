@@ -52,7 +52,7 @@
       "originalPrice": "Prix original"
     },
     "reservation": {
-      "validFor": "Réservation valide encore {time}"
+      "validFor": "Réservation valide encore {{time}}"
     },
     "email": {
       "label": "Email de confirmation",
@@ -132,11 +132,11 @@
     }
   },
   "cgu": {
-    "back": "‹ Retour",
+    "back": "Retour",
     "title": "Conditions Générales de Vente"
   },
   "privacy": {
-    "back": "‹ Retour",
+    "back": "Retour",
     "title": "Politique de confidentialité"
   },
   "tutorial": {
@@ -228,11 +228,11 @@
     "message": "✅ Paiement réussi"
   },
   "backButton": {
-    "default": "‹ Retour",
+    "default": "Retour",
     "home": "Accueil"
   },
   "mentionsLegales": {
-    "back": "‹ Retour",
+    "back": "Retour",
     "title": "Mentions légales"
   },
   "featuredCard": {
@@ -261,6 +261,6 @@
     "INVALID_ID": "Identifiant invalide.",
     "INTERNAL_SERVER_ERROR": "Une erreur interne est survenue. Veuillez réessayer.",
     "PATH_NOT_FOUND": "La ressource demandée est introuvable.",
-    "NETWORK_ENAVABLE": "Erreur réseau. Vérifiez votre connexion."
+    "NETWORK_UNAVAILABLE": "Erreur réseau. Vérifiez votre connexion."
   }
 }
