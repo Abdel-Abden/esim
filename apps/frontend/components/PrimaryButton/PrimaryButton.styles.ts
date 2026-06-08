@@ -11,10 +11,18 @@ export const styles = StyleSheet.create({
     marginTop: Spacing.sm,
     ...Shadow.button,
   },
+  wrapper: {
+    borderRadius: Radius.md,
+    ...Shadow.button,
+  },
+
   gradient: {
-    // On simule le dégradé via une couleur de fond
-    // Le vrai gradient sera via expo-linear-gradient
-    backgroundColor: Colors.primary,
+    paddingVertical: 14,
+    paddingHorizontal: Spacing.lg,
+    borderRadius: Radius.md,
+    alignItems: 'center',
+    justifyContent: 'center',
+    overflow: 'hidden', // 🔥 clé du fix
   },
   secondary: {
     backgroundColor: '#F1F5F9',

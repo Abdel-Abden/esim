@@ -34,13 +34,17 @@ export default function PrimaryButton({
         onPress={onPress}
         disabled={disabled || loading}
         activeOpacity={0.85}
-        style={[disabled || loading ? styles.disabled : null, style]}
+        style={[
+          styles.wrapper,
+          disabled || loading ? styles.disabled : null,
+          style,
+        ]}
       >
         <LinearGradient
           colors={[Colors.primary, Colors.accent]}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
-          style={[styles.base]}
+          style={styles.gradient}
         >
           {loading ? (
             <ActivityIndicator color="#fff" />
