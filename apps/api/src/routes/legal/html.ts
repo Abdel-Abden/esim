@@ -1,20 +1,20 @@
 /**
- * src/routes/legal/template/html.ts
+ * src/translation/template/web/legal/html.ts
  *
- * Shell HTML unique pour toutes les pages légales.
- * Gère automatiquement dir="rtl" pour l'arabe (et toute future langue RTL).
+ * Shell HTML unique pour toutes les pages légales web.
+ * Gère automatiquement dir="rtl" pour les langues RTL.
  */
 
+import { RTL_LANGS } from '@ilotel/shared';
+import { BRAND } from '../../constants/env.js';
 import { buildCss } from './css.js';
 
 export interface PageOptions {
-  lang:        string;
-  title:       string;
-  footerText:  string;
-  body:        string;
+  lang:       string;
+  title:      string;
+  footerText: string;
+  body:       string;
 }
-
-const RTL_LANGS = new Set(['ar', 'he', 'fa', 'ur']);
 
 export function buildPage({ lang, title, footerText, body }: PageOptions): string {
   const css = buildCss(lang);
@@ -25,24 +25,20 @@ export function buildPage({ lang, title, footerText, body }: PageOptions): strin
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>${title} — ILOTEL eSIM</title>
+  <title>${title} — ${BRAND.appName}</title>
   <style>${css}</style>
 </head>
 <body>
 <div class="wrap">
-
   <header>
-    <p>📡 ILOTEL eSIM</p>
+    <p>📡 ${BRAND.appName}</p>
     <h1>${title}</h1>
   </header>
-
   ${body}
-
   <footer>
-    ILOTEL — <a href="mailto:support@ilotel.com">support@ilotel.com</a><br/>
+    ${BRAND.name} — <a href="mailto:${BRAND.support}">${BRAND.support}</a><br/>
     ${footerText}
   </footer>
-
 </div>
 </body>
 </html>`;

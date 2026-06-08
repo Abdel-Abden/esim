@@ -14,38 +14,38 @@
  */
 
 import { Hono } from 'hono';
-import { LegalDeleteParams, sendLegalDeleteEmail } from '../../lib/email.js';
-import { getLocale } from './content/index.js';
-import { buildPage } from './template/html.js';
+import { LegalDeleteParams, sendLegalDeleteEmail } from '../../lib/email/index.js';
+import { getWebLocale as getLocale } from '../../translation/index.js';
+import { buildPage } from './html.js';
 
 export const legal = new Hono();
 
 // ─── GET /legal/cgu ───────────────────────────────────────────────────────────
 
 legal.get('/cgu', (c) => {
-  const { lang, cgu, ui } = getLocale(c.req.header('accept-language'));
-  return c.html(buildPage({ lang, title: ui.cgu.title, footerText: ui.cgu.footer, body: cgu }));
+  const { lang, cgu } = getLocale(c.req.header('accept-language'));
+  return c.html(buildPage({ lang, title: cgu.ui.title, footerText: cgu.ui.footer, body: cgu.body }));
 });
 
 // ─── GET /legal/privacy ───────────────────────────────────────────────────────
 
 legal.get('/privacy', (c) => {
-  const { lang, privacy, ui } = getLocale(c.req.header('accept-language'));
-  return c.html(buildPage({ lang, title: ui.privacy.title, footerText: ui.privacy.footer, body: privacy }));
+  const { lang, privacy } = getLocale(c.req.header('accept-language'));
+  return c.html(buildPage({ lang, title: privacy.ui.title, footerText: privacy.ui.footer, body: privacy.body }));
 });
 
 // ─── GET /legal/mentions ──────────────────────────────────────────────────────
 
 legal.get('/mentions', (c) => {
-  const { lang, mentions, ui } = getLocale(c.req.header('accept-language'));
-  return c.html(buildPage({ lang, title: ui.mentions.title, footerText: ui.mentions.footer, body: mentions }));
+  const { lang, mentions } = getLocale(c.req.header('accept-language'));
+  return c.html(buildPage({ lang, title: mentions.ui.title, footerText: mentions.ui.footer, body: mentions.body }));
 });
 
 // ─── GET /legal/delete ────────────────────────────────────────────────────────
 
 legal.get('/delete', (c) => {
-  const { lang, ui } = getLocale(c.req.header('accept-language'));
-  const d = ui.delete;
+  const { lang, deleteData } = getLocale(c.req.header('accept-language'));
+  const d = deleteData.ui;
 
   const body = `
     <p>${d.intro}</p>
@@ -70,8 +70,8 @@ legal.get('/delete', (c) => {
 // ─── POST /legal/delete ───────────────────────────────────────────────────────
 
 legal.post('/delete', async (c) => {
-  const { lang, ui } = getLocale(c.req.header('accept-language'));
-  const d = ui.delete;
+  const { lang, deleteData } = getLocale(c.req.header('accept-language'));
+  const d = deleteData.ui;
 
   const formBody = await c.req.parseBody();
   const params: LegalDeleteParams = {
