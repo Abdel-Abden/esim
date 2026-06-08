@@ -19,6 +19,7 @@ import {
   updateOrderStatus
 } from '../db/queries/orders.js';
 import { stripe } from '../lib/stripe.js';
+import { resolveLang } from '../translation/index.js';
 
 export const orders = new Hono();
 
@@ -32,25 +33,28 @@ orders.post('/reserve', async (c) => {
   const { offerId } = body;
 
   if (!offerId) {
-    return c.json({ code: ErrorCode.OFFER_ID_REQUIRED }, 400);
+    return c.json({ data: null, errorCode: ErrorCode.OFFER_ID_REQUIRED }, 400);
   }
 
   const offer = await getOfferById(offerId);
   if (!offer) {
-    return c.json({ code: ErrorCode.OFFER_NOT_FOUND }, 404);
+    return c.json({ data: null, errorCode: ErrorCode.OFFER_NOT_FOUND }, 404);
   }
   if (!offer.stripePriceId) {
-    return c.json({ code: ErrorCode.OFFER_NOT_FOR_SALE }, 422);
+    return c.json({ data: null, errorCode: ErrorCode.OFFER_NOT_FOR_SALE }, 422);
   }
   if (offer.availableCount === 0) {
-    return c.json({ code: ErrorCode.STOCK_EXHAUSTED }, 409);
+    return c.json({ data: null, errorCode: ErrorCode.STOCK_EXHAUSTED }, 409);
   }
 
   const reservedUntil = new Date(
     Date.now() + RESERVATION_DURATION_MINUTES * 60 * 1000
   ).toISOString();
 
+  const lang = resolveLang(c.req.header('accept-language'));
+
   const order = await createOrder({
+    lang,
     offerId,
     finalPrice: offer.finalPrice,
     discountId: offer.activeDiscount?.id ?? null,
@@ -60,7 +64,7 @@ orders.post('/reserve', async (c) => {
   const reserved = await reserveEsim(offer.id, order.id);
   if (!reserved) {
     await deleteOrder(order.id);
-    return c.json({ code: ErrorCode.STOCK_EXHAUSTED }, 409);
+    return c.json({ data: null, code: ErrorCode.STOCK_EXHAUSTED }, 409);
   }
 
   const response: ReserveOrderResponse = {
@@ -80,16 +84,18 @@ orders.post('/:id/checkout', async (c) => {
   const body = await c.req.json<CheckoutOrderRequest>();
   const { email } = body;
 
-  if (!email || !email.includes('@')) {
-    return c.json({ code: ErrorCode.EMAIL_REQUIRED }, 400);
+  const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!email || !EMAIL_REGEX.test(email)) {
+    return c.json({ data: null, errorCode: ErrorCode.EMAIL_REQUIRED }, 400);
   }
 
   const order = await getOrderById(orderId);
   if (!order) {
-    return c.json({ code: ErrorCode.ORDER_NOT_FOUND }, 404);
+    return c.json({ data: null, errorCode: ErrorCode.ORDER_NOT_FOUND }, 404);
   }
   if (order.status !== 'pending') {
-    return c.json({ code: ErrorCode.RESERVATION_EXPIRED }, 409);
+    return c.json({ data: null, errorCode: ErrorCode.RESERVATION_EXPIRED }, 409);
   }
 
   const existingCustomers = await stripe.customers.list({ email, limit: 1 });
@@ -132,7 +138,7 @@ orders.get('/:id', async (c) => {
   const order = await getOrderById(id);
 
   if (!order) {
-    return c.json({ code: ErrorCode.ORDER_NOT_FOUND }, 404);
+    return c.json({ data: null, errorCode: ErrorCode.ORDER_NOT_FOUND }, 404);
   }
 
   return c.json<GetOrderResponse>(order);
@@ -146,10 +152,10 @@ orders.post('/:id/cancel', async (c) => {
   const order = await getOrderById(id);
 
   if (!order) {
-    return c.json({ code: ErrorCode.ORDER_NOT_FOUND }, 404);
+    return c.json({ data: null, errorCode: ErrorCode.ORDER_NOT_FOUND }, 404);
   }
   if (order.status !== 'pending') {
-    return c.json({ code: ErrorCode.CANCEL_INVALID_STATUS }, 409);
+    return c.json({ data: null, errorCode: ErrorCode.CANCEL_INVALID_STATUS }, 409);
   }
 
   await releaseEsim(id);

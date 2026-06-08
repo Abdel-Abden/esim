@@ -22,7 +22,7 @@ esims.get('/', async (c) => {
 esims.get('/:id', async (c) => {
   const id = c.req.param('id');
   const esim = await getEsimById(id);
-  if (!esim) return c.json({ code: ErrorCode.DESTINATION_NOT_FOUND }, 404);
+  if (!esim) return c.json({ data: null, errorCode: ErrorCode.DESTINATION_NOT_FOUND }, 404);
   return c.json(esim);
 });
 
@@ -35,11 +35,11 @@ esims.get('/:id/offers', async (c) => {
 
   const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
   if (!uuidRegex.test(esimId)) {
-    return c.json({ code: ErrorCode.INVALID_ID }, 400);
+    return c.json({data: null, errorCode: ErrorCode.INVALID_ID }, 400);
   }
 
   const esim = await getEsimById(esimId);
-  if (!esim) return c.json({ code: ErrorCode.DESTINATION_NOT_FOUND }, 404);
+  if (!esim) return c.json({ data: null, errorCode: ErrorCode.DESTINATION_NOT_FOUND }, 404);
 
   const offers = await getOffersByEsimId(esimId);
   return c.json<GetOffersResponse>(offers);
