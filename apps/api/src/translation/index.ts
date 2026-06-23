@@ -49,7 +49,7 @@ export function resolveLang(
 
 interface WebLocale {
   lang:       string;
-  landing?:    {ui: any};
+  landing:    {ui: any};
   cgu:        {body: any, ui: any};
   privacy:    {body: any, ui: any};
   mentions:   {body: any, ui: any};
@@ -59,7 +59,7 @@ interface WebLocale {
 const WEB_LOCALES: Record<string, Omit<WebLocale, 'lang'>> = {
   fr: { cgu: cgu['fr'], privacy: privacy['fr'], mentions: mentions['fr'], deleteData: deleteData['fr'], landing: landing['fr'] },
   en: { cgu: cgu['en'], privacy: privacy['en'], mentions: mentions['en'], deleteData: deleteData['en'], landing: landing['en'] },
-  de: { cgu: cgu['de'], privacy: privacy['de'], mentions: mentions['de'], deleteData: deleteData['de']},
+  // de: { cgu: cgu['de'], privacy: privacy['de'], mentions: mentions['de'], deleteData: deleteData['de']},
   ar: { cgu: cgu['ar'], privacy: privacy['ar'], mentions: mentions['ar'], deleteData: deleteData['ar'], landing: landing['ar'] },
 };
 
