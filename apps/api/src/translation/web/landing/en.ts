@@ -3,7 +3,7 @@
  * English translations for the landing page.
  */
 
-export const ui = {
+const ui = {
   lang: 'en',
 
   nav: {
@@ -112,3 +112,5 @@ export const ui = {
     copy:    '© 2025 ILOTEL eSIM. All rights reserved.',
   },
 };
+
+export { ui };

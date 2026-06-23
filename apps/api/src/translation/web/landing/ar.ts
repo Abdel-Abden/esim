@@ -3,7 +3,7 @@
  * الترجمة العربية لصفحة العرض.
  */
 
-export const ui = {
+const ui = {
   lang: 'ar',
 
   nav: {
@@ -112,3 +112,5 @@ export const ui = {
     copy:    '© 2025 ILOTEL eSIM. جميع الحقوق محفوظة.',
   },
 };
+
+export { ui };

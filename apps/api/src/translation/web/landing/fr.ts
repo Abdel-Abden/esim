@@ -3,7 +3,7 @@
  * Traductions françaises de la page vitrine.
  */
 
-export const ui = {
+const ui = {
   lang: 'fr',
 
   nav: {
@@ -89,12 +89,12 @@ export const ui = {
 
   why: {
     title: '🚀 Pourquoi ILOTEL eSIM ?',
-    sub:   'La meilleure façon de rester connecté à l'étranger',
+    sub:   'La meilleure façon de rester connecté à l\'étranger',
     cards: [
       { icon: '🌐', title: '190+ pays couverts',         desc: 'Une couverture mondiale pour voyager partout sans contrainte.' },
       { icon: '⚡', title: 'Activation 2 minutes',       desc: 'Scannez, activez, connectez-vous. Aussi simple que ça.' },
       { icon: '🔒', title: 'Paiement Stripe sécurisé',   desc: 'Vos données bancaires sont chiffrées et protégées à chaque transaction.' },
-      { icon: '💰', title: 'Prix compétitifs',           desc: 'Aucun frais cachés. Ce que vous voyez, c'est ce que vous payez.' },
+      { icon: '💰', title: 'Prix compétitifs',           desc: 'Aucun frais cachés. Ce que vous voyez, c\'est ce que vous payez.' },
     ],
   },
 
@@ -112,3 +112,5 @@ export const ui = {
     copy:    '© 2025 ILOTEL eSIM. Tous droits réservés.',
   },
 };
+
+export { ui };
