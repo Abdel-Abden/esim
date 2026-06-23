@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -e
 
 CONTAINER_NAME="postgres-local-dev"
 ENV_FILE="${1:-.env.local}"
@@ -68,10 +67,23 @@ fi
 
 ## Starting Stripe to get secret then webhook
 echo "Getting Stripe webhook secret..."
+STRIPE_OUTPUT="$(stripe listen --forward-to "$STRIPE_FORWARD_TO" --print-secret 2>&1)"
+echo "Stripe output ok"
+if echo "$STRIPE_OUTPUT" | grep -Eq 'Authorization failed|api_key_expired|401'; then
+  echo "Stripe authentication error detected"
+
+  # Re-auth automatique
+  stripe login
+
+  STRIPE_OUTPUT="$(stripe listen --forward-to "$STRIPE_FORWARD_TO" --print-secret 2>&1)"
+else
+  echo "Login OK, extracting secret"
+fi
+
 STRIPE_WEBHOOK_SECRET="$(
-  stripe listen --forward-to "$STRIPE_FORWARD_TO" --print-secret 2>&1 \
+  printf '%s\n' "$STRIPE_OUTPUT" \
   | grep -o 'whsec_[[:alnum:]_]*' \
-  | head -n 1
+  | head -n1
 )"
 
 if [ -z "$STRIPE_WEBHOOK_SECRET" ]; then
