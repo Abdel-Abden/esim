@@ -48,6 +48,7 @@ export function resolveLang(
 
 interface WebLocale {
   lang:       string;
+  landing:    {ui: any};
   cgu:        {body: any, ui: any};
   privacy:    {body: any, ui: any};
   mentions:   {body: any, ui: any};

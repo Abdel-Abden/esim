@@ -6,6 +6,7 @@ import { logger } from 'hono/logger';
 import { rateLimitMiddleware } from './middleware/rateLimit.js';
 import { cron } from './routes/cron.js';
 import { esims } from './routes/esims.js';
+import { landing } from './routes/landing/landing.js';
 import { legal } from './routes/legal/legal.js';
 import { orders } from './routes/orders.js';
 import { stripeWebhook } from './routes/webhooks/stripe.js';
@@ -26,9 +27,11 @@ app.use('*', cors({
 
 // ─── Routes ───────────────────────────────────────────────────────────────────
 
-// Healthcheck — utile pour Vercel et les monitoring externes
-app.get('/', (c) => c.json({ status: 'ok', service: 'ilotel-api' }));
+// Landing page vitrine
+app.route('/', landing);
 
+// Healthcheck déplacé sur /health — pour Vercel et les monitoring externes
+app.get('/health', (c) => c.json({ status: 'ok', service: 'ilotel-api' }));
 app.use('/esims/*', rateLimitMiddleware);
 app.use('/orders/*', rateLimitMiddleware);
 
