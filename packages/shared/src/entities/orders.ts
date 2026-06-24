@@ -2,7 +2,7 @@
  * Entité Order — table `orders`
  */
 
-export type OrderStatus = 'pending' | 'paid' | 'failed' | 'provisioned';
+export type OrderStatus = 'pending' | 'paid' | 'failed' | 'provisioned' | 'refunding' | 'refunded';
 
 export interface Order {
   id: string;

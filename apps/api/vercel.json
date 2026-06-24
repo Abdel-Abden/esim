@@ -21,6 +21,10 @@
     {
       "path": "/cron/release-expired",
       "schedule": "0 0 * * *"
+    },
+    {
+      "path": "/cron/retry-refunds",
+      "schedule": "*/10 * * * *"
     }
   ]
 }

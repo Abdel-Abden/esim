@@ -19,7 +19,7 @@ import { DEBUG_ORDER_ID, IS_LOCAL } from '@/constants/env';
 import { apiError } from '@/i18n/i18n';
 import { fetchOrder } from '@/service/orders';
 import { useCartStore } from '@/store/useCartStore';
-import { Colors, DEFAULT_LANG, LOCALE_TIME_MAP, OrderWithDetails } from '@ilotel/shared';
+import { Colors, DEFAULT_LANG, LOCALE_TIME_MAP, OrderWithDetails, SUPPORT_EMAIL } from '@ilotel/shared';
 import { styles } from './index.styles';
 
 // ─── Composant code d'activation + QR + copie ────────────────────────────────
@@ -99,15 +99,15 @@ export default function DetailsScreen() {
     }
 
     const poll = async () => {
-      const { data, errorCode: fetchError } = await fetchOrder(orderId);
-
+      const { data, errorCode, meta } = await fetchOrder(orderId);
+      
       if (data && data.status === 'provisioned') {
         setOrder(data);
         setLoading(false);
       } else if (retries < 5) {
         setTimeout(() => setRetries((r) => r + 1), 1500);
       } else {
-        setError(fetchError ? apiError(fetchError, 'details.error') : t('details.error'));
+        setError(apiError(errorCode, 'details.error', { supportMail: meta?.supportEmail ?? SUPPORT_EMAIL }));
         setLoading(false);
       }
     };

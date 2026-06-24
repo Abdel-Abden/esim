@@ -5,7 +5,9 @@ import { ErrorCode } from "@ilotel/shared";
 
 const BASE_URL = process.env.EXPO_PUBLIC_API_URL ?? 'http://10.0.2.2:3000'; // localhost pour émulateur android
 
-type ApiResponse<T> = { data: T; errorCode: null } | { data: null; errorCode: string };
+type ApiResponse<T> = 
+  | { data: T; errorCode: null; meta?: never }
+  | { data: null; errorCode: string; meta?: Record<string, string> };
 
 export async function apiFetch<T>(
   path: string,

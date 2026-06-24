@@ -261,6 +261,7 @@
     "INVALID_ID": "Invalid identifier.",
     "INTERNAL_SERVER_ERROR": "An internal error occurred. Please try again.",
     "PATH_NOT_FOUND": "The requested resource could not be found.",
-    "NETWORK_UNAVAILABLE": "Network error. Please check your connection."
+    "NETWORK_UNAVAILABLE": "Network error. Please check your connection.",
+    "REFUND_IN_PROGRESS": "An error occurred while delivering your eSIM. Your payment will be automatically refunded within 5–10 business days. For any questions, contact us at {{supportMail}}"
   }
 }

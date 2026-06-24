@@ -11,3 +11,5 @@ export const LOCALE_TIME_MAP: Record<string, string> = {
   en: 'en-GB',
   ar: 'ar-SA',
 };
+
+export const SUPPORT_EMAIL = "support@ilotel.com"

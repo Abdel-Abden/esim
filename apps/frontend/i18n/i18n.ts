@@ -31,10 +31,17 @@ i18n
 export default i18n;
 
 /** Traduit un code d'erreur API ou retourne le message brut en fallback */
-export function apiError(errorCode: string | null, fallbackKey: string): string {
+export function apiError(errorCode: string | null, fallbackKey: string, vars?: Record<string, string>): string {
   if (!errorCode) return t(fallbackKey);
   try {
-    return t(`errors.${errorCode}`);
+    const msg = t(`errors.${errorCode}`);
+    if (vars) {
+      return Object.entries(vars).reduce(
+        (acc, [key, val]) => acc.replace(`{{${key}}}`, val),
+        msg
+      );
+    }
+    return msg
   } catch {}
   return errorCode;
 }

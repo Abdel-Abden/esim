@@ -9,6 +9,7 @@ import {
   ReserveOrderResponse,
 } from '@ilotel/shared';
 import { Hono } from 'hono';
+import { BRAND } from '../constants/env.js';
 import { releaseEsim, reserveEsim } from '../db/queries/esims.js';
 import { getOfferById } from '../db/queries/offers.js';
 import {
@@ -139,6 +140,20 @@ orders.get('/:id', async (c) => {
 
   if (!order) {
     return c.json({ data: null, errorCode: ErrorCode.ORDER_NOT_FOUND }, 404);
+  }
+
+  // Si la commande est en cours de remboursement ou remboursée,
+  // on retourne un code explicite plutôt que de laisser le mobile
+  // afficher "unknown error"
+  if (order.status === 'refunding' || order.status === 'refunded') {
+    return c.json(
+      {
+        data: null,
+        errorCode: ErrorCode.REFUND_IN_PROGRESS,
+        meta: { supportEmail: BRAND.support },
+      },
+      402
+    );
   }
 
   return c.json<GetOrderResponse>(order);

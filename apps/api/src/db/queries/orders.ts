@@ -76,8 +76,19 @@ export async function getOrderByPaymentIntentId(
     WHERE stripe_payment_intent_id = ${paymentIntentId}
     LIMIT 1
   `;
-
   return rows[0] ? mapOrder(rows[0]) : null;
+}
+
+/**
+ * Récupère toutes les commandes en statut 'refunding' — pour le cron de recovery.
+ */
+export async function getOrdersPendingRefund(): Promise<Order[]> {
+  const rows = await sql`
+    SELECT * FROM orders
+    WHERE status = 'refunding'
+      AND stripe_payment_intent_id IS NOT NULL
+  `;
+  return rows.map(mapOrder);
 }
 
 // ─── Mise à jour ──────────────────────────────────────────────────────────────
@@ -93,38 +104,33 @@ export async function updateOrderStatus(
   `;
 }
 
-/**
- * Assigne une carte eSIM disponible à une commande.
- * Choisit automatiquement la première carte disponible pour la destination.
- */
-export async function assignEsimToOrder(
-  orderId: string,
-  esimId: string
-): Promise<EsimInventory | null> {
-  // Transaction : réserver + assigner atomiquement
-  const rows = await sql`
-    UPDATE esim_inventory
-    SET
-      status      = 'sold',
-      order_id    = ${orderId},
-      reserved_at = NOW(),
-      sold_at     = NOW()
-    WHERE id = (
-      SELECT id FROM esim_inventory
-      WHERE esim_id = ${esimId}
-        AND status  = 'available'
-      LIMIT 1
-      FOR UPDATE SKIP LOCKED
-    )
-    RETURNING *
+export async function markOrderPaid(orderId: string): Promise<void> {
+  await sql`
+    UPDATE orders
+    SET status = 'paid'
+    WHERE id = ${orderId}
   `;
+}
 
-  return rows[0] ? mapInventory(rows[0]) : null;
+export async function markOrderRefunding(orderId: string): Promise<void> {
+  await sql`
+    UPDATE orders
+    SET status = 'refunding'
+    WHERE id = ${orderId}
+  `;
+}
+
+export async function markOrderRefunded(orderId: string): Promise<void> {
+  await sql`
+    UPDATE orders
+    SET status = 'refunded'
+    WHERE id = ${orderId}
+  `;
 }
 
 /**
  * Libère toutes les réservations expirées (reserved_until dépassé).
- * Appelé par le cron job toutes les 5 minutes.
+ * Appelé par le cron job.
  */
 export async function releaseExpiredReservations(): Promise<string[]> {
   const rows = await sql`
@@ -165,11 +171,8 @@ export async function updateOrderCheckout(
   `;
 }
 
-// ─── Suppresion ───────────────────────────────────────────────────────────────
+// ─── Suppression ──────────────────────────────────────────────────────────────
 
-/**
- * Supprime l'order si il n'y a pas eSIM de disponible
- */
 export async function deleteOrder(orderId: string): Promise<void> {
   await sql`DELETE FROM orders WHERE id = ${orderId}`;
 }

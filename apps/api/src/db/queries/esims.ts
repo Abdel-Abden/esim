@@ -100,3 +100,14 @@ export async function releaseEsim(orderId: string): Promise<void> {
       AND status   = 'reserved'
   `;
 }
+
+export async function getInventoryByOrderId(
+  orderId: string
+): Promise<EsimInventory | null> {
+  const rows = await sql`
+    SELECT * FROM esim_inventory
+    WHERE order_id = ${orderId}
+    LIMIT 1
+  `;
+  return rows[0] ? mapInventory(rows[0]) : null;
+}
