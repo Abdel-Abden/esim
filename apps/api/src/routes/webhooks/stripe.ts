@@ -106,20 +106,18 @@ stripeWebhook.post('/', async (c) => {
       }
 
       // 4. Assigner le forfait à la SIM via l'API OCS Transatel
-      if (process.env.ENVIRONMENT == 'local') {
-        try {
-          const result = await assignOfferToEsim(
-            inventory.msisdn,
-            fullOrder.offer.transatelProductId
-          );
-          console.log(
-            `[webhook] 📦 Forfait assigné — MSISDN: ${inventory.msisdn}, subscriptionId: ${result.subscriptionId}`
-          );
-        } catch (ocsError) {
-          console.error(`[webhook] ❌ Échec OCS pour commande ${order.id}:`, ocsError);
-          await refundOrder(order.id, paymentIntent.id);
-          break;
-        }
+      try {
+        const result = await assignOfferToEsim(
+          inventory.msisdn,
+          fullOrder.offer.transatelProductId
+        );
+        console.log(
+          `[webhook] 📦 Forfait assigné — MSISDN: ${inventory.msisdn}, subscriptionId: ${result.subscriptionId}`
+        );
+      } catch (ocsError) {
+        console.error(`[webhook] ❌ Échec OCS pour commande ${order.id}:`, ocsError);
+        await refundOrder(order.id, paymentIntent.id);
+        break;
       }
 
       // 5. Confirmer l'eSIM en BDD (reserved → sold) + provisioned

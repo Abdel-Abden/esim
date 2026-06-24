@@ -128,7 +128,6 @@ export async function assignOfferToEsim(
       orderType: 'preload',
       mvnoRef:   MVNO_REF,
     })
-  console.log(`[ DEBUG ] ${foo}`)
   const res = await transatelFetch('/ocs/subscriptions/api/orders/products', {
     method: 'POST',
     body: foo,
