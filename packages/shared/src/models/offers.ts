@@ -9,6 +9,7 @@ export interface OfferWithDetails extends Offer {
   activeDiscount: Discount | null;
   esim: Esim;
   finalPrice: number;
+  transatelProductId: string;
 }
 
 /** OfferWithDetails + comptage du stock disponible */

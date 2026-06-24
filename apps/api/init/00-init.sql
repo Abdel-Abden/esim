@@ -22,6 +22,7 @@ CREATE TABLE public.offers (
     duration_days INTEGER NOT NULL,
     base_price NUMERIC(10, 2) NOT NULL,
     stripe_price_id TEXT,
+    transatel_product_id TEXT,
     created_at TIMESTAMP DEFAULT now(),
 
     CONSTRAINT offers_esim_id_fkey
@@ -61,7 +62,7 @@ CREATE TABLE public.orders (
     reserved_until TIMESTAMP,
 
     CONSTRAINT orders_status_check
-        CHECK (status IN ('pending', 'paid', 'failed', 'provisioned')),
+        CHECK (status IN ('pending', 'paid', 'failed', 'provisioned', 'refunding', 'refunded')),
 
     CONSTRAINT orders_offer_id_fkey
         FOREIGN KEY (offer_id)
@@ -80,6 +81,7 @@ CREATE TABLE public.esim_inventory (
     reserved_at TIMESTAMP,
     sold_at TIMESTAMP,
     order_id UUID,
+    msisdn TEXT NOT NULL,
     activation_code TEXT NOT NULL,
     offer_id UUID NOT NULL,
 

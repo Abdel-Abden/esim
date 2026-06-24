@@ -81,6 +81,7 @@ export function mapOfferWithDetails(row: Record<string, unknown>): OfferWithDeta
     createdAt: String(row.created_at),
     activeDiscount,
     finalPrice,
+    transatelProductId: row.transatel_product_id as string,
   };
 }
 
@@ -104,6 +105,7 @@ export function mapInventory(row: Record<string, unknown>): EsimInventory {
     soldAt: row.sold_at ? String(row.sold_at) : null,
     orderId: (row.order_id as string) ?? null,
     activationCode: row.activation_code as string,
+    msisdn: row.msisdn as string,
   };
 }
 

@@ -25,4 +25,5 @@ export interface EsimInventory {
   soldAt: string | null;
   activationCode: string;
   orderId: string | null;
+  msisdn: string;
 }
