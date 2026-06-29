@@ -24,7 +24,7 @@
     },
     {
       "path": "/cron/retry-refunds",
-      "schedule": "*/10 * * * *"
+      "schedule": "0 0 * * *"
     }
   ]
 }
