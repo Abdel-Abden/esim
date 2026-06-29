@@ -384,7 +384,7 @@ export function buildLandingPage(ui: any): string {
 <body>
 
   <header id="header">
-    <a href="#" class="logo">ILOTEL<span> eSIM</span></a>
+    <a href="#" class="logo">ILOTEL</a>
     <div class="header-right">
       <nav>
         <a href="#hero">${ui.nav.home}</a>
@@ -544,14 +544,13 @@ export function buildLandingPage(ui: any): string {
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
-        <a href="#" class="logo">ILOTEL<span> eSIM</span></a>
+        <a href="#" class="logo">ILOTEL</a>
         <p>${ui.footer.tagline}</p>
       </div>
       <div class="footer-links">
         <a href="/legal/mentions">${ui.footer.legal}</a>
         <a href="/legal/privacy">${ui.footer.privacy}</a>
         <a href="mailto:${BRAND.support}">${ui.footer.contact}</a>
-        <a href="#">${ui.footer.faq}</a>
       </div>
     </div>
     <div class="footer-copy">${ui.footer.copy}</div>

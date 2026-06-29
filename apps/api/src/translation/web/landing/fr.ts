@@ -15,9 +15,9 @@ const ui = {
   },
 
   hero: {
-    tag:      'ONE ESIM · EVERYWHERE.',
-    title:    'Voyagez connecté,\nsans carte physique',
-    subtitle: 'Achetez votre eSIM. Activez en 2 min dans 190+ pays.',
+    tag:      'ONE CONNECTION · EVERYWHERE.',
+    title:    'Voyagez connecté',
+    subtitle: 'Restez connecté partout dans le monde avec nos cartes SIM et eSIM.',
     badge1:   '✓ 190+ pays',
     badge2:   '⚡ 2 minutes',
     badge3:   '🔒 Stripe',
@@ -37,7 +37,7 @@ const ui = {
 
   dest: {
     title:     '🌍 Destinations',
-    sub:       'Sélectionnez votre destination et commandez votre eSIM en quelques clics',
+    sub:       'Sélectionnez votre destination et commandez en quelques clics',
     filterAll: '🌐 Tous',
     europe:    '🇪🇺 Europe',
     asia:      '🌏 Asie',
@@ -64,9 +64,18 @@ const ui = {
     title: '💡 Comment ça marche',
     sub:   'Simple, rapide, sans effort',
     steps: [
-      { title: 'Choisissez',     desc: 'Sélectionnez votre destination et le forfait adapté à votre voyage.' },
-      { title: 'Payez',          desc: 'Réglez en toute sécurité via Stripe. Paiement chiffré et instantané.' },
-      { title: 'Connectez-vous', desc: 'Scannez le QR Code reçu et activez votre eSIM en moins de 2 minutes.' },
+      {
+        title: 'Choisissez votre offre',
+        desc: 'Sélectionnez votre destination puis choisissez une carte SIM ou une eSIM selon votre appareil.'
+      },
+      {
+        title: 'Commande sécuriser',
+        desc: 'Payez en quelques secondes grâce à Stripe. Votre commande est traitée immédiatement.'
+      },
+      {
+        title: 'Restez connecté',
+        desc: 'Installez votre eSIM instantanément ou recevez votre carte SIM, puis profitez d’Internet dès votre arrivée.'
+      }
     ],
   },
 
@@ -88,28 +97,44 @@ const ui = {
   },
 
   why: {
-    title: '🚀 Pourquoi ILOTEL eSIM ?',
+    title: '🚀 Pourquoi ILOTEL ?',
     sub:   'La meilleure façon de rester connecté à l\'étranger',
     cards: [
-      { icon: '🌐', title: '190+ pays couverts',         desc: 'Une couverture mondiale pour voyager partout sans contrainte.' },
-      { icon: '⚡', title: 'Activation 2 minutes',       desc: 'Scannez, activez, connectez-vous. Aussi simple que ça.' },
-      { icon: '🔒', title: 'Paiement Stripe sécurisé',   desc: 'Vos données bancaires sont chiffrées et protégées à chaque transaction.' },
-      { icon: '💰', title: 'Prix compétitifs',           desc: 'Aucun frais cachés. Ce que vous voyez, c\'est ce que vous payez.' },
+      {
+        icon:'🌍',
+        title:'190+ destinations',
+        desc:'Des forfaits internationaux utilisables dans plus de 190 pays.'
+      },
+      {
+        icon:'📱',
+        title:'SIM et eSIM',
+        desc:'Choisissez la solution la mieux adaptée à votre smartphone ou tablette.'
+      },
+      {
+        icon:'⚡',
+        title:'Connexion rapide',
+        desc:'Activez votre ligne en quelques minutes et restez connecté dès votre arrivée.'
+      },
+      {
+        icon:'🔒',
+        title:'Paiement sécurisé',
+        desc:'Commandez en toute confiance grâce au paiement sécurisé par Stripe.'
+      }
     ],
   },
 
   download: {
-    title: '📱 Téléchargez ILOTEL eSIM',
+    title: '📱 Téléchargez ILOTEL',
     sub:   'Disponible gratuitement sur iOS et Android. Commandez votre eSIM en quelques secondes.',
   },
 
   footer: {
-    tagline: 'ONE ESIM · EVERYWHERE.',
+    tagline: 'ONE CONNECTION · EVERYWHERE.',
     legal:   'Mentions légales',
     privacy: 'Confidentialité',
     contact: 'Contact',
     faq:     'FAQ',
-    copy:    '© 2025 ILOTEL eSIM. Tous droits réservés.',
+    copy:    '© 2025 ILOTEL. Tous droits réservés.',
   },
 };
 
