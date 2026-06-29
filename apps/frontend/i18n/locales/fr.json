@@ -16,11 +16,24 @@
     },
     "filters": {
       "all": "🌐 Tous",
-      "europe": "🇪🇺 Europe",
-      "asia": "🌏 Asie",
-      "americas": "🌎 Amériques",
-      "africa": "🌍 Afrique",
+      "country": "📍 Pays",
+      "eu": "🇪🇺 Europe",
+      "as": "🌏 Asie",
+      "af": "🌍 Afrique",
+      "am": "🌎 Amériques",
+      "oc": "🌊 Océanie",
+      "me": "🕌 Moyen-Orient",
+      "ww": "🌐 Monde",
       "promo": "🔥 Promos"
+    },
+    "data": {
+      "unlimited": "Illimité",
+      "unit_mb": "Mo",
+      "unit_gb": "Go"
+    },
+    "regionTooltip": {
+      "title": "Pays couverts",
+      "close": "Fermer"
     },
     "search": {
       "placeholder": "Rechercher un pays..."

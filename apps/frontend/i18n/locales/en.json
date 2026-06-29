@@ -16,11 +16,25 @@
     },
     "filters": {
       "all": "🌐 All",
-      "europe": "🇪🇺 Europe",
-      "asia": "🌏 Asia",
-      "americas": "🌎 Americas",
-      "africa": "🌍 Africa",
+      "country": "📍 Countries",
+      "eu": "🇪🇺 Europe",
+      "as": "🌏 Asia",
+      "af": "🌍 Africa",
+      "am": "🌎 Americas",
+      "oc": "🌊 Oceania",
+      "me": "🕌 Middle East",
+      "ww": "🌐 World",
       "promo": "🔥 Promos"
+    },
+    "data": {
+      "unlimited": "Unlimited",
+      "unit_mb": "MB",
+      "unit_gb": "GB",
+      "unit_tb": "TB"
+    },
+    "regionTooltip": {
+      "title": "Countries covered",
+      "close": "Close"
     },
     "search": {
       "placeholder": "Search a country..."

@@ -10,6 +10,7 @@ export interface Esim {
   type: string;         // "country" | "region" | "global"
   flag: string;         // emoji ou code ISO
   region: string;       // "europe" | "asia" | "americas" | "africa" | "global"
+  regionCountries: any; // list des code pays gérer par cette région
 }
 
 export type InventoryStatus = 'available' | 'reserved' | 'sold';

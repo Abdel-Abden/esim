@@ -1,8 +1,8 @@
-import { getCountryName } from '@ilotel/shared';
+import { getDisplayName } from '@ilotel/shared';
 import type { EsimEmailContent } from './index.js';
 
 export const content: EsimEmailContent = {
-  subject:         (p) => `Your eSIM ${p.flag} ${getCountryName(p.code, p.lang)} is ready — ${p.dataGb} GB / ${p.durationDays} days`,
+  subject:         (p) => `Your eSIM ${p.flag} ${getDisplayName(p.code, p.lang)} is ready — ${p.dataGb} GB / ${p.durationDays} days`,
   dateLocale:      'en-GB',
   heroTitle:       'Your eSIM is ready! 🎉',
   days:            'days',

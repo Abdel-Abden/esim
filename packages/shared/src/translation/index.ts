@@ -11,7 +11,7 @@ type Translation = {
   country: Record<string, string>;
 }
 
-export function getCountryName(code: string, lang?: string): string {
+export function getDisplayName(code: string, lang?: string): string {
   const l = (lang && lang in esimsTranslations ? lang : DEFAULT_LANG) as GeoLang;
   return esimsTranslations[l]['region'][code] ?? esimsTranslations[l]['country'][code] ?? code;
 }

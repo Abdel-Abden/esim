@@ -3,7 +3,8 @@
  * Composant purement visuel — toute la logique est dans useOfferDrawer.
  */
 import { Ionicons } from '@expo/vector-icons';
-import { Colors, EsimSummary, getCountryName, OfferWithStock } from '@ilotel/shared';
+import { Colors, EsimSummary, getDisplayName, OfferWithStock } from '@ilotel/shared';
+import { t } from 'i18next';
 import React, { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
@@ -31,6 +32,14 @@ interface OfferDrawerProps {
 }
 
 const SHEET_HEIGHT = Dimensions.get('window').height;
+
+function GetDataUnitDisplay(unit: string): string {
+  if (unit === "UNLI")  // si offre FUP 
+  {
+    return `Go ${t('home.data.unlimited')}`
+  }
+  return unit
+}
 
 export default function OfferDrawer({
   esim,
@@ -76,7 +85,7 @@ export default function OfferDrawer({
             <View style={drawerStyles.countryRow}>
               <Text style={drawerStyles.flag}>{esim.flag}</Text>
               <View>
-                <Text style={drawerStyles.countryName}>{getCountryName(esim.code, i18n.resolvedLanguage)}</Text>
+                <Text style={drawerStyles.countryName}>{getDisplayName(esim.code, i18n.resolvedLanguage)}</Text>
                 <Text style={drawerStyles.countrySub}>{t('offerDrawer.choosePlan')}</Text>
               </View>
             </View>
@@ -111,7 +120,7 @@ export default function OfferDrawer({
                     activeOpacity={0.75}
                   >
                     <View style={drawerStyles.offerLeft}>
-                      <Text style={drawerStyles.offerData}>{offer.dataGb} Go</Text>
+                      <Text style={drawerStyles.offerData}>{offer.dataGb} {GetDataUnitDisplay(offer.unit)}</Text>
                       <Text style={drawerStyles.offerDays}>{offer.durationDays} {t('offerDrawer.days')}</Text>
                     </View>
                     <View style={drawerStyles.offerRight}>

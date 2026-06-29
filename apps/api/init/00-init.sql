@@ -12,7 +12,8 @@ CREATE TABLE public.esims (
     type TEXT NOT NULL DEFAULT 'country',
     flag TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT now(),
-    region VARCHAR(50) NOT NULL
+    region VARCHAR(50) NOT NULL,
+    region_countries JSONB NOT NULL DEFAULT '[]'
 );
 
 CREATE TABLE public.offers (
@@ -24,6 +25,7 @@ CREATE TABLE public.offers (
     stripe_price_id TEXT,
     transatel_product_id TEXT,
     created_at TIMESTAMP DEFAULT now(),
+    unit VARCHAR(4) NOT NULL DEFAULT 'Go',
 
     CONSTRAINT offers_esim_id_fkey
         FOREIGN KEY (esim_id)

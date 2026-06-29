@@ -18,23 +18,13 @@ import PrimaryButton from '@/components/PrimaryButton/PrimaryButton';
 import SearchBar from '@/components/SearchBar/SearchBar';
 import { SkeletonList } from '@/components/SkeletonCard/SkeletonCard';
 import TutorialModal from '@/components/TutorialModal/TutorialModal';
-import { apiError } from '@/i18n/i18n';
+import i18n, { apiError } from '@/i18n/i18n';
 import { fetchEsims } from '@/service/esims';
-import { Colors, EsimSummary } from '@ilotel/shared';
+import { Colors, EsimSummary, SEGS, SegFilter, getDisplayName } from '@ilotel/shared';
 import { styles } from './index.styles';
 
 const MIN_RELOAD_MS = 30_000;
 const TUTORIAL_DONE_KEY = '@ilotel_tutorial_done';
-
-type SegFilter = 'all' | 'europe' | 'asia' | 'americas' | 'africa' | 'promo';
-const SEGS: { key: SegFilter; label: string }[] = [
-  { key: 'all',      label: '' },
-  { key: 'europe',   label: '' },
-  { key: 'asia',     label: '' },
-  { key: 'americas', label: '' },
-  { key: 'africa',   label: '' },
-  { key: 'promo',    label: '' },
-];
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -55,12 +45,9 @@ export default function HomeScreen() {
       try {
         const done = await AsyncStorage.getItem(TUTORIAL_DONE_KEY);
         if (done === null) {
-          // Petit délai pour laisser l'écran se charger
           setTimeout(() => setTutorialVisible(true), 600);
         }
-      } catch (_) {
-        // Si AsyncStorage échoue, on n'affiche pas le tuto
-      }
+      } catch (_) {}
     })();
   }, []);
 
@@ -81,7 +68,7 @@ export default function HomeScreen() {
 
     const { data, errorCode } = await fetchEsims();
     if (errorCode || !data) {
-      console.debug(errorCode)
+      console.debug(errorCode);
       setError(apiError(errorCode, 'home.error.retry'));
       setLoading(false);
       return;
@@ -99,23 +86,28 @@ export default function HomeScreen() {
     return () => sub.remove();
   }, [load]);
 
-  // "Monde entier" — première eSIM de type global/region
   const monde = esims.find((e) => e.type === 'region' || e.type === 'global');
 
   const filteredEsims = useMemo(() => {
     let list = esims;
+
     if (activeFilter === 'promo') {
+      // Filtre promos
       list = list.filter((e) => e.hasPromo);
+    } else if (activeFilter === 'country') {
+      list = list.filter((e) => e.type === 'country');
     } else if (activeFilter !== 'all') {
       list = list.filter((e) => e.region === activeFilter);
     }
+
     if (search.trim()) {
-      list = list.filter((e) => e.name.toLowerCase().includes(search.toLowerCase()));
+      list = list.filter((e) =>
+        getDisplayName(e.code, i18n.resolvedLanguage).toLowerCase().includes(search.toLowerCase())
+      );
     }
     return list;
   }, [search, esims, activeFilter]);
 
-  // Masonry : colonnes paires/impaires
   const col1 = filteredEsims.filter((_, i) => i % 2 === 0);
   const col2 = filteredEsims.filter((_, i) => i % 2 === 1);
 
@@ -144,9 +136,7 @@ export default function HomeScreen() {
               />
             </View>
           </View>
-
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-            {/* Bouton aide / tutoriel */}
             <TouchableOpacity
               onPress={() => setTutorialVisible(true)}
               activeOpacity={0.75}
@@ -173,12 +163,10 @@ export default function HomeScreen() {
             <View style={styles.heroBgCircle} />
             <Text style={styles.heroKicker}>{t('home.hero.kicker')}</Text>
             <Text style={styles.heroTitle}>
-              { t('home.hero.title')},{'\n'}
+              {t('home.hero.title')},{'\n'}
               <Text style={styles.heroTitleItalic}>{t('home.hero.italic')}</Text>
             </Text>
-            <Text style={styles.heroBody}>
-              {t('home.hero.body')}
-            </Text>
+            <Text style={styles.heroBody}>{t('home.hero.body')}</Text>
             <View style={styles.heroPills}>
               <View style={styles.heroPill}><Text style={styles.heroPillText}>{t('home.hero.pills.countries')}</Text></View>
               <View style={styles.heroPill}><Text style={styles.heroPillText}>{t('home.hero.pills.speed')}</Text></View>
@@ -199,7 +187,7 @@ export default function HomeScreen() {
           {!loading && monde && (
             <View style={styles.featuredZone}>
               <Text style={styles.featLabel}>{t('home.featured.label')}</Text>
-                <FeaturedCard esim={monde} />
+              <FeaturedCard esim={monde} />
             </View>
           )}
 
@@ -228,7 +216,11 @@ export default function HomeScreen() {
           {/* ── Search ───────────────────────────────────────────────── */}
           {!loading && (
             <View style={styles.searchZone}>
-              <SearchBar value={search} onChangeText={setSearch} placeholder={t('home.search.placeholder')} />
+              <SearchBar
+                value={search}
+                onChangeText={setSearch}
+                placeholder={t('home.search.placeholder')}
+              />
             </View>
           )}
 
@@ -259,10 +251,7 @@ export default function HomeScreen() {
         </ScrollView>
       </View>
 
-      {/* ── Tutoriel ─────────────────────────────────────────────────────── */}
       <TutorialModal visible={tutorialVisible} onClose={handleCloseTutorial} />
-
-      {/* ── Debug panel ─────────────────────────────────────────────────────── */}
       <DebugPanel />
     </>
   );

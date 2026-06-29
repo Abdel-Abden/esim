@@ -15,27 +15,19 @@ export const cardStyles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 2,
   },
-  cardAccent: {
-    backgroundColor: Colors.primaryLight,
-  },
+  cardAccent:    { backgroundColor: Colors.primaryLight },
   cardExhausted: { opacity: 0.5 },
-  exhausted: {
-    fontSize: 19,
-    fontWeight: '600',
-    color: Colors.muted,
-  },
-
-  flag: { fontSize: 32, marginBottom: 8 },
-  name: { fontSize: 14, fontWeight: '800', color: Colors.text, marginBottom: 2 },
-  sub: { fontSize: 10, color: Colors.muted, marginBottom: 10, lineHeight: 14 },
-
+  exhausted:     { fontSize: 19, fontWeight: '600', color: Colors.muted },
+  flag:          { fontSize: 32, marginBottom: 8 },
+  name:          { fontSize: 14, fontWeight: '800', color: Colors.text, marginBottom: 2 },
+  sub:           { fontSize: 10, color: Colors.muted, marginBottom: 10, lineHeight: 14 },
   footer: {
     flexDirection: 'row',
     alignItems: 'flex-end',
     justifyContent: 'space-between',
   },
-  from: { fontSize: 10, color: Colors.muted, lineHeight: 12 },
-  price: { fontSize: 19, fontWeight: '700', color: Colors.primary },
+  from:      { fontSize: 10, color: Colors.muted, lineHeight: 12 },
+  price:     { fontSize: 19, fontWeight: '700', color: Colors.primary },
   priceDark: { color: Colors.primaryDark },
 
   promoBadge: {
@@ -79,22 +71,10 @@ export const drawerStyles = StyleSheet.create({
     paddingTop: 16,
     paddingBottom: 8,
   },
-  countryRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-  },
-  flag: { fontSize: 36 },
-  countryName: {
-    fontSize: 20,
-    fontWeight: '800',
-    color: Colors.text,
-  },
-  countrySub: {
-    fontSize: 12,
-    color: Colors.muted,
-    marginTop: 2,
-  },
+  countryRow:  { flexDirection: 'row', alignItems: 'center', gap: 12 },
+  flag:        { fontSize: 36 },
+  countryName: { fontSize: 20, fontWeight: '800', color: Colors.text },
+  countrySub:  { fontSize: 12, color: Colors.muted, marginTop: 2 },
   closeBtn: {
     width: 30,
     height: 30,
@@ -105,11 +85,7 @@ export const drawerStyles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.border,
   },
-  closeTxt: {
-    fontSize: 13,
-    color: Colors.muted,
-    fontWeight: '700',
-  },
+  closeTxt: { fontSize: 13, color: Colors.muted, fontWeight: '700' },
   divider: {
     height: 1,
     backgroundColor: Colors.border,
@@ -126,16 +102,8 @@ export const drawerStyles = StyleSheet.create({
     paddingTop: 12,
     paddingBottom: 8,
   },
-  errorText: {
-    color: Colors.errorRed,
-    textAlign: 'center',
-    padding: 20,
-    fontSize: 13,
-  },
-  offersList: {
-    paddingHorizontal: 18,
-    flexGrow: 0,
-  },
+  errorText:          { color: Colors.errorRed, textAlign: 'center', padding: 20, fontSize: 13 },
+  offersList:         { paddingHorizontal: 18, flexGrow: 0 },
   offerCard: {
     backgroundColor: Colors.bg,
     borderWidth: 2,
@@ -146,28 +114,12 @@ export const drawerStyles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  offerCardSelected: {
-    borderColor: Colors.primary,
-    backgroundColor: Colors.primaryLight,
-  },
-  offerCardExhausted: {
-    opacity: 0.4,
-  },
-  offerLeft: { flex: 1 },
-  offerData: {
-    fontSize: 22,
-    fontWeight: '700',
-    color: Colors.text,
-  },
-  offerDays: {
-    fontSize: 12,
-    color: Colors.muted,
-    marginTop: 2,
-  },
-  offerRight: {
-    alignItems: 'flex-end',
-    marginRight: 12,
-  },
+  offerCardSelected:   { borderColor: Colors.primary, backgroundColor: Colors.primaryLight },
+  offerCardExhausted:  { opacity: 0.4 },
+  offerLeft:           { flex: 1 },
+  offerData:           { fontSize: 22, fontWeight: '700', color: Colors.text },
+  offerDays:           { fontSize: 12, color: Colors.muted, marginTop: 2 },
+  offerRight:          { alignItems: 'flex-end', marginRight: 12 },
   promoBadge: {
     backgroundColor: Colors.promoGreenLight,
     borderRadius: 5,
@@ -175,25 +127,10 @@ export const drawerStyles = StyleSheet.create({
     paddingVertical: 2,
     marginBottom: 4,
   },
-  promoBadgeText: {
-    fontSize: 9,
-    fontWeight: '800',
-    color: Colors.promoGreen,
-  },
-  oldPrice: {
-    fontSize: 12,
-    color: Colors.muted,
-    textDecorationLine: 'line-through',
-  },
-  finalPrice: {
-    fontSize: 22,
-    fontWeight: '700',
-    color: Colors.primary,
-  },
-  finalPriceExhausted: {
-    fontSize: 13,
-    color: Colors.muted,
-  },
+  promoBadgeText:      { fontSize: 9, fontWeight: '800', color: Colors.promoGreen },
+  oldPrice:            { fontSize: 12, color: Colors.muted, textDecorationLine: 'line-through' },
+  finalPrice:          { fontSize: 22, fontWeight: '700', color: Colors.primary },
+  finalPriceExhausted: { fontSize: 13, color: Colors.muted },
   radio: {
     width: 20,
     height: 20,
@@ -204,20 +141,9 @@ export const drawerStyles = StyleSheet.create({
     justifyContent: 'center',
     flexShrink: 0,
   },
-  radioSelected: {
-    borderColor: Colors.primary,
-    backgroundColor: Colors.primary,
-  },
-  radioDot: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    backgroundColor: Colors.white,
-  },
-  cta: {
-    paddingHorizontal: 18,
-    paddingTop: 8,
-  },
+  radioSelected: { borderColor: Colors.primary, backgroundColor: Colors.primary },
+  radioDot:      { width: 8, height: 8, borderRadius: 4, backgroundColor: Colors.white },
+  cta:    { paddingHorizontal: 18, paddingTop: 8 },
   ctaBtn: {
     backgroundColor: Colors.primary,
     borderRadius: 14,
@@ -229,15 +155,8 @@ export const drawerStyles = StyleSheet.create({
     shadowRadius: 16,
     elevation: 5,
   },
-  ctaBtnDisabled: {
-    backgroundColor: Colors.muted,
-    shadowColor: Colors.muted,
-  },
-  ctaBtnContent: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6
-  },
+  ctaBtnDisabled: { backgroundColor: Colors.muted, shadowColor: Colors.muted },
+  ctaBtnContent:  { flexDirection: 'row', alignItems: 'center', gap: 6 },
   ctaBtnText: {
     color: Colors.white,
     fontSize: 15,

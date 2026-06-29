@@ -7,7 +7,7 @@
 import i18n, { apiError } from '@/i18n/i18n';
 import { fetchOffers } from '@/service/esims';
 import { useCartStore } from '@/store/useCartStore';
-import { EsimSummary, OfferWithStock, formatOfferLabel, getCountryName } from '@ilotel/shared';
+import { EsimSummary, OfferWithStock, formatOfferLabel, getDisplayName } from '@ilotel/shared';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 
@@ -57,7 +57,7 @@ export function useOfferDrawer(esim: EsimSummary): UseOfferDrawerReturn {
     setCart({
       offerId: offer.id,
       esimId: esim.id,
-      country: getCountryName(esim.code, i18n.resolvedLanguage) ,
+      country: getDisplayName(esim.code, i18n.resolvedLanguage) ,
       flag: esim.flag,
       offer: formatOfferLabel(offer),
       basePrice: offer.basePrice,

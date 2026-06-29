@@ -14,7 +14,7 @@
  *   ILOTEL_LOGO_B64  base64 du logo PNG (ne pas committer dans le code)
  */
 
-import { getCountryName } from '@ilotel/shared';
+import { getDisplayName } from '@ilotel/shared';
 import nodemailer from 'nodemailer';
 import QRCode from 'qrcode';
 import { BRAND } from '../../constants/env.js';
@@ -71,7 +71,7 @@ export async function sendEsimEmail(params: EsimEmailParams): Promise<void> {
 
   const lang    = resolveLang(undefined, params.lang);
   const content = getEsimContent(lang);
-  const countryName = getCountryName(params.code, lang);
+  const countryName = getDisplayName(params.code, lang);
 
   const qrDataUrl = await QRCode.toDataURL(params.activationCode, {
     width:  256,

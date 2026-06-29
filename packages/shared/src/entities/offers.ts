@@ -7,6 +7,7 @@ export interface Offer {
   id: string;
   esimId: string;
   dataGb: number;
+  unit: string;
   durationDays: number;
   basePrice: number;
   stripePriceId: string;

@@ -14,16 +14,16 @@ DELETE FROM esims;
 -- ESIMS (destinations)
 -- =============================================================================
 
-INSERT INTO esims (id, code, name, type, region, flag) VALUES
-  ('00000000-0000-0000-0000-000000000001', 'fr', 'France',      'country', 'europe',   '🇫🇷'),
-  ('00000000-0000-0000-0000-000000000002', 'es', 'Espagne',     'country', 'europe',   '🇪🇸'),
-  ('00000000-0000-0000-0000-000000000003', 'eu', 'Europe',      'region',  'europe',   '🇪🇺'),
-  ('00000000-0000-0000-0000-000000000004', 'jp', 'Japon',       'country', 'asia',     '🇯🇵'),
-  ('00000000-0000-0000-0000-000000000005', 'us', 'États-Unis',  'country', 'americas', '🇺🇸'),
-  ('00000000-0000-0000-0000-000000000006', 'th', 'Thaïlande',   'country', 'asia',     '🇹🇭'),
-  ('00000000-0000-0000-0000-000000000007', 'ma', 'Maroc',       'country', 'africa',   '🇲🇦'),
-  ('00000000-0000-0000-0000-000000000008', 'mx', 'Mexique',     'country', 'americas', '🇲🇽'),
-  ('00000000-0000-0000-0000-000000000009', 'sg', 'Singapour',   'country', 'asia',     '🇸🇬');
+INSERT INTO esims (id, code, name, type, region, flag, region_countries) VALUES
+  ('00000000-0000-0000-0000-000000000001', 'fr', 'France',      'country', 'eu', '🇫🇷', '[]'),
+  ('00000000-0000-0000-0000-000000000002', 'es', 'Espagne',     'country', 'eu', '🇪🇸', '[]'),
+  ('00000000-0000-0000-0000-000000000003', 'eu', 'Europe',      'region',  'eu', '🇪🇺', '["fr","am","ar"]'),
+  ('00000000-0000-0000-0000-000000000004', 'jp', 'Japon',       'country', 'as', '🇯🇵', '[]'),
+  ('00000000-0000-0000-0000-000000000005', 'us', 'États-Unis',  'country', 'am', '🇺🇸', '[]'),
+  ('00000000-0000-0000-0000-000000000006', 'th', 'Thaïlande',   'country', 'as', '🇹🇭', '[]'),
+  ('00000000-0000-0000-0000-000000000007', 'ma', 'Maroc',       'country', 'af', '🇲🇦', '[]'),
+  ('00000000-0000-0000-0000-000000000008', 'mx', 'Mexique',     'country', 'am', '🇲🇽', '[]'),
+  ('00000000-0000-0000-0000-000000000009', 'sg', 'Singapour',   'country', 'as', '🇸🇬', '[]');
 
 -- =============================================================================
 -- OFFERS
@@ -32,7 +32,7 @@ INSERT INTO esims (id, code, name, type, region, flag) VALUES
 
 INSERT INTO offers (id, esim_id, data_gb, duration_days, base_price, stripe_price_id, transatel_product_id) VALUES
   -- France
-  ('00000000-0000-0000-0001-000000000001', '00000000-0000-0000-0000-000000000001', 3,  30,  4.99,  'price_1T3GBEB2QNNevpYqeVBmiWQn', 'WW_901O_STACK_ONEOFF_FRA_3GB_30D'),
+  ('00000000-0000-0000-0001-000000000001', '00000000-0000-0000-0000-000000000001', 3,  30, 4.99,  'price_1T3GBEB2QNNevpYqeVBmiWQn', 'WW_901O_STACK_ONEOFF_FRA_3GB_30D'),
   ('00000000-0000-0000-0001-000000000002', '00000000-0000-0000-0000-000000000001', 25, 30, 9.99,  'price_1T3GBuB2QNNevpYqFuh15L9B', 'WW_901O_STACK_ONEOFF_FRA_25GB_30D'),
   ('00000000-0000-0000-0001-000000000003', '00000000-0000-0000-0000-000000000001', 50, 30, 26.99, 'price_1T3GCGB2QNNevpYqr293pzqf', 'WW_901O_STACK_ONEOFF_FRA_50GB_30D'),
 

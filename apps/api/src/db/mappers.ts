@@ -20,6 +20,7 @@ export function mapEsim(row: Record<string, unknown>): Esim {
     type: row.type as string,
     flag: row.flag as string,
     region: (row.region as string) ?? '',
+    regionCountries: row.region_countries as string
   };
 }
 
@@ -38,6 +39,7 @@ export function mapEsimSummary(row: Record<string, unknown>): EsimSummary {
     minPrice: row.min_price != null ? Number(row.min_price) : null,
     hasPromo: Boolean(row.has_promo),
     hasStock: Boolean(row.has_stock),
+    regionCountries: row.region_countries as string
   };
 }
 
@@ -51,6 +53,7 @@ export function mapOfferWithDetails(row: Record<string, unknown>): OfferWithDeta
     type: row.esim_type as string,
     flag: row.esim_flag as string,
     region: (row.esim_region as string) ?? '',
+    regionCountries: row.region_countries as string
   };
 
   const activeDiscount: Discount | null = row.discount_id
@@ -82,6 +85,7 @@ export function mapOfferWithDetails(row: Record<string, unknown>): OfferWithDeta
     activeDiscount,
     finalPrice,
     transatelProductId: row.transatel_product_id as string,
+    unit: row.unit as string,
   };
 }
 
