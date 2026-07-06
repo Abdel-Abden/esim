@@ -16,6 +16,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Circle, Path, Rect } from 'react-native-svg';
 import { styles } from './TutorialModal.styles';
 
@@ -282,90 +283,92 @@ export default function TutorialModal({ visible, onClose }: TutorialModalProps) 
   const { Illustration } = page;
 
   return (
-    <Modal visible={visible} transparent animationType="none" onRequestClose={onClose} statusBarTranslucent>
-      <Animated.View style={[styles.backdrop, { opacity: backdropAnim }]}>
-        <TouchableOpacity style={{ flex: 1 }} activeOpacity={1} onPress={onClose} />
-      </Animated.View>
+    <Modal visible={visible} transparent animationType="none" onRequestClose={onClose}>
+      <SafeAreaView style={{ flex: 1 }} edges={["top", "bottom"]}>
+        <Animated.View style={[styles.backdrop, { opacity: backdropAnim }]}>
+          <TouchableOpacity style={{ flex: 1 }} activeOpacity={1} onPress={onClose} />
+        </Animated.View>
 
-      <Animated.View style={[styles.card, { transform: [{ translateY: slideAnim }] }]} pointerEvents="box-none">
-        {/* Header */}
-        <LinearGradient
-          colors={[Colors.primary, Colors.primaryMid]}
-          start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
-          style={styles.cardHeader}
-        >
-          <TouchableOpacity style={styles.closeBtn} onPress={onClose} activeOpacity={0.75}>
-            <Text style={styles.closeTxt}>{t('tutorial.close')}</Text>
-          </TouchableOpacity>
-          <View style={styles.illuWrap}><Illustration /></View>
-          <Svg width="120%" height={28} viewBox="0 0 400 28" preserveAspectRatio="none" style={styles.headerWave}>
-            <Path d="M0 28 Q100 0 200 18 Q300 36 400 10 L400 28 Z" fill={Colors.white} />
-          </Svg>
-        </LinearGradient>
+        <Animated.View style={[styles.card, { transform: [{ translateY: slideAnim }] }]} pointerEvents="box-none">
+          {/* Header */}
+          <LinearGradient
+            colors={[Colors.primary, Colors.primaryMid]}
+            start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
+            style={styles.cardHeader}
+          >
+            <TouchableOpacity style={styles.closeBtn} onPress={onClose} activeOpacity={0.75}>
+              <Text style={styles.closeTxt}>{t('tutorial.close')}</Text>
+            </TouchableOpacity>
+            <View style={styles.illuWrap}><Illustration /></View>
+            <Svg width="120%" height={28} viewBox="0 0 400 28" preserveAspectRatio="none" style={styles.headerWave}>
+              <Path d="M0 28 Q100 0 200 18 Q300 36 400 10 L400 28 Z" fill={Colors.white} />
+            </Svg>
+          </LinearGradient>
 
-        {/* Body */}
-        <ScrollView style={styles.body} contentContainerStyle={styles.bodyContent} showsVerticalScrollIndicator={false} scrollEnabled={false}>
-          <Animated.View style={[styles.pageContent, {
-            opacity: pageAnim.interpolate({ inputRange: [-30, 0], outputRange: [0, 1] }),
-            transform: [{ translateX: pageAnim }],
-          }]}>
-            <View style={styles.badge}>
-              <Text style={styles.badgeText}>{page.badge}</Text>
-            </View>
+          {/* Body */}
+          <ScrollView style={styles.body} contentContainerStyle={styles.bodyContent} showsVerticalScrollIndicator={false} scrollEnabled={false}>
+            <Animated.View style={[styles.pageContent, {
+              opacity: pageAnim.interpolate({ inputRange: [-30, 0], outputRange: [0, 1] }),
+              transform: [{ translateX: pageAnim }],
+            }]}>
+              <View style={styles.badge}>
+                <Text style={styles.badgeText}>{page.badge}</Text>
+              </View>
 
-            <Text style={styles.title}>{page.title}</Text>
-            <Text style={styles.subtitle}>{page.subtitle}</Text>
+              <Text style={styles.title}>{page.title}</Text>
+              <Text style={styles.subtitle}>{page.subtitle}</Text>
 
-            {page.osTag && <OsTag />}
+              {page.osTag && <OsTag />}
 
-            <View style={styles.bullets}>
-              {page.bullets.map((b, i) => (
-                <View key={i} style={styles.bulletRow}>
-                  <View style={styles.bulletIcon}>
-                    <Text style={styles.bulletIconText}>{b.icon}</Text>
+              <View style={styles.bullets}>
+                {page.bullets.map((b, i) => (
+                  <View key={i} style={styles.bulletRow}>
+                    <View style={styles.bulletIcon}>
+                      <Text style={styles.bulletIconText}>{b.icon}</Text>
+                    </View>
+                    <Text style={styles.bulletText}>{b.text}</Text>
                   </View>
-                  <Text style={styles.bulletText}>{b.text}</Text>
-                </View>
+                ))}
+              </View>
+            </Animated.View>
+          </ScrollView>
+
+          {/* Footer */}
+          <View style={styles.footer}>
+            <View style={styles.dots}>
+              {pages.map((_, i) => (
+                <TouchableOpacity key={i} onPress={() => i !== pageIdx && goTo(i)} activeOpacity={0.7}>
+                  <View style={[styles.dot, i === pageIdx && styles.dotActive]} />
+                </TouchableOpacity>
               ))}
             </View>
-          </Animated.View>
-        </ScrollView>
 
-        {/* Footer */}
-        <View style={styles.footer}>
-          <View style={styles.dots}>
-            {pages.map((_, i) => (
-              <TouchableOpacity key={i} onPress={() => i !== pageIdx && goTo(i)} activeOpacity={0.7}>
-                <View style={[styles.dot, i === pageIdx && styles.dotActive]} />
+            <View style={styles.navRow}>
+              {pageIdx > 0 ? (
+                <TouchableOpacity style={styles.prevBtn} onPress={handlePrev} activeOpacity={0.75}>
+                  <Text style={styles.prevBtnText}>{t('tutorial.back')}</Text>
+                </TouchableOpacity>
+              ) : (
+                <TouchableOpacity style={styles.skipBtn} onPress={onClose} activeOpacity={0.75}>
+                  <Text style={styles.skipBtnText}>{t('tutorial.skip')}</Text>
+                </TouchableOpacity>
+              )}
+
+              <TouchableOpacity onPress={handleNext} activeOpacity={0.85}>
+                <LinearGradient
+                  colors={isLast ? [Colors.accent, '#0E7A6C'] : [Colors.primary, Colors.primaryMid]}
+                  start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
+                  style={styles.nextBtn}
+                >
+                  <Text style={styles.nextBtnText}>
+                    {isLast ? t('tutorial.next.last') : t('tutorial.next.default')}
+                  </Text>
+                </LinearGradient>
               </TouchableOpacity>
-            ))}
+            </View>
           </View>
-
-          <View style={styles.navRow}>
-            {pageIdx > 0 ? (
-              <TouchableOpacity style={styles.prevBtn} onPress={handlePrev} activeOpacity={0.75}>
-                <Text style={styles.prevBtnText}>{t('tutorial.back')}</Text>
-              </TouchableOpacity>
-            ) : (
-              <TouchableOpacity style={styles.skipBtn} onPress={onClose} activeOpacity={0.75}>
-                <Text style={styles.skipBtnText}>{t('tutorial.skip')}</Text>
-              </TouchableOpacity>
-            )}
-
-            <TouchableOpacity onPress={handleNext} activeOpacity={0.85}>
-              <LinearGradient
-                colors={isLast ? [Colors.accent, '#0E7A6C'] : [Colors.primary, Colors.primaryMid]}
-                start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
-                style={styles.nextBtn}
-              >
-                <Text style={styles.nextBtnText}>
-                  {isLast ? t('tutorial.next.last') : t('tutorial.next.default')}
-                </Text>
-              </LinearGradient>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </Animated.View>
+        </Animated.View>
+      </SafeAreaView>
     </Modal>
   );
 }

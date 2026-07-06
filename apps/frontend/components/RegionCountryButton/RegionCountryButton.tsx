@@ -21,12 +21,12 @@ import {
   Animated,
   Dimensions,
   Modal,
-  Pressable,
   ScrollView,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { btnStyles, sheetStyles } from './RegionCountryButton.styles';
 
 interface Props {
@@ -81,51 +81,54 @@ export default function RegionCountriesButton({ esim }: Props) {
         animationType="none"
         onRequestClose={() => setOpen(false)}
       >
-        <Pressable style={sheetStyles.backdrop} onPress={() => setOpen(false)}>
-          <Pressable style={sheetStyles.sheet} onPress={(e) => e.stopPropagation()}>
-            <View style={sheetStyles.handle} />
+        <SafeAreaView style={{ flex: 1 }} edges={["top", "bottom"]}>
 
-            <View style={sheetStyles.header}>
-              <View style={sheetStyles.headerLeft}>
-                <Text style={sheetStyles.flag}>{esim.flag}</Text>
-                <View>
-                  <Text style={sheetStyles.title}>{regionLabel}</Text>
-                  <Text style={sheetStyles.subtitle}>
-                    {countries.length} {t('regionTooltip.title').toLowerCase()}
-                  </Text>
-                </View>
-              </View>
-              <TouchableOpacity
-                style={sheetStyles.closeBtn}
-                onPress={() => setOpen(false)}
-              >
-                <Text style={sheetStyles.closeTxt}>✕</Text>
-              </TouchableOpacity>
-            </View>
+          <Animated.View style={[sheetStyles.backdrop, { opacity: backdropOpacity }]}>
+            <Animated.View style={[sheetStyles.sheet, { transform: [{ translateY: sheetTranslateY }] }]}>
+              {/* View simple — ne capte pas les touch, les laisse passer au ScrollView */}
 
-            <View style={sheetStyles.divider} />
-
-            <ScrollView
-              style={sheetStyles.list}
-              contentContainerStyle={sheetStyles.listContent}
-              showsVerticalScrollIndicator={false}
-            >
-              {[...countries]
-                .sort((a, b) =>
-                  getDisplayName(a, i18n.resolvedLanguage).localeCompare(
-                    getDisplayName(b, i18n.resolvedLanguage),
-                  )
-                )
-                .map((code) => (
-                  <View key={code} style={sheetStyles.row}>
-                    <Text style={sheetStyles.countryName}>
-                      {getDisplayName(code, i18n.resolvedLanguage)}
+              <View style={sheetStyles.header}>
+                <View style={sheetStyles.headerLeft}>
+                  <Text style={sheetStyles.flag}>{esim.flag}</Text>
+                  <View>
+                    <Text style={sheetStyles.title}>{regionLabel}</Text>
+                    <Text style={sheetStyles.subtitle}>
+                      {countries.length} {t('home.regionTooltip.title').toLowerCase()}
                     </Text>
                   </View>
-                ))}
-            </ScrollView>
-          </Pressable>
-        </Pressable>
+                </View>
+                <TouchableOpacity
+                  style={sheetStyles.closeBtn}
+                  onPress={() => setOpen(false)}
+                >
+                  <Text style={sheetStyles.closeTxt}>✕</Text>
+                </TouchableOpacity>
+              </View>
+
+              <View style={sheetStyles.divider} />
+
+              <ScrollView
+                style={sheetStyles.list}
+                contentContainerStyle={sheetStyles.listContent}
+                showsVerticalScrollIndicator={false}
+              >
+                {[...countries]
+                  .sort((a, b) =>
+                    getDisplayName(a, i18n.resolvedLanguage).localeCompare(
+                      getDisplayName(b, i18n.resolvedLanguage),
+                    )
+                  )
+                  .map((code) => (
+                    <View key={code} style={sheetStyles.row}>
+                      <Text style={sheetStyles.countryName}>
+                        {getDisplayName(code, i18n.resolvedLanguage)}
+                      </Text>
+                    </View>
+                  ))}
+              </ScrollView>
+            </Animated.View>
+          </Animated.View>
+        </SafeAreaView>
       </Modal>
     </>
   );

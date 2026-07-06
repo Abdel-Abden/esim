@@ -12,8 +12,8 @@ export const styles = StyleSheet.create({
 
   /* ── Card container ────────────────────────────────────────────────────── */
   card: {
-    position: 'absolute',
-    bottom: 0,
+    flex: 1,
+    justifyContent: 'flex-end',
     left: 0,
     right: 0,
     backgroundColor: Colors.white,

@@ -1,7 +1,3 @@
-/**
- * CountryCard — carte masonry
- * ✅ MODIFIÉ : wrapper rcbStyles.wrapper pour ancrer RegionCountriesButton
- */
 import { EsimSummary, getDisplayName } from '@ilotel/shared';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -33,6 +29,8 @@ export default function CountryCard({ esim, accent = false }: CountryCardProps) 
           onPress={drawer.openDrawer}
           activeOpacity={0.78}
         >
+          <RegionCountriesButton esim={esim} />
+
           <Text style={cardStyles.flag}>{esim.flag}</Text>
           <Text style={cardStyles.name} numberOfLines={1}>
             {getDisplayName(esim.code, i18n.resolvedLanguage)}
@@ -61,9 +59,6 @@ export default function CountryCard({ esim, accent = false }: CountryCardProps) 
             )}
           </View>
         </TouchableOpacity>
-
-        {/* Frère du TouchableOpacity → visible sur Android */}
-        <RegionCountriesButton esim={esim} />
       </View>
 
       <OfferDrawer

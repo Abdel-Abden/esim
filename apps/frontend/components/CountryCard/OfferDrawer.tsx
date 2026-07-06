@@ -17,6 +17,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { drawerStyles } from './CountryCard.styles';
 
 interface OfferDrawerProps {
@@ -74,105 +75,107 @@ export default function OfferDrawer({
 
   return (
     <Modal visible={visible} transparent animationType="none" onRequestClose={onClose}>
-      <Animated.View style={[drawerStyles.backdrop, { opacity: backdropOpacity }]}>
+      <SafeAreaView style={{ flex: 1 }} edges={["top", "bottom"]}>
+        <Animated.View style={[drawerStyles.backdrop, { opacity: backdropOpacity }]}>
 
-        <TouchableOpacity style={{ flex: 1 }} activeOpacity={1} onPress={onClose} />
+          <TouchableOpacity style={{ flex: 1 }} activeOpacity={1} onPress={onClose} />
 
-        <Animated.View style={[drawerStyles.sheet, { transform: [{ translateY: sheetTranslateY }] }]}>
-          <View style={drawerStyles.handle} />
+          <Animated.View style={[drawerStyles.sheet, { transform: [{ translateY: sheetTranslateY }] }]}>
+            <View style={drawerStyles.handle} />
 
-          <View style={drawerStyles.header}>
-            <View style={drawerStyles.countryRow}>
-              <Text style={drawerStyles.flag}>{esim.flag}</Text>
-              <View>
-                <Text style={drawerStyles.countryName}>{getDisplayName(esim.code, i18n.resolvedLanguage)}</Text>
-                <Text style={drawerStyles.countrySub}>{t('offerDrawer.choosePlan')}</Text>
-              </View>
-            </View>
-            <TouchableOpacity style={drawerStyles.closeBtn} onPress={onClose}>
-              <Text style={drawerStyles.closeTxt}>{t('tutorial.close')}</Text>
-            </TouchableOpacity>
-          </View>
-
-          <View style={drawerStyles.divider} />
-
-          <Text style={drawerStyles.offersLabel}>{t('offerDrawer.availablePlans')}</Text>
-
-          {loading ? (
-            <ActivityIndicator size="large" color={Colors.primary} style={{ marginVertical: 32 }} />
-          ) : loadError ? (
-            <Text style={drawerStyles.errorText}>{t(`errors.${loadError}`)}</Text>
-          ) : (
-            <ScrollView style={drawerStyles.offersList} showsVerticalScrollIndicator={false}>
-              {offers.map((offer, i) => {
-                const isPromo = offer.activeDiscount !== null;
-                const isExhausted = offer.availableCount === 0;
-                const isSelected = selectedIdx === i;
-                return (
-                  <TouchableOpacity
-                    key={offer.id}
-                    style={[
-                      drawerStyles.offerCard,
-                      isSelected && drawerStyles.offerCardSelected,
-                      isExhausted && drawerStyles.offerCardExhausted,
-                    ]}
-                    onPress={() => !isExhausted && onSelectIdx(i)}
-                    activeOpacity={0.75}
-                  >
-                    <View style={drawerStyles.offerLeft}>
-                      <Text style={drawerStyles.offerData}>{offer.dataGb} {GetDataUnitDisplay(offer.unit)}</Text>
-                      <Text style={drawerStyles.offerDays}>{offer.durationDays} {t('offerDrawer.days')}</Text>
-                    </View>
-                    <View style={drawerStyles.offerRight}>
-                      {isPromo && !isExhausted && (
-                        <View style={drawerStyles.promoBadge}>
-                          <Text style={drawerStyles.promoBadgeText}>{t('countryCard.promo').toUpperCase()}</Text>
-                        </View>
-                      )}
-                      {isPromo && !isExhausted && (
-                        <Text style={drawerStyles.oldPrice}>{offer.basePrice.toFixed(2)}€</Text>
-                      )}
-                      <Text
-                        style={[
-                          drawerStyles.finalPrice,
-                          isExhausted && drawerStyles.finalPriceExhausted,
-                        ]}
-                      >
-                        {isExhausted ? t('offerDrawer.exhausted') : `${offer.finalPrice.toFixed(2)}€`}
-                      </Text>
-                    </View>
-                    <View style={[drawerStyles.radio, isSelected && drawerStyles.radioSelected]}>
-                      {isSelected && <View style={drawerStyles.radioDot} />}
-                    </View>
-                  </TouchableOpacity>
-                );
-              })}
-            </ScrollView>
-          )}
-
-          <View style={drawerStyles.cta}>
-            <TouchableOpacity
-              style={[drawerStyles.ctaBtn, isDisabled && drawerStyles.ctaBtnDisabled]}
-              onPress={onOrder}
-              activeOpacity={0.85}
-              disabled={isDisabled}
-            >
-              {loading ? (
-                <Text style={drawerStyles.ctaBtnText}>{t('payment.button.loading')}</Text>
-              ) : isOutOfStock ? (
-                <Text style={drawerStyles.ctaBtnText}>{t('offerDrawer.exhausted')}</Text>
-              ) : (
-                <View style={drawerStyles.ctaBtnContent}>
-                  <Text style={drawerStyles.ctaBtnText}>{t('offerDrawer.order')}</Text>
-                  <Ionicons name="arrow-forward" size={18} color="white" />
+            <View style={drawerStyles.header}>
+              <View style={drawerStyles.countryRow}>
+                <Text style={drawerStyles.flag}>{esim.flag}</Text>
+                <View>
+                  <Text style={drawerStyles.countryName}>{getDisplayName(esim.code, i18n.resolvedLanguage)}</Text>
+                  <Text style={drawerStyles.countrySub}>{t('offerDrawer.choosePlan')}</Text>
                 </View>
-              )}
-            </TouchableOpacity>
-          </View>
+              </View>
+              <TouchableOpacity style={drawerStyles.closeBtn} onPress={onClose}>
+                <Text style={drawerStyles.closeTxt}>{t('tutorial.close')}</Text>
+              </TouchableOpacity>
+            </View>
+
+            <View style={drawerStyles.divider} />
+
+            <Text style={drawerStyles.offersLabel}>{t('offerDrawer.availablePlans')}</Text>
+
+            {loading ? (  
+              <ActivityIndicator size="large" color={Colors.primary} style={{ marginVertical: 32 }} />
+            ) : loadError ? (
+              <Text style={drawerStyles.errorText}>{t(`errors.${loadError}`)}</Text>
+            ) : (
+              <ScrollView style={drawerStyles.offersList} showsVerticalScrollIndicator={false}>
+                {offers.map((offer, i) => {
+                  const isPromo = offer.activeDiscount !== null;
+                  const isExhausted = offer.availableCount === 0;
+                  const isSelected = selectedIdx === i;
+                  return (
+                    <TouchableOpacity
+                      key={offer.id}
+                      style={[
+                        drawerStyles.offerCard,
+                        isSelected && drawerStyles.offerCardSelected,
+                        isExhausted && drawerStyles.offerCardExhausted,
+                      ]}
+                      onPress={() => !isExhausted && onSelectIdx(i)}
+                      activeOpacity={0.75}
+                    >
+                      <View style={drawerStyles.offerLeft}>
+                        <Text style={drawerStyles.offerData}>{offer.dataGb} {GetDataUnitDisplay(offer.unit)}</Text>
+                        <Text style={drawerStyles.offerDays}>{offer.durationDays} {t('offerDrawer.days')}</Text>
+                      </View>
+                      <View style={drawerStyles.offerRight}>
+                        {isPromo && !isExhausted && (
+                          <View style={drawerStyles.promoBadge}>
+                            <Text style={drawerStyles.promoBadgeText}>{t('countryCard.promo').toUpperCase()}</Text>
+                          </View>
+                        )}
+                        {isPromo && !isExhausted && (
+                          <Text style={drawerStyles.oldPrice}>{offer.basePrice.toFixed(2)}€</Text>
+                        )}
+                        <Text
+                          style={[
+                            drawerStyles.finalPrice,
+                            isExhausted && drawerStyles.finalPriceExhausted,
+                          ]}
+                        >
+                          {isExhausted ? t('offerDrawer.exhausted') : `${offer.finalPrice.toFixed(2)}€`}
+                        </Text>
+                      </View>
+                      <View style={[drawerStyles.radio, isSelected && drawerStyles.radioSelected]}>
+                        {isSelected && <View style={drawerStyles.radioDot} />}
+                      </View>
+                    </TouchableOpacity>
+                  );
+                })}
+              </ScrollView>
+            )}
+
+            <View style={drawerStyles.cta}>
+              <TouchableOpacity
+                style={[drawerStyles.ctaBtn, isDisabled && drawerStyles.ctaBtnDisabled]}
+                onPress={onOrder}
+                activeOpacity={0.85}
+                disabled={isDisabled}
+              >
+                {loading ? (
+                  <Text style={drawerStyles.ctaBtnText}>{t('payment.button.loading')}</Text>
+                ) : isOutOfStock ? (
+                  <Text style={drawerStyles.ctaBtnText}>{t('offerDrawer.exhausted')}</Text>
+                ) : (
+                  <View style={drawerStyles.ctaBtnContent}>
+                    <Text style={drawerStyles.ctaBtnText}>{t('offerDrawer.order')}</Text>
+                    <Ionicons name="arrow-forward" size={18} color="white" />
+                  </View>
+                )}
+              </TouchableOpacity>
+            </View>
+
+          </Animated.View>
 
         </Animated.View>
-
-      </Animated.View>
+      </SafeAreaView>
     </Modal>
   );
 }
