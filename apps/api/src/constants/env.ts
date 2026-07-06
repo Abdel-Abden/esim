@@ -36,7 +36,7 @@ export function resolveEmailRecipient(realEmail: string): string {
  */
 export const BRAND = {
   name:        'ILOTEL',
-  appName:     'ILOTEL eSIM',
+  appName:     'ILOTEL',
   support:     'support@ilotel.com',
   dpo:         'dpo@ilotel.com',
   legalUrl:    'https://api.ilotel.com/legal',

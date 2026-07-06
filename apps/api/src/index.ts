@@ -19,6 +19,7 @@ app.use('*', logger());
 app.use('*', cors({
   origin: [
     'https://api.ilotel.com',
+    'https://www.ilotel.com',
     'http://localhost:3000'
   ],
   allowMethods: ['GET', 'POST', 'OPTIONS'],
