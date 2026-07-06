@@ -86,7 +86,7 @@ export default function HomeScreen() {
     return () => sub.remove();
   }, [load]);
 
-  const monde = esims.find((e) => e.type === 'region' || e.type === 'global');
+  const monde = esims.find((e) => e.code === 'ww2');
 
   const filteredEsims = useMemo(() => {
     let list = esims;
@@ -105,7 +105,10 @@ export default function HomeScreen() {
         getDisplayName(e.code, i18n.resolvedLanguage).toLowerCase().includes(search.toLowerCase())
       );
     }
-    return list;
+    return [...list].sort((a,b) => {
+      if (b.hasStock !== a.hasStock) return Number(b.hasStock) - Number(a.hasStock);
+      return getDisplayName(a.code, i18n.resolvedLanguage).localeCompare(getDisplayName(b.code, i18n.resolvedLanguage))
+    });
   }, [search, esims, activeFilter]);
 
   const col1 = filteredEsims.filter((_, i) => i % 2 === 0);
@@ -237,7 +240,7 @@ export default function HomeScreen() {
               <View style={styles.masonryRow}>
                 <View style={styles.masonryCol}>
                   {col1.map((esim, i) => (
-                    <CountryCard key={esim.id} esim={esim} accent={i === 0} />
+                    <CountryCard key={esim.id} esim={esim}/>
                   ))}
                 </View>
                 <View style={styles.masonryCol}>
