@@ -63,22 +63,6 @@ export const featuredStyles = StyleSheet.create({
     color: Colors.primaryDark,
   },
 
-  // Bouton flèche à droite
-  arrowBtn: {
-    width: 36,
-    height: 36,
-    backgroundColor: Colors.primary,
-    borderRadius: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexShrink: 0,
-    shadowColor: Colors.primary,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 12,
-    elevation: 4,
-  },
-
   // État épuisé
   exhausted: {
     opacity: 0.5,
