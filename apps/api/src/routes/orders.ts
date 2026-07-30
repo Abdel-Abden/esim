@@ -41,7 +41,7 @@ orders.post('/reserve', async (c) => {
   if (!offer) {
     return c.json({ data: null, errorCode: ErrorCode.OFFER_NOT_FOUND }, 404);
   }
-  if (!offer.stripePriceId) {
+  if (offer.basePrice <= 0) {
     return c.json({ data: null, errorCode: ErrorCode.OFFER_NOT_FOR_SALE }, 422);
   }
   if (offer.availableCount === 0) {

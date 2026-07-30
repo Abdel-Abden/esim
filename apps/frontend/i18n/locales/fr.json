@@ -16,7 +16,9 @@
     },
     "filters": {
       "all": "🌐 Tous",
-      "country": "📍 Pays",
+      "region": "Région",
+      "global": "Monde",
+      "local": "Pays",
       "eu": "🇪🇺 Europe",
       "as": "🌏 Asie",
       "af": "🌍 Afrique",
@@ -32,8 +34,9 @@
       "unit_gb": "Go"
     },
     "regionTooltip": {
-      "title": "Pays couverts",
-      "close": "Fermer"
+      "country": "Pays",
+      "close": "Fermer",
+      "network": "Réseaux"
     },
     "search": {
       "placeholder": "Rechercher un pays..."

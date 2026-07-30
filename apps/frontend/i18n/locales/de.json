@@ -16,6 +16,9 @@
     },
     "filters": {
       "all": "🌐 Alle",
+      "region": "Region",
+      "global": "Welt",
+      "local": "Länder",
       "europe": "🇪🇺 Europa",
       "asia": "🌏 Asien",
       "americas": "🌎 Amerika",

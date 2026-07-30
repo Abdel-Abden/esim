@@ -16,7 +16,9 @@
     },
     "filters": {
       "all": "🌐 All",
-      "country": "📍 Countries",
+      "region": "Region",
+      "global": "World",
+      "local": "Countries",
       "eu": "🇪🇺 Europe",
       "as": "🌏 Asia",
       "af": "🌍 Africa",
@@ -33,8 +35,9 @@
       "unit_tb": "TB"
     },
     "regionTooltip": {
-      "title": "Countries covered",
-      "close": "Close"
+      "country": "Countries",
+      "close": "Close",
+      "network": "Networks"
     },
     "search": {
       "placeholder": "Search a country..."

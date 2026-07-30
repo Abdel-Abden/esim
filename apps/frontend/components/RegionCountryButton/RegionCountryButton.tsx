@@ -1,27 +1,49 @@
 /**
  * RegionCountriesButton
  * ─────────────────────
- * Bouton ⓘ pour les esims région/custom.
+ * Badge affichant soit le nombre de pays couverts (esims région/monde),
+ * soit le nombre d'opérateurs disponibles (esims pays), remplaçant
+ * l'ancien "ⓘ". Au tap, ouvre un tableau détaillant, pour chaque
+ * pays et chaque opérateur, la disponibilité des réseaux 3G / 4G / 5G.
+ *
+ * Modèle de données (@ilotel/shared → EsimSummary) :
+ *   regionCountries: Record<codeISO, Record<nomOperateur, {
+ *     '3G': boolean; '4G': boolean; '5G': boolean;
+ *   }>>
+ *
+ * Deux modes d'affichage, selon `esim.type` :
+ *   - "country"            → un seul pays dans regionCountries. Le tableau
+ *                             liste directement les opérateurs (pas de
+ *                             regroupement par pays, ce serait redondant).
+ *   - "region" / "global"  → plusieurs pays. Le tableau groupe les
+ *                             opérateurs sous un en-tête par pays.
  *
  * ⚠️  Android : zIndex inside TouchableOpacity est ignoré.
  * Solution : le bouton ET la card sont frères dans un View wrapper,
  * le bouton est en absolu sur ce wrapper (pas dans le TouchableOpacity).
  *
- * Pattern d'usage dans CountryCard / FeaturedCard :
+ * Pattern d'usage "flottant" dans CountryCard / FeaturedCard :
  *
  *   <View style={rcbStyles.wrapper}>
  *     <TouchableOpacity onPress={...}>...</TouchableOpacity>
  *     <RegionCountriesButton esim={esim} />
  *   </View>
+ *
+ * Pattern d'usage "en ligne" (ex: en-tête de section dans GroupOfferDrawer) :
+ *
+ *   <RegionCountriesButton esim={esim} inline showLabel />
  */
-import { EsimSummary, getDisplayName } from '@ilotel/shared';
+import { Ionicons } from '@expo/vector-icons';
+import { Colors, CountryNetworkInfo, EsimSummary, getDisplayName } from '@ilotel/shared';
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
+  ActivityIndicator,
   Animated,
   Dimensions,
+  FlatList,
+  InteractionManager,
   Modal,
-  ScrollView,
   Text,
   TouchableOpacity,
   View
@@ -31,19 +53,49 @@ import { btnStyles, sheetStyles } from './RegionCountryButton.styles';
 
 interface Props {
   esim: EsimSummary;
+  /** true = affichage en ligne (dans un en-tête de section), false = badge flottant sur une carte */
+  inline?: boolean;
+  /** affiche un libellé à côté du nombre — utile en mode inline */
+  showLabel?: boolean;
 }
 
-export default function RegionCountriesButton({ esim }: Props) {
+type TableRow =
+  | { kind: 'countryHeader'; label: string }
+  | { kind: 'operatorRow'; operator: string; networks: CountryNetworkInfo; indented: boolean };
+
+/** Construit les lignes du tableau, groupées par pays uniquement en mode multi-pays */
+function buildRows(
+  countries: Record<string, Record<string, CountryNetworkInfo>>,
+  isCountryEsim: boolean,
+  lang?: string,
+): TableRow[] {
+  const codes = [...Object.keys(countries)].sort((a, b) =>
+    getDisplayName(a, lang).localeCompare(getDisplayName(b, lang))
+  );
+
+  const rows: TableRow[] = [];
+  for (const code of codes) {
+    const operators = countries[code] ?? {};
+    const operatorNames = [...Object.keys(operators)].sort((a, b) => a.localeCompare(b));
+
+    if (!isCountryEsim) {
+      rows.push({ kind: 'countryHeader', label: getDisplayName(code, lang) });
+    }
+    for (const operator of operatorNames) {
+      rows.push({ kind: 'operatorRow', operator, networks: operators[operator], indented: !isCountryEsim });
+    }
+  }
+  return rows;
+}
+
+function RegionCountriesButton({ esim, inline = false, showLabel = false }: Props) {
   const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
 
-  const isRegion = esim.type === 'region' || esim.type === 'custom';
-  const countries = esim.regionCountries ?? [];
+  const isCountryEsim = esim.type === 'local';
+  const regionCountriesData = esim.regionCountries;
+  const countryCodes = regionCountriesData ? Object.keys(regionCountriesData) : [];
 
-  if (!isRegion || countries.length === 0) return null;
-
-  const regionLabel = getDisplayName(esim.code, i18n.resolvedLanguage);
-  
   const SHEET_HEIGHT = Dimensions.get('window').height;
   const backdropOpacity = useRef(new Animated.Value(0)).current;
   const sheetTranslateY = useRef(new Animated.Value(SHEET_HEIGHT)).current;
@@ -62,19 +114,63 @@ export default function RegionCountriesButton({ esim }: Props) {
     }
   }, [open]);
 
+  // Ne construit le tableau (tri + getDisplayName sur potentiellement des
+  // centaines de pays/opérateurs) qu'une fois la modal déjà affichée à
+  // l'écran (InteractionManager.runAfterInteractions), pour que le tap
+  // se traduise par une ouverture instantanée + un spinner, plutôt que
+  // par un blocage avant même que la sheet n'apparaisse.
+  const [rows, setRows] = useState<TableRow[]>([]);
+  const [rowsLoading, setRowsLoading] = useState(false);
+
+  useEffect(() => {
+    if (!open || !regionCountriesData) {
+      setRows([]);
+      return;
+    }
+    setRowsLoading(true);
+    const task = InteractionManager.runAfterInteractions(() => {
+      setRows(buildRows(regionCountriesData, isCountryEsim, i18n.resolvedLanguage));
+      setRowsLoading(false);
+    });
+    return () => task.cancel();
+  }, [open, regionCountriesData, isCountryEsim, i18n.resolvedLanguage]);
+
+  if (countryCodes.length === 0) return null;
+
+  // Badge : nb de pays (région/monde) ou nb d'opérateurs (pays unique)
+  const badgeCount = isCountryEsim
+    ? Object.keys(regionCountriesData?.[countryCodes[0]] ?? {}).length
+    : countryCodes.length;
+
+  if (badgeCount === 0) return null;
+
+  const regionLabel = getDisplayName(esim.code, i18n.resolvedLanguage);
+
+  const unitLabel = isCountryEsim
+    ? t('home.regionTooltip.network')
+    : t('home.regionTooltip.country');
+
+  const headerCellLabel = isCountryEsim
+    ? t('home.regionTooltip.network')
+    : t('home.regionTooltip.country');
+
   return (
     <>
-      {/* Bouton positionné en absolu sur le wrapper parent */}
       <TouchableOpacity
-        style={btnStyles.btn}
+        style={[btnStyles.btn, inline && btnStyles.btnInline]}
         onPress={() => setOpen(true)}
         activeOpacity={0.7}
         hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
       >
-        <Text style={btnStyles.label}>ⓘ</Text>
+        <Text style={[btnStyles.label, inline && btnStyles.labelInline]}>
+          {badgeCount}
+        </Text>
+        {showLabel && (
+          <Text style={btnStyles.labelSuffix}>{unitLabel}</Text>
+        )}
       </TouchableOpacity>
 
-      {/* Bottom sheet */}
+      {/* Bottom sheet — tableau des pays / opérateurs et réseaux disponibles */}
       <Modal
         visible={open}
         transparent
@@ -93,7 +189,7 @@ export default function RegionCountriesButton({ esim }: Props) {
                   <View>
                     <Text style={sheetStyles.title}>{regionLabel}</Text>
                     <Text style={sheetStyles.subtitle}>
-                      {countries.length} {t('home.regionTooltip.title').toLowerCase()}
+                      {badgeCount} {unitLabel.toLowerCase()}
                     </Text>
                   </View>
                 </View>
@@ -107,25 +203,65 @@ export default function RegionCountriesButton({ esim }: Props) {
 
               <View style={sheetStyles.divider} />
 
-              <ScrollView
-                style={sheetStyles.list}
-                contentContainerStyle={sheetStyles.listContent}
-                showsVerticalScrollIndicator={false}
-              >
-                {[...countries]
-                  .sort((a, b) =>
-                    getDisplayName(a, i18n.resolvedLanguage).localeCompare(
-                      getDisplayName(b, i18n.resolvedLanguage),
-                    )
-                  )
-                  .map((code) => (
-                    <View key={code} style={sheetStyles.row}>
-                      <Text style={sheetStyles.countryName}>
-                        {getDisplayName(code, i18n.resolvedLanguage)}
-                      </Text>
-                    </View>
-                  ))}
-              </ScrollView>
+              <View style={sheetStyles.list}>
+                <View style={sheetStyles.tableHeader}>
+                  <Text style={[sheetStyles.headerCell, sheetStyles.headerCountryCell]}>
+                    {headerCellLabel}
+                  </Text>
+                  <Text style={sheetStyles.headerCell}>3G</Text>
+                  <Text style={sheetStyles.headerCell}>4G</Text>
+                  <Text style={sheetStyles.headerCell}>5G</Text>
+                </View>
+              </View>
+
+              {rowsLoading ? (
+                <ActivityIndicator
+                  size="large"
+                  color={Colors.primary}
+                  style={sheetStyles.loadingIndicator}
+                />
+              ) : (
+                <FlatList
+                  style={sheetStyles.list}
+                  contentContainerStyle={sheetStyles.listContent}
+                  showsVerticalScrollIndicator={false}
+                  data={rows}
+                  keyExtractor={(row, idx) =>
+                    row.kind === 'countryHeader' ? `country-${row.label}-${idx}` : `op-${row.operator}-${idx}`
+                  }
+                  initialNumToRender={16}
+                  windowSize={7}
+                  removeClippedSubviews
+                  renderItem={({ item: row }) => {
+                    if (row.kind === 'countryHeader') {
+                      return (
+                        <View style={sheetStyles.countryHeaderRow}>
+                          <Text style={sheetStyles.countryHeaderText}>{row.label}</Text>
+                        </View>
+                      );
+                    }
+                    return (
+                      <View style={[sheetStyles.row, row.indented && sheetStyles.rowIndented]}>
+                        <Text
+                          style={[sheetStyles.countryName, row.indented && sheetStyles.operatorNameIndented]}
+                          numberOfLines={1}
+                        >
+                          {row.operator}
+                        </Text>
+                        {(['3G', '4G', '5G'] as const).map((gen) => (
+                          <View key={gen} style={sheetStyles.checkCell}>
+                            {row.networks?.[gen] ? (
+                              <Ionicons name="checkmark" size={16} color="#2E9E5B" />
+                            ) : (
+                              <View style={sheetStyles.checkDash} />
+                            )}
+                          </View>
+                        ))}
+                      </View>
+                    );
+                  }}
+                />
+              )}
             </Animated.View>
           </Animated.View>
         </SafeAreaView>
@@ -133,3 +269,9 @@ export default function RegionCountriesButton({ esim }: Props) {
     </>
   );
 }
+
+// Beaucoup d'instances de ce composant peuvent coexister (une par section
+// dans GroupOfferDrawer / WorldOffersSection) — memo évite de les re-render
+// toutes à chaque fois que le parent change d'état pour une autre raison
+// (ex: chargement des offres d'une autre section).
+export default React.memo(RegionCountriesButton);

@@ -4,15 +4,18 @@ import { useRouter } from 'expo-router';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
+  ActivityIndicator,
   AppState, AppStateStatus,
+  FlatList,
   Image,
-  ScrollView, StatusBar,
+  StatusBar,
   Text, TouchableOpacity, View,
 } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 
 import CountryCard from '@/components/CountryCard/CountryCard';
-import FeaturedCard from '@/components/CountryCard/FeaturedCard';
+import FeaturedCarousel from '@/components/CountryCard/Featuredcarousel.styles';
+import WorldOffersSection from '@/components/CountryCard/OffersDrawer/WorldOffersSection';
 import DebugPanel from '@/components/DebugPanel/DebugPanel';
 import PrimaryButton from '@/components/PrimaryButton/PrimaryButton';
 import SearchBar from '@/components/SearchBar/SearchBar';
@@ -26,6 +29,75 @@ import { styles } from './index.styles';
 const MIN_RELOAD_MS = 30_000;
 const TUTORIAL_DONE_KEY = '@ilotel_tutorial_done';
 
+/**
+ * Élément affiché dans la grille : soit un esim seul (pays/monde), soit un
+ * groupe d'eSIMs "région" partageant le même champ `region` (ex: "Asie" +
+ * "Asie étendue" → une seule carte). N'est utilisé que par cet écran, donc
+ * défini ici plutôt que dans un fichier séparé.
+ */
+type DisplayItem =
+  | { kind: 'single'; esim: EsimSummary }
+  | { kind: 'group'; region: string; members: EsimSummary[] };
+
+/** Regroupe les eSIMs "region" partageant le même champ `region` en une seule entrée d'affichage */
+function buildDisplayItems(esims: EsimSummary[]): DisplayItem[] {
+  const groupOrder: string[] = [];
+  const groups = new Map<string, EsimSummary[]>();
+  const items: DisplayItem[] = [];
+
+  for (const esim of esims) {
+    if (esim.type === 'region') {
+      const key = esim.region ?? esim.code;
+      if (!groups.has(key)) {
+        groups.set(key, []);
+        groupOrder.push(key);
+      }
+      groups.get(key)!.push(esim);
+    } else {
+      items.push({ kind: 'single', esim });
+    }
+  }
+
+  for (const key of groupOrder) {
+    const members = groups.get(key)!;
+    items.push(members.length === 1 ? { kind: 'single', esim: members[0] } : { kind: 'group', region: key, members });
+  }
+
+  return items;
+}
+
+function fallbackRegionLabel(region: string): string {
+  return region
+    .split(/[-_ ]+/)
+    .filter(Boolean)
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ');
+}
+
+/** Nom affiché pour un item (esim seul ou groupe) — sert au tri et à la recherche */
+function getItemDisplayName(item: DisplayItem, t: (key: string, opts?: any) => string, lang?: string): string {
+  if (item.kind === 'single') return getDisplayName(item.esim.code, lang);
+  return t(`home.regionGroups.${item.region}`, { defaultValue: fallbackRegionLabel(item.region) });
+}
+
+function getItemHasStock(item: DisplayItem): boolean {
+  return item.kind === 'single' ? item.esim.hasStock : item.members.some((m) => m.hasStock);
+}
+
+function itemMatchesSearch(
+  item: DisplayItem,
+  query: string,
+  t: (key: string, opts?: any) => string,
+  lang?: string,
+): boolean {
+  const q = query.toLowerCase();
+  if (item.kind === 'single') {
+    return getDisplayName(item.esim.code, lang).toLowerCase().includes(q);
+  }
+  if (getItemDisplayName(item, t, lang).toLowerCase().includes(q)) return true;
+  return item.members.some((m) => getDisplayName(m.code, lang).toLowerCase().includes(q));
+}
+
 export default function HomeScreen() {
   const router = useRouter();
   const { t } = useTranslation();
@@ -34,7 +106,12 @@ export default function HomeScreen() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [search, setSearch] = useState('');
-  const [activeFilter, setActiveFilter] = useState<SegFilter>('all');
+  const [activeFilter, setActiveFilter] = useState<SegFilter>('local');
+  // true entre le tap sur un filtre et le moment où la nouvelle grille a
+  // fini de se (re)monter — sert uniquement à afficher un spinner pendant
+  // ce court instant, pour que l'utilisateur voie que ça travaille au lieu
+  // d'un écran figé.
+  const [filterLoading, setFilterLoading] = useState(false);
   const lastLoadRef = useRef(0);
 
   /* ── Tutoriel ── */
@@ -86,33 +163,88 @@ export default function HomeScreen() {
     return () => sub.remove();
   }, [load]);
 
+  // Tap sur un filtre : on affiche le spinner tout de suite, puis on
+  // laisse une frame s'écouler (le temps qu'il se peigne réellement)
+  // avant de déclencher le changement de filtre — qui, lui, provoque
+  // le (re)montage lourd de la grille.
+  const handleFilterPress = useCallback((key: SegFilter) => {
+    if (key === activeFilter) return;
+    setFilterLoading(true);
+    requestAnimationFrame(() => {
+      setActiveFilter(key);
+    });
+  }, [activeFilter]);
+
   const monde = esims.find((e) => e.code === 'ww2');
 
-  const filteredEsims = useMemo(() => {
+  // eSIMs "à la une" affichées dans le carrousel du haut
+  const featuredEsims = useMemo(() => esims.filter((e) => e.featured), [esims]);
+
+  // eSIMs "monde" : affichées directement (pas de sélection de carte, cf. WorldOffersSection)
+  const worldEsims = useMemo(() => esims.filter((e) => e.type === 'global'), [esims]);
+
+  const filteredEsims: DisplayItem[] = useMemo(() => {
+    if (activeFilter === 'global') return []; // géré par WorldOffersSection
+
     let list = esims;
 
-    if (activeFilter === 'promo') {
+    if (activeFilter === 'region') {
       // Filtre promos
-      list = list.filter((e) => e.hasPromo);
-    } else if (activeFilter === 'country') {
-      list = list.filter((e) => e.type === 'country');
-    } else if (activeFilter !== 'all') {
-      list = list.filter((e) => e.region === activeFilter);
+      list = list.filter((e) => e.type == 'region');
+    } else if (activeFilter === 'local') {
+      list = list.filter((e) => e.type === 'local');
     }
+
+    // Regroupe les eSIMs "region" partageant le même champ `region`
+    // en une seule carte (cf. buildDisplayItems ci-dessus)
+    let items = buildDisplayItems(list);
 
     if (search.trim()) {
-      list = list.filter((e) =>
-        getDisplayName(e.code, i18n.resolvedLanguage).toLowerCase().includes(search.toLowerCase())
+      items = items.filter((item) =>
+        itemMatchesSearch(item, search, t, i18n.resolvedLanguage)
       );
     }
-    return [...list].sort((a,b) => {
-      if (b.hasStock !== a.hasStock) return Number(b.hasStock) - Number(a.hasStock);
-      return getDisplayName(a.code, i18n.resolvedLanguage).localeCompare(getDisplayName(b.code, i18n.resolvedLanguage))
-    });
-  }, [search, esims, activeFilter]);
 
-  const col1 = filteredEsims.filter((_, i) => i % 2 === 0);
-  const col2 = filteredEsims.filter((_, i) => i % 2 === 1);
+    return [...items].sort((a, b) => {
+      const aStock = getItemHasStock(a);
+      const bStock = getItemHasStock(b);
+      if (bStock !== aStock) return Number(bStock) - Number(aStock);
+      return getItemDisplayName(a, t, i18n.resolvedLanguage).localeCompare(
+        getItemDisplayName(b, t, i18n.resolvedLanguage)
+      );
+    });
+  }, [search, esims, activeFilter, t, i18n.resolvedLanguage]);
+
+  // Données réellement passées à la FlatList : liste vide si loading ou onglet
+  // "monde" (ces deux cas sont gérés à part, cf. ListHeaderComponent plus bas)
+  const listData = loading || filterLoading || activeFilter === 'global' ? [] : filteredEsims;
+
+  // Le calcul lourd (filteredEsims / FlatList) vient de se terminer pour ce
+  // filtre — on attend encore une frame avant de retirer le spinner, pour
+  // laisser le temps au rendu de réellement s'afficher à l'écran.
+  useEffect(() => {
+    if (!filterLoading) return;
+    const id = requestAnimationFrame(() => setFilterLoading(false));
+    return () => cancelAnimationFrame(id);
+  }, [activeFilter, filteredEsims, worldEsims]);
+
+  const keyExtractor = useCallback(
+    (item: DisplayItem) => (item.kind === 'single' ? item.esim.id : `group-${item.region}`),
+    []
+  );
+
+  const renderItem = useCallback(
+    ({ item }: { item: DisplayItem }) => (
+      <View style={styles.masonryItem}>
+        {item.kind === 'single' ? (
+          <CountryCard esims={[item.esim]} />
+        ) : (
+          <CountryCard esims={item.members} region={item.region} />
+        )}
+      </View>
+    ),
+    []
+  );
 
   if (error) {
     return (
@@ -150,108 +282,119 @@ export default function HomeScreen() {
           </View>
         </View>
 
-        <ScrollView
+        <FlatList
           style={styles.scroll}
           contentContainerStyle={styles.content}
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
-        >
-          {/* ── Hero wave ─────────────────────────────────────────────── */}
-          <LinearGradient
-            colors={[Colors.primary, Colors.primaryMid, '#C8813A']}
-            start={{ x: 0.1, y: 0 }}
-            end={{ x: 0.9, y: 1 }}
-            style={styles.hero}
-          >
-            <View style={styles.heroBgCircle} />
-            <Text style={styles.heroKicker}>{t('home.hero.kicker')}</Text>
-            <Text style={styles.heroTitle}>
-              {t('home.hero.title')},{'\n'}
-              <Text style={styles.heroTitleItalic}>{t('home.hero.italic')}</Text>
-            </Text>
-            <Text style={styles.heroBody}>{t('home.hero.body')}</Text>
-            <View style={styles.heroPills}>
-              <View style={styles.heroPill}><Text style={styles.heroPillText}>{t('home.hero.pills.countries')}</Text></View>
-              <View style={styles.heroPill}><Text style={styles.heroPillText}>{t('home.hero.pills.speed')}</Text></View>
-              <View style={styles.heroPill}><Text style={styles.heroPillText}>{t('home.hero.pills.security')}</Text></View>
-            </View>
-            <Svg
-              width="120%"
-              height={30}
-              viewBox="0 0 430 30"
-              preserveAspectRatio="none"
-              style={{ position: 'absolute', bottom: -1, left: 0, right: 0 }}
-            >
-              <Path d="M0 30 Q107 0 215 20 Q323 40 430 10 L430 30 Z" fill={Colors.bg} />
-            </Svg>
-          </LinearGradient>
-
-          {/* ── Featured "Monde entier" ───────────────────────────────── */}
-          {!loading && monde && (
-            <View style={styles.featuredZone}>
-              <Text style={styles.featLabel}>{t('home.featured.label')}</Text>
-              <FeaturedCard esim={monde} />
-            </View>
-          )}
-
-          {/* ── Segmented filter ─────────────────────────────────────── */}
-          <View style={styles.segmentWrap}>
-            <ScrollView
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              contentContainerStyle={styles.segmentContent}
-            >
-              {SEGS.map((s) => (
-                <TouchableOpacity
-                  key={s.key}
-                  style={[styles.segBtn, activeFilter === s.key && styles.segBtnActive]}
-                  onPress={() => setActiveFilter(s.key)}
-                  activeOpacity={0.75}
-                >
-                  <Text style={[styles.segBtnText, activeFilter === s.key && styles.segBtnTextActive]}>
-                    {t(`home.filters.${s.key}`)}
-                  </Text>
-                </TouchableOpacity>
-              ))}
-            </ScrollView>
-          </View>
-
-          {/* ── Search ───────────────────────────────────────────────── */}
-          {!loading && (
-            <View style={styles.searchZone}>
-              <SearchBar
-                value={search}
-                onChangeText={setSearch}
-                placeholder={t('home.search.placeholder')}
-              />
-            </View>
-          )}
-
-          {/* ── Masonry 2 colonnes ────────────────────────────────────── */}
-          <View style={styles.masonrySection}>
-            {loading ? (
-              <>
-                <Text style={styles.loadingText}>{t('home.loading')}</Text>
-                <SkeletonList count={6} />
-              </>
-            ) : filteredEsims.length === 0 ? (
-              <Text style={styles.emptyText}>{t('home.empty')}</Text>
-            ) : (
-              <View style={styles.masonryRow}>
-                <View style={styles.masonryCol}>
-                  {col1.map((esim, i) => (
-                    <CountryCard key={esim.id} esim={esim}/>
-                  ))}
+          data={listData}
+          numColumns={2}
+          keyExtractor={keyExtractor}
+          renderItem={renderItem}
+          columnWrapperStyle={styles.masonryRow}
+          initialNumToRender={10}
+          maxToRenderPerBatch={10}
+          windowSize={9}
+          removeClippedSubviews
+          ListHeaderComponent={
+            <>
+              {/* ── Hero wave ─────────────────────────────────────────────── */}
+              <LinearGradient
+                colors={[Colors.primary, Colors.primaryMid, '#C8813A']}
+                start={{ x: 0.1, y: 0 }}
+                end={{ x: 0.9, y: 1 }}
+                style={styles.hero}
+              >
+                <View style={styles.heroBgCircle} />
+                <Text style={styles.heroKicker}>{t('home.hero.kicker')}</Text>
+                <Text style={styles.heroTitle}>
+                  {t('home.hero.title')},{'\n'}
+                  <Text style={styles.heroTitleItalic}>{t('home.hero.italic')}</Text>
+                </Text>
+                <Text style={styles.heroBody}>{t('home.hero.body')}</Text>
+                <View style={styles.heroPills}>
+                  <View style={styles.heroPill}><Text style={styles.heroPillText}>{t('home.hero.pills.countries')}</Text></View>
+                  <View style={styles.heroPill}><Text style={styles.heroPillText}>{t('home.hero.pills.speed')}</Text></View>
+                  <View style={styles.heroPill}><Text style={styles.heroPillText}>{t('home.hero.pills.security')}</Text></View>
                 </View>
-                <View style={styles.masonryCol}>
-                  {col2.map((esim) => (
-                    <CountryCard key={esim.id} esim={esim} />
+                <Svg
+                  width="120%"
+                  height={30}
+                  viewBox="0 0 430 30"
+                  preserveAspectRatio="none"
+                  style={{ position: 'absolute', bottom: -1, left: 0, right: 0 }}
+                >
+                  <Path d="M0 30 Q107 0 215 20 Q323 40 430 10 L430 30 Z" fill={Colors.bg} />
+                </Svg>
+              </LinearGradient>
+
+              {/* ── Featured "Monde entier" ───────────────────────────────── */}
+              {!loading && featuredEsims.length > 0 && activeFilter !== 'global' && (
+                <View style={styles.featuredZone}>
+                  <Text style={styles.featLabel}>{t('home.featured.label')}</Text>
+                  <FeaturedCarousel esims={featuredEsims} />
+                </View>
+              )}
+
+              {/* ── Segmented filter ─────────────────────────────────────── */}
+              <View style={styles.segmentWrap}>
+                <View style={styles.segmentContent}>
+                  {SEGS.map((s) => (
+                    <TouchableOpacity
+                      key={s.key}
+                      style={[styles.segBtn, activeFilter === s.key && styles.segBtnActive]}
+                      onPress={() => handleFilterPress(s.key)}
+                      activeOpacity={0.8}
+                    >
+                      <Text style={[styles.segBtnText, activeFilter === s.key && styles.segBtnTextActive]}>
+                        {t(`home.filters.${s.key}`)}
+                      </Text>
+                    </TouchableOpacity>
                   ))}
                 </View>
               </View>
-            )}
-          </View>
-        </ScrollView>
+
+              {/* ── Search ───────────────────────────────────────────────── */}
+              {!loading && activeFilter !== 'global' && (
+                <View style={styles.searchZone}>
+                  <SearchBar
+                    value={search}
+                    onChangeText={setSearch}
+                    placeholder={t('home.search.placeholder')}
+                  />
+                </View>
+              )}
+
+              {/* ── États alternatifs à la grille : chargement initial, ── */}
+              {/* changement de filtre en cours, ou onglet Monde ─────────── */}
+              {loading ? (
+                <View style={styles.masonrySection}>
+                  <Text style={styles.loadingText}>{t('home.loading')}</Text>
+                  <SkeletonList count={6} />
+                </View>
+              ) : filterLoading ? (
+                <View style={[styles.masonrySection, styles.filterLoadingWrap]}>
+                  <ActivityIndicator size="large" color={Colors.primary} />
+                </View>
+              ) : activeFilter === 'global' ? (
+                <View style={styles.masonrySection}>
+                  {worldEsims.length === 0 ? (
+                    <Text style={styles.emptyText}>{t('home.empty')}</Text>
+                  ) : (
+                    <WorldOffersSection members={worldEsims} />
+                  )}
+                </View>
+              ) : null}
+            </>
+          }
+          ListEmptyComponent={
+            !loading && !filterLoading && activeFilter !== 'global' ? (
+              <View style={styles.masonrySection}>
+                <Text style={styles.emptyText}>{t('home.empty')}</Text>
+              </View>
+            ) : null
+          }
+        />
       </View>
 
       <TutorialModal visible={tutorialVisible} onClose={handleCloseTutorial} />

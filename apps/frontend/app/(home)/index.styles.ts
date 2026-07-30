@@ -134,34 +134,60 @@ export const styles = StyleSheet.create({
 
   // ── Segmented filter (scrollable pills) ─────────────────────────────────
   segmentWrap: {
-    marginHorizontal: 16, marginVertical: 14,
-    backgroundColor: Colors.surface,
-    borderWidth: 2, borderColor: Colors.border,
-    borderRadius: 14, padding: 4,
-  },
-  segmentScroll: { flexGrow: 0 },
-  segmentContent: { gap: 2, flexDirection: 'row' },
-  segBtn: {
-    paddingHorizontal: 12, paddingVertical: 7,
-    borderRadius: 10,
-  },
-  segBtnActive: {
-    backgroundColor: Colors.white,
-    shadowColor: Colors.primary,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.12, shadowRadius: 6, elevation: 2,
-  },
-  segBtnText: { fontSize: 12, fontWeight: '700', color: Colors.muted},
-  segBtnTextActive: { color: Colors.primaryDark },
+  marginHorizontal: 16,
+  marginVertical: 14,
+  backgroundColor: Colors.surface,       // plus Colors.surface
+  borderRadius: 28,                    // pilule complète (≈ hauteur/2)
+  padding: 4,
+  borderWidth: 0,                      // on retire la bordure
+  shadowColor: '#000',                 // légère ombre pour détacher le container
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.06,
+  shadowRadius: 8,
+  elevation: 2,
+},
+segmentContent: {
+  flexDirection: 'row',
+  // plus de gap/space-between : flex:1 sur chaque bouton gère la répartition
+},
+segBtn: {
+  flex: 1,
+  alignItems: 'center',
+  justifyContent: 'center',
+  paddingVertical: 12,
+  borderRadius: 24,                    // pilule aussi, cohérent avec le wrap
+},
+segBtnActive: {
+  backgroundColor: Colors.primary,     // fond teal plein, plus de blanc
+  shadowColor: Colors.primary,
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.2,
+  shadowRadius: 5,
+  elevation: 3,
+},
+segBtnText: {
+  fontSize: 13,
+  fontWeight: '700',
+  color: Colors.text,                  // texte foncé quand inactif (plus Colors.muted)
+},
+segBtnTextActive: {
+  color: Colors.white,                 // texte blanc sur fond actif
+},
 
   // ── Search ───────────────────────────────────────────────────────────────
   searchZone: { paddingHorizontal: 16, paddingBottom: 12 },
 
   // ── Masonry ──────────────────────────────────────────────────────────────
   masonrySection: { paddingHorizontal: 16, paddingBottom: 32 },
-  masonryRow: { flexDirection: 'row', gap: 10 },
-  masonryCol: { flex: 1 },
+  // columnWrapperStyle de la FlatList : porte désormais l'inset horizontal
+  // qui était avant sur masonrySection (la grille n'a plus de wrapper dédié)
+  masonryRow: { flexDirection: 'row', paddingHorizontal: 16, gap: 10 },
+  // Wrapper de chaque carte dans la grille — flex:1 indispensable pour que
+  // FlatList répartisse équitablement les 2 colonnes (sans ça les cartes
+  // ne prennent que la largeur de leur contenu)
+  masonryItem: { flex: 1 },
 
   loadingText: { color: Colors.muted, fontSize: 13, marginBottom: 12, textAlign: 'center' },
+  filterLoadingWrap: { alignItems: 'center', paddingVertical: 48 },
   emptyText: { color: Colors.muted, textAlign: 'center', marginTop: 24, fontSize: 14 },
 });

@@ -17,17 +17,10 @@ export const SUPPORT_EMAIL = "support@ilotel.com"
 export const REGION_CODES = ['eu', 'as', 'af', 'am', 'oc', 'me', 'ww'] as const;
 export type RegionCode = typeof REGION_CODES[number];
 
-export type SegFilter = 'all' | 'country' | RegionCode | 'promo';
+export type SegFilter = 'local' | "region" | 'global';
  
 export const SEGS: { key: SegFilter }[] = [
-  { key: 'all'     },
-  { key: 'country' },
-  { key: 'eu'      },
-  { key: 'as'      },
-  { key: 'af'      },
-  { key: 'am'      },
-  { key: 'oc'      },
-  { key: 'me'      },
-  { key: 'ww'      },
-  { key: 'promo'   },
+  { key: 'local' },
+  { key: 'region'  },
+  { key: 'global'   },
 ];

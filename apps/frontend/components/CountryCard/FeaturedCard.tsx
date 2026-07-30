@@ -1,6 +1,5 @@
 /**
- * FeaturedCard — bannière horizontale
- * ✅ MODIFIÉ : wrapper rcbStyles.wrapper pour ancrer RegionCountriesButton
+ * FeaturedCard — bannière horizontale "Monde entier"
  */
 import { Ionicons } from '@expo/vector-icons';
 import { EsimSummary, getDisplayName } from '@ilotel/shared';
@@ -10,21 +9,19 @@ import { Text, TouchableOpacity, View } from 'react-native';
 import RegionCountriesButton from '../RegionCountryButton/RegionCountryButton';
 import { rcbStyles } from '../RegionCountryButton/RegionCountryButton.styles';
 import { featuredStyles as s } from './FeaturedCard.styles';
-import OfferDrawer from './OfferDrawer';
-import { useOfferDrawer } from './useOfferDrawer';
+import OffersDrawerModal from './OffersDrawer/OffersDrawerModal';
+import { useOffersDrawer } from './OffersDrawer/useOffersDrawer';
 
 interface FeaturedCardProps {
   esim: EsimSummary;
 }
 
 export default function FeaturedCard({ esim }: FeaturedCardProps) {
-  const drawer = useOfferDrawer(esim);
+  const drawer = useOffersDrawer([esim]);
   const { t, i18n } = useTranslation();
 
-  const hasCountries =
-    (esim.type === 'region' || esim.type === 'custom') &&
-    Array.isArray(esim.regionCountries) &&
-    esim.regionCountries.length > 0;
+  const regionCountryCount = esim.regionCountries ? Object.keys(esim.regionCountries).length : 0;
+  const hasCountries = esim.type !== 'local' && regionCountryCount > 0;
 
   return (
     <>
@@ -44,7 +41,7 @@ export default function FeaturedCard({ esim }: FeaturedCardProps) {
             </Text>
             <Text style={s.desc} numberOfLines={1}>
               {hasCountries
-                ? `${esim.regionCountries!.length} ${t('regionTooltip.title').toLowerCase()}`
+                ? `${regionCountryCount} ${t('home.regionTooltip.title').toLowerCase()}`
                 : t('featuredCard.desc')}
             </Text>
             {esim.minPrice != null ? (
@@ -66,19 +63,15 @@ export default function FeaturedCard({ esim }: FeaturedCardProps) {
         </TouchableOpacity>
 
         {/* Frère du TouchableOpacity → visible sur Android */}
-        <RegionCountriesButton esim={esim} />
+        <RegionCountriesButton esim={esim} showLabel={true}/>
       </View>
 
-      <OfferDrawer
+      <OffersDrawerModal
         esim={esim}
         visible={drawer.drawerOpen}
-        offers={drawer.offers}
-        loading={drawer.loading}
-        loadError={drawer.loadError}
-        selectedIdx={drawer.selectedIdx}
-        onSelectIdx={drawer.setSelectedIdx}
+        sections={drawer.sections}
+        onOfferPress={drawer.selectOffer}
         onClose={drawer.closeDrawer}
-        onOrder={drawer.handleOrder}
       />
     </>
   );
