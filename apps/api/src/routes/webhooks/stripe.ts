@@ -1,6 +1,6 @@
 import { Hono } from 'hono';
 import { isLocal, resolveEmailRecipient } from '../../constants/env.js';
-import { confirmEsim, getInventoryByOrderId, releaseEsim } from '../../db/queries/esims.js';
+import { confirmEsim, getEsimByOrderId, releaseEsim } from '../../db/queries/esim.js';
 import {
   getOrderById,
   getOrderByPaymentIntentId,
@@ -11,7 +11,7 @@ import {
 } from '../../db/queries/orders.js';
 import { sendEsimEmail } from '../../lib/email/index.js';
 import { stripe } from '../../lib/stripe.js';
-import { assignOfferToEsim } from '../../lib/transatel.js';
+import { AssignOfferResult, assignOfferToEsim } from '../../lib/transatel.js';
 
 export const stripeWebhook = new Hono();
 
@@ -88,18 +88,18 @@ stripeWebhook.post('/', async (c) => {
       await markOrderPaid(order.id);
 
       // 2. Récupérer l'inventaire (ICCID + MSISDN)
-      const inventory = await getInventoryByOrderId(order.id);
-      if (!inventory) {
-        console.error(`[webhook] Inventaire introuvable pour commande ${order.id} — remboursement`);
+      const esim = await getEsimByOrderId(order.id);
+      if (!esim) {
+        console.error(`[webhook] eSIM introuvable pour commande ${order.id} — remboursement`);
         await refundOrder(order.id, paymentIntent.id);
         break;
       }
 
       // 3. Récupérer l'offre pour obtenir le transatel_product_id
       const fullOrder = await getOrderById(order.id);
-      if (!fullOrder?.offer.transatelProductId) {
+      if (!fullOrder?.offer.providerProductId) {
         console.error(
-          `[webhook] transatelProductId manquant sur l'offre ${order.offerId} — remboursement`
+          `[webhook] providerProductId manquant sur l'offre ${order.offer && order.offer.id} — remboursement`
         );
         await refundOrder(order.id, paymentIntent.id);
         break;
@@ -107,12 +107,17 @@ stripeWebhook.post('/', async (c) => {
 
       // 4. Assigner le forfait à la SIM via l'API OCS Transatel
       try {
-        const result = await assignOfferToEsim(
-          inventory.msisdn,
-          fullOrder.offer.transatelProductId
-        );
+        let result: AssignOfferResult
+        if (!isLocal()) {
+          result = await assignOfferToEsim(
+            esim.msisdn,
+            fullOrder.offer.providerProductId
+          );
+        } else {
+          result = {subscriptionId: "local-env"}
+        }
         console.log(
-          `[webhook] 📦 Forfait assigné — MSISDN: ${inventory.msisdn}, subscriptionId: ${result.subscriptionId}`
+          `[webhook] 📦 Forfait assigné — MSISDN: ${esim.msisdn}, subscriptionId: ${result.subscriptionId}`
         );
       } catch (ocsError) {
         console.error(`[webhook] ❌ Échec OCS pour commande ${order.id}:`, ocsError);
@@ -127,28 +132,28 @@ stripeWebhook.post('/', async (c) => {
       // 6. Email de confirmation avec le code d'activation du CSV
       if (order.email) {
         try {
-          if (fullOrder.esimInventory) {
-            const recipient = resolveEmailRecipient(order.email);
-            await sendEsimEmail({
-              to: recipient,
-              orderId: order.id,
-              lang: order.lang,
-              code: fullOrder.offer.esim.code,
-              flag: fullOrder.offer.esim.flag,
-              dataGb: fullOrder.offer.dataGb,
-              durationDays: fullOrder.offer.durationDays,
-              finalPrice: order.finalPrice,
-              activationCode: fullOrder.esimInventory.activationCode,
-              iccid: fullOrder.esimInventory.iccid,
-              purchasedAt: order.createdAt,
-            });
-            if (isLocal()) {
-              console.log(
-                `[webhook] 🧪 Mode local — email redirigé vers ${recipient} (réel: ${order.email})`
-              );
-            } else {
-              console.log(`[webhook] ✉️ Email envoyé à ${recipient} — commande: ${order.id}`);
-            }
+          const recipient = resolveEmailRecipient(order.email);
+          await sendEsimEmail({
+            to: recipient,
+            orderId: order.id,
+            lang: order.lang,
+            code: order.destination.code,
+            flag: fullOrder.destination.flag,
+            dataQuantity: fullOrder.offer.dataQuantity,
+            dataUnit: fullOrder.offer.dataUnit,
+            durationQuantity: fullOrder.offer.durationQuantity,
+            durationUnit: fullOrder.offer.durationUnit,
+            finalPrice: order.finalPrice,
+            activationCode: esim.activationCode,
+            iccid: esim.iccid,
+            purchasedAt: order.createdAt,
+          });
+          if (isLocal()) {
+            console.log(
+              `[webhook] 🧪 Mode local — email redirigé vers ${recipient} (réel: ${order.email})`
+            );
+          } else {
+            console.log(`[webhook] ✉️ Email envoyé à ${recipient} — commande: ${order.id}`);
           }
         } catch (emailError) {
           console.error(`[webhook] ⚠️ Échec email pour commande ${order.id}:`, emailError);

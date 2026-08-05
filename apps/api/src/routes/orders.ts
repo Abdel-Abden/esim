@@ -10,7 +10,7 @@ import {
 } from '@ilotel/shared';
 import { Hono } from 'hono';
 import { BRAND } from '../constants/env.js';
-import { releaseEsim, reserveEsim } from '../db/queries/esims.js';
+import { createEsimHistory, releaseEsim, releaseEsimByOrderId, reserveEsim } from '../db/queries/esim.js';
 import { getOfferById } from '../db/queries/offers.js';
 import {
   createOrder,
@@ -44,9 +44,6 @@ orders.post('/reserve', async (c) => {
   if (offer.basePrice <= 0) {
     return c.json({ data: null, errorCode: ErrorCode.OFFER_NOT_FOR_SALE }, 422);
   }
-  if (offer.availableCount === 0) {
-    return c.json({ data: null, errorCode: ErrorCode.STOCK_EXHAUSTED }, 409);
-  }
 
   const reservedUntil = new Date(
     Date.now() + RESERVATION_DURATION_MINUTES * 60 * 1000
@@ -58,14 +55,20 @@ orders.post('/reserve', async (c) => {
     lang,
     offerId,
     finalPrice: offer.finalPrice,
-    discountId: offer.activeDiscount?.id ?? null,
+    basePrice: offer.basePrice,
     reservedUntil,
   });
 
-  const reserved = await reserveEsim(offer.id, order.id);
-  if (!reserved) {
+  const reservedEsim = await reserveEsim();
+  if (!reservedEsim) {
     await deleteOrder(order.id);
     return c.json({ data: null, code: ErrorCode.STOCK_EXHAUSTED }, 409);
+  }
+
+  if (!createEsimHistory(reservedEsim.id, order.id)) {
+    await deleteOrder(order.id);
+    await releaseEsim(reservedEsim.id)
+    return c.json({ data: null, code: ErrorCode.INTERNAL_SERVER_ERROR }, 500);
   }
 
   const response: ReserveOrderResponse = {
@@ -173,7 +176,9 @@ orders.post('/:id/cancel', async (c) => {
     return c.json({ data: null, errorCode: ErrorCode.CANCEL_INVALID_STATUS }, 409);
   }
 
-  await releaseEsim(id);
+  await releaseEsimByOrderId(id);
+  await deleteOrder(id)
+
 
   if (order.stripePaymentIntentId) {
     try {

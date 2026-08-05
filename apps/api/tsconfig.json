@@ -10,7 +10,7 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "paths": {
-      "@ilotel/shared": ["../../packages/shared/src/index.ts"]
+      "@ilotel/shared": ["../../packages/shared/dist/index.d.ts"]
     }
   },
   "include": ["src/**/*.ts"],

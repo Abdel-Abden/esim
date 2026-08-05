@@ -5,33 +5,42 @@
 
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
-CREATE TABLE public.esims (
+CREATE TABLE public.destinations (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    name TEXT NOT NULL,
-    code VARCHAR(10) NOT NULL,
+    code VARCHAR NOT NULL,
     featured BOOLEAN NOT NULL DEFAULT false,
-    type TEXT NOT NULL DEFAULT 'country',
+    name TEXT,
+    type TEXT NOT NULL,
     flag TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT now(),
     region VARCHAR(50) NOT NULL,
-    region_countries JSONB NOT NULL DEFAULT '[]'
+    coverage JSONB NOT NULL DEFAULT '{}',
+    available BOOLEAN NOT NULL DEFAULT true
 );
 
 CREATE TABLE public.offers (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    esim_id UUID NOT NULL,
-    data_gb INTEGER NOT NULL,
-    duration_days INTEGER NOT NULL,
+    destination_id UUID NOT NULL,
+    data_quantity INTEGER NOT NULL,
+    data_unit VARCHAR(4) NOT NULL DEFAULT 'Go',
+    duration_quantity INTEGER NOT NULL,
+    duration_unit VARCHAR(6) NOT NULL DEFAULT 'days',
     base_price NUMERIC(10, 2) NOT NULL,
     stripe_price_id TEXT,
-    transatel_product_id TEXT,
+    available BOOLEAN NOT NULL DEFAULT true,
+    provider_product_id TEXT,
     created_at TIMESTAMP DEFAULT now(),
-    unit VARCHAR(4) NOT NULL DEFAULT 'Go',
 
-    CONSTRAINT offers_esim_id_fkey
-        FOREIGN KEY (esim_id)
-        REFERENCES public.esims(id)
-        ON DELETE CASCADE
+    CONSTRAINT offers_destination_id_fkey
+        FOREIGN KEY (destination_id)
+        REFERENCES public.destinations(id)
+        ON DELETE CASCADE,
+
+    CONSTRAINT data_unit_check
+        CHECK (data_unit IN ('Go', 'Mo', 'Ko', 'UNLI')),
+    
+    CONSTRAINT duration_unit_check
+        CHECK (duration_unit IN ('days', 'months', 'years'))
 );
 
 CREATE TABLE public.discounts (
@@ -60,101 +69,153 @@ CREATE TABLE public.orders (
     status TEXT NOT NULL DEFAULT 'pending',
     stripe_payment_intent_id TEXT UNIQUE,
     final_price NUMERIC(10, 2) NOT NULL,
-    discount_id UUID,
+    base_price NUMERIC(10,2) NOT NULL,
     created_at TIMESTAMP DEFAULT now(),
     reserved_until TIMESTAMP,
 
     CONSTRAINT orders_status_check
-        CHECK (status IN ('pending', 'paid', 'failed', 'provisioned', 'refunding', 'refunded')),
-
-    CONSTRAINT orders_offer_id_fkey
-        FOREIGN KEY (offer_id)
-        REFERENCES public.offers(id),
-
-    CONSTRAINT orders_discount_id_fkey
-        FOREIGN KEY (discount_id)
-        REFERENCES public.discounts(id)
+        CHECK (status IN ('pending', 'paid', 'failed', 'provisioned', 'refunding', 'refunded'))
 );
 
-CREATE TABLE public.esim_inventory (
+CREATE TABLE public.esims (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    esim_id UUID NOT NULL,
-    iccid TEXT NOT NULL UNIQUE,
-    status TEXT NOT NULL DEFAULT 'available',
+    iccid TEXT UNIQUE NOT NULL UNIQUE,
+    msisdn TEXT UNIQUE NOT NULL,
+    activation_code TEXT NOT NULL,
     reserved_at TIMESTAMP,
     sold_at TIMESTAMP,
-    order_id UUID,
-    msisdn TEXT NOT NULL,
-    activation_code TEXT NOT NULL,
-    offer_id UUID NOT NULL,
+    status TEXT NOT NULL DEFAULT 'available',
 
-    CONSTRAINT esim_inventory_status_check
-        CHECK (status IN ('available', 'reserved', 'sold')),
+    CONSTRAINT esim_status_check
+        CHECK (status IN ('available', 'reserved', 'assigned', 'disabled', 'retired'))
+);
 
-    CONSTRAINT esim_inventory_esim_id_fkey
+CREATE TABLE public.esim_history (
+    esim_id UUID NOT NULL,
+    order_id UUID NOT NULL,
+    created_at TIMESTAMP DEFAULT now(),
+
+    CONSTRAINT esim_history_esim_id_fkey
         FOREIGN KEY (esim_id)
-        REFERENCES public.esims(id)
-        ON DELETE CASCADE,
+        REFERENCES public.esims(id),
 
-    CONSTRAINT esim_inventory_offer_id_fkey
-        FOREIGN KEY (offer_id)
-        REFERENCES public.offers(id)
-        ON DELETE SET NULL,
-
-    CONSTRAINT esim_inventory_order_id_fkey
+    CONSTRAINT esim_history_order_id_fkey
         FOREIGN KEY (order_id)
         REFERENCES public.orders(id)
 );
 
-CREATE INDEX idx_discounts_offer_id
-    ON public.discounts (offer_id);
+-- =============================================================================
+-- Création des index
+-- =============================================================================
 
-CREATE INDEX idx_offers_esim_id
-    ON public.offers (esim_id);
+-- DESTINATION
+
+
+CREATE UNIQUE INDEX idx_destinations_code_type
+    ON public.destinations(code, type);
+
+CREATE INDEX idx_destinations_type
+    ON public.destinations(type);
+
+CREATE INDEX idx_destinations_available
+    ON public.destinations(available);
+
+CREATE INDEX idx_destinations_featured
+    ON public.destinations(featured);
+
+-- OFFERS
+
+CREATE INDEX idx_offers_destination_id
+    ON public.offers(destination_id);
+
+CREATE INDEX idx_offers_price
+    ON public.offers(base_price);
+
+-- DISCOUNTS
+
+CREATE INDEX idx_discounts_offer_id
+    ON public.discounts(offer_id);
+
+-- ORDERS
 
 CREATE INDEX idx_orders_email
-    ON public.orders (email);
+    ON public.orders(email);
 
 CREATE INDEX idx_orders_payment_intent
-    ON public.orders (stripe_payment_intent_id);
+    ON public.orders(stripe_payment_intent_id);
 
 CREATE INDEX idx_orders_reserved_until
-    ON public.orders (reserved_until);
+    ON public.orders(reserved_until);
 
-CREATE INDEX idx_esim_inventory_offer_id
-    ON public.esim_inventory (offer_id, status);
+CREATE INDEX idx_orders_status
+    ON public.orders(status);
 
-CREATE INDEX idx_inventory_esim_id
-    ON public.esim_inventory (esim_id);
+-- ESIMS
 
-CREATE INDEX idx_inventory_order_id
-    ON public.esim_inventory (order_id);
+CREATE INDEX idx_esim_status
+    ON public.esims(status);
 
-CREATE INDEX idx_inventory_status
-    ON public.esim_inventory (status);
+CREATE INDEX idx_esim_sold_at
+    ON public.esims(sold_at);
+
+CREATE INDEX idx_esims_available
+    ON public.esims(status, reserved_at);
+
+-- ESIM_HISTORY
+
+CREATE INDEX idx_esim_history_esim
+    ON public.esim_history(esim_id);
+
+CREATE INDEX idx_esim_history_order
+    ON public.esim_history(order_id);
+
+CREATE INDEX idx_esim_history_created
+    ON public.esim_history(created_at DESC);
+
+-- =============================================================================
+-- Création des vue
+-- =============================================================================
 
 CREATE VIEW public.offers_with_active_discount AS
 SELECT
     o.id,
-    o.esim_id,
-    o.data_gb,
-    o.duration_days,
+    o.destination_id,
+    o.data_quantity,
+    o.data_unit,
+    o.duration_quantity,
+    o.duration_unit,
     o.base_price,
+    o.available,
     o.stripe_price_id,
+    o.provider_product_id,
     o.created_at,
+
     d.id AS discount_id,
     d.type AS discount_type,
     d.value AS discount_value,
+
+    dest.code,
+    dest.flag,
+    dest.type,
+    dest.region,
+
     CASE
         WHEN d.type = 'percentage'
-            THEN round(o.base_price * (1::numeric - d.value / 100::numeric), 2)
+            THEN ROUND(o.base_price * (1 - d.value / 100), 2)
+
         WHEN d.type = 'fixed'
-            THEN GREATEST(0::numeric, round(o.base_price - d.value, 2))
+            THEN GREATEST(0, ROUND(o.base_price - d.value, 2))
+
         ELSE o.base_price
     END AS final_price
+
 FROM public.offers o
+
 LEFT JOIN public.discounts d
     ON d.offer_id = o.id
    AND d.active = true
-   AND (d.starts_at IS NULL OR d.starts_at <= now())
-   AND (d.ends_at IS NULL OR d.ends_at >= now());
+   AND (d.starts_at IS NULL OR d.starts_at <= NOW())
+   AND (d.ends_at IS NULL OR d.ends_at >= NOW())
+
+JOIN destinations dest
+    ON dest.id = o.destination_id;

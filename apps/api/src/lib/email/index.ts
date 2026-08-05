@@ -14,7 +14,7 @@
  *   ILOTEL_LOGO_B64  base64 du logo PNG (ne pas committer dans le code)
  */
 
-import { getDisplayName } from '@ilotel/shared';
+import { getDisplayName, OfferDurationUnit } from '@ilotel/shared';
 import nodemailer from 'nodemailer';
 import QRCode from 'qrcode';
 import { BRAND } from '../../constants/env.js';
@@ -29,18 +29,20 @@ import { buildEsimHtml } from './esim/html.js';
 // ─── Types publics ────────────────────────────────────────────────────────────
 
 export interface EsimEmailParams {
-  to:             string;
-  orderId:        string;
-  code:           string;
-  flag:           string;
-  dataGb:         number;
-  durationDays:   number;
-  finalPrice:     number;
-  activationCode: string;
-  iccid:          string;
-  purchasedAt:    string;
+  to:               string;
+  orderId:          string;
+  code:             string;
+  flag:             string;
+  dataQuantity:     number;
+  dataUnit:         string;
+  durationQuantity: number;
+  durationUnit:     string;
+  finalPrice:       number;
+  activationCode:   string;
+  iccid:            string;
+  purchasedAt:      string;
   /** fallback sur DEFAULT_LANG si absente */
-  lang:          string;
+  lang:             string;
 }
 
 export interface LegalDeleteParams {
@@ -89,6 +91,18 @@ export async function sendEsimEmail(params: EsimEmailParams): Promise<void> {
   });
 
   // const logoB64 = process.env.ILOTEL_LOGO_B64 ?? '';
+
+
+  switch(params.durationUnit) {
+    case OfferDurationUnit.MONTHS:
+      params.durationUnit = content.months
+      break;
+    case OfferDurationUnit.YEARS:
+      params.durationUnit = content.years
+    default:
+      params.durationUnit = content.days
+      break
+  }
 
   await transporter.sendMail({
     from:    process.env.EMAIL_FROM,

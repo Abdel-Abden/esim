@@ -61,7 +61,7 @@ export function buildEsimHtml({ params, content, qrDataUrl, logoCid, countryName
     <tr>
       <td style="${s.hero}">
         <h1 style="${s.heroTitle}">${content.heroTitle}</h1>
-        <p style="${s.heroSub}">${params.flag} ${countryName} &nbsp;·&nbsp; ${params.dataGb} Go / ${params.durationDays} ${content.days}</p>
+        <p style="${s.heroSub}">${params.flag} ${countryName} &nbsp;·&nbsp; ${params.dataQuantity} ${params.dataUnit} / ${params.durationQuantity} ${params.durationUnit}</p>
       </td>
     </tr>
 
@@ -75,7 +75,7 @@ export function buildEsimHtml({ params, content, qrDataUrl, logoCid, countryName
         </tr>
         <tr style="border-bottom:1px solid #F0D9C8;">
           <td style="${s.rowLabel};padding:7px 0;">${content.rows.plan}</td>
-          <td align="${s.align}" style="${s.rowValue}">${params.dataGb} Go / ${params.durationDays} ${content.days}</td>
+          <td align="${s.align}" style="${s.rowValue}">${params.dataQuantity} ${params.dataUnit} / ${params.durationQuantity} ${params.durationUnit}</td>
         </tr>
         <tr style="border-bottom:1px solid #F0D9C8;">
           <td style="${s.rowLabel};padding:7px 0;">${content.rows.price}</td>

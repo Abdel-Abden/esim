@@ -1,7 +1,6 @@
-import { DEFAULT_LANG, EsimInventory, Order, OrderStatus, OrderWithDetails } from '@ilotel/shared';
+import { DEFAULT_LANG, Order, OrderEntity, OrderStatus } from '@ilotel/shared';
 import { sql } from '../client.js';
-import { mapInventory, mapOrder } from '../mappers.js';
-import { getOfferById } from './offers.js';
+import { mapOrder, mapOrderDetails } from '../mappers.js';
 
 // ─── Création ─────────────────────────────────────────────────────────────────
 
@@ -10,31 +9,31 @@ export interface CreateOrderParams {
   lang: string;
   stripePaymentIntentId?: string;
   finalPrice: number;
-  discountId: string | null;
+  basePrice: number;
   email?: string;
   reservedUntil: string;
 }
 
-export async function createOrder(params: CreateOrderParams): Promise<Order> {
+export async function createOrder(params: CreateOrderParams): Promise<OrderEntity> {
   const rows = await sql`
     INSERT INTO orders (
       email,
-      offer_id,
-      stripe_payment_intent_id,
       lang,
-      final_price,
-      discount_id,
+      offer_id,
       status,
+      stripe_payment_intent_id,
+      final_price,
+      base_price,
       reserved_until
     )
     VALUES (
       ${params.email ?? null},
-      ${params.offerId},
-      ${params.stripePaymentIntentId ?? null},
       ${params.lang ?? DEFAULT_LANG},
-      ${params.finalPrice},
-      ${params.discountId},
+      ${params.offerId},
       'pending',
+      ${params.stripePaymentIntentId ?? null},
+      ${params.finalPrice},
+      ${params.basePrice},
       ${params.reservedUntil}
     )
     RETURNING *
@@ -44,45 +43,153 @@ export async function createOrder(params: CreateOrderParams): Promise<Order> {
 
 // ─── Lecture ──────────────────────────────────────────────────────────────────
 
-export async function getOrderById(id: string): Promise<OrderWithDetails | null> {
-  const rows = await sql`
-    SELECT * FROM orders WHERE id = ${id} LIMIT 1
+export async function getOrderById(id: string): Promise<Order | null> {
+  const row = await sql`
+  SELECT
+    -- Order
+    ord.id                           AS order_id,
+    ord.email,
+    ord.lang,
+    ord.status,
+    ord.stripe_payment_intent_id,
+    ord.final_price,
+    ord.created_at,
+
+    -- Offer
+    o.id                             AS offer_id,
+    o.data_quantity,
+    o.data_unit,
+    o.duration_quantity,
+    o.duration_unit,
+    o.base_price,
+    o.stripe_price_id,
+    o.available,
+
+    -- Discount
+    v.discount_id,
+    v.discount_type,
+    v.discount_value,
+
+    -- Destination
+    d.id                             AS destination_id,
+    d.code,
+    d.type,
+    d.flag,
+    d.featured,
+    d.region,
+    d.coverage,
+
+    -- Agrégats destination
+    MIN(COALESCE(v2.final_price, o2.base_price)) AS destination_min_price,
+    BOOL_OR(v2.discount_id IS NOT NULL)          AS destination_has_promo
+
+  FROM orders ord
+
+  JOIN offers o
+    ON o.id = ord.offer_id
+
+  JOIN destinations d
+    ON d.id = o.destination_id
+
+  LEFT JOIN offers_with_active_discount v
+    ON v.id = o.id
+
+  LEFT JOIN offers o2
+    ON o2.destination_id = d.id
+
+  LEFT JOIN offers_with_active_discount v2
+    ON v2.id = o2.id
+
+  WHERE ord.id = ${id}
+
+  GROUP BY
+    ord.id,
+    o.id,
+    d.id,
+    v.discount_id,
+    v.discount_type,
+    v.discount_value;
   `;
 
-  if (!rows[0]) return null;
-
-  const order = mapOrder(rows[0]);
-  const offer = await getOfferById(order.offerId);
-  if (!offer) return null;
-
-  const inventoryRows = await sql`
-    SELECT * FROM esim_inventory
-    WHERE order_id = ${id}
-    LIMIT 1
-  `;
-
-  const esimInventory: EsimInventory | null = inventoryRows[0]
-    ? mapInventory(inventoryRows[0])
-    : null;
-
-  return { ...order, offer, esimInventory };
+  return row[0] ? mapOrderDetails(row[0]) : null
 }
 
 export async function getOrderByPaymentIntentId(
   paymentIntentId: string
 ): Promise<Order | null> {
   const rows = await sql`
-    SELECT * FROM orders
-    WHERE stripe_payment_intent_id = ${paymentIntentId}
-    LIMIT 1
+    SELECT
+    -- Order
+    ord.id                           AS order_id,
+    ord.email,
+    ord.lang,
+    ord.status,
+    ord.stripe_payment_intent_id,
+    ord.final_price,
+    ord.created_at,
+
+    -- Offer
+    o.id                             AS offer_id,
+    o.data_quantity,
+    o.data_unit,
+    o.duration_quantity,
+    o.duration_unit,
+    o.base_price,
+    o.stripe_price_id,
+    o.available,
+
+    -- Discount
+    v.discount_id,
+    v.discount_type,
+    v.discount_value,
+
+    -- Destination
+    d.id                             AS destination_id,
+    d.code,
+    d.type,
+    d.flag,
+    d.featured,
+    d.region,
+    d.coverage,
+
+    -- Agrégats destination
+    MIN(COALESCE(v2.final_price, o2.base_price)) AS destination_min_price,
+    BOOL_OR(v2.discount_id IS NOT NULL)          AS destination_has_promo
+
+  FROM orders ord
+
+  JOIN offers o
+    ON o.id = ord.offer_id
+
+  JOIN destinations d
+    ON d.id = o.destination_id
+
+  LEFT JOIN offers_with_active_discount v
+    ON v.id = o.id
+
+  LEFT JOIN offers o2
+    ON o2.destination_id = d.id
+
+  LEFT JOIN offers_with_active_discount v2
+    ON v2.id = o2.id
+
+  WHERE ord.stripe_payment_intent_id = ${paymentIntentId}
+
+  GROUP BY
+    ord.id,
+    o.id,
+    d.id,
+    v.discount_id,
+    v.discount_type,
+    v.discount_value;
   `;
-  return rows[0] ? mapOrder(rows[0]) : null;
+  return rows[0] ? mapOrderDetails(rows[0]) : null;
 }
 
 /**
  * Récupère toutes les commandes en statut 'refunding' — pour le cron de recovery.
  */
-export async function getOrdersPendingRefund(): Promise<Order[]> {
+export async function getOrdersPendingRefund(): Promise<OrderEntity[]> {
   const rows = await sql`
     SELECT * FROM orders
     WHERE status = 'refunding'

@@ -19,6 +19,8 @@ export interface EsimEmailContent {
   dateLocale:      string;
   heroTitle:       string;
   days:            string;
+  months:          string;
+  years:           string;
   summaryLabel:    string;
   activationLabel: string;
   orManual:        string;

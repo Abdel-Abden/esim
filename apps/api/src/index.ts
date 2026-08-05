@@ -5,7 +5,7 @@ import { HTTPException } from 'hono/http-exception';
 import { logger } from 'hono/logger';
 import { rateLimitMiddleware } from './middleware/rateLimit.js';
 import { cron } from './routes/cron.js';
-import { esims } from './routes/esims.js';
+import { destinations } from './routes/destination.js';
 import { landing } from './routes/landing/landing.js';
 import { legal } from './routes/legal/legal.js';
 import { orders } from './routes/orders.js';
@@ -33,10 +33,10 @@ app.route('/', landing);
 
 // Healthcheck déplacé sur /health — pour Vercel et les monitoring externes
 app.get('/health', (c) => c.json({ status: 'ok', service: 'ilotel-api' }));
-app.use('/esims/*', rateLimitMiddleware);
+app.use('/destination/*', rateLimitMiddleware);
 app.use('/orders/*', rateLimitMiddleware);
 
-app.route('/esims', esims);
+app.route('/destination', destinations);
 app.route('/orders', orders);
 app.route('/cron', cron);
 app.route('/legal', legal);

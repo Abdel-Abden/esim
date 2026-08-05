@@ -2,10 +2,12 @@ import { getDisplayName } from '@ilotel/shared';
 import type { EsimEmailContent } from './index.js';
 
 export const content: EsimEmailContent = {
-  subject:         (p) => `Ihre eSIM ${p.flag} ${getDisplayName(p.code, p.lang)} ist bereit — ${p.dataGb} GB / ${p.durationDays} Tage`,
+  subject:         (p) => `Ihre eSIM ${p.flag} ${getDisplayName(p.code, p.lang)} ist bereit — ${p.dataQuantity} ${p.dataUnit} / ${p.durationQuantity} ${p.durationUnit}`,
   dateLocale:      'de-DE',
   heroTitle:       'Ihre eSIM ist bereit! 🎉',
   days:            'Tage',
+  months:          'Monate',
+  years:           'Jahre',
   summaryLabel:    '📋 Bestellübersicht',
   activationLabel: '🔑 Aktivierungscode',
   orManual:        'oder manuell eingeben',

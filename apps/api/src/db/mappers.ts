@@ -1,117 +1,104 @@
 import {
-  applyDiscount,
   CountryNetworkInfo,
+  Destination,
+  DestinationEntity,
+  DestinationType,
   Discount,
+  DiscountType,
   Esim,
-  EsimInventory,
-  EsimSummary,
-  OfferWithDetails,
-  OfferWithStock,
+  EsimStatus,
+  Offer,
+  OfferDataUnit,
+  OfferDurationUnit,
   Order,
-  OrderStatus,
+  OrderEntity,
+  OrderStatus
 } from '@ilotel/shared';
 
 // ─── Esim ─────────────────────────────────────────────────────────────────────
 
-export function mapEsim(row: Record<string, unknown>): Esim {
+export function mapDestinationEntity(row: Record<string, unknown>): DestinationEntity {
   return {
     id: row.id as string,
-    name: row.name as string,
     code: row.code as string,
-    type: row.type as string,
+    type: row.type as DestinationType,
     flag: row.flag as string,
     region: (row.region as string) ?? '',
-    regionCountries: row.region_countries as Record<string, Record<string, CountryNetworkInfo>>,
+    coverage: row.region_countries as Record<string, Record<string, CountryNetworkInfo>>,
     featured: Boolean(row.featured),
   };
 }
 
 /**
- * Mappe une ligne de la requête agrégée GET /esims
- * vers EsimSummary (minPrice, hasPromo, hasStock inclus).
+ * Mappe une ligne de la requête agrégée GET /destinations
+ * vers Destination (minPrice, hasPromo, hasStock inclus).
  */
-export function mapEsimSummary(row: Record<string, unknown>): EsimSummary {
+export function mapDestination(row: Record<string, unknown>): Destination {
   return {
     id: row.id as string,
-    name: row.name as string,
     code: row.code as string,
-    type: row.type as string,
+    type: row.type as DestinationType,
     flag: row.flag as string,
     region: (row.region as string) ?? '',
     minPrice: row.min_price != null ? Number(row.min_price) : null,
     hasPromo: Boolean(row.has_promo),
-    hasStock: Boolean(row.has_stock),
-    regionCountries: row.region_countries as Record<string, Record<string, CountryNetworkInfo>>,
+    coverage: row.coverage as Record<string, Record<string, CountryNetworkInfo>>,
     featured: Boolean(row.featured),
   };
 }
 
 // ─── Offer ────────────────────────────────────────────────────────────────────
 
-export function mapOfferWithDetails(row: Record<string, unknown>): OfferWithDetails {
-  const esim: Esim = {
-    id: row.esim_db_id as string,
-    name: row.esim_name as string,
-    code: row.esim_code as string,
-    type: row.esim_type as string,
-    flag: row.esim_flag as string,
-    region: (row.esim_region as string) ?? '',
-    regionCountries: row.region_countries as Record<string, Record<string, CountryNetworkInfo>>,
-    featured: Boolean(row.featured),
-  };
-
-  const activeDiscount: Discount | null = row.discount_id
-    ? {
-        id: row.discount_id as string,
-        offerId: row.id as string,
-        type: row.discount_type as 'percentage' | 'fixed',
-        value: Number(row.discount_value),
-        active: true,
-        startsAt: null,
-        endsAt: null,
-      }
-    : null;
-
+export function mapOffer(row: Record<string, unknown>): Offer {
   const basePrice = Number(row.base_price);
-  const finalPrice = row.final_price
-    ? Number(row.final_price)
-    : applyDiscount(basePrice, activeDiscount);
+  let finalPrice: number = basePrice;
+
+  if (row.discount_id) {
+    switch (row.discount_type) {
+      case DiscountType.PERCENTAGE:
+        finalPrice = Math.round(
+          Number(row.base_price) - (Number(row.base_price) * Number(row.discount_value) / 100)
+        );
+        break;
+
+      case DiscountType.FIXED:
+        finalPrice = Math.max(
+          0,
+          Number(row.base_price) - Number(row.discount_value)
+        );
+        break;
+    }
+  }
+
+  const discount: Discount = {
+    value: row.discount_value as number,
+    type: row.discount_type as DiscountType,
+  };
 
   return {
     id: row.id as string,
-    esimId: row.esim_id as string,
-    dataGb: Number(row.data_gb),
-    esim: esim,
-    durationDays: Number(row.duration_days),
-    basePrice,
-    stripePriceId: (row.stripe_price_id as string) ?? '',
-    createdAt: String(row.created_at),
-    activeDiscount,
+    dataQuantity: row.data_quantity as number,
+    dataUnit: row.data_unit as OfferDataUnit,
+    durationQuantity: row.duration_quantity as number,
+    durationUnit: row.duration_unit as OfferDurationUnit,
+    basePrice: Number(row.base_price),
+    available: row.available as boolean,
+    stripePriceId: row.stripe_price_id as string,
+    discount,
     finalPrice,
-    transatelProductId: row.transatel_product_id as string,
-    unit: row.unit as string,
-  };
-}
-
-export function mapOfferWithStock(row: Record<string, unknown>): OfferWithStock {
-  return {
-    ...mapOfferWithDetails(row),
-    availableCount: Number(row.available_count ?? 0),
+    providerProductId: row.provider_product_id as string,
   };
 }
 
 // ─── Inventory ────────────────────────────────────────────────────────────────
 
-export function mapInventory(row: Record<string, unknown>): EsimInventory {
+export function mapEsim(row: Record<string, unknown>): Esim {
   return {
     id: row.id as string,
-    esimId: row.esim_id as string,
-    offerId: row.offer_id as string,
     iccid: row.iccid as string,
-    status: row.status as 'available' | 'reserved' | 'sold',
+    status: row.status as EsimStatus,
     reservedAt: row.reserved_at ? String(row.reserved_at) : null,
     soldAt: row.sold_at ? String(row.sold_at) : null,
-    orderId: (row.order_id as string) ?? null,
     activationCode: row.activation_code as string,
     msisdn: row.msisdn as string,
   };
@@ -119,16 +106,85 @@ export function mapInventory(row: Record<string, unknown>): EsimInventory {
 
 // ─── Order ────────────────────────────────────────────────────────────────────
 
-export function mapOrder(row: Record<string, unknown>): Order {
+export function mapOrder(row: Record<string, unknown>): OrderEntity {
   return {
-    id: row.id as string,
+  id: row.id as string,
+  email: row.email as string,
+  status: row.status as OrderStatus,
+  lang: row.lang as string,
+  stripePaymentIntentId: row.stripe_payment_intent_id as string,
+  finalPrice: Number(row.final_price),
+  createdAt: String(row.created_at),
+  offerId: row.offer_id as string,
+};
+}
+
+export function mapOrderDetails(row: Record<string, unknown>): Order {
+  const basePrice = Number(row.base_price);
+
+  let finalOfferPrice = basePrice;
+
+  if (row.discount_id) {
+    switch (row.discount_type) {
+      case DiscountType.PERCENTAGE:
+        finalOfferPrice = Math.round(
+          basePrice * (1 - Number(row.discount_value) / 100)
+        );
+        break;
+
+      case DiscountType.FIXED:
+        finalOfferPrice = Math.max(
+          0,
+          basePrice - Number(row.discount_value)
+        );
+        break;
+    }
+  }
+
+  return {
+    id: row.order_id as string,
     email: row.email as string,
-    offerId: row.offer_id as string,
-    status: row.status as OrderStatus,
     lang: row.lang as string,
+    status: row.status as OrderStatus,
     stripePaymentIntentId: row.stripe_payment_intent_id as string,
     finalPrice: Number(row.final_price),
-    discountId: (row.discount_id as string) ?? null,
     createdAt: String(row.created_at),
+
+    offer: {
+      id: row.offer_id as string,
+      dataQuantity: Number(row.data_quantity),
+      dataUnit: row.data_unit as OfferDataUnit,
+      durationQuantity: Number(row.duration_quantity),
+      durationUnit: row.duration_unit as OfferDurationUnit,
+      basePrice,
+      finalPrice: finalOfferPrice,
+      available: Boolean(row.available),
+      stripePriceId: row.stripe_price_id as string,
+      discount: row.discount_id
+        ? {
+          value: Number(row.discount_value),
+          type: row.discount_type as DiscountType,
+        }
+        : undefined,
+      providerProductId: row.stripe_payment_intent_id as string,
+    },
+
+    destination: {
+      id: row.destination_id as string,
+      code: row.code as string,
+      type: row.type as DestinationType,
+      flag: row.flag as string,
+      featured: Boolean(row.featured),
+      region: row.region as string,
+      coverage: row.coverage as Record<
+        string,
+        Record<string, CountryNetworkInfo>
+      >,
+      minPrice:
+        row.destination_min_price != null
+          ? Number(row.destination_min_price)
+          : null,
+      hasPromo: Boolean(row.destination_has_promo),
+    },
   };
 }

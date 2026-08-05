@@ -2,10 +2,12 @@ import { getDisplayName } from '@ilotel/shared';
 import type { EsimEmailContent } from './index.js';
 
 export const content: EsimEmailContent = {
-  subject:         (p) => `شريحة eSIM الخاصة بك ${p.flag} ${getDisplayName(p.code, p.lang)} جاهزة — ${p.dataGb} جيجابايت / ${p.durationDays} أيام`,
+  subject:         (p) => `شريحة eSIM الخاصة بك ${p.flag} ${getDisplayName(p.code, p.lang)} جاهزة — ${p.dataQuantity} ${p.dataUnit} / ${p.durationQuantity} ${p.durationUnit}`,
   dateLocale:      'ar-SA',
   heroTitle:       'شريحة eSIM الخاصة بك جاهزة! 🎉',
   days:            'أيام',
+  months:          'أشهر',
+  years:           'سنوات',
   summaryLabel:    '📋 ملخص الطلب',
   activationLabel: '🔑 رمز التفعيل',
   orManual:        'أو الإدخال اليدوي',
