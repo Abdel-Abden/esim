@@ -7,8 +7,9 @@
     "AMERICA": "Amerika",
     "OCEANIA": "Ozeanien",
     "ME_Wo_Israel": "Naher Osten (ohne Israel)",
-    "WORLD2": "Welt",
-    "BEST_WORLD": "Welt (Erweitert)",
+    "WORLD2": "Welt (Erweitert)",
+    "BEST_WORLD": "Welt",
+    "CUW": "Curaçao",
     "ANZ": "Australien & Neuseeland",
     "BESTASIA3": "Asien (Auswahl)",
     "CARIBBEAN2": "Karibik",
@@ -20,7 +21,19 @@
     "MYS_SGP": "Malaysia & Singapur",
     "SCANDINAVIA": "Skandinavien & Baltikum",
     "USA": "USA",
-    "USACAN": "USA & Kanada"
+    "USACAN": "USA & Kanada",
+    "GUADELOUPE": "Guadeloupe & Französisch-Guayana",
+    "MARTINIQUE": "Martinique & Französisch-Guayana",
+    "S-BARTHELEMY": "Saint-Barthélemy & Französisch-Guayana",
+    "S-MARTIN": "Saint-Martin & Französisch-Guayana",
+
+    "oceania": "Ozeanien",
+    "caribbean": "Karibik",
+    "europe": "Europa",
+    "middle-east": "Naher Osten",
+    "americas": "Amerika",
+    "africa": "Afrika",
+    "asia": "Asien"
   },
   "country": {
     "af": "Afghanistan",

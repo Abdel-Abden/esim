@@ -7,8 +7,9 @@
     "AMERICA": "Americas",
     "OCEANIA": "Oceania",
     "ME_Wo_Israel": "Middle East (Excluding Israel)",
-    "WORLD2": "World",
-    "BEST_WORLD": "World (Extended)",
+    "WORLD2": "World (Extended)",
+    "BEST_WORLD": "World",
+    "CUW": "Curacao",
     "ANZ": "Australia & New Zealand",
     "BESTASIA3": "Asia (Select)",
     "CARIBBEAN2": "Caribbean",
@@ -20,7 +21,19 @@
     "MYS_SGP": "Malaysia & Singapore",
     "SCANDINAVIA": "Scandinavia & Baltic",
     "USA": "United States",
-    "USACAN": "United States & Canada"
+    "USACAN": "United States & Canada",
+    "GUADELOUPE": "Guadeloupe & French Guiana",
+    "MARTINIQUE": "Martinique & French Guiana",
+    "S-BARTHELEMY": "Saint Barthélemy & French Guiana",
+    "S-MARTIN": "Saint Martin & French Guiana",
+
+    "oceania": "Oceania",
+    "caribbean": "Caribbean",
+    "europe": "Europe",
+    "middle-east": "Middle East",
+    "americas": "Americas",
+    "africa": "Africa",
+    "asia": "Asia"
   },
   "country": {
     "ad": "Andorra",
