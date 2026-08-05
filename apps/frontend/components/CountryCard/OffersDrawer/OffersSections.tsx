@@ -10,7 +10,8 @@
  * Utilisé à la fois dans OffersDrawerModal (bottom sheet) et
  * WorldOffersSection (affichage inline sur l'onglet Monde).
  */
-import { Colors, getDisplayName } from '@ilotel/shared';
+import { apiError } from '@/i18n/i18n';
+import { Colors, ErrorCode, getDisplayName } from '@ilotel/shared';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native';
@@ -65,7 +66,7 @@ export default function OffersSections({
             <Text
               style={showSectionHeaders ? sectionStyles.sectionErrorText : drawerStyles.errorText}
             >
-              {t(`errors.${section.loadError}`)}
+              {apiError(section.loadError, ErrorCode.OFFER_NOT_FOUND)}
             </Text>
           ) : (
             <View style={sectionStyles.offersWrap}>

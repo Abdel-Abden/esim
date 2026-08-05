@@ -16,7 +16,7 @@
 import i18n, { apiError } from '@/i18n/i18n';
 import { fetchOffers } from '@/service/destination';
 import { useCartStore } from '@/store/useCartStore';
-import { Destination, Offer, formatOfferLabel, getDisplayName } from '@ilotel/shared';
+import { Destination, ErrorCode, Offer, formatOfferLabel, getDisplayName } from '@ilotel/shared';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 
@@ -59,7 +59,7 @@ export function useOffersDrawer(destinations: Destination[]): UseOffersDrawerRet
           destinations,
           offers: [],
           loading: false,
-          loadError: apiError(errorCode, 'errors.OFFER_NOT_FOR_SALE'),
+          loadError: apiError(errorCode, ErrorCode.OFFER_NOT_FOR_SALE),
         };
       }),
     );
