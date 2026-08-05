@@ -13,1769 +13,1197 @@ DELETE FROM destinations;
 -- ============================================================
 -- INSERT esims
 -- ============================================================
--- =====================
--- ESIMS
--- =====================
 
-INSERT INTO public.destinations (id, featured, code, name, type, region, flag, coverage) VALUES
-
--- =====================
--- local
--- =====================
-
--- Afrique AF
-
-('a2b93439-736b-4646-8d26-a8b8630c4616', false, 'za', 'Afrique du Sud', 'local', 'af', '🇿🇦', '{"za": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('ec705aa3-7a3c-4917-b9da-60dca7a9f593', false, 'dz', 'Algérie', 'local', 'af', '🇩🇿', '{"dz": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('88a6ae89-0dba-4b60-a600-495c1d7ca834', false, 'ao', 'Angola', 'local', 'af', '🇦🇴', '{"ao": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('8affb6bf-f360-4bcb-b08c-086989eae7df', true, 'bw', 'Botswana', 'local', 'af', '🇧🇼', '{"bw": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('18d78ee2-4be5-4458-b15e-723e30e1f812', false, 'bf', 'Burkina Faso', 'local', 'af', '🇧🇫', '{"bf": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('8100fc37-7d2d-47f2-92c5-12f9d0986e86', false, 'bi', 'Burundi', 'local', 'af', '🇧🇮', '{"bi": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('4bcc5461-d8b0-4088-b045-40270850cea0', false, 'bj', 'Bénin', 'local', 'af', '🇧🇯', '{"bj": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('18e22b43-0f2b-4a3f-a4a5-64dc48802086', true, 'cm', 'Cameroun', 'local', 'af', '🇨🇲', '{"cm": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('bece1e79-beda-42a7-835e-fbf7d62cf22c', false, 'cv', 'Cap-Vert', 'local', 'af', '🇨🇻', '{"cv": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('b18078e3-5ea0-404b-b015-4b7e06196a03', false, 'km', 'Comores', 'local', 'af', '🇰🇲', '{"km": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('b7073514-059e-4f7f-8626-6a11215414ae', false, 'cg', 'Congo', 'local', 'af', '🇨🇬', '{"cg": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('f1ff57fd-3196-49ee-8de7-11d6f886cd5f', false, 'dj', 'Djibouti', 'local', 'af', '🇩🇯', '{"dj": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('85610ad8-2345-4089-81b2-23d08b4f5197', false, 'sz', 'Eswatini', 'local', 'af', '🇸🇿', '{"sz": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('622f5c1c-542b-4d4b-8044-aaa9d6260463', true, 'ga', 'Gabon', 'local', 'af', '🇬🇦', '{"ga": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('73fa0649-807d-4962-8ebb-0a67c70f06b6', true, 'gh', 'Ghana', 'local', 'af', '🇬🇭', '{"gh": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('01e0eff2-6e95-4955-b771-72ac99b68657', true, 'gn', 'Guinée', 'local', 'af', '🇬🇳', '{"gn": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('dfbcaeb9-a04f-4e37-a7a5-743bb7f72ae8', true, 'gw', 'Guinée-Bissau', 'local', 'af', '🇬🇼', '{"gw": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('2af7024e-0176-42cb-b595-9cfcb49b3a06', true, 'ke', 'Kenya', 'local', 'af', '🇰🇪', '{"ke": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('c36b3ba2-e433-4a4d-bceb-46171388bb28', false, 'mg', 'Madagascar', 'local', 'af', '🇲🇬', '{"mg": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('c3e18708-3553-4175-9587-6e2281101020', true, 'mw', 'Malawi', 'local', 'af', '🇲🇼', '{"mw": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('4c47c065-c066-4e24-ad4e-963da4de4be6', false, 'ml', 'Mali', 'local', 'af', '🇲🇱', '{"ml": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('20a7b210-b291-4913-8932-de05a4a17fd7', false, 'ma', 'Maroc', 'local', 'af', '🇲🇦', '{"ma": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('2dcc8be7-f717-4749-a4aa-170b2fa1e160', false, 'mu', 'Maurice', 'local', 'af', '🇲🇺', '{"mu": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('b82bde93-00a9-4d61-9111-7a29f0433642', false, 'mr', 'Mauritanie', 'local', 'af', '🇲🇷', '{"mr": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('507f3503-1f2d-4428-a46d-a82e2fad56ce', false, 'yt', 'Mayotte', 'local', 'af', '🇾🇹', '{"yt": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('79a013f3-3374-4972-a748-3cdb0fb98b48', false, 'mz', 'Mozambique', 'local', 'af', '🇲🇿', '{"mz": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('950518ff-16b8-46f2-8280-8653a0f4aa2e', false, 'na', 'Namibie', 'local', 'af', '🇳🇦', '{"na": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('04d7b769-7c89-4bae-9554-55e2ee926929', false, 'ng', 'Nigeria', 'local', 'af', '🇳🇬', '{"ng": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('552e2cd2-b1c8-448b-a123-4c63756cbad0', false, 'ug', 'Ouganda', 'local', 'af', '🇺🇬', '{"ug": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('f8651905-903a-46a8-9237-e9fc5e88a59d', false, 'cd', 'RD Congo', 'local', 'af', '🇨🇩', '{"cd": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('0ae6b101-ba17-49cd-b9c8-92ba770903be', false, 'rw', 'Rwanda', 'local', 'af', '🇷🇼', '{"rw": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('aa747bc5-2197-48b1-90a8-fb7b4e448ff1', false, 'cf', 'Rép. centrafricaine', 'local', 'af', '🇨🇫', '{"cf": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('cd35dcc4-dc9d-4f6a-8818-7f262d933276', false, 're', 'Réunion', 'local', 'af', '🇷🇪', '{"re": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('57884e9b-f978-4090-bce4-75b6e93b3feb', false, 'sc', 'Seychelles', 'local', 'af', '🇸🇨', '{"sc": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('3d9541fe-8d81-4733-834a-9d94668fa9fe', false, 'sl', 'Sierra Leone', 'local', 'af', '🇸🇱', '{"sl": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('18944f45-0a29-4a74-b05c-2edf9002c388', false, 'sd', 'Soudan', 'local', 'af', '🇸🇩', '{"sd": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('c8f5dddd-43ba-4e19-8da8-d0db121694ce', false, 'ss', 'Soudan du Sud', 'local', 'af', '🇸🇸', '{"ss": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('20647fac-7e92-481f-a6a7-ca1e8c451910', false, 'sn', 'Sénégal', 'local', 'af', '🇸🇳', '{"sn": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('b71ac246-e162-4d99-a087-bf499b50b789', false, 'tz', 'Tanzanie', 'local', 'af', '🇹🇿', '{"tz": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('c0e8360d-63e2-4005-80e5-c9f4cddf64f9', false, 'tg', 'Togo', 'local', 'af', '🇹🇬', '{"tg": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('9331f629-cc33-4f38-8294-4757e8627b74', false, 'tn', 'Tunisie', 'local', 'af', '🇹🇳', '{"tn": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('4a0d10c5-4fe0-48a3-bc50-8e3e5047bbcd', false, 'zm', 'Zambie', 'local', 'af', '🇿🇲', '{"zm": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('df6771d7-ea09-42c4-9ff8-a752a462d64e', false, 'eg', 'Égypte', 'local', 'af', '🇪🇬', '{"eg": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('3e60394e-1329-4788-9578-d6f600fc9ae5', false, 'et', 'Éthiopie', 'local', 'af', '🇪🇹', '{"et": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-
--- Amérique AM
-
-('9abae76a-9068-494e-b529-819fdaecbadd', false, 'ar', 'Argentine', 'local', 'am', '🇦🇷', '{"ar": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('fe125ecb-1101-4aec-ab06-038fc05e976c', false, 'aw', 'Aruba', 'local', 'am', '🇦🇼', '{"aw": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('2c6b087d-239f-4d39-99d2-fe45c4f32672', false, 'bs', 'Bahamas', 'local', 'am', '🇧🇸', '{"bs": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('300a0580-3eb9-4780-a42f-944459198313', false, 'bz', 'Belize', 'local', 'am', '🇧🇿', '{"bz": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('666cd467-8716-4b94-bc10-8bfae45d1ccb', false, 'bo', 'Bolivie', 'local', 'am', '🇧🇴', '{"bo": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('940caea8-d149-46ee-8afc-a5f45e5283ef', false, 'br', 'Brésil', 'local', 'am', '🇧🇷', '{"br": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('fb942b0c-f7ba-4a3b-a901-e568ad216991', false, 'ca', 'Canada', 'local', 'am', '🇨🇦', '{"ca": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('9dc48c68-a75f-4cc4-a7d4-ce6ff01cbec9', false, 'cl', 'Chili', 'local', 'am', '🇨🇱', '{"cl": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('8eec889b-4487-4c46-b2ec-aa680bbdd721', false, 'co', 'Colombie', 'local', 'am', '🇨🇴', '{"co": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('1bf2b466-363b-4fa1-971f-040ac6da7850', false, 'cr', 'Costa Rica', 'local', 'am', '🇨🇷', '{"cr": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('3a211984-8c5a-4b7b-83bf-0b9f6d039916', false, 'cw', 'Curaçao', 'local', 'am', '🇨🇼', '{"cw": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('bfef0194-d761-4587-9229-45771ff85965', false, 'sv', 'El Salvador', 'local', 'am', '🇸🇻', '{"sv": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('d4535f19-cff0-4456-a4e8-4218275df8e5', false, 'gl', 'Groenland', 'local', 'am', '🇬🇱', '{"gl": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('d574eb3d-d1af-46de-867c-12b162d2cbf4', false, 'gp', 'Guadeloupe', 'local', 'am', '🇬🇵', '{"gf": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gp": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('1cf701c6-f7c4-4a73-889a-b66a60f80062', false, 'gt', 'Guatemala', 'local', 'am', '🇬🇹', '{"gt": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('9d7fa02d-1f49-4e1c-89b4-db961eed8142', false, 'gy', 'Guyana', 'local', 'am', '🇬🇾', '{"gy": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('443e4e46-ed50-4816-9a10-4ff4990b643e', false, 'gf', 'Guyane française', 'local', 'am', '🇬🇫', '{"gf": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('1fa157a8-1c21-4495-a7ad-0e38c6e70769', false, 'hn', 'Honduras', 'local', 'am', '🇭🇳', '{"hn": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('3e418e21-0282-4d16-9a75-da6874d50698', false, 'mq', 'Martinique', 'local', 'am', '🇲🇶', '{"gf": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mq": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('f50b53f8-ab49-4b71-9226-727124563dce', false, 'mx', 'Mexique', 'local', 'am', '🇲🇽', '{"mx": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('e9f15ed5-016c-451d-b96c-482463e316d2', false, 'ni', 'Nicaragua', 'local', 'am', '🇳🇮', '{"ni": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('668509e8-a2c4-40cd-bcd1-62b53a93b87e', false, 'pa', 'Panama', 'local', 'am', '🇵🇦', '{"pa": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('1f8980af-30bc-4485-b093-d17d94c09ec6', false, 'py', 'Paraguay', 'local', 'am', '🇵🇾', '{"py": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('e4c02753-cbb2-4fcf-89a6-ada2538552ce', false, 'pe', 'Pérou', 'local', 'am', '🇵🇪', '{"pe": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('4efd99a5-16fc-48a1-97d8-98b4b2a90070', false, 'do', 'Rép. dominicaine', 'local', 'am', '🇩🇴', '{"do": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('57a98d28-3af6-4ee3-9b4a-27d0e44f41a6', false, 'bl', 'Saint-Barthélemy', 'local', 'am', '🇧🇱', '{"bl": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gf": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('8d3484bd-f560-419e-ae65-a43236eb7754', false, 'mf', 'Saint-Martin', 'local', 'am', '🇲🇫', '{"gf": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mf": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('d3844292-5c75-4af2-8c36-21d59ca7c4ac', false, 'sr', 'Suriname', 'local', 'am', '🇸🇷', '{"sr": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('d4b597b3-46da-429b-9de6-b2110f2fb552', false, 'tt', 'Trinité-et-Tobago', 'local', 'am', '🇹🇹', '{"tt": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('f25dc363-1fd7-4f44-839d-57aaa59c9ee9', false, 'uy', 'Uruguay', 'local', 'am', '🇺🇾', '{"uy": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('fc8adfb9-fe36-45c0-8d06-69bfd508c899', false, 've', 'Venezuela', 'local', 'am', '🇻🇪', '{"ve": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('c0b05975-5b74-4d19-bf7b-6d6c93a562a2', false, 'ec', 'Équateur', 'local', 'am', '🇪🇨', '{"ec": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-
--- Asie AS
-
-('db0671c5-fee7-484c-962e-20e4ee9f5f43', false, 'am', 'Arménie', 'local', 'as', '🇦🇲', '["am", "ar", "bo", "br", "bz", "ca", "cl", "co", "cr", "do", "ec", "gl", "gt", "hn", "mx", "ni", "pa", "pe", "pr", "py", "sv", "us", "uy", "ve", "vg", "vi"]'),
-('6f074ac8-c8a2-47e7-9966-7193db9fa1dc', false, 'az', 'Azerbaïdjan', 'local', 'as', '🇦🇿', '{"az": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('d15b65f7-df13-4df6-9e79-e0463791e071', false, 'bt', 'Bhoutan', 'local', 'as', '🇧🇹', '{"bt": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('d228e113-01ec-4173-a275-67e5dbd3f00a', false, 'bn', 'Brunei', 'local', 'as', '🇧🇳', '{"bn": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('b3043532-ec5a-4c7b-86be-d7c14b401168', false, 'kh', 'Cambodge', 'local', 'as', '🇰🇭', '{"kh": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('dc3a745e-a756-4fa1-9503-e8520c2d69d3', false, 'cn', 'Chine', 'local', 'as', '🇨🇳', '{"cn": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('0a01dc2b-374f-4deb-b5df-997410a54ee5', false, 'kr', 'Corée du Sud', 'local', 'as', '🇰🇷', '{"kr": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('6f7d9aef-77cf-41e5-81ef-af251505a5f5', false, 'ge', 'Géorgie', 'local', 'as', '🇬🇪', '{"ge": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('b3378ac1-e71a-4172-b73a-fda355742af2', false, 'hk', 'Hong Kong', 'local', 'as', '🇭🇰', '{"hk": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('c704ae62-138d-46c2-b63e-e584fcaf102d', false, 'in', 'Inde', 'local', 'as', '🇮🇳', '{"in": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('8d5b3c0b-7f30-4372-a8bb-08859f172450', false, 'id', 'Indonésie', 'local', 'as', '🇮🇩', '{"id": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('fe2547a3-2ab2-49e1-84e3-5a6e265a3f58', false, 'jp', 'Japon', 'local', 'as', '🇯🇵', '{"jp": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('d82a6d65-7c19-4b61-a1a9-5c2d3f0bc3a0', false, 'kz', 'Kazakhstan', 'local', 'as', '🇰🇿', '{"kz": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('601ef2d4-ce42-4620-b7f3-551ef4a910a6', false, 'kg', 'Kirghizistan', 'local', 'as', '🇰🇬', '{"kg": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('fc9e9738-ece0-426b-99e9-af330604674f', false, 'mo', 'Macao', 'local', 'as', '🇲🇴', '{"mo": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('a44d6f2f-61cc-4a05-b984-568c02f6f111', false, 'my', 'Malaisie', 'local', 'as', '🇲🇾', '{"my": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('0d75c093-7466-476c-a75f-d87f621eb86d', false, 'mn', 'Mongolie', 'local', 'as', '🇲🇳', '{"mn": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('607fb6b6-fa55-461a-9535-41bba2e710f2', false, 'np', 'Népal', 'local', 'as', '🇳🇵', '{"np": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('6f5da76e-1dc2-4cab-84b7-d48ec289ff40', false, 'uz', 'Ouzbékistan', 'local', 'as', '🇺🇿', '{"uz": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('89c1c33a-f4fa-4ed3-bb19-22982321e116', false, 'pk', 'Pakistan', 'local', 'as', '🇵🇰', '{"pk": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('37e79854-50fe-4d7b-9845-9e62704c1a3f', false, 'ph', 'Philippines', 'local', 'as', '🇵🇭', '{"ph": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('67e347cb-a6e4-4e87-a714-179bba2d6829', false, 'sg', 'Singapour', 'local', 'as', '🇸🇬', '{"sg": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('09925e99-4237-47de-acd4-f9c83f739e0f', false, 'lk', 'Sri Lanka', 'local', 'as', '🇱🇰', '{"lk": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('92a5002d-021b-41f0-aa54-b6d6350a3ce8', false, 'tj', 'Tadjikistan', 'local', 'as', '🇹🇯', '{"tj": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('4b712600-a89d-45bf-a2e5-227208769c2c', false, 'tw', 'Taïwan', 'local', 'as', '🇹🇼', '{"tw": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('ccda7780-bccf-4df5-866d-2512fe061197', false, 'th', 'Thaïlande', 'local', 'as', '🇹🇭', '{"th": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('03be8bc2-1e20-4482-8dc6-036064614db6', false, 'vn', 'Vietnam', 'local', 'as', '🇻🇳', '{"vn": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-
--- Europe EU
-
-('6618653a-8531-4a48-bc18-66f6783ccdf6', false, 'al', 'Albanie', 'local', 'eu', '🇦🇱', '{"al": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}, "Opérateur_name_2": {"3G": false, "4G": true, "5G": false}}}'),
-('aa6a7a7d-02e2-4396-9d6e-b16a25d80349', false, 'de', 'Allemagne', 'local', 'eu', '🇩🇪', '{"de": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('05d44374-2606-4100-a79c-64c9699db094', false, 'ad', 'Andorre', 'local', 'eu', '🇦🇩', '{"ad": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('547e8d96-fb59-4cb0-a469-db74bf912703', false, 'at', 'Autriche', 'local', 'eu', '🇦🇹', '{"at": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('a7448b2c-6d84-428e-bd9c-f6330b52f880', false, 'be', 'Belgique', 'local', 'eu', '🇧🇪', '{"be": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('01cd0f2e-f4be-4904-b08c-8ae448ddc80e', false, 'by', 'Biélorussie', 'local', 'eu', '🇧🇾', '{"by": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('5ae1cd2e-6859-41cd-accb-ae5a1abe947c', false, 'ba', 'Bosnie-Herzégovine', 'local', 'eu', '🇧🇦', '{"ba": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('138a1373-d698-4310-bbc2-28a411aedb55', false, 'bg', 'Bulgarie', 'local', 'eu', '🇧🇬', '{"bg": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('e30e8612-39ab-40af-80c1-8bb389a7b874', false, 'cy', 'Chypre', 'local', 'eu', '🇨🇾', '{"cy": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('11df7336-ec98-4b37-b02c-29095ebb3d45', false, 'hr', 'Croatie', 'local', 'eu', '🇭🇷', '{"hr": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('3014d626-9c7f-4803-8fe8-270f67da6833', false, 'dk', 'Danemark', 'local', 'eu', '🇩🇰', '{"dk": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('867d5991-013b-4922-a9e5-f00aae98b9cd', false, 'es', 'Espagne', 'local', 'eu', '🇪🇸', '{"es": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('2531b471-becf-4b17-98a7-77e8b3ffcd75', false, 'ee', 'Estonie', 'local', 'eu', '🇪🇪', '{"ee": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('0a06379a-dba0-4082-872e-40645e1c0393', false, 'fi', 'Finlande', 'local', 'eu', '🇫🇮', '{"fi": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('996f27cf-e96a-42fd-8795-d92d46138607', false, 'fr', 'France', 'local', 'eu', '🇫🇷', '{"fr": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('3c87a8ac-01d1-4d0a-80e2-a869c56deb95', false, 'gi', 'Gibraltar', 'local', 'eu', '🇬🇮', '{"gi": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('986d56f4-6c08-4fe7-8b7b-6b425e186f6c', false, 'gr', 'Grèce', 'local', 'eu', '🇬🇷', '{"gr": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('81125430-b0dd-4e2a-a90f-6169b00a5afd', false, 'hu', 'Hongrie', 'local', 'eu', '🇭🇺', '{"hu": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('f197448d-ed17-4091-94d8-8a932c534aab', false, 'ie', 'Irlande', 'local', 'eu', '🇮🇪', '{"ie": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('6a2f4266-ddac-4e4c-b3b4-e208c6bceb45', false, 'is', 'Islande', 'local', 'eu', '🇮🇸', '{"is": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('09815bac-d9a8-4f9f-9aaf-1f9928480480', false, 'it', 'Italie', 'local', 'eu', '🇮🇹', '{"it": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('fcff9806-45b3-471b-89ec-d4716f90d013', false, 'lv', 'Lettonie', 'local', 'eu', '🇱🇻', '{"lv": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('91fca936-4213-418b-9121-01faebcc45ef', false, 'lt', 'Lituanie', 'local', 'eu', '🇱🇹', '{"lt": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('5955df61-0197-4e53-85ff-ba92c3289ebc', false, 'lu', 'Luxembourg', 'local', 'eu', '🇱🇺', '{"lu": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('0dee01ad-1df3-4ce9-b355-25bec805ec91', false, 'mk', 'Macédoine du Nord', 'local', 'eu', '🇲🇰', '{"mk": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('1ede8fa4-4262-4136-8ad7-2058de17a117', false, 'mt', 'Malte', 'local', 'eu', '🇲🇹', '{"mt": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('4fe9ee34-3e98-4dd6-a484-2272c3bf7261', false, 'md', 'Moldavie', 'local', 'eu', '🇲🇩', '{"md": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('385aeecb-fb20-47e6-bbf9-dfb6e506cc88', false, 'me_', 'Monténégro', 'local', 'eu', '', '{"me": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('5b6b03d9-538a-4f60-9aed-ffa1ba91ec08', false, 'no', 'Norvège', 'local', 'eu', '🇳🇴', '{"no": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('3d13fecc-40a5-49a6-942c-9202eaf1fdf1', false, 'nl', 'Pays-Bas', 'local', 'eu', '🇳🇱', '{"nl": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('1a84c505-5df0-4eda-8ba8-7a05c4d3e5c8', false, 'pl', 'Pologne', 'local', 'eu', '🇵🇱', '{"pl": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('037b8737-045b-4a50-beae-a2af6d1c4106', false, 'pt', 'Portugal', 'local', 'eu', '🇵🇹', '{"pt": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('dc0946f2-13db-4f2a-8259-d32977418215', false, 'ro', 'Roumanie', 'local', 'eu', '🇷🇴', '{"ro": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('327f649b-460b-49c2-ab74-ccc84adc615c', false, 'gb', 'Royaume-Uni', 'local', 'eu', '🇬🇧', '{"gb": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('891ee240-1d18-4fe9-b626-b93f55225f93', false, 'ru', 'Russie', 'local', 'eu', '🇷🇺', '{"ru": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('7e713e18-46ed-45d2-b54e-bf087123ab60', false, 'rs', 'Serbie', 'local', 'eu', '🇷🇸', '{"rs": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('66ec6adb-dd58-479f-8547-cfb41e664528', false, 'sk', 'Slovaquie', 'local', 'eu', '🇸🇰', '{"sk": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('0e795b5a-64a6-47de-82ff-11c8eff90077', false, 'si', 'Slovénie', 'local', 'eu', '🇸🇮', '{"si": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('66e3a4ba-392a-41a0-af87-ccb569fb02a2', false, 'ch', 'Suisse', 'local', 'eu', '🇨🇭', '{"ch": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('797526bb-9f4f-4325-8f80-856fb2496c3b', false, 'se', 'Suède', 'local', 'eu', '🇸🇪', '{"se": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('44ea41be-40ed-4339-8bff-de45994a77a2', false, 'cz', 'Tchéquie', 'local', 'eu', '🇨🇿', '{"cz": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('ebaff4c3-2062-4908-8641-c00568028c7e', false, 'tr', 'Turquie', 'local', 'eu', '🇹🇷', '{"tr": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('af28a2cc-8c89-4347-82bf-14d4ccf4373d', false, 'ua', 'Ukraine', 'local', 'eu', '🇺🇦', '{"ua": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('36129492-21ba-443f-9197-a7623a997c2c', false, 'fo', 'Îles Féroé', 'local', 'eu', '🇫🇴', '{"fo": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-
--- Moyen-Orient ME
-
-('0d9a1def-7bb9-401d-8aa9-3cd84db2a141', false, 'sa', 'Arabie saoudite', 'local', 'me', '🇸🇦', '{"sa": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('72776ef6-113d-4171-b418-d99377b38ab5', false, 'bh', 'Bahreïn', 'local', 'me', '🇧🇭', '{"bh": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('673f0f6e-745b-411e-8900-f13f3275ea21', false, 'iq', 'Irak', 'local', 'me', '🇮🇶', '{"iq": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('30401a5f-c030-4d51-8210-f7abcb030f4e', false, 'il', 'Israël', 'local', 'me', '🇮🇱', '{"il": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('0c2281a3-3b02-4875-9663-40847e1c5bf7', false, 'jo', 'Jordanie', 'local', 'me', '🇯🇴', '{"jo": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('ff3bf3ce-7219-42db-89d7-43adbc1a263b', false, 'kw', 'Koweït', 'local', 'me', '🇰🇼', '{"kw": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('a60ee5dd-3acf-4afb-9d20-01edd5d60cb7', false, 'om', 'Oman', 'local', 'me', '🇴🇲', '{"om": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('5b6fa89d-9c96-47a3-a7b2-a4f0e18c6eb3', false, 'ps', 'Palestine', 'local', 'me', '🇵🇸', '{"ps": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('d934bb7c-f750-48b3-ac92-86903494333b', false, 'qa', 'Qatar', 'local', 'me', '🇶🇦', '{"qa": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('4e141b22-bb56-406b-a0b5-42a48bf1af59', false, 'ae', 'Émirats arabes unis', 'local', 'me', '🇦🇪', '{"ae": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-
--- Océanie OC
-
-('a6ce2d02-3950-4de5-b945-b380ae095ea9', false, 'au', 'Australie', 'local', 'oc', '🇦🇺', '{"au": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('4643c960-c4df-413e-8eb1-28795ebc13f2', false, 'fj', 'Fidji', 'local', 'oc', '🇫🇯', '{"fj": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('47560712-bb5b-43e6-b88c-55ae6fca9a0a', false, 'gu', 'Guam', 'local', 'oc', '🇬🇺', '{"gu": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('64feb637-d560-4b7b-ac2f-f81a347e9098', false, 'nr', 'Nauru', 'local', 'oc', '🇳🇷', '{"nr": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('adde12c2-76bd-4f99-8229-f96af97c5f8b', false, 'nc', 'Nouvelle-Calédonie', 'local', 'oc', '🇳🇨', '{"nc": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('1333abeb-1fdc-4f02-84e9-d8a24da65e5f', false, 'nz', 'Nouvelle-Zélande', 'local', 'oc', '🇳🇿', '{"nz": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('d1824057-970c-4dde-89bb-1433a20ae7cc', false, 'pf', 'Polynésie française', 'local', 'oc', '🇵🇫', '{"pf": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('90e23d02-e342-490a-8353-c2c85145d7b3', false, 'ws', 'Samoa', 'local', 'oc', '🇼🇸', '{"ws": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('f5dc92b9-1137-40ea-8031-7f097fe7a5e1', false, 'to', 'Tonga', 'local', 'oc', '🇹🇴', '{"to": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('9ba71685-57e6-48c9-b6e2-e660851d15ee', false, 'vu', 'Vanuatu', 'local', 'oc', '🇻🇺', '{"vu": { "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
--- =====================
--- REGION
--- =====================
-
--- Afrique AF
-
-('906ae15d-02cc-42db-b7a3-213042e7fdc7', false, 'af', 'Afrique', 'region', 'af', '🌍', '{"af":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bf":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bi":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bj":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bw":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cd":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cf":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ci":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cm":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cv":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "dj":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "dz":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "eg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "et":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ga":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gh":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gm":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gw":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ke":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "km":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "lr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ls":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ma":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ml":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mu":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mw":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mz":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ne":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ng":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "re":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "rw":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sc":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sd":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sl":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ss":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sz":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "td":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "tg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "tn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "tz":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ug":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "yt":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "za":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "zm":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('d26f02d1-3bed-4fba-9a2d-ade19b7d32dd', false, 'af2', 'Afrique (sélection)', 'region', 'af', '🌍', '{"bj":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bw":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cf":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ci":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cm":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "dz":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "eg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gh":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gw":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "lr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ma":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ml":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mu":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ng":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "re":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "rw":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sl":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ss":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sz":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "tn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ug":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "yt":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "za":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "zm":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-
--- Amérique AM
-
-('daff99bc-4144-4769-8a07-a976a92313e3', false, 'latam2', 'Amérique latine (étendue)', 'region', 'am', '🌎', '{"ar":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bo":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "br":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cl":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "co":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ec":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gt":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "hn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mx":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ni":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "pa":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "py":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sv":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "uy":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ve":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('3efa96a5-227e-41fd-85dc-39718ebf399f', false, 'carib-b', 'Caraïbes (B)', 'region', 'am', '🌎', '{"ag":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ai":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "aw":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bb":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bl":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bm":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bq":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bs":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cw":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "dm":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "do":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gd":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gf":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gp":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gy":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ht":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "jm":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "kn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ky":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "lc":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mf":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mq":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ms":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sx":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "tc":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "tt":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "vc":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "vg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('e3dcd9c5-3512-454f-92b0-0637d5ced156', false, 'carib2', 'Caraïbes (étendue)', 'region', 'am', '🌎', '{"bl":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gf":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gp":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mf":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mq":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('e4197d22-7677-40b4-b61a-ddf6fc3d0aec', false, 'us-can', 'USA & Canada', 'region', 'am', '🌎', '{"ca":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "us":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('2a6b3054-99e6-4a24-b5ea-37a008934996', false, 'us-all', 'États-Unis & territoires', 'region', 'am', '🌎', '{"pr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "us":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "vi":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-
--- Asie AS
-
-('d02a228e-6a2b-4b05-8570-fe7956f08628', false, 'as', 'Asie', 'region', 'as', '🌏', '{"au":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "az":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bd":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "hk":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "id":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "in":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ir":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "jp":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "kg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "kh":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "kr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "kz":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "la":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "lk":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mm":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mo":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "my":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "np":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "nz":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ph":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "pk":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "th":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "tj":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "tw":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "uz":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "vn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('d5b45760-9074-4142-abe8-df4dafdf5391', false, 'as3', 'Asie (étendue)', 'region', 'as', '🌏', '{"cn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "hk":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "id":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "in":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "jp":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "kh":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "kr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "la":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "lk":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mo":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "my":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ph":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "pk":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "th":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "tw":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "vn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('af3cfa07-0c05-45da-aa01-b0f8a54df2ed', false, 'mys-sgp', 'Malaisie & Singapour', 'region', 'as', '🌏', '{"my":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-
--- Europe EU
-
-('e746daaf-52d0-4e9c-8b18-d97506fea34b', false, 'eu', 'Europe', 'region', 'eu', '🇪🇺', '{"ad":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "at":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "be":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ch":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cy":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cz":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "de":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "dk":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ee":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "es":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "fi":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "fr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gb":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gi":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "hr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "hu":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ie":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "im":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "is":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "it":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "je":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "li":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "lt":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "lu":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "lv":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "md":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mt":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "nl":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "no":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "pl":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "pt":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "re":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ro":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "se":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "si":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sk":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ua":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('47bd11e5-2c92-4c8d-b53e-294b128ebac7', false, 'eu-ext', 'Europe étendue', 'region', 'eu', '🇪🇺', '{"ad":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "al":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "at":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "az":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ba":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "be":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "by":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ch":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cy":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cz":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "de":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "dk":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ee":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "es":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "fi":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "fo":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "fr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gb":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ge":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gi":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "hr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "hu":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ie":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "il":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "im":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "is":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "it":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "je":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "kg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "li":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "lt":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "lu":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "lv":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "md":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "me":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mk":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mt":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "nl":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "no":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "pl":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "pt":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ro":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "rs":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ru":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "se":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "si":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sk":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "tr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ua":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "uz":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "yt":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('e11eaf06-a7b3-4bcb-aa19-00f695b9e272', false, 'jey-ggy', 'Jersey, Guernesey & Île de Man', 'region', 'eu', '🇪🇺', '{"gg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "im":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "je":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('4b5f225e-3828-46bc-86c9-5bdef91d2e86', false, 'scand', 'Scandinavie', 'region', 'eu', '🇪🇺', '{"dk":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ee":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "fi":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "is":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "lt":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "lv":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "no":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "se":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-
--- Moyen-Orient ME
-
-('e52f1848-d286-4c99-9c67-221cb876f6ee', false, 'me-woi', 'Moyen-Orient (sans Israël)', 'region', 'me', '🌍', '{"ae":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "af":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "am":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bh":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "il":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "iq":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ir":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "jo":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "kw":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "om":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ps":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "qa":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sa":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "tr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('7505117e-4acd-437f-a3e6-ed4978df651e', false, 'me1', 'Moyen-Orient (sélection)', 'region', 'me', '🌍', '{"bh":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "il":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "iq":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "jo":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "kw":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "om":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "qa":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sa":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "tr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('8dea511e-d8f9-4b4b-81d1-dca0251866cb', false, 'me2', 'Moyen-Orient (étendu)', 'region', 'me', '🌍', '{"bh":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "il":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "iq":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "jo":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "kw":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "om":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "qa":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sa":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "tr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-
--- Océanie OC
-
-('ffe3fed4-6311-49eb-80c0-d24b2744c355', false, 'anz', 'Australie & NZ', 'region', 'oc', '🌏', '{"au":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "nz":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('b9a02fc3-b556-4460-895d-3065cd377641', false, 'oc', 'Océanie', 'region', 'oc', '🌏', '{"au":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "fj":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gu":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "nc":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "nr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "nz":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "pf":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "pg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sb":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "to":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "vu":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ws":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-
--- Monde WW
-
-('63adfa4b-f6a1-4064-b34b-1dae578c03ef', false, 'ww1', 'Monde (179 pays)', 'global', 'ww', '🌐', '{"ad":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ae":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ag":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ai":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "al":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ar":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "at":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "au":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "aw":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "az":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ba":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bb":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "be":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bh":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bj":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bl":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bm":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bo":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bq":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "br":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bs":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bw":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "by":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ca":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cf":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ch":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ci":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cl":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cm":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "co":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cw":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cy":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cz":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "de":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "dk":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "dm":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "do":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "dz":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ec":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ee":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "eg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "es":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "fi":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "fj":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "fo":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "fr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ga":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gb":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gd":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ge":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gf":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gh":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gi":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gl":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gp":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gt":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gw":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gy":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "hk":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "hn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "hr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ht":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "hu":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "id":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ie":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "il":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "im":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "in":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "iq":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "is":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "it":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "je":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "jm":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "jo":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "jp":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ke":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "kg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "kh":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "km":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "kn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "kr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "kw":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ky":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "kz":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "la":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "lc":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "li":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "lk":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "lr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "lt":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "lu":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "lv":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ma":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mc":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "md":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "me":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mf":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mk":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ml":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mo":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mq":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ms":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mt":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mu":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mx":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "my":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ng":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ni":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "nl":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "no":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "nr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "nz":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "om":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "pa":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "pe":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "pf":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ph":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "pk":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "pl":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "pr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "pt":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "py":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "qa":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "re":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ro":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "rs":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ru":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "rw":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sa":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sc":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sd":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "se":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "si":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sk":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sl":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sm":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ss":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sv":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sx":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sz":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "tc":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "th":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "tj":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "tn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "to":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "tr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "tt":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "tw":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "tz":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ua":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ug":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "us":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "uy":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "uz":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "vc":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ve":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "vg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "vi":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "vn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "vu":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ws":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "yt":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "za":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "zm":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}'),
-('8df03d84-b222-41f2-8560-a268aa57ef94', false, 'ww2', 'Monde (202 pays)', 'global', 'ww', '🌐', '{"ad":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ae":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "af":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}, "Opérateur_name-2": {"3G": false, "4G": false, "5G": true}}, "ag":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ai":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "al":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "am":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ar":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "at":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "au":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "aw":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "az":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ba":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bb":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bd":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "be":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bf":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bh":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bi":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bj":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bl":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bm":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bo":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bq":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "br":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bs":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bw":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "by":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "bz":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ca":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cf":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ch":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ci":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cl":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cm":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "co":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cv":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cw":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cy":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "cz":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "de":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "dk":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "dm":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "do":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "dz":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ec":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ee":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "eg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "es":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "et":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "fi":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "fj":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "fo":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "fr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ga":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gb":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gd":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ge":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gf":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gh":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gi":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gl":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gm":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gp":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gt":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gu":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gw":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "gy":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "hk":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "hn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "hr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ht":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "hu":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "id":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ie":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "il":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "im":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "in":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "iq":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ir":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "is":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "it":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "je":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "jm":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "jo":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "jp":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ke":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "kg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "kh":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "km":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "kn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "kr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "kw":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ky":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "kz":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "la":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "lc":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "li":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "lk":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "lr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ls":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "lt":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "lu":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "lv":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ma":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mc":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "md":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "me":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mf":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mk":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ml":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mo":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mq":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ms":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mt":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mu":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mw":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mx":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "my":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "mz":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "nc":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ne":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ng":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ni":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "nl":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "no":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "np":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "nr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "nz":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "om":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "pa":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "pe":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "pf":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "pg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ph":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "pk":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "pl":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "pr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ps":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "pt":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "py":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "qa":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "re":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ro":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "rs":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ru":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "rw":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sa":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sb":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sc":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sd":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "se":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "si":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sk":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sl":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sm":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ss":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sv":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sx":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "sz":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "tc":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "td":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "tg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "th":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "tj":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "tn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "to":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "tr":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "tt":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "tw":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "tz":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ua":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ug":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "us":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "uy":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "uz":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "vc":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ve":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "vg":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "vi":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "vn":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "vu":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "ws":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "yt":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "za":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}, "zm":{ "Opérateur_name": {"3G": false, "4G": true, "5G": false}}}');
-
-
+INSERT INTO destinations (code, featured, name, type, flag, region, coverage, available) VALUES
+('AFRICA2', false, 'Region africa', 'region', '🌍', 'africa', '{"gh": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": false}}, "dj": {"Djibouti Telecom": {"2G": false, "3G": true, "4G": true, "5G": false}}, "re": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": true}, "SRR": {"2G": false, "3G": true, "4G": true, "5G": true}}, "bi": {"Lumitel": {"2G": false, "3G": true, "4G": true, "5G": false}}, "cv": {"CV Movel": {"2G": false, "3G": true, "4G": true, "5G": false}, "Unitel": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ml": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": false}}, "bw": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": false}}, "sl": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": false}}, "mr": {"Mattel": {"2G": false, "3G": true, "4G": true, "5G": false}}, "mg": {"Orange Madagascar": {"2G": false, "3G": true, "4G": true, "5G": false}, "Yas": {"2G": false, "3G": true, "4G": true, "5G": false}}, "cg": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": true}}, "sd": {"Zain": {"2G": false, "3G": true, "4G": true, "5G": false}}, "sc": {"Airtel": {"2G": false, "3G": true, "4G": true, "5G": false}}, "gm": {"Africell": {"2G": false, "3G": true, "4G": true, "5G": false}, "Qcell": {"2G": false, "3G": true, "4G": true, "5G": false}}, "lr": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": false}}, "rw": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": true}}, "mw": {"Access": {"2G": false, "3G": false, "4G": true, "5G": false}}, "km": {"Yas": {"2G": false, "3G": true, "4G": false, "5G": false}}, "ss": {"MTN": {"2G": false, "3G": true, "4G": false, "5G": false}}, "cf": {"Orange": {"2G": false, "3G": true, "4G": false, "5G": false}}, "cm": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ga": {"MOOV Africa": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ls": {"Econet": {"2G": false, "3G": true, "4G": true, "5G": false}}, "yt": {"SFR": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ng": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": false}}, "bj": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": true}}, "dz": {"ATM Mobilis": {"2G": false, "3G": true, "4G": true, "5G": false}}, "mu": {"Cellplus": {"2G": false, "3G": true, "4G": true, "5G": true}, "Emtel": {"2G": false, "3G": true, "4G": true, "5G": true}}, "tn": {"Orange Tunisie": {"2G": false, "3G": true, "4G": true, "5G": true}}, "gn": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ug": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": true}}, "zm": {"MTN": {"2G": false, "3G": true, "4G": false, "5G": false}}, "ci": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange": {"2G": false, "3G": true, "4G": true, "5G": false}}, "td": {"Moov Africa": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ke": {"Safaricom": {"2G": false, "3G": true, "4G": true, "5G": false}}, "eg": {"Orange Egypt": {"2G": false, "3G": true, "4G": true, "5G": true}, "e& (Etisalat)": {"2G": false, "3G": true, "4G": true, "5G": true}}, "sz": {"MTN Eswatini": {"2G": false, "3G": true, "4G": true, "5G": false}}, "et": {"Safaricom": {"2G": false, "3G": true, "4G": true, "5G": false}}, "mz": {"Movitel": {"2G": false, "3G": true, "4G": true, "5G": false}}, "gw": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange Guinee Bissau": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ne": {"Zamani Telecom": {"2G": false, "3G": true, "4G": false, "5G": false}}, "tz": {"Halotel": {"2G": false, "3G": true, "4G": true, "5G": false}, "Yas": {"2G": false, "3G": true, "4G": true, "5G": false}}, "bf": {"Moov Africa": {"2G": false, "3G": true, "4G": true, "5G": false}}, "sn": {"Sonatel-Orange": {"2G": false, "3G": true, "4G": true, "5G": true}, "Yas": {"2G": false, "3G": true, "4G": true, "5G": false}}, "tg": {"YAS": {"2G": false, "3G": true, "4G": true, "5G": false}}, "za": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telkom Afrique du Sud": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ma": {"Maroc Telecom": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('AMERICA', false, 'Region americas', 'region', '🌎', 'americas', '{"gl": {"Tusass": {"2G": false, "3G": true, "4G": true, "5G": false}}, "mx": {"Altan Redes": {"2G": false, "3G": true, "4G": true, "5G": false}, "Movistar": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telcel Mexico": {"2G": false, "3G": true, "4G": true, "5G": false}}, "gt": {"Tigo": {"2G": false, "3G": true, "4G": true, "5G": false}}, "cl": {"Movistar": {"2G": false, "3G": true, "4G": true, "5G": true}}, "pr": {"Liberty Mobile": {"2G": false, "3G": false, "4G": true, "5G": true}}, "bz": {"Digi": {"2G": false, "3G": true, "4G": true, "5G": false}}, "py": {"Tigo": {"2G": false, "3G": true, "4G": true, "5G": false}}, "sv": {"Tigo": {"2G": false, "3G": true, "4G": true, "5G": false}}, "uy": {"Antel": {"2G": false, "3G": true, "4G": true, "5G": false}, "Tigo": {"2G": false, "3G": true, "4G": true, "5G": true}}, "bo": {"Tigo": {"2G": false, "3G": true, "4G": true, "5G": false}}, "co": {"Movistar": {"2G": false, "3G": true, "4G": true, "5G": true}, "Tigo": {"2G": false, "3G": true, "4G": true, "5G": false}}, "us": {"T-Mobile": {"2G": false, "3G": true, "4G": true, "5G": true}}, "do": {"Altice": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ni": {"Tigo Nicaragua": {"2G": false, "3G": true, "4G": true, "5G": false}}, "br": {"TIM Brasil": {"2G": false, "3G": true, "4G": true, "5G": true}, "Vivo": {"2G": false, "3G": true, "4G": true, "5G": true}}, "vg": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ca": {"Bell": {"2G": false, "3G": true, "4G": true, "5G": true}, "Freedom": {"2G": false, "3G": true, "4G": true, "5G": false}, "Sasktel": {"2G": false, "3G": true, "4G": true, "5G": false}, "Telus": {"2G": false, "3G": true, "4G": true, "5G": true}, "Videotron": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ar": {"Movistar": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telecom Personal": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ec": {"Movistar": {"2G": false, "3G": true, "4G": true, "5G": false}}, "cr": {"Liberty": {"2G": false, "3G": true, "4G": true, "5G": false}}, "pe": {"Movistar": {"2G": false, "3G": true, "4G": true, "5G": false}}, "pa": {"Liberty": {"2G": false, "3G": true, "4G": true, "5G": true}, "Tigo Panama": {"2G": false, "3G": true, "4G": true, "5G": false}}, "vi": {"T-Mobile": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ve": {"Movistar": {"2G": false, "3G": true, "4G": true, "5G": false}}, "hn": {"Claro": {"2G": false, "3G": true, "4G": true, "5G": false}, "Tigo": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('ANZ', false, 'Region oceania', 'region', '🌏', 'oceania', '{"nz": {"2 Degrees": {"2G": false, "3G": true, "4G": true, "5G": true}, "Spark": {"2G": false, "3G": true, "4G": true, "5G": true}}, "au": {"Optus": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('ASIA', false, 'Region asia', 'region', '🌏', 'asia', '{"kz": {"Beeline": {"2G": false, "3G": true, "4G": true, "5G": false}, "Tele2": {"2G": false, "3G": true, "4G": true, "5G": false}}, "mn": {"Unitel": {"2G": false, "3G": true, "4G": true, "5G": false}}, "cn": {"China Telecom": {"2G": false, "3G": false, "4G": true, "5G": true}}, "jp": {"KDDI": {"2G": false, "3G": false, "4G": true, "5G": true}, "NTT Docomo": {"2G": false, "3G": true, "4G": true, "5G": true}}, "np": {"Ncell": {"2G": false, "3G": true, "4G": true, "5G": false}}, "th": {"AIS": {"2G": false, "3G": true, "4G": true, "5G": true}, "True Move": {"2G": false, "3G": true, "4G": true, "5G": true}}, "kh": {"Metfone": {"2G": false, "3G": true, "4G": true, "5G": true}}, "id": {"Indosat Ooredoo Hutchison (IOH)": {"2G": false, "3G": true, "4G": true, "5G": true}}, "vn": {"VNPT": {"2G": false, "3G": false, "4G": true, "5G": true}}, "tj": {"ZET Mobile": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ph": {"Dito": {"2G": false, "3G": true, "4G": true, "5G": false}, "Smart": {"2G": false, "3G": true, "4G": true, "5G": true}}, "bd": {"Robi Axiata": {"2G": false, "3G": true, "4G": true, "5G": false}}, "lk": {"Hutch": {"2G": false, "3G": true, "4G": true, "5G": false}, "Mobitel": {"2G": false, "3G": true, "4G": true, "5G": true}}, "hk": {"Smartone": {"2G": false, "3G": true, "4G": true, "5G": false}}, "my": {"Maxis": {"2G": false, "3G": true, "4G": true, "5G": true}, "YTL": {"2G": false, "3G": true, "4G": true, "5G": true}}, "tw": {"FET": {"2G": false, "3G": true, "4G": true, "5G": true}, "Taiwan Mobile": {"2G": false, "3G": false, "4G": true, "5G": true}}, "az": {"Azercell": {"2G": false, "3G": true, "4G": true, "5G": false}}, "mo": {"China Telecom": {"2G": false, "3G": false, "4G": true, "5G": true}}, "kr": {"LGU+": {"2G": false, "3G": true, "4G": true, "5G": true}, "SK Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "la": {"ETL": {"2G": false, "3G": true, "4G": true, "5G": false}}, "pk": {"Jazz Pakistan": {"2G": false, "3G": true, "4G": true, "5G": false}, "Zong": {"2G": false, "3G": true, "4G": true, "5G": false}}, "uz": {"Beelines": {"2G": false, "3G": true, "4G": true, "5G": true}, "Uztelecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "sg": {"Simba": {"2G": false, "3G": false, "4G": true, "5G": true}, "StarHub": {"2G": false, "3G": true, "4G": true, "5G": true}}, "in": {"Reliance Jio": {"2G": false, "3G": false, "4G": true, "5G": false}}, "bn": {"Unified National Networks": {"2G": false, "3G": true, "4G": true, "5G": false}}, "kg": {"Beeline": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('BESTAFRICA2', false, 'Region africa', 'region', '🌍', 'africa', '{"gh": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": false}}, "re": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": true}, "SRR": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ml": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": false}}, "bw": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": false}}, "sl": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": false}}, "mg": {"Orange Madagascar": {"2G": false, "3G": true, "4G": true, "5G": false}, "Yas": {"2G": false, "3G": true, "4G": true, "5G": false}}, "cg": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": true}}, "lr": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": false}}, "rw": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ss": {"MTN": {"2G": false, "3G": true, "4G": false, "5G": false}}, "yt": {"SFR": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ng": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": false}}, "cm": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": false}}, "cf": {"Orange": {"2G": false, "3G": true, "4G": false, "5G": false}}, "bj": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": true}}, "dz": {"ATM Mobilis": {"2G": false, "3G": true, "4G": true, "5G": false}}, "mu": {"Cellplus": {"2G": false, "3G": true, "4G": true, "5G": true}, "Emtel": {"2G": false, "3G": true, "4G": true, "5G": true}}, "tn": {"Orange Tunisie": {"2G": false, "3G": true, "4G": true, "5G": true}}, "gn": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": false}}, "zm": {"MTN": {"2G": false, "3G": true, "4G": false, "5G": false}}, "ug": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ci": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange": {"2G": false, "3G": true, "4G": true, "5G": false}}, "eg": {"Orange Egypt": {"2G": false, "3G": true, "4G": true, "5G": true}, "e& (Etisalat)": {"2G": false, "3G": true, "4G": true, "5G": true}}, "sz": {"MTN Eswatini": {"2G": false, "3G": true, "4G": true, "5G": false}}, "gw": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange Guinee Bissau": {"2G": false, "3G": true, "4G": true, "5G": false}}, "sn": {"Sonatel-Orange": {"2G": false, "3G": true, "4G": true, "5G": true}, "Yas": {"2G": false, "3G": true, "4G": true, "5G": false}}, "za": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telkom Afrique du Sud": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ma": {"Maroc Telecom": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('BESTASIA3', false, 'Region asia', 'region', '🌏', 'asia', '{"lk": {"Hutch": {"2G": false, "3G": true, "4G": true, "5G": false}, "Mobitel": {"2G": false, "3G": true, "4G": true, "5G": true}}, "hk": {"Smartone": {"2G": false, "3G": true, "4G": true, "5G": false}}, "my": {"Maxis": {"2G": false, "3G": true, "4G": true, "5G": true}, "YTL": {"2G": false, "3G": true, "4G": true, "5G": true}}, "cn": {"China Telecom": {"2G": false, "3G": false, "4G": true, "5G": true}}, "jp": {"KDDI": {"2G": false, "3G": false, "4G": true, "5G": true}, "NTT Docomo": {"2G": false, "3G": true, "4G": true, "5G": true}}, "tw": {"FET": {"2G": false, "3G": true, "4G": true, "5G": true}, "Taiwan Mobile": {"2G": false, "3G": false, "4G": true, "5G": true}}, "th": {"AIS": {"2G": false, "3G": true, "4G": true, "5G": true}, "True Move": {"2G": false, "3G": true, "4G": true, "5G": true}}, "mo": {"China Telecom": {"2G": false, "3G": false, "4G": true, "5G": true}}, "kr": {"LGU+": {"2G": false, "3G": true, "4G": true, "5G": true}, "SK Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "kh": {"Metfone": {"2G": false, "3G": true, "4G": true, "5G": true}}, "id": {"Indosat Ooredoo Hutchison (IOH)": {"2G": false, "3G": true, "4G": true, "5G": true}}, "vn": {"VNPT": {"2G": false, "3G": false, "4G": true, "5G": true}}, "ph": {"Dito": {"2G": false, "3G": true, "4G": true, "5G": false}, "Smart": {"2G": false, "3G": true, "4G": true, "5G": true}}, "la": {"ETL": {"2G": false, "3G": true, "4G": true, "5G": false}}, "pk": {"Jazz Pakistan": {"2G": false, "3G": true, "4G": true, "5G": false}, "Zong": {"2G": false, "3G": true, "4G": true, "5G": false}}, "sg": {"Simba": {"2G": false, "3G": false, "4G": true, "5G": true}, "StarHub": {"2G": false, "3G": true, "4G": true, "5G": true}}, "in": {"Reliance Jio": {"2G": false, "3G": false, "4G": true, "5G": false}}}'::jsonb, true),
+('BESTCARIBBEAN2', false, 'Region caribbean', 'region', '🌴', 'caribbean', '{"bl": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "mf": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange Caraibes": {"2G": false, "3G": true, "4G": true, "5G": false}}, "gf": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange Caraibes": {"2G": false, "3G": true, "4G": true, "5G": false}, "SFR Caraibes": {"2G": false, "3G": true, "4G": true, "5G": true}}, "gp": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange Caraibes": {"2G": false, "3G": true, "4G": true, "5G": true}, "SFR Caraibes": {"2G": false, "3G": true, "4G": true, "5G": true}}, "mq": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange Caraibes": {"2G": false, "3G": true, "4G": true, "5G": true}, "SFR Caraibes": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('BESTLATAM2', false, 'Region americas', 'region', '🌎', 'americas', '{"co": {"Movistar": {"2G": false, "3G": true, "4G": true, "5G": true}, "Tigo": {"2G": false, "3G": true, "4G": true, "5G": false}}, "mx": {"Altan Redes": {"2G": false, "3G": true, "4G": true, "5G": false}, "Movistar": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telcel Mexico": {"2G": false, "3G": true, "4G": true, "5G": false}}, "gt": {"Tigo": {"2G": false, "3G": true, "4G": true, "5G": false}}, "cl": {"Movistar": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ni": {"Tigo Nicaragua": {"2G": false, "3G": true, "4G": true, "5G": false}}, "br": {"TIM Brasil": {"2G": false, "3G": true, "4G": true, "5G": true}, "Vivo": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ec": {"Movistar": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ar": {"Movistar": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telecom Personal": {"2G": false, "3G": true, "4G": true, "5G": true}}, "py": {"Tigo": {"2G": false, "3G": true, "4G": true, "5G": false}}, "sv": {"Tigo": {"2G": false, "3G": true, "4G": true, "5G": false}}, "pa": {"Liberty": {"2G": false, "3G": true, "4G": true, "5G": true}, "Tigo Panama": {"2G": false, "3G": true, "4G": true, "5G": false}}, "uy": {"Antel": {"2G": false, "3G": true, "4G": true, "5G": false}, "Tigo": {"2G": false, "3G": true, "4G": true, "5G": true}}, "bo": {"Tigo": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ve": {"Movistar": {"2G": false, "3G": true, "4G": true, "5G": false}}, "hn": {"Claro": {"2G": false, "3G": true, "4G": true, "5G": false}, "Tigo": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('BESTME', false, 'Region middle-east', 'region', '🗺️', 'middle-east', '{"tr": {"Turk Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}, "Turkcell": {"2G": false, "3G": true, "4G": true, "5G": true}}, "om": {"Omantel": {"2G": false, "3G": true, "4G": true, "5G": true}}, "qa": {"Vodafone Qatar": {"2G": false, "3G": true, "4G": true, "5G": true}}, "sa": {"Zain Saudi Arabia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "il": {"Hot Mobile": {"2G": false, "3G": true, "4G": true, "5G": true}, "Pelephone": {"2G": false, "3G": true, "4G": true, "5G": true}}, "kw": {"STC Kuwait": {"2G": false, "3G": true, "4G": true, "5G": false}, "Zain Kuwait": {"2G": false, "3G": true, "4G": true, "5G": true}}, "iq": {"Asiacell": {"2G": false, "3G": true, "4G": true, "5G": false}, "Zain": {"2G": false, "3G": true, "4G": true, "5G": false}}, "jo": {"Umniah": {"2G": false, "3G": true, "4G": true, "5G": false}, "Zain Jordan": {"2G": false, "3G": true, "4G": true, "5G": true}}, "bh": {"Batelco": {"2G": false, "3G": true, "4G": true, "5G": true}, "STC Bahreïn": {"2G": false, "3G": true, "4G": true, "5G": true}, "Zain": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('BEST_ME', false, 'Region middle-east', 'region', '🌍', 'middle-east', '{"tr": {"Turk Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}, "Turkcell": {"2G": false, "3G": true, "4G": true, "5G": true}}, "om": {"Omantel": {"2G": false, "3G": true, "4G": true, "5G": true}}, "qa": {"Vodafone Qatar": {"2G": false, "3G": true, "4G": true, "5G": true}}, "sa": {"Zain Saudi Arabia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "il": {"Hot Mobile": {"2G": false, "3G": true, "4G": true, "5G": true}, "Pelephone": {"2G": false, "3G": true, "4G": true, "5G": true}}, "kw": {"STC Kuwait": {"2G": false, "3G": true, "4G": true, "5G": false}, "Zain Kuwait": {"2G": false, "3G": true, "4G": true, "5G": true}}, "iq": {"Asiacell": {"2G": false, "3G": true, "4G": true, "5G": false}, "Zain": {"2G": false, "3G": true, "4G": true, "5G": false}}, "jo": {"Umniah": {"2G": false, "3G": true, "4G": true, "5G": false}, "Zain Jordan": {"2G": false, "3G": true, "4G": true, "5G": true}}, "bh": {"Batelco": {"2G": false, "3G": true, "4G": true, "5G": true}, "STC Bahreïn": {"2G": false, "3G": true, "4G": true, "5G": true}, "Zain": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('BEST_WORLD', false, 'Global world', 'global', '🌐', 'world', '{"dk": {"Nuuday": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "gt": {"Tigo": {"2G": false, "3G": true, "4G": true, "5G": false}}, "nz": {"2 Degrees": {"2G": false, "3G": true, "4G": true, "5G": true}, "Spark": {"2G": false, "3G": true, "4G": true, "5G": true}}, "fo": {"Faorese Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}, "Nema": {"2G": false, "3G": true, "4G": true, "5G": true}}, "fj": {"Digicel Pacific": {"2G": false, "3G": true, "4G": true, "5G": false}}, "gp": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange Caraibes": {"2G": false, "3G": true, "4G": true, "5G": true}, "SFR Caraibes": {"2G": false, "3G": true, "4G": true, "5G": true}}, "sl": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": false}}, "nr": {"Digicel Pacific": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ai": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "gf": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange Caraibes": {"2G": false, "3G": true, "4G": true, "5G": false}, "SFR Caraibes": {"2G": false, "3G": true, "4G": true, "5G": true}}, "sv": {"Tigo": {"2G": false, "3G": true, "4G": true, "5G": false}}, "sd": {"Zain": {"2G": false, "3G": true, "4G": true, "5G": false}}, "do": {"Altice": {"2G": false, "3G": true, "4G": true, "5G": true}}, "cw": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "UTS": {"2G": false, "3G": true, "4G": true, "5G": false}}, "my": {"Maxis": {"2G": false, "3G": true, "4G": true, "5G": true}, "YTL": {"2G": false, "3G": true, "4G": true, "5G": true}}, "cm": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": false}}, "yt": {"SFR": {"2G": false, "3G": true, "4G": true, "5G": false}}, "gy": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "tw": {"FET": {"2G": false, "3G": true, "4G": true, "5G": true}, "Taiwan Mobile": {"2G": false, "3G": false, "4G": true, "5G": true}}, "az": {"Azercell": {"2G": false, "3G": true, "4G": true, "5G": false}}, "pl": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": true}, "Play": {"2G": false, "3G": true, "4G": true, "5G": true}}, "mo": {"China Telecom": {"2G": false, "3G": false, "4G": true, "5G": true}}, "ge": {"Cellfie Mobile": {"2G": false, "3G": true, "4G": true, "5G": true}}, "om": {"Omantel": {"2G": false, "3G": true, "4G": true, "5G": true}}, "sr": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "to": {"Digicel Pacific": {"2G": false, "3G": true, "4G": true, "5G": false}}, "mf": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange Caraibes": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ae": {"DU": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ke": {"Safaricom": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ar": {"Movistar": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telecom Personal": {"2G": false, "3G": true, "4G": true, "5G": true}}, "sm": {"Wind": {"2G": false, "3G": true, "4G": true, "5G": false}}, "gw": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange Guinee Bissau": {"2G": false, "3G": true, "4G": true, "5G": false}}, "uz": {"Beelines": {"2G": false, "3G": true, "4G": true, "5G": true}, "Uztelecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "sn": {"Sonatel-Orange": {"2G": false, "3G": true, "4G": true, "5G": true}, "Yas": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ma": {"Maroc Telecom": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange": {"2G": false, "3G": true, "4G": true, "5G": true}}, "kn": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ie": {"EIR": {"2G": false, "3G": true, "4G": true, "5G": true}, "Three": {"2G": false, "3G": true, "4G": true, "5G": true}}, "bl": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "qa": {"Vodafone Qatar": {"2G": false, "3G": true, "4G": true, "5G": true}}, "vc": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "nl": {"KPN": {"2G": false, "3G": true, "4G": true, "5G": true}}, "by": {"Life": {"2G": false, "3G": true, "4G": true, "5G": false}}, "iq": {"Asiacell": {"2G": false, "3G": true, "4G": true, "5G": false}, "Zain": {"2G": false, "3G": true, "4G": true, "5G": false}}, "sk": {"O2 Slovakia": {"2G": false, "3G": true, "4G": true, "5G": true}, "Orange": {"2G": false, "3G": true, "4G": true, "5G": true}}, "si": {"A1 Slovenia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "th": {"AIS": {"2G": false, "3G": true, "4G": true, "5G": true}, "True Move": {"2G": false, "3G": true, "4G": true, "5G": true}}, "mr": {"Mattel": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ph": {"Dito": {"2G": false, "3G": true, "4G": true, "5G": false}, "Smart": {"2G": false, "3G": true, "4G": true, "5G": true}}, "aw": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "cg": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": true}}, "pf": {"Vini Mobile": {"2G": false, "3G": true, "4G": true, "5G": true}, "Vodafone": {"2G": false, "3G": true, "4G": true, "5G": true}}, "uy": {"Antel": {"2G": false, "3G": true, "4G": true, "5G": false}, "Tigo": {"2G": false, "3G": true, "4G": true, "5G": true}}, "km": {"Yas": {"2G": false, "3G": true, "4G": false, "5G": false}}, "se": {"Tele2": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "co": {"Movistar": {"2G": false, "3G": true, "4G": true, "5G": true}, "Tigo": {"2G": false, "3G": true, "4G": true, "5G": false}}, "us": {"T-Mobile": {"2G": false, "3G": true, "4G": true, "5G": true}}, "is": {"Vodafone": {"2G": false, "3G": true, "4G": true, "5G": true}}, "es": {"Orange Spain": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ee": {"Tele 2 Estonie": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "mk": {"A1 Telekom": {"2G": false, "3G": true, "4G": true, "5G": false}}, "be": {"Orange (Mobistar)": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telenet": {"2G": false, "3G": true, "4G": true, "5G": true}}, "il": {"Hot Mobile": {"2G": false, "3G": true, "4G": true, "5G": true}, "Pelephone": {"2G": false, "3G": true, "4G": true, "5G": true}}, "kw": {"STC Kuwait": {"2G": false, "3G": true, "4G": true, "5G": false}, "Zain Kuwait": {"2G": false, "3G": true, "4G": true, "5G": true}}, "li": {"FL1": {"2G": false, "3G": true, "4G": true, "5G": true}, "Salt": {"2G": false, "3G": true, "4G": true, "5G": true}}, "dz": {"ATM Mobilis": {"2G": false, "3G": true, "4G": true, "5G": false}}, "bj": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": true}}, "bm": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ms": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "zm": {"MTN": {"2G": false, "3G": true, "4G": false, "5G": false}}, "kr": {"LGU+": {"2G": false, "3G": true, "4G": true, "5G": true}, "SK Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ru": {"Beeline": {"2G": false, "3G": true, "4G": true, "5G": false}, "T2": {"2G": false, "3G": true, "4G": true, "5G": true}}, "bq": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ag": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "vu": {"Digicel": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ec": {"Movistar": {"2G": false, "3G": true, "4G": true, "5G": false}}, "al": {"One Albania": {"2G": false, "3G": true, "4G": true, "5G": true}}, "it": {"Iliad": {"2G": false, "3G": true, "4G": true, "5G": true}, "WindTre": {"2G": false, "3G": true, "4G": true, "5G": true}}, "sz": {"MTN Eswatini": {"2G": false, "3G": true, "4G": true, "5G": false}}, "mc": {"Monaco Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "gg": {"Sure Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "tz": {"Halotel": {"2G": false, "3G": true, "4G": true, "5G": false}, "Yas": {"2G": false, "3G": true, "4G": true, "5G": false}}, "la": {"ETL": {"2G": false, "3G": true, "4G": true, "5G": false}}, "pk": {"Jazz Pakistan": {"2G": false, "3G": true, "4G": true, "5G": false}, "Zong": {"2G": false, "3G": true, "4G": true, "5G": false}}, "pa": {"Liberty": {"2G": false, "3G": true, "4G": true, "5G": true}, "Tigo Panama": {"2G": false, "3G": true, "4G": true, "5G": false}}, "sg": {"Simba": {"2G": false, "3G": false, "4G": true, "5G": true}, "StarHub": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ua": {"LifeCell": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ve": {"Movistar": {"2G": false, "3G": true, "4G": true, "5G": false}}, "kg": {"Beeline": {"2G": false, "3G": true, "4G": true, "5G": false}}, "je": {"Sure Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "gh": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ch": {"Salt": {"2G": false, "3G": true, "4G": true, "5G": true}, "Sunrise": {"2G": false, "3G": true, "4G": true, "5G": true}}, "re": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": true}, "SRR": {"2G": false, "3G": true, "4G": true, "5G": true}}, "cl": {"Movistar": {"2G": false, "3G": true, "4G": true, "5G": true}}, "pr": {"Liberty Mobile": {"2G": false, "3G": false, "4G": true, "5G": true}}, "cn": {"China Telecom": {"2G": false, "3G": false, "4G": true, "5G": true}}, "sx": {"Telcell Saint Martin": {"2G": false, "3G": true, "4G": true, "5G": false}, "UTS": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ml": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": false}}, "mq": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange Caraibes": {"2G": false, "3G": true, "4G": true, "5G": true}, "SFR Caraibes": {"2G": false, "3G": true, "4G": true, "5G": true}}, "md": {"Moldcell": {"2G": false, "3G": true, "4G": true, "5G": false}}, "bw": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": false}}, "hr": {"A1 Croatia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "kh": {"Metfone": {"2G": false, "3G": true, "4G": true, "5G": true}}, "mg": {"Orange Madagascar": {"2G": false, "3G": true, "4G": true, "5G": false}, "Yas": {"2G": false, "3G": true, "4G": true, "5G": false}}, "id": {"Indosat Ooredoo Hutchison (IOH)": {"2G": false, "3G": true, "4G": true, "5G": true}}, "pt": {"Meo (TMN)": {"2G": false, "3G": true, "4G": true, "5G": true}}, "mt": {"Epic": {"2G": false, "3G": true, "4G": true, "5G": true}, "GoMobile": {"2G": false, "3G": true, "4G": true, "5G": true}}, "tj": {"ZET Mobile": {"2G": false, "3G": true, "4G": true, "5G": false}}, "vn": {"VNPT": {"2G": false, "3G": false, "4G": true, "5G": true}}, "ky": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": true}}, "py": {"Tigo": {"2G": false, "3G": true, "4G": true, "5G": false}}, "cy": {"Epic": {"2G": false, "3G": true, "4G": true, "5G": true}, "Primetel": {"2G": false, "3G": true, "4G": true, "5G": true}}, "sc": {"Airtel": {"2G": false, "3G": true, "4G": true, "5G": false}}, "lr": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": false}}, "rw": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": true}}, "bo": {"Tigo": {"2G": false, "3G": true, "4G": true, "5G": false}}, "au": {"Optus": {"2G": false, "3G": true, "4G": true, "5G": true}}, "at": {"A1 Telekom": {"2G": false, "3G": true, "4G": true, "5G": true}, "H3G": {"2G": false, "3G": true, "4G": true, "5G": true}}, "gi": {"Gibtelecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "lk": {"Hutch": {"2G": false, "3G": true, "4G": true, "5G": false}, "Mobitel": {"2G": false, "3G": true, "4G": true, "5G": true}}, "hk": {"Smartone": {"2G": false, "3G": true, "4G": true, "5G": false}}, "cf": {"Orange": {"2G": false, "3G": true, "4G": false, "5G": false}}, "ga": {"MOOV Africa": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ng": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": false}}, "mu": {"Cellplus": {"2G": false, "3G": true, "4G": true, "5G": true}, "Emtel": {"2G": false, "3G": true, "4G": true, "5G": true}}, "lc": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "im": {"Sure Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "bg": {"A1 Telekom": {"2G": false, "3G": true, "4G": true, "5G": true}, "Vivacom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "jo": {"Umniah": {"2G": false, "3G": true, "4G": true, "5G": false}, "Zain Jordan": {"2G": false, "3G": true, "4G": true, "5G": true}}, "gn": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": false}}, "cz": {"O2 Czech Republic": {"2G": false, "3G": true, "4G": true, "5G": true}}, "no": {"ICE": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "vg": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ca": {"Bell": {"2G": false, "3G": true, "4G": true, "5G": true}, "Freedom": {"2G": false, "3G": true, "4G": true, "5G": false}, "Sasktel": {"2G": false, "3G": true, "4G": true, "5G": false}, "Telus": {"2G": false, "3G": true, "4G": true, "5G": true}, "Videotron": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ci": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange": {"2G": false, "3G": true, "4G": true, "5G": false}}, "tc": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ad": {"Andorra Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "gd": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "gr": {"Nova": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ro": {"Digi": {"2G": false, "3G": true, "4G": true, "5G": true}, "Orange Romania": {"2G": false, "3G": true, "4G": true, "5G": true}}, "cr": {"Liberty": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ht": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "in": {"Reliance Jio": {"2G": false, "3G": false, "4G": true, "5G": false}}, "gl": {"Tusass": {"2G": false, "3G": true, "4G": true, "5G": false}}, "mx": {"Altan Redes": {"2G": false, "3G": true, "4G": true, "5G": false}, "Movistar": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telcel Mexico": {"2G": false, "3G": true, "4G": true, "5G": false}}, "rs": {"Yettel": {"2G": false, "3G": true, "4G": true, "5G": true}}, "xk": {"IPKO Kosovo": {"2G": false, "3G": true, "4G": true, "5G": true}}, "kz": {"Beeline": {"2G": false, "3G": true, "4G": true, "5G": false}, "Tele2": {"2G": false, "3G": true, "4G": true, "5G": false}}, "me": {"M-Tel": {"2G": false, "3G": true, "4G": true, "5G": true}, "One Montenegro": {"2G": false, "3G": true, "4G": true, "5G": true}}, "sa": {"Zain Saudi Arabia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "an": {}, "jp": {"KDDI": {"2G": false, "3G": false, "4G": true, "5G": true}, "NTT Docomo": {"2G": false, "3G": true, "4G": true, "5G": true}}, "bs": {"Aliv": {"2G": false, "3G": true, "4G": true, "5G": false}}, "lt": {"Tele 2 Lituanie": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "bh": {"Batelco": {"2G": false, "3G": true, "4G": true, "5G": true}, "STC Bahreïn": {"2G": false, "3G": true, "4G": true, "5G": true}, "Zain": {"2G": false, "3G": true, "4G": true, "5G": true}}, "tt": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "gb": {"EE": {"2G": false, "3G": false, "4G": true, "5G": true}, "Three": {"2G": false, "3G": true, "4G": true, "5G": true}}, "dm": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ba": {"BH Telecom": {"2G": false, "3G": true, "4G": true, "5G": false}, "HT Eronet": {"2G": false, "3G": true, "4G": true, "5G": false}}, "hu": {"Yettel": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ss": {"MTN": {"2G": false, "3G": true, "4G": false, "5G": false}}, "ni": {"Tigo Nicaragua": {"2G": false, "3G": true, "4G": true, "5G": false}}, "fi": {"DNA": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia (Sonera)": {"2G": false, "3G": true, "4G": true, "5G": true}}, "tn": {"Orange Tunisie": {"2G": false, "3G": true, "4G": true, "5G": true}}, "lu": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ug": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": true}}, "br": {"TIM Brasil": {"2G": false, "3G": true, "4G": true, "5G": true}, "Vivo": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ws": {"Digicel Pacific": {"2G": false, "3G": true, "4G": true, "5G": false}}, "tr": {"Turk Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}, "Turkcell": {"2G": false, "3G": true, "4G": true, "5G": true}}, "bb": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "fr": {"Free Mobile": {"2G": false, "3G": true, "4G": true, "5G": true}, "Orange": {"2G": false, "3G": true, "4G": true, "5G": true}, "SFR": {"2G": false, "3G": true, "4G": true, "5G": true}}, "de": {"O2": {"2G": false, "3G": true, "4G": true, "5G": true}}, "eg": {"Orange Egypt": {"2G": false, "3G": true, "4G": true, "5G": true}, "e& (Etisalat)": {"2G": false, "3G": true, "4G": true, "5G": true}}, "lv": {"LMT": {"2G": false, "3G": true, "4G": true, "5G": true}, "Tele 2 Lettonie": {"2G": false, "3G": true, "4G": true, "5G": true}}, "jm": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "Flow (Liberty group)": {"2G": false, "3G": true, "4G": true, "5G": true}}, "pe": {"Movistar": {"2G": false, "3G": true, "4G": true, "5G": false}}, "za": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telkom Afrique du Sud": {"2G": false, "3G": true, "4G": true, "5G": true}}, "vi": {"T-Mobile": {"2G": false, "3G": true, "4G": true, "5G": false}}, "bn": {"Unified National Networks": {"2G": false, "3G": true, "4G": true, "5G": false}}, "hn": {"Claro": {"2G": false, "3G": true, "4G": true, "5G": false}, "Tigo": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('CARIBBEAN2', false, 'Region caribbean', 'region', '🌴', 'caribbean', '{"bl": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "vc": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "an": {}, "sx": {"Telcell Saint Martin": {"2G": false, "3G": true, "4G": true, "5G": false}, "UTS": {"2G": false, "3G": true, "4G": true, "5G": false}}, "gp": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange Caraibes": {"2G": false, "3G": true, "4G": true, "5G": true}, "SFR Caraibes": {"2G": false, "3G": true, "4G": true, "5G": true}}, "mq": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange Caraibes": {"2G": false, "3G": true, "4G": true, "5G": true}, "SFR Caraibes": {"2G": false, "3G": true, "4G": true, "5G": true}}, "bs": {"Aliv": {"2G": false, "3G": true, "4G": true, "5G": false}}, "tt": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "aw": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ky": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ai": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "dm": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "gf": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange Caraibes": {"2G": false, "3G": true, "4G": true, "5G": false}, "SFR Caraibes": {"2G": false, "3G": true, "4G": true, "5G": true}}, "do": {"Altice": {"2G": false, "3G": true, "4G": true, "5G": true}}, "cw": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "UTS": {"2G": false, "3G": true, "4G": true, "5G": false}}, "gy": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "bm": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "lc": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ms": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "vg": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "sr": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "bq": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "bb": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "tc": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "mf": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange Caraibes": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ag": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "jm": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "Flow (Liberty group)": {"2G": false, "3G": true, "4G": true, "5G": true}}, "gd": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ht": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "kn": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('CUW', false, 'Region caribbean', 'region', '🗺️', 'caribbean', '{"cw": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "UTS": {"2G": false, "3G": true, "4G": true, "5G": false}}, "an": {}}'::jsonb, true),
+('EU28PLUS', false, 'Region europe', 'region', '🇪🇺', 'europe', '{"dk": {"Nuuday": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ch": {"Salt": {"2G": false, "3G": true, "4G": true, "5G": true}, "Sunrise": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ie": {"EIR": {"2G": false, "3G": true, "4G": true, "5G": true}, "Three": {"2G": false, "3G": true, "4G": true, "5G": true}}, "nl": {"KPN": {"2G": false, "3G": true, "4G": true, "5G": true}}, "sk": {"O2 Slovakia": {"2G": false, "3G": true, "4G": true, "5G": true}, "Orange": {"2G": false, "3G": true, "4G": true, "5G": true}}, "si": {"A1 Slovenia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "md": {"Moldcell": {"2G": false, "3G": true, "4G": true, "5G": false}}, "lt": {"Tele 2 Lituanie": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "hr": {"A1 Croatia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "pt": {"Meo (TMN)": {"2G": false, "3G": true, "4G": true, "5G": true}}, "mt": {"Epic": {"2G": false, "3G": true, "4G": true, "5G": true}, "GoMobile": {"2G": false, "3G": true, "4G": true, "5G": true}}, "gb": {"EE": {"2G": false, "3G": false, "4G": true, "5G": true}, "Three": {"2G": false, "3G": true, "4G": true, "5G": true}}, "cy": {"Epic": {"2G": false, "3G": true, "4G": true, "5G": true}, "Primetel": {"2G": false, "3G": true, "4G": true, "5G": true}}, "at": {"A1 Telekom": {"2G": false, "3G": true, "4G": true, "5G": true}, "H3G": {"2G": false, "3G": true, "4G": true, "5G": true}}, "hu": {"Yettel": {"2G": false, "3G": true, "4G": true, "5G": true}}, "se": {"Tele2": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "gi": {"Gibtelecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "es": {"Orange Spain": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ee": {"Tele 2 Estonie": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "be": {"Orange (Mobistar)": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telenet": {"2G": false, "3G": true, "4G": true, "5G": true}}, "li": {"FL1": {"2G": false, "3G": true, "4G": true, "5G": true}, "Salt": {"2G": false, "3G": true, "4G": true, "5G": true}}, "fi": {"DNA": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia (Sonera)": {"2G": false, "3G": true, "4G": true, "5G": true}}, "im": {"Sure Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "bg": {"A1 Telekom": {"2G": false, "3G": true, "4G": true, "5G": true}, "Vivacom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "pl": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": true}, "Play": {"2G": false, "3G": true, "4G": true, "5G": true}}, "lu": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": true}}, "cz": {"O2 Czech Republic": {"2G": false, "3G": true, "4G": true, "5G": true}}, "no": {"ICE": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "fr": {"Free Mobile": {"2G": false, "3G": true, "4G": true, "5G": true}, "Orange": {"2G": false, "3G": true, "4G": true, "5G": true}, "SFR": {"2G": false, "3G": true, "4G": true, "5G": true}}, "de": {"O2": {"2G": false, "3G": true, "4G": true, "5G": true}}, "lv": {"LMT": {"2G": false, "3G": true, "4G": true, "5G": true}, "Tele 2 Lettonie": {"2G": false, "3G": true, "4G": true, "5G": true}}, "it": {"Iliad": {"2G": false, "3G": true, "4G": true, "5G": true}, "WindTre": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ad": {"Andorra Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "gg": {"Sure Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ro": {"Digi": {"2G": false, "3G": true, "4G": true, "5G": true}, "Orange Romania": {"2G": false, "3G": true, "4G": true, "5G": true}}, "gr": {"Nova": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ua": {"LifeCell": {"2G": false, "3G": true, "4G": true, "5G": false}}, "je": {"Sure Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('EU_EXTENDED', false, 'Region europe', 'region', '🇪🇺', 'europe', '{"dk": {"Nuuday": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ch": {"Salt": {"2G": false, "3G": true, "4G": true, "5G": true}, "Sunrise": {"2G": false, "3G": true, "4G": true, "5G": true}}, "fo": {"Faorese Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}, "Nema": {"2G": false, "3G": true, "4G": true, "5G": true}}, "md": {"Moldcell": {"2G": false, "3G": true, "4G": true, "5G": false}}, "hr": {"A1 Croatia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "pt": {"Meo (TMN)": {"2G": false, "3G": true, "4G": true, "5G": true}}, "mt": {"Epic": {"2G": false, "3G": true, "4G": true, "5G": true}, "GoMobile": {"2G": false, "3G": true, "4G": true, "5G": true}}, "cy": {"Epic": {"2G": false, "3G": true, "4G": true, "5G": true}, "Primetel": {"2G": false, "3G": true, "4G": true, "5G": true}}, "at": {"A1 Telekom": {"2G": false, "3G": true, "4G": true, "5G": true}, "H3G": {"2G": false, "3G": true, "4G": true, "5G": true}}, "gi": {"Gibtelecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "yt": {"SFR": {"2G": false, "3G": true, "4G": true, "5G": false}}, "im": {"Sure Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "az": {"Azercell": {"2G": false, "3G": true, "4G": true, "5G": false}}, "bg": {"A1 Telekom": {"2G": false, "3G": true, "4G": true, "5G": true}, "Vivacom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "pl": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": true}, "Play": {"2G": false, "3G": true, "4G": true, "5G": true}}, "cz": {"O2 Czech Republic": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ge": {"Cellfie Mobile": {"2G": false, "3G": true, "4G": true, "5G": true}}, "no": {"ICE": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ad": {"Andorra Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "gr": {"Nova": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ro": {"Digi": {"2G": false, "3G": true, "4G": true, "5G": true}, "Orange Romania": {"2G": false, "3G": true, "4G": true, "5G": true}}, "uz": {"Beelines": {"2G": false, "3G": true, "4G": true, "5G": true}, "Uztelecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ie": {"EIR": {"2G": false, "3G": true, "4G": true, "5G": true}, "Three": {"2G": false, "3G": true, "4G": true, "5G": true}}, "rs": {"Yettel": {"2G": false, "3G": true, "4G": true, "5G": true}}, "xk": {"IPKO Kosovo": {"2G": false, "3G": true, "4G": true, "5G": true}}, "me": {"M-Tel": {"2G": false, "3G": true, "4G": true, "5G": true}, "One Montenegro": {"2G": false, "3G": true, "4G": true, "5G": true}}, "nl": {"KPN": {"2G": false, "3G": true, "4G": true, "5G": true}}, "by": {"Life": {"2G": false, "3G": true, "4G": true, "5G": false}}, "sk": {"O2 Slovakia": {"2G": false, "3G": true, "4G": true, "5G": true}, "Orange": {"2G": false, "3G": true, "4G": true, "5G": true}}, "si": {"A1 Slovenia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "lt": {"Tele 2 Lituanie": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "gb": {"EE": {"2G": false, "3G": false, "4G": true, "5G": true}, "Three": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ba": {"BH Telecom": {"2G": false, "3G": true, "4G": true, "5G": false}, "HT Eronet": {"2G": false, "3G": true, "4G": true, "5G": false}}, "hu": {"Yettel": {"2G": false, "3G": true, "4G": true, "5G": true}}, "se": {"Tele2": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "is": {"Vodafone": {"2G": false, "3G": true, "4G": true, "5G": true}}, "es": {"Orange Spain": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ee": {"Tele 2 Estonie": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "mk": {"A1 Telekom": {"2G": false, "3G": true, "4G": true, "5G": false}}, "be": {"Orange (Mobistar)": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telenet": {"2G": false, "3G": true, "4G": true, "5G": true}}, "il": {"Hot Mobile": {"2G": false, "3G": true, "4G": true, "5G": true}, "Pelephone": {"2G": false, "3G": true, "4G": true, "5G": true}}, "li": {"FL1": {"2G": false, "3G": true, "4G": true, "5G": true}, "Salt": {"2G": false, "3G": true, "4G": true, "5G": true}}, "fi": {"DNA": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia (Sonera)": {"2G": false, "3G": true, "4G": true, "5G": true}}, "lu": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": true}}, "tr": {"Turk Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}, "Turkcell": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ru": {"Beeline": {"2G": false, "3G": true, "4G": true, "5G": false}, "T2": {"2G": false, "3G": true, "4G": true, "5G": true}}, "fr": {"Free Mobile": {"2G": false, "3G": true, "4G": true, "5G": true}, "Orange": {"2G": false, "3G": true, "4G": true, "5G": true}, "SFR": {"2G": false, "3G": true, "4G": true, "5G": true}}, "de": {"O2": {"2G": false, "3G": true, "4G": true, "5G": true}}, "lv": {"LMT": {"2G": false, "3G": true, "4G": true, "5G": true}, "Tele 2 Lettonie": {"2G": false, "3G": true, "4G": true, "5G": true}}, "al": {"One Albania": {"2G": false, "3G": true, "4G": true, "5G": true}}, "it": {"Iliad": {"2G": false, "3G": true, "4G": true, "5G": true}, "WindTre": {"2G": false, "3G": true, "4G": true, "5G": true}}, "gg": {"Sure Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ua": {"LifeCell": {"2G": false, "3G": true, "4G": true, "5G": false}}, "kg": {"Beeline": {"2G": false, "3G": true, "4G": true, "5G": false}}, "je": {"Sure Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('GUADELOUPE', false, 'Region caribbean', 'region', '🗺️', 'caribbean', '{"gf": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange Caraibes": {"2G": false, "3G": true, "4G": true, "5G": false}, "SFR Caraibes": {"2G": false, "3G": true, "4G": true, "5G": true}}, "gp": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange Caraibes": {"2G": false, "3G": true, "4G": true, "5G": true}, "SFR Caraibes": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('JEY-GGY-IMN', false, 'Region europe', 'region', '🇬🇬', 'europe', '{"gg": {"Sure Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "im": {"Sure Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "je": {"Sure Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('JEY-GGY-IMN2', false, 'Region europe', 'region', '🗺️', 'europe', '{"gg": {"Sure Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "im": {"Sure Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "je": {"Sure Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('MARTINIQUE', false, 'Region caribbean', 'region', '🗺️', 'caribbean', '{"gf": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange Caraibes": {"2G": false, "3G": true, "4G": true, "5G": false}, "SFR Caraibes": {"2G": false, "3G": true, "4G": true, "5G": true}}, "mq": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange Caraibes": {"2G": false, "3G": true, "4G": true, "5G": true}, "SFR Caraibes": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('ME_Wo_Israel', false, 'Region middle-east', 'region', '🌍', 'middle-east', '{"af": {"Roshan (TDCA)": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ps": {"Ooredoo": {"2G": false, "3G": true, "4G": false, "5G": false}}, "ir": {"Rightel": {"2G": false, "3G": true, "4G": true, "5G": false}}, "qa": {"Vodafone Qatar": {"2G": false, "3G": true, "4G": true, "5G": true}}, "sa": {"Zain Saudi Arabia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "iq": {"Asiacell": {"2G": false, "3G": true, "4G": true, "5G": false}, "Zain": {"2G": false, "3G": true, "4G": true, "5G": false}}, "kw": {"STC Kuwait": {"2G": false, "3G": true, "4G": true, "5G": false}, "Zain Kuwait": {"2G": false, "3G": true, "4G": true, "5G": true}}, "il": {"Hot Mobile": {"2G": false, "3G": true, "4G": true, "5G": true}, "Pelephone": {"2G": false, "3G": true, "4G": true, "5G": true}}, "jo": {"Umniah": {"2G": false, "3G": true, "4G": true, "5G": false}, "Zain Jordan": {"2G": false, "3G": true, "4G": true, "5G": true}}, "bh": {"Batelco": {"2G": false, "3G": true, "4G": true, "5G": true}, "STC Bahreïn": {"2G": false, "3G": true, "4G": true, "5G": true}, "Zain": {"2G": false, "3G": true, "4G": true, "5G": true}}, "tr": {"Turk Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}, "Turkcell": {"2G": false, "3G": true, "4G": true, "5G": true}}, "om": {"Omantel": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ae": {"DU": {"2G": false, "3G": true, "4G": true, "5G": true}}, "am": {"Armenia Telecom": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('MYS_SGP', false, 'Region asia', 'region', '🇲🇾', 'asia', '{"my": {"Maxis": {"2G": false, "3G": true, "4G": true, "5G": true}, "YTL": {"2G": false, "3G": true, "4G": true, "5G": true}}, "sg": {"Simba": {"2G": false, "3G": false, "4G": true, "5G": true}, "StarHub": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('OCEANIA', false, 'Region oceania', 'region', '🌏', 'oceania', '{"ws": {"Digicel Pacific": {"2G": false, "3G": true, "4G": true, "5G": false}}, "nr": {"Digicel Pacific": {"2G": false, "3G": true, "4G": true, "5G": false}}, "nz": {"2 Degrees": {"2G": false, "3G": true, "4G": true, "5G": true}, "Spark": {"2G": false, "3G": true, "4G": true, "5G": true}}, "to": {"Digicel Pacific": {"2G": false, "3G": true, "4G": true, "5G": false}}, "fj": {"Digicel Pacific": {"2G": false, "3G": true, "4G": true, "5G": false}}, "vu": {"Digicel": {"2G": false, "3G": true, "4G": true, "5G": false}}, "nc": {"OPT": {"2G": false, "3G": true, "4G": true, "5G": false}}, "pg": {"B-Mobile": {"2G": false, "3G": true, "4G": true, "5G": false}}, "sb": {"B-Mobile": {"2G": false, "3G": true, "4G": false, "5G": false}}, "pf": {"Vini Mobile": {"2G": false, "3G": true, "4G": true, "5G": true}, "Vodafone": {"2G": false, "3G": true, "4G": true, "5G": true}}, "gu": {"Docomo Pacific": {"2G": false, "3G": true, "4G": true, "5G": false}}, "au": {"Optus": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('S-BARTHELEMY', false, 'Region caribbean', 'region', '🗺️', 'caribbean', '{"bl": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "gf": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange Caraibes": {"2G": false, "3G": true, "4G": true, "5G": false}, "SFR Caraibes": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('S-MARTIN', false, 'Region caribbean', 'region', '🗺️', 'caribbean', '{"mf": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange Caraibes": {"2G": false, "3G": true, "4G": true, "5G": false}}, "gf": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange Caraibes": {"2G": false, "3G": true, "4G": true, "5G": false}, "SFR Caraibes": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('SCANDINAVIA', false, 'Region europe', 'region', '🇸🇪', 'europe', '{"dk": {"Nuuday": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "no": {"ICE": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "se": {"Tele2": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "is": {"Vodafone": {"2G": false, "3G": true, "4G": true, "5G": true}}, "lv": {"LMT": {"2G": false, "3G": true, "4G": true, "5G": true}, "Tele 2 Lettonie": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ee": {"Tele 2 Estonie": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "fi": {"DNA": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia (Sonera)": {"2G": false, "3G": true, "4G": true, "5G": true}}, "lt": {"Tele 2 Lituanie": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('USA', false, 'Region americas', 'region', '🇺🇸', 'americas', '{"us": {"T-Mobile": {"2G": false, "3G": true, "4G": true, "5G": true}}, "pr": {"Liberty Mobile": {"2G": false, "3G": false, "4G": true, "5G": true}}, "vi": {"T-Mobile": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('WORLD2', false, 'Global world', 'global', '🌐', 'world', '{"nz": {"2 Degrees": {"2G": false, "3G": true, "4G": true, "5G": true}, "Spark": {"2G": false, "3G": true, "4G": true, "5G": true}}, "fj": {"Digicel Pacific": {"2G": false, "3G": true, "4G": true, "5G": false}}, "pg": {"B-Mobile": {"2G": false, "3G": true, "4G": true, "5G": false}}, "gp": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange Caraibes": {"2G": false, "3G": true, "4G": true, "5G": true}, "SFR Caraibes": {"2G": false, "3G": true, "4G": true, "5G": true}}, "sd": {"Zain": {"2G": false, "3G": true, "4G": true, "5G": false}}, "gm": {"Africell": {"2G": false, "3G": true, "4G": true, "5G": false}, "Qcell": {"2G": false, "3G": true, "4G": true, "5G": false}}, "cw": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "UTS": {"2G": false, "3G": true, "4G": true, "5G": false}}, "my": {"Maxis": {"2G": false, "3G": true, "4G": true, "5G": true}, "YTL": {"2G": false, "3G": true, "4G": true, "5G": true}}, "yt": {"SFR": {"2G": false, "3G": true, "4G": true, "5G": false}}, "tw": {"FET": {"2G": false, "3G": true, "4G": true, "5G": true}, "Taiwan Mobile": {"2G": false, "3G": false, "4G": true, "5G": true}}, "pl": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": true}, "Play": {"2G": false, "3G": true, "4G": true, "5G": true}}, "sr": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "om": {"Omantel": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ae": {"DU": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ke": {"Safaricom": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ar": {"Movistar": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telecom Personal": {"2G": false, "3G": true, "4G": true, "5G": true}}, "gw": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange Guinee Bissau": {"2G": false, "3G": true, "4G": true, "5G": false}}, "am": {"Armenia Telecom": {"2G": false, "3G": true, "4G": true, "5G": false}}, "uz": {"Beelines": {"2G": false, "3G": true, "4G": true, "5G": true}, "Uztelecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "sn": {"Sonatel-Orange": {"2G": false, "3G": true, "4G": true, "5G": true}, "Yas": {"2G": false, "3G": true, "4G": true, "5G": false}}, "tg": {"YAS": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ie": {"EIR": {"2G": false, "3G": true, "4G": true, "5G": true}, "Three": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ir": {"Rightel": {"2G": false, "3G": true, "4G": true, "5G": false}}, "qa": {"Vodafone Qatar": {"2G": false, "3G": true, "4G": true, "5G": true}}, "bi": {"Lumitel": {"2G": false, "3G": true, "4G": true, "5G": false}}, "nl": {"KPN": {"2G": false, "3G": true, "4G": true, "5G": true}}, "sk": {"O2 Slovakia": {"2G": false, "3G": true, "4G": true, "5G": true}, "Orange": {"2G": false, "3G": true, "4G": true, "5G": true}}, "iq": {"Asiacell": {"2G": false, "3G": true, "4G": true, "5G": false}, "Zain": {"2G": false, "3G": true, "4G": true, "5G": false}}, "si": {"A1 Slovenia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "th": {"AIS": {"2G": false, "3G": true, "4G": true, "5G": true}, "True Move": {"2G": false, "3G": true, "4G": true, "5G": true}}, "aw": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "se": {"Tele2": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "is": {"Vodafone": {"2G": false, "3G": true, "4G": true, "5G": true}}, "mk": {"A1 Telekom": {"2G": false, "3G": true, "4G": true, "5G": false}}, "be": {"Orange (Mobistar)": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telenet": {"2G": false, "3G": true, "4G": true, "5G": true}}, "il": {"Hot Mobile": {"2G": false, "3G": true, "4G": true, "5G": true}, "Pelephone": {"2G": false, "3G": true, "4G": true, "5G": true}}, "kw": {"STC Kuwait": {"2G": false, "3G": true, "4G": true, "5G": false}, "Zain Kuwait": {"2G": false, "3G": true, "4G": true, "5G": true}}, "li": {"FL1": {"2G": false, "3G": true, "4G": true, "5G": true}, "Salt": {"2G": false, "3G": true, "4G": true, "5G": true}}, "dz": {"ATM Mobilis": {"2G": false, "3G": true, "4G": true, "5G": false}}, "bj": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ru": {"Beeline": {"2G": false, "3G": true, "4G": true, "5G": false}, "T2": {"2G": false, "3G": true, "4G": true, "5G": true}}, "bq": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ag": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "it": {"Iliad": {"2G": false, "3G": true, "4G": true, "5G": true}, "WindTre": {"2G": false, "3G": true, "4G": true, "5G": true}}, "sz": {"MTN Eswatini": {"2G": false, "3G": true, "4G": true, "5G": false}}, "tz": {"Halotel": {"2G": false, "3G": true, "4G": true, "5G": false}, "Yas": {"2G": false, "3G": true, "4G": true, "5G": false}}, "pk": {"Jazz Pakistan": {"2G": false, "3G": true, "4G": true, "5G": false}, "Zong": {"2G": false, "3G": true, "4G": true, "5G": false}}, "bf": {"Moov Africa": {"2G": false, "3G": true, "4G": true, "5G": false}}, "pa": {"Liberty": {"2G": false, "3G": true, "4G": true, "5G": true}, "Tigo Panama": {"2G": false, "3G": true, "4G": true, "5G": false}}, "sg": {"Simba": {"2G": false, "3G": false, "4G": true, "5G": true}, "StarHub": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ua": {"LifeCell": {"2G": false, "3G": true, "4G": true, "5G": false}}, "kg": {"Beeline": {"2G": false, "3G": true, "4G": true, "5G": false}}, "je": {"Sure Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ch": {"Salt": {"2G": false, "3G": true, "4G": true, "5G": true}, "Sunrise": {"2G": false, "3G": true, "4G": true, "5G": true}}, "re": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": true}, "SRR": {"2G": false, "3G": true, "4G": true, "5G": true}}, "cl": {"Movistar": {"2G": false, "3G": true, "4G": true, "5G": true}}, "pr": {"Liberty Mobile": {"2G": false, "3G": false, "4G": true, "5G": true}}, "cn": {"China Telecom": {"2G": false, "3G": false, "4G": true, "5G": true}}, "sx": {"Telcell Saint Martin": {"2G": false, "3G": true, "4G": true, "5G": false}, "UTS": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ml": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": false}}, "bw": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": false}}, "hr": {"A1 Croatia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "kh": {"Metfone": {"2G": false, "3G": true, "4G": true, "5G": true}}, "id": {"Indosat Ooredoo Hutchison (IOH)": {"2G": false, "3G": true, "4G": true, "5G": true}}, "pt": {"Meo (TMN)": {"2G": false, "3G": true, "4G": true, "5G": true}}, "mt": {"Epic": {"2G": false, "3G": true, "4G": true, "5G": true}, "GoMobile": {"2G": false, "3G": true, "4G": true, "5G": true}}, "tj": {"ZET Mobile": {"2G": false, "3G": true, "4G": true, "5G": false}}, "vn": {"VNPT": {"2G": false, "3G": false, "4G": true, "5G": true}}, "ky": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": true}}, "py": {"Tigo": {"2G": false, "3G": true, "4G": true, "5G": false}}, "cy": {"Epic": {"2G": false, "3G": true, "4G": true, "5G": true}, "Primetel": {"2G": false, "3G": true, "4G": true, "5G": true}}, "sc": {"Airtel": {"2G": false, "3G": true, "4G": true, "5G": false}}, "rw": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": true}}, "bd": {"Robi Axiata": {"2G": false, "3G": true, "4G": true, "5G": false}}, "au": {"Optus": {"2G": false, "3G": true, "4G": true, "5G": true}}, "at": {"A1 Telekom": {"2G": false, "3G": true, "4G": true, "5G": true}, "H3G": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ps": {"Ooredoo": {"2G": false, "3G": true, "4G": false, "5G": false}}, "lk": {"Hutch": {"2G": false, "3G": true, "4G": true, "5G": false}, "Mobitel": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ga": {"MOOV Africa": {"2G": false, "3G": true, "4G": true, "5G": false}}, "bg": {"A1 Telekom": {"2G": false, "3G": true, "4G": true, "5G": true}, "Vivacom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "cz": {"O2 Czech Republic": {"2G": false, "3G": true, "4G": true, "5G": true}}, "no": {"ICE": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ci": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange": {"2G": false, "3G": true, "4G": true, "5G": false}}, "gd": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "gr": {"Nova": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ht": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "gl": {"Tusass": {"2G": false, "3G": true, "4G": true, "5G": false}}, "af": {"Roshan (TDCA)": {"2G": false, "3G": true, "4G": true, "5G": false}}, "me": {"M-Tel": {"2G": false, "3G": true, "4G": true, "5G": true}, "One Montenegro": {"2G": false, "3G": true, "4G": true, "5G": true}}, "mn": {"Unitel": {"2G": false, "3G": true, "4G": true, "5G": false}}, "np": {"Ncell": {"2G": false, "3G": true, "4G": true, "5G": false}}, "bs": {"Aliv": {"2G": false, "3G": true, "4G": true, "5G": false}}, "bh": {"Batelco": {"2G": false, "3G": true, "4G": true, "5G": true}, "STC Bahreïn": {"2G": false, "3G": true, "4G": true, "5G": true}, "Zain": {"2G": false, "3G": true, "4G": true, "5G": true}}, "gb": {"EE": {"2G": false, "3G": false, "4G": true, "5G": true}, "Three": {"2G": false, "3G": true, "4G": true, "5G": true}}, "dm": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ba": {"BH Telecom": {"2G": false, "3G": true, "4G": true, "5G": false}, "HT Eronet": {"2G": false, "3G": true, "4G": true, "5G": false}}, "hu": {"Yettel": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ws": {"Digicel Pacific": {"2G": false, "3G": true, "4G": true, "5G": false}}, "fr": {"Free Mobile": {"2G": false, "3G": true, "4G": true, "5G": true}, "Orange": {"2G": false, "3G": true, "4G": true, "5G": true}, "SFR": {"2G": false, "3G": true, "4G": true, "5G": true}}, "mz": {"Movitel": {"2G": false, "3G": true, "4G": true, "5G": false}}, "pe": {"Movistar": {"2G": false, "3G": true, "4G": true, "5G": false}}, "dk": {"Nuuday": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "gt": {"Tigo": {"2G": false, "3G": true, "4G": true, "5G": false}}, "fo": {"Faorese Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}, "Nema": {"2G": false, "3G": true, "4G": true, "5G": true}}, "sb": {"B-Mobile": {"2G": false, "3G": true, "4G": false, "5G": false}}, "sl": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": false}}, "nr": {"Digicel Pacific": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ai": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "gf": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange Caraibes": {"2G": false, "3G": true, "4G": true, "5G": false}, "SFR Caraibes": {"2G": false, "3G": true, "4G": true, "5G": true}}, "sv": {"Tigo": {"2G": false, "3G": true, "4G": true, "5G": false}}, "gu": {"Docomo Pacific": {"2G": false, "3G": true, "4G": true, "5G": false}}, "do": {"Altice": {"2G": false, "3G": true, "4G": true, "5G": true}}, "cm": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": false}}, "gy": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "az": {"Azercell": {"2G": false, "3G": true, "4G": true, "5G": false}}, "mo": {"China Telecom": {"2G": false, "3G": false, "4G": true, "5G": true}}, "ge": {"Cellfie Mobile": {"2G": false, "3G": true, "4G": true, "5G": true}}, "to": {"Digicel Pacific": {"2G": false, "3G": true, "4G": true, "5G": false}}, "mf": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange Caraibes": {"2G": false, "3G": true, "4G": true, "5G": false}}, "nc": {"OPT": {"2G": false, "3G": true, "4G": true, "5G": false}}, "sm": {"Wind": {"2G": false, "3G": true, "4G": true, "5G": false}}, "kn": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ma": {"Maroc Telecom": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange": {"2G": false, "3G": true, "4G": true, "5G": true}}, "bl": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "vc": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "by": {"Life": {"2G": false, "3G": true, "4G": true, "5G": false}}, "mr": {"Mattel": {"2G": false, "3G": true, "4G": true, "5G": false}}, "bz": {"Digi": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ph": {"Dito": {"2G": false, "3G": true, "4G": true, "5G": false}, "Smart": {"2G": false, "3G": true, "4G": true, "5G": true}}, "cg": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": true}}, "pf": {"Vini Mobile": {"2G": false, "3G": true, "4G": true, "5G": true}, "Vodafone": {"2G": false, "3G": true, "4G": true, "5G": true}}, "uy": {"Antel": {"2G": false, "3G": true, "4G": true, "5G": false}, "Tigo": {"2G": false, "3G": true, "4G": true, "5G": true}}, "km": {"Yas": {"2G": false, "3G": true, "4G": false, "5G": false}}, "co": {"Movistar": {"2G": false, "3G": true, "4G": true, "5G": true}, "Tigo": {"2G": false, "3G": true, "4G": true, "5G": false}}, "us": {"T-Mobile": {"2G": false, "3G": true, "4G": true, "5G": true}}, "es": {"Orange Spain": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ee": {"Tele 2 Estonie": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "bm": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ms": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "zm": {"MTN": {"2G": false, "3G": true, "4G": false, "5G": false}}, "kr": {"LGU+": {"2G": false, "3G": true, "4G": true, "5G": true}, "SK Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "vu": {"Digicel": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ec": {"Movistar": {"2G": false, "3G": true, "4G": true, "5G": false}}, "al": {"One Albania": {"2G": false, "3G": true, "4G": true, "5G": true}}, "et": {"Safaricom": {"2G": false, "3G": true, "4G": true, "5G": false}}, "mc": {"Monaco Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "gg": {"Sure Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ne": {"Zamani Telecom": {"2G": false, "3G": true, "4G": false, "5G": false}}, "la": {"ETL": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ve": {"Movistar": {"2G": false, "3G": true, "4G": true, "5G": false}}, "gh": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": false}}, "cv": {"CV Movel": {"2G": false, "3G": true, "4G": true, "5G": false}, "Unitel": {"2G": false, "3G": true, "4G": true, "5G": false}}, "mq": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange Caraibes": {"2G": false, "3G": true, "4G": true, "5G": true}, "SFR Caraibes": {"2G": false, "3G": true, "4G": true, "5G": true}}, "md": {"Moldcell": {"2G": false, "3G": true, "4G": true, "5G": false}}, "mg": {"Orange Madagascar": {"2G": false, "3G": true, "4G": true, "5G": false}, "Yas": {"2G": false, "3G": true, "4G": true, "5G": false}}, "lr": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": false}}, "bo": {"Tigo": {"2G": false, "3G": true, "4G": true, "5G": false}}, "gi": {"Gibtelecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "hk": {"Smartone": {"2G": false, "3G": true, "4G": true, "5G": false}}, "cf": {"Orange": {"2G": false, "3G": true, "4G": false, "5G": false}}, "ls": {"Econet": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ng": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": false}}, "mu": {"Cellplus": {"2G": false, "3G": true, "4G": true, "5G": true}, "Emtel": {"2G": false, "3G": true, "4G": true, "5G": true}}, "lc": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "im": {"Sure Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "jo": {"Umniah": {"2G": false, "3G": true, "4G": true, "5G": false}, "Zain Jordan": {"2G": false, "3G": true, "4G": true, "5G": true}}, "gn": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": false}}, "vg": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ca": {"Bell": {"2G": false, "3G": true, "4G": true, "5G": true}, "Freedom": {"2G": false, "3G": true, "4G": true, "5G": false}, "Sasktel": {"2G": false, "3G": true, "4G": true, "5G": false}, "Telus": {"2G": false, "3G": true, "4G": true, "5G": true}, "Videotron": {"2G": false, "3G": true, "4G": true, "5G": true}}, "tc": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "td": {"Moov Africa": {"2G": false, "3G": true, "4G": true, "5G": false}}, "ad": {"Andorra Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ro": {"Digi": {"2G": false, "3G": true, "4G": true, "5G": true}, "Orange Romania": {"2G": false, "3G": true, "4G": true, "5G": true}}, "cr": {"Liberty": {"2G": false, "3G": true, "4G": true, "5G": false}}, "in": {"Reliance Jio": {"2G": false, "3G": false, "4G": true, "5G": false}}, "mx": {"Altan Redes": {"2G": false, "3G": true, "4G": true, "5G": false}, "Movistar": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telcel Mexico": {"2G": false, "3G": true, "4G": true, "5G": false}}, "rs": {"Yettel": {"2G": false, "3G": true, "4G": true, "5G": true}}, "xk": {"IPKO Kosovo": {"2G": false, "3G": true, "4G": true, "5G": true}}, "kz": {"Beeline": {"2G": false, "3G": true, "4G": true, "5G": false}, "Tele2": {"2G": false, "3G": true, "4G": true, "5G": false}}, "sa": {"Zain Saudi Arabia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "an": {}, "jp": {"KDDI": {"2G": false, "3G": false, "4G": true, "5G": true}, "NTT Docomo": {"2G": false, "3G": true, "4G": true, "5G": true}}, "lt": {"Tele 2 Lituanie": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia": {"2G": false, "3G": true, "4G": true, "5G": true}}, "tt": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "mw": {"Access": {"2G": false, "3G": false, "4G": true, "5G": false}}, "ss": {"MTN": {"2G": false, "3G": true, "4G": false, "5G": false}}, "ni": {"Tigo Nicaragua": {"2G": false, "3G": true, "4G": true, "5G": false}}, "fi": {"DNA": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia (Sonera)": {"2G": false, "3G": true, "4G": true, "5G": true}}, "tn": {"Orange Tunisie": {"2G": false, "3G": true, "4G": true, "5G": true}}, "lu": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": true}}, "ug": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": true}}, "br": {"TIM Brasil": {"2G": false, "3G": true, "4G": true, "5G": true}, "Vivo": {"2G": false, "3G": true, "4G": true, "5G": true}}, "tr": {"Turk Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}, "Turkcell": {"2G": false, "3G": true, "4G": true, "5G": true}}, "bb": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}, "de": {"O2": {"2G": false, "3G": true, "4G": true, "5G": true}}, "lv": {"LMT": {"2G": false, "3G": true, "4G": true, "5G": true}, "Tele 2 Lettonie": {"2G": false, "3G": true, "4G": true, "5G": true}}, "eg": {"Orange Egypt": {"2G": false, "3G": true, "4G": true, "5G": true}, "e& (Etisalat)": {"2G": false, "3G": true, "4G": true, "5G": true}}, "jm": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "Flow (Liberty group)": {"2G": false, "3G": true, "4G": true, "5G": true}}, "za": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telkom Afrique du Sud": {"2G": false, "3G": true, "4G": true, "5G": true}}, "vi": {"T-Mobile": {"2G": false, "3G": true, "4G": true, "5G": false}}, "bn": {"Unified National Networks": {"2G": false, "3G": true, "4G": true, "5G": false}}, "hn": {"Claro": {"2G": false, "3G": true, "4G": true, "5G": false}, "Tigo": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('ad', false, 'Andorra', 'local', '🇦🇩', 'europe', '{"ad": {"Andorra Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('ae', false, 'Uae', 'local', '🇦🇪', 'middle-east', '{"ae": {"DU": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('af', false, 'Afghanistan', 'local', '🇦🇫', 'asia', '{"af": {"Roshan (TDCA)": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('al', false, 'Albania', 'local', '🇦🇱', 'europe', '{"al": {"One Albania": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('am', false, 'Armenia', 'local', '🇦🇲', 'middle-east', '{"am": {"Armenia Telecom": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('ao', false, 'Angola', 'local', '🇦🇴', 'africa', '{"ao": {"Africell": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('ar', false, 'Argentina', 'local', '🇦🇷', 'americas', '{"ar": {"Movistar": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telecom Personal": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('at', false, 'Austria', 'local', '🇦🇹', 'europe', '{"at": {"A1 Telekom": {"2G": false, "3G": true, "4G": true, "5G": true}, "H3G": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('au', true, 'Australia', 'local', '🇦🇺', 'oceania', '{"au": {"Optus": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('aw', false, 'Aruba', 'local', '🇦🇼', 'caribbean', '{"aw": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('az', false, 'Azerbaijan', 'local', '🇦🇿', 'asia', '{"az": {"Azercell": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('ba', false, 'Bosnia & Herzegovina', 'local', '🇧🇦', 'europe', '{"ba": {"BH Telecom": {"2G": false, "3G": true, "4G": true, "5G": false}, "HT Eronet": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('be', false, 'Belgium', 'local', '🇧🇪', 'europe', '{"be": {"Orange (Mobistar)": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telenet": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('bf', false, 'Burkina Faso', 'local', '🇧🇫', 'africa', '{"bf": {"Moov Africa": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('bg', false, 'Bulgaria', 'local', '🇧🇬', 'europe', '{"bg": {"A1 Telekom": {"2G": false, "3G": true, "4G": true, "5G": true}, "Vivacom": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('bh', false, 'Bahrain', 'local', '🇧🇭', 'middle-east', '{"bh": {"Batelco": {"2G": false, "3G": true, "4G": true, "5G": true}, "STC Bahreïn": {"2G": false, "3G": true, "4G": true, "5G": true}, "Zain": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('bi', false, 'Burundi', 'local', '🇧🇮', 'africa', '{"bi": {"Lumitel": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('bj', false, 'Benin', 'local', '🇧🇯', 'africa', '{"bj": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('bn', false, 'Brunei', 'local', '🇧🇳', 'asia', '{"bn": {"Unified National Networks": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('bo', false, 'Bolivia', 'local', '🇧🇴', 'americas', '{"bo": {"Tigo": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('br', false, 'Brazil', 'local', '🇧🇷', 'americas', '{"br": {"TIM Brasil": {"2G": false, "3G": true, "4G": true, "5G": true}, "Vivo": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('bs', false, 'Bahamas', 'local', '🇧🇸', 'caribbean', '{"bs": {"Aliv": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('bt', false, 'Bhutan', 'local', '🇧🇹', 'asia', '{"bt": {"Bhutan Telecom": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('bw', false, 'Botswana', 'local', '🇧🇼', 'africa', '{"bw": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('by', false, 'Belarus', 'local', '🇧🇾', 'europe', '{"by": {"Life": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('bz', false, 'Belize', 'local', '🇧🇿', 'americas', '{"bz": {"Digi": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('ca', false, 'Canada', 'local', '🇨🇦', 'americas', '{"ca": {"Bell": {"2G": false, "3G": true, "4G": true, "5G": true}, "Freedom": {"2G": false, "3G": true, "4G": true, "5G": false}, "Sasktel": {"2G": false, "3G": true, "4G": true, "5G": false}, "Telus": {"2G": false, "3G": true, "4G": true, "5G": true}, "Videotron": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('cd', false, 'Democratic Republic Of The Congo', 'local', '🇨🇩', 'africa', '{"cd": {"Africell": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('cf', false, 'Central African Republic', 'local', '🇨🇫', 'africa', '{"cf": {"Orange": {"2G": false, "3G": true, "4G": false, "5G": false}}}'::jsonb, true),
+('cg', false, 'Congo', 'local', '🇨🇬', 'africa', '{"cg": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('ch', false, 'Switzerland', 'local', '🇨🇭', 'europe', '{"ch": {"Salt": {"2G": false, "3G": true, "4G": true, "5G": true}, "Sunrise": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('ci', false, 'Côte D''Ivoire', 'local', '🇨🇮', 'africa', '{"ci": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('cl', false, 'Chile', 'local', '🇨🇱', 'americas', '{"cl": {"Movistar": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('cm', false, 'Cameroon', 'local', '🇨🇲', 'africa', '{"cm": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('cn', false, 'China', 'local', '🇨🇳', 'asia', '{"cn": {"China Telecom": {"2G": false, "3G": false, "4G": true, "5G": true}}}'::jsonb, true),
+('co', false, 'Colombia', 'local', '🇨🇴', 'americas', '{"co": {"Movistar": {"2G": false, "3G": true, "4G": true, "5G": true}, "Tigo": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('cr', false, 'Costa Rica', 'local', '🇨🇷', 'americas', '{"cr": {"Liberty": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('cv', false, 'Cape Verde', 'local', '🇨🇻', 'africa', '{"cv": {"CV Movel": {"2G": false, "3G": true, "4G": true, "5G": false}, "Unitel": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('cy', false, 'Cyprus', 'local', '🇨🇾', 'europe', '{"cy": {"Epic": {"2G": false, "3G": true, "4G": true, "5G": true}, "Primetel": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('cz', false, 'Czech Republic', 'local', '🇨🇿', 'europe', '{"cz": {"O2 Czech Republic": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('de', false, 'Germany', 'local', '🇩🇪', 'europe', '{"de": {"O2": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('dj', false, 'Djibouti', 'local', '🇩🇯', 'africa', '{"dj": {"Djibouti Telecom": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('dk', false, 'Denmark', 'local', '🇩🇰', 'europe', '{"dk": {"Nuuday": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('do', false, 'Dominican Republic', 'local', '🇩🇴', 'caribbean', '{"do": {"Altice": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('dz', false, 'Algeria', 'local', '🇩🇿', 'africa', '{"dz": {"ATM Mobilis": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('ec', false, 'Ecuador', 'local', '🇪🇨', 'americas', '{"ec": {"Movistar": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('ee', false, 'Estonia', 'local', '🇪🇪', 'europe', '{"ee": {"Tele 2 Estonie": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('eg', false, 'Egypt', 'local', '🇪🇬', 'africa', '{"eg": {"Orange Egypt": {"2G": false, "3G": true, "4G": true, "5G": true}, "e& (Etisalat)": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('es', false, 'Spain', 'local', '🇪🇸', 'europe', '{"es": {"Orange Spain": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('et', false, 'Ethiopia', 'local', '🇪🇹', 'africa', '{"et": {"Safaricom": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('fi', false, 'Finland', 'local', '🇫🇮', 'europe', '{"fi": {"DNA": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia (Sonera)": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('fj', false, 'Fiji', 'local', '🇫🇯', 'oceania', '{"fj": {"Digicel Pacific": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('fo', false, 'Faroe Islands', 'local', '🇫🇴', 'europe', '{"fo": {"Faorese Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}, "Nema": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('fr', false, 'One-Off France Unlimited data 1 day', 'local', '🇫🇷', 'europe', '{"fr": {"Free Mobile": {"2G": false, "3G": true, "4G": true, "5G": true}, "Orange": {"2G": false, "3G": true, "4G": true, "5G": true}, "SFR": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('ga', false, 'Gabon', 'local', '🇬🇦', 'africa', '{"ga": {"MOOV Africa": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('gb', false, 'Uk', 'local', '🇬🇧', 'europe', '{"gb": {"EE": {"2G": false, "3G": false, "4G": true, "5G": true}, "Three": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('ge', false, 'Georgia', 'local', '🇬🇪', 'europe', '{"ge": {"Cellfie Mobile": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('gf', false, 'French Guiana', 'local', '🇬🇫', 'caribbean', '{"gf": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange Caraibes": {"2G": false, "3G": true, "4G": true, "5G": false}, "SFR Caraibes": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('gh', false, 'Ghana', 'local', '🇬🇭', 'africa', '{"gh": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('gi', false, 'Gibraltar', 'local', '🇬🇮', 'europe', '{"gi": {"Gibtelecom": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('gl', false, 'Greenland', 'local', '🇬🇱', 'americas', '{"gl": {"Tusass": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('gm', false, 'Gambia', 'local', '🇬🇲', 'africa', '{"gm": {"Africell": {"2G": false, "3G": true, "4G": true, "5G": false}, "Qcell": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('gn', false, 'Guinea', 'local', '🇬🇳', 'africa', '{"gn": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('gr', false, 'Greece', 'local', '🇬🇷', 'europe', '{"gr": {"Nova": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('gt', false, 'Guatemala', 'local', '🇬🇹', 'americas', '{"gt": {"Tigo": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('gu', false, 'Guam', 'local', '🇬🇺', 'oceania', '{"gu": {"Docomo Pacific": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('gw', false, 'Guinea Bissau', 'local', '🇬🇼', 'africa', '{"gw": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange Guinee Bissau": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('gy', false, 'Guyana', 'local', '🇬🇾', 'caribbean', '{"gy": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('hk', false, 'Hong Kong', 'local', '🇭🇰', 'asia', '{"hk": {"Smartone": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('hn', false, 'Honduras', 'local', '🇭🇳', 'americas', '{"hn": {"Claro": {"2G": false, "3G": true, "4G": true, "5G": false}, "Tigo": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('hr', false, 'Croatia', 'local', '🇭🇷', 'europe', '{"hr": {"A1 Croatia": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('hu', false, 'Hungary', 'local', '🇭🇺', 'europe', '{"hu": {"Yettel": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('id', false, 'Indonesia', 'local', '🇮🇩', 'asia', '{"id": {"Indosat Ooredoo Hutchison (IOH)": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('ie', false, 'Ireland', 'local', '🇮🇪', 'europe', '{"ie": {"EIR": {"2G": false, "3G": true, "4G": true, "5G": true}, "Three": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('il', false, 'Israel', 'local', '🇮🇱', 'middle-east', '{"il": {"Hot Mobile": {"2G": false, "3G": true, "4G": true, "5G": true}, "Pelephone": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('in', false, 'India', 'local', '🇮🇳', 'asia', '{"in": {"Reliance Jio": {"2G": false, "3G": false, "4G": true, "5G": false}}}'::jsonb, true),
+('iq', false, 'Iraq', 'local', '🇮🇶', 'middle-east', '{"iq": {"Asiacell": {"2G": false, "3G": true, "4G": true, "5G": false}, "Zain": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('is', false, 'Iceland', 'local', '🇮🇸', 'europe', '{"is": {"Vodafone": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('it', false, 'Italy', 'local', '🇮🇹', 'europe', '{"it": {"Iliad": {"2G": false, "3G": true, "4G": true, "5G": true}, "WindTre": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('jo', false, 'Jordan', 'local', '🇯🇴', 'middle-east', '{"jo": {"Umniah": {"2G": false, "3G": true, "4G": true, "5G": false}, "Zain Jordan": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('jp', false, 'Japan', 'local', '🇯🇵', 'asia', '{"jp": {"KDDI": {"2G": false, "3G": false, "4G": true, "5G": true}, "NTT Docomo": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('ke', false, 'Kenya', 'local', '🇰🇪', 'africa', '{"ke": {"Safaricom": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('kg', false, 'Kyrgyzstan', 'local', '🇰🇬', 'asia', '{"kg": {"Beeline": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('kh', false, 'Cambodia', 'local', '🇰🇭', 'asia', '{"kh": {"Metfone": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('km', false, 'Comoros', 'local', '🇰🇲', 'africa', '{"km": {"Yas": {"2G": false, "3G": true, "4G": false, "5G": false}}}'::jsonb, true),
+('kr', false, 'South Korea', 'local', '🇰🇷', 'asia', '{"kr": {"LGU+": {"2G": false, "3G": true, "4G": true, "5G": true}, "SK Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('kw', false, 'Kuwait', 'local', '🇰🇼', 'middle-east', '{"kw": {"STC Kuwait": {"2G": false, "3G": true, "4G": true, "5G": false}, "Zain Kuwait": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('kz', false, 'Kazakhstan', 'local', '🇰🇿', 'asia', '{"kz": {"Beeline": {"2G": false, "3G": true, "4G": true, "5G": false}, "Tele2": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('lk', false, 'Sri Lanka', 'local', '🇱🇰', 'asia', '{"lk": {"Hutch": {"2G": false, "3G": true, "4G": true, "5G": false}, "Mobitel": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('lt', false, 'Lithuania', 'local', '🇱🇹', 'europe', '{"lt": {"Tele 2 Lituanie": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('lu', false, 'Luxembourg', 'local', '🇱🇺', 'europe', '{"lu": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('lv', false, 'Latvia', 'local', '🇱🇻', 'europe', '{"lv": {"LMT": {"2G": false, "3G": true, "4G": true, "5G": true}, "Tele 2 Lettonie": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('ma', false, 'Morocco', 'local', '🇲🇦', 'africa', '{"ma": {"Maroc Telecom": {"2G": false, "3G": true, "4G": true, "5G": false}, "Orange": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('md', false, 'Moldova', 'local', '🇲🇩', 'europe', '{"md": {"Moldcell": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('me', false, 'Montenegro', 'local', '🇲🇪', 'europe', '{"me": {"M-Tel": {"2G": false, "3G": true, "4G": true, "5G": true}, "One Montenegro": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('mg', false, 'Madagascar', 'local', '🇲🇬', 'africa', '{"mg": {"Orange Madagascar": {"2G": false, "3G": true, "4G": true, "5G": false}, "Yas": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('mk', false, 'Macedonia', 'local', '🇲🇰', 'europe', '{"mk": {"A1 Telekom": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('ml', false, 'Mali', 'local', '🇲🇱', 'africa', '{"ml": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('mn', false, 'Mongolia', 'local', '🇲🇳', 'asia', '{"mn": {"Unitel": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('mo', false, 'Macau', 'local', '🇲🇴', 'asia', '{"mo": {"China Telecom": {"2G": false, "3G": false, "4G": true, "5G": true}}}'::jsonb, true),
+('mr', false, 'Mauritania', 'local', '🇲🇷', 'africa', '{"mr": {"Mattel": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('mt', false, 'Malta', 'local', '🇲🇹', 'europe', '{"mt": {"Epic": {"2G": false, "3G": true, "4G": true, "5G": true}, "GoMobile": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('mu', true, 'Mauritius', 'local', '🇲🇺', 'africa', '{"mu": {"Cellplus": {"2G": false, "3G": true, "4G": true, "5G": true}, "Emtel": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('mw', false, 'Malawi', 'local', '🇲🇼', 'africa', '{"mw": {"Access": {"2G": false, "3G": false, "4G": true, "5G": false}}}'::jsonb, true),
+('mx', false, 'Mexico', 'local', '🇲🇽', 'americas', '{"mx": {"Altan Redes": {"2G": false, "3G": true, "4G": true, "5G": false}, "Movistar": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telcel Mexico": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('my', false, 'Malaysia', 'local', '🇲🇾', 'asia', '{"my": {"Maxis": {"2G": false, "3G": true, "4G": true, "5G": true}, "YTL": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('mz', false, 'Mozambique', 'local', '🇲🇿', 'africa', '{"mz": {"Movitel": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('na', false, 'Namibia', 'local', '🇳🇦', 'africa', '{"na": {"Namibie Telecom": {"2G": false, "3G": true, "4G": false, "5G": false}}}'::jsonb, true),
+('nc', true, 'New Caledonia', 'local', '🇳🇨', 'oceania', '{"nc": {"OPT": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('ng', false, 'Nigeria', 'local', '🇳🇬', 'africa', '{"ng": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('ni', false, 'Nicaragua', 'local', '🇳🇮', 'americas', '{"ni": {"Tigo Nicaragua": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('nl', false, 'Netherlands', 'local', '🇳🇱', 'europe', '{"nl": {"KPN": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('no', false, 'Norway', 'local', '🇳🇴', 'europe', '{"no": {"ICE": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('np', false, 'Nepal', 'local', '🇳🇵', 'asia', '{"np": {"Ncell": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('nr', false, 'Nauru', 'local', '🇳🇷', 'oceania', '{"nr": {"Digicel Pacific": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('nz', true, 'New Zealand', 'local', '🇳🇿', 'oceania', '{"nz": {"2 Degrees": {"2G": false, "3G": true, "4G": true, "5G": true}, "Spark": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('om', false, 'Oman', 'local', '🇴🇲', 'middle-east', '{"om": {"Omantel": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('pa', false, 'Panama', 'local', '🇵🇦', 'americas', '{"pa": {"Liberty": {"2G": false, "3G": true, "4G": true, "5G": true}, "Tigo Panama": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('pe', false, 'Peru', 'local', '🇵🇪', 'americas', '{"pe": {"Movistar": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('pf', true, 'French Polynesia', 'local', '🇵🇫', 'oceania', '{"pf": {"Vini Mobile": {"2G": false, "3G": true, "4G": true, "5G": true}, "Vodafone": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('ph', false, 'Philippines', 'local', '🇵🇭', 'asia', '{"ph": {"Dito": {"2G": false, "3G": true, "4G": true, "5G": false}, "Smart": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('pk', false, 'Pakistan', 'local', '🇵🇰', 'asia', '{"pk": {"Jazz Pakistan": {"2G": false, "3G": true, "4G": true, "5G": false}, "Zong": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('pl', false, 'Poland', 'local', '🇵🇱', 'europe', '{"pl": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": true}, "Play": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('ps', false, 'Palestine', 'local', '🇵🇸', 'middle-east', '{"ps": {"Ooredoo": {"2G": false, "3G": true, "4G": false, "5G": false}}}'::jsonb, true),
+('pt', false, 'Portugal', 'local', '🇵🇹', 'europe', '{"pt": {"Meo (TMN)": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('py', false, 'Paraguay', 'local', '🇵🇾', 'americas', '{"py": {"Tigo": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('qa', false, 'Qatar', 'local', '🇶🇦', 'middle-east', '{"qa": {"Vodafone Qatar": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('re', true, 'Reunion', 'local', '🇷🇪', 'africa', '{"re": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": true}, "SRR": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('ro', false, 'Romania', 'local', '🇷🇴', 'europe', '{"ro": {"Digi": {"2G": false, "3G": true, "4G": true, "5G": true}, "Orange Romania": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('rs', false, 'Serbia', 'local', '🇷🇸', 'europe', '{"rs": {"Yettel": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('ru', false, 'Russia', 'local', '🇷🇺', 'europe', '{"ru": {"Beeline": {"2G": false, "3G": true, "4G": true, "5G": false}, "T2": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('rw', false, 'Rwanda', 'local', '🇷🇼', 'africa', '{"rw": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('sa', false, 'Saudi Arabia', 'local', '🇸🇦', 'middle-east', '{"sa": {"Zain Saudi Arabia": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('sc', false, 'Seychelles', 'local', '🇸🇨', 'africa', '{"sc": {"Airtel": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('sd', false, 'Sudan', 'local', '🇸🇩', 'africa', '{"sd": {"Zain": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('se', false, 'Sweden', 'local', '🇸🇪', 'europe', '{"se": {"Tele2": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telia": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('sg', false, 'Singapore', 'local', '🇸🇬', 'asia', '{"sg": {"Simba": {"2G": false, "3G": false, "4G": true, "5G": true}, "StarHub": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('si', false, 'Slovenia', 'local', '🇸🇮', 'europe', '{"si": {"A1 Slovenia": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('sk', false, 'Slovakia', 'local', '🇸🇰', 'europe', '{"sk": {"O2 Slovakia": {"2G": false, "3G": true, "4G": true, "5G": true}, "Orange": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('sl', false, 'Sierra Leone', 'local', '🇸🇱', 'africa', '{"sl": {"Orange": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('sn', false, 'Senegal', 'local', '🇸🇳', 'africa', '{"sn": {"Sonatel-Orange": {"2G": false, "3G": true, "4G": true, "5G": true}, "Yas": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('sr', false, 'Suriname', 'local', '🇸🇷', 'caribbean', '{"sr": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('ss', false, 'South Sudan', 'local', '🇸🇸', 'africa', '{"ss": {"MTN": {"2G": false, "3G": true, "4G": false, "5G": false}}}'::jsonb, true),
+('sv', false, 'El Salvador', 'local', '🇸🇻', 'caribbean', '{"sv": {"Tigo": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('sz', false, 'Eswatini', 'local', '🇸🇿', 'africa', '{"sz": {"MTN Eswatini": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('tg', false, 'Togo', 'local', '🇹🇬', 'africa', '{"tg": {"YAS": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('th', false, 'Thailand', 'local', '🇹🇭', 'asia', '{"th": {"AIS": {"2G": false, "3G": true, "4G": true, "5G": true}, "True Move": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('tj', false, 'Tajikistan', 'local', '🇹🇯', 'asia', '{"tj": {"ZET Mobile": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('tn', false, 'Tunisia', 'local', '🇹🇳', 'africa', '{"tn": {"Orange Tunisie": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('to', false, 'Tonga', 'local', '🇹🇴', 'oceania', '{"to": {"Digicel Pacific": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('tr', false, 'Turkey', 'local', '🇹🇷', 'europe', '{"tr": {"Turk Telecom": {"2G": false, "3G": true, "4G": true, "5G": true}, "Turkcell": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('tt', false, 'Trinidad And Tobago', 'local', '🇹🇹', 'caribbean', '{"tt": {"Digicel Group": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('tw', false, 'Taiwan', 'local', '🇹🇼', 'asia', '{"tw": {"FET": {"2G": false, "3G": true, "4G": true, "5G": true}, "Taiwan Mobile": {"2G": false, "3G": false, "4G": true, "5G": true}}}'::jsonb, true),
+('tz', false, 'Tanzania', 'local', '🇹🇿', 'africa', '{"tz": {"Halotel": {"2G": false, "3G": true, "4G": true, "5G": false}, "Yas": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('ua', false, 'Ukraine', 'local', '🇺🇦', 'europe', '{"ua": {"LifeCell": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('ug', false, 'Uganda', 'local', '🇺🇬', 'africa', '{"ug": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('uy', false, 'Uruguay', 'local', '🇺🇾', 'americas', '{"uy": {"Antel": {"2G": false, "3G": true, "4G": true, "5G": false}, "Tigo": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('uz', false, 'Uzbekistan', 'local', '🇺🇿', 'asia', '{"uz": {"Beelines": {"2G": false, "3G": true, "4G": true, "5G": true}, "Uztelecom": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('ve', false, 'Venezuela', 'local', '🇻🇪', 'americas', '{"ve": {"Movistar": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('vn', false, 'Vietnam', 'local', '🇻🇳', 'asia', '{"vn": {"VNPT": {"2G": false, "3G": false, "4G": true, "5G": true}}}'::jsonb, true),
+('vu', true, 'Vanuatu', 'local', '🇻🇺', 'oceania', '{"vu": {"Digicel": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('ws', false, 'Samoa', 'local', '🇼🇸', 'oceania', '{"ws": {"Digicel Pacific": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('xk', false, 'Kosovo', 'local', '🇽🇰', 'europe', '{"xk": {"IPKO Kosovo": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('yt', false, 'Mayotte', 'local', '🇾🇹', 'africa', '{"yt": {"SFR": {"2G": false, "3G": true, "4G": true, "5G": false}}}'::jsonb, true),
+('za', false, 'South Africa', 'local', '🇿🇦', 'africa', '{"za": {"MTN": {"2G": false, "3G": true, "4G": true, "5G": true}, "Telkom Afrique du Sud": {"2G": false, "3G": true, "4G": true, "5G": true}}}'::jsonb, true),
+('zm', false, 'Zambia', 'local', '🇿🇲', 'africa', '{"zm": {"MTN": {"2G": false, "3G": true, "4G": false, "5G": false}}}'::jsonb, true);
 
 -- =====================
 -- OFFERS
 -- =====================
 
-INSERT INTO public.offers (id, destination_id, data_quantity, duration_quantity, base_price, stripe_price_id, provider_product_id, data_unit) VALUES
-
-
--- Afrique
-
-('371abd00-9b07-4439-a404-a517e669788d', '906ae15d-02cc-42db-b7a3-213042e7fdc7', 1.0, 7, 17.1, '', 'WW_901O_STACK_ONEOFF_AFG_1GB_7D', 'Go'),
-('e0797c78-003a-43ad-96de-e7b00df68546', '906ae15d-02cc-42db-b7a3-213042e7fdc7', 1.0, 30, 18.05, '', 'WW_901O_STACK_ONEOFF_AFRICA2_1GB_30D', 'Go'),
-('bd788b2d-3996-4ef4-b27f-99db52208f05', '906ae15d-02cc-42db-b7a3-213042e7fdc7', 3.0, 15, 32.3, '', 'WW_901O_STACK_ONEOFF_AFG_3GB_15D', 'Go'),
-('bf126b32-d65b-4565-92f1-a4ad2bc00d05', '906ae15d-02cc-42db-b7a3-213042e7fdc7', 3.0, 15, 41.8, '', 'WW_901O_STACK_ONEOFF_AFRICA2_3GB_15D', 'Go'),
-
--- Afrique (sélection)
-
-('8f5fc2a3-c4da-42c1-a57f-814705cdaa72', 'd26f02d1-3bed-4fba-9a2d-ade19b7d32dd', 1.0, 30, 6.65, '', 'WW_901O_STACK_ONEOFF_BESTAFRICA2_1GB_30D', 'Go'),
-('4a9e6157-2076-4557-8edc-4d81bf20e76c', 'd26f02d1-3bed-4fba-9a2d-ade19b7d32dd', 3.0, 30, 14.25, '', 'WW_901O_STACK_ONEOFF_BESTAFRICA2_3GB_30D', 'Go'),
-('ca36d2d5-e593-4774-8343-f4e8751db82a', 'd26f02d1-3bed-4fba-9a2d-ade19b7d32dd', 10.0, 30, 28.5, '', 'WW_901O_STACK_ONEOFF_BESTAFRICA2_10GB_30D', 'Go'),
-('6d555f19-3857-43e6-8f82-c618e0a58249', 'd26f02d1-3bed-4fba-9a2d-ade19b7d32dd', 40.0, 7, 46.55, '', 'WW_901O_STACK_ONEOFF_BESTAFRICA2_UNLIMITED_7D_FUP20', 'UNLI'),
-('9afe1f74-6474-4d99-9651-0e1869be9b72', 'd26f02d1-3bed-4fba-9a2d-ade19b7d32dd', 120.0, 30, 122.55, '', 'WW_901O_STACK_ONEOFF_BESTAFRICA2_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Afrique du Sud
-
-('930a7692-d4fd-4554-8aff-b3cfa949f623', 'a2b93439-736b-4646-8d26-a8b8630c4616', 1.0, 30, 5.7, '', 'WW_901O_STACK_ONEOFF_ZAF_1GB_30D', 'Go'),
-('6dcd1d39-b21c-400a-bd97-34b649b76240', 'a2b93439-736b-4646-8d26-a8b8630c4616', 3.0, 15, 8.55, '', 'WW_901O_STACK_ONEOFF_ZAF_3GB_15D', 'Go'),
-('78fb2286-52b8-4a22-bc0e-3e5323b67c78', 'a2b93439-736b-4646-8d26-a8b8630c4616', 10.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_ZAF_10GB_7D', 'Go'),
-('76744bec-7ead-4b76-bb50-1d6f89293b3c', 'a2b93439-736b-4646-8d26-a8b8630c4616', 10.0, 30, 20.9, '', 'WW_901O_STACK_ONEOFF_ZAF_10GB_30D', 'Go'),
-('4d003949-301b-454b-a14a-d5efc04450df', 'a2b93439-736b-4646-8d26-a8b8630c4616', 25.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_ZAF_25GB_30D', 'Go'),
-('cfa68c13-5eb4-4afe-a32b-989786e2a0b8', 'a2b93439-736b-4646-8d26-a8b8630c4616', 40.0, 7, 34.2, '', 'WW_901O_STACK_ONEOFF_ZAF_UNLIMITED_7D_FUP20', 'UNLI'),
-('9ebff454-fb9d-40d0-b108-8711778310d5', 'a2b93439-736b-4646-8d26-a8b8630c4616', 50.0, 30, 52.25, '', 'WW_901O_STACK_ONEOFF_ZAF_50GB_30D', 'Go'),
-('78235a95-1515-405c-90c7-c32832320baa', 'a2b93439-736b-4646-8d26-a8b8630c4616', 60.0, 15, 65.55, '', 'WW_901O_STACK_ONEOFF_ZAF_UNLIMITED_15D_FUP30', 'UNLI'),
-('8a288737-a62b-47be-9dc2-09dc476226b9', 'a2b93439-736b-4646-8d26-a8b8630c4616', 120.0, 30, 83.6, '', 'WW_901O_STACK_ONEOFF_ZAF_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Albanie
-
-('ae714b22-3eb2-44ee-a93c-f830f6fcae27', '6618653a-8531-4a48-bc18-66f6783ccdf6', 1.0, 7, 4.75, '', 'WW_901O_STACK_ONEOFF_ALBANIA_1GB_7D', 'Go'),
-('bbc577b0-f04a-4ea5-b445-2cb59a220334', '6618653a-8531-4a48-bc18-66f6783ccdf6', 3.0, 15, 7.6, '', 'WW_901O_STACK_ONEOFF_ALBANIA_3GB_15D', 'Go'),
-('37cbe908-545e-4f7b-b096-bc2eaf252fca', '6618653a-8531-4a48-bc18-66f6783ccdf6', 10.0, 7, 13.3, '', 'WW_901O_STACK_ONEOFF_ALBANIA_10GB_7D', 'Go'),
-('20d65848-ff55-4195-950e-91fbbd15623a', '6618653a-8531-4a48-bc18-66f6783ccdf6', 10.0, 30, 15.2, '', 'WW_901O_STACK_ONEOFF_ALBANIA_10GB_30D', 'Go'),
-('025620f9-6094-4a1d-b722-1b7ad835708c', '6618653a-8531-4a48-bc18-66f6783ccdf6', 40.0, 7, 27.55, '', 'WW_901O_STACK_ONEOFF_ALBANIA_UNLIMITED_7D_FUP20', 'UNLI'),
-('82bb2b2b-be1b-4d54-8199-fc92f17bfadf', '6618653a-8531-4a48-bc18-66f6783ccdf6', 60.0, 15, 46.55, '', 'WW_901O_STACK_ONEOFF_ALBANIA_UNLIMITED_15D_FUP30', 'UNLI'),
-
--- Algérie
-
-('755917a5-da89-4b01-80c6-a97171fe64ab', 'ec705aa3-7a3c-4917-b9da-60dca7a9f593', 1.0, 7, 5.7, '', 'WW_901O_STACK_ONEOFF_ALGERIA_1GB_7D', 'Go'),
-('dd5f3021-efc0-4990-a743-094bb35d9e0f', 'ec705aa3-7a3c-4917-b9da-60dca7a9f593', 3.0, 15, 11.4, '', 'WW_901O_STACK_ONEOFF_ALGERIA_3GB_15D', 'Go'),
-('74e0d823-f26d-438a-ae85-d9040be32173', 'ec705aa3-7a3c-4917-b9da-60dca7a9f593', 10.0, 7, 22.8, '', 'WW_901O_STACK_ONEOFF_ALGERIA_10GB_7D', 'Go'),
-('bbe31705-ac11-49d0-a9e0-1a756318b532', 'ec705aa3-7a3c-4917-b9da-60dca7a9f593', 10.0, 30, 27.55, '', 'WW_901O_STACK_ONEOFF_ALGERIA_10GB_30D', 'Go'),
-
--- Allemagne
-
-('f6254a88-7de9-4f86-a12a-f249b18554ba', 'aa6a7a7d-02e2-4396-9d6e-b16a25d80349', 3.0, 15, 6.65, '', 'WW_901O_STACK_ONEOFF_GERMANY_3GB_15D', 'Go'),
-('99e6d963-79db-4678-88fc-6d5913742f63', 'aa6a7a7d-02e2-4396-9d6e-b16a25d80349', 10.0, 7, 9.5, '', 'WW_901O_STACK_ONEOFF_GERMANY_10GB_7D', 'Go'),
-('28a58086-18a2-43ee-89cf-1481bdbe7f4a', 'aa6a7a7d-02e2-4396-9d6e-b16a25d80349', 10.0, 30, 11.88, '', 'WW_901O_STACK_ONEOFF_GERMANY_10GB_30D', 'Go'),
-('3b78b94d-367d-4ff9-8ab7-d27c481f18cb', 'aa6a7a7d-02e2-4396-9d6e-b16a25d80349', 14.0, 1, 7.6, '', 'WW_901O_STACK_ONEOFF_GERMANY_UNLIMITED_1D_FUP7', 'UNLI'),
-('9fc88181-1ee5-49f4-98eb-a7b06c0898b1', 'aa6a7a7d-02e2-4396-9d6e-b16a25d80349', 25.0, 30, 23.75, '', 'WW_901O_STACK_ONEOFF_GERMANY_25GB_30D', 'Go'),
-('6fce1d9a-faa7-4db5-a81b-9b731928e59e', 'aa6a7a7d-02e2-4396-9d6e-b16a25d80349', 40.0, 7, 22.8, '', 'WW_901O_STACK_ONEOFF_GERMANY_UNLIMITED_7D_FUP20', 'UNLI'),
-('a6bd0a68-f954-4e78-9c71-8339120294bf', 'aa6a7a7d-02e2-4396-9d6e-b16a25d80349', 50.0, 30, 41.8, '', 'WW_901O_STACK_ONEOFF_GERMANY_50GB_30D', 'Go'),
-('8de6d4e1-37b6-4e19-9a81-48026468bd2a', 'aa6a7a7d-02e2-4396-9d6e-b16a25d80349', 60.0, 15, 42.75, '', 'WW_901O_STACK_ONEOFF_GERMANY_UNLIMITED_15D_FUP30', 'UNLI'),
-('d5f8d331-0604-4f2d-a85a-33df3a108007', 'aa6a7a7d-02e2-4396-9d6e-b16a25d80349', 120.0, 30, 55.1, '', 'WW_901O_STACK_ONEOFF_GERMANY_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Amérique latine (étendue)
-
-('c52d93cd-0ef4-4cdf-9951-30394ffb1055', 'daff99bc-4144-4769-8a07-a976a92313e3', 1.0, 30, 8.55, '', 'WW_901O_STACK_ONEOFF_BESTLATAM2_1GB_30D', 'Go'),
-('562b3c26-79fb-45ea-9fe9-c6a3ac67ccdd', 'daff99bc-4144-4769-8a07-a976a92313e3', 3.0, 30, 18.05, '', 'WW_901O_STACK_ONEOFF_BESTLATAM2_3GB_30D', 'Go'),
-('6fe929f1-a670-4fcb-9b59-f9cc1993bb06', 'daff99bc-4144-4769-8a07-a976a92313e3', 10.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_BESTLATAM2_10GB_30D', 'Go'),
-('ca91ee9f-47e0-4a10-b03e-28033ef66fbf', 'daff99bc-4144-4769-8a07-a976a92313e3', 25.0, 30, 55.1, '', 'WW_901O_STACK_ONEOFF_BESTLATAM2_25GB_30D', 'Go'),
-('5dd072a2-6787-4f4f-ae42-79d511059bb0', 'daff99bc-4144-4769-8a07-a976a92313e3', 40.0, 7, 41.8, '', 'WW_901O_STACK_ONEOFF_BESTLATAM2_UNLIMITED_7D_FUP20', 'UNLI'),
-('78db340f-634c-424b-8e6a-a63baacae78a', 'daff99bc-4144-4769-8a07-a976a92313e3', 120.0, 30, 103.55, '', 'WW_901O_STACK_ONEOFF_BESTLATAM2_UNLIMITED_30D_FUP60', 'UNLI'),
-('192b83c7-f02b-4e94-bdb7-bb4f3a064dbc', 'daff99bc-4144-4769-8a07-a976a92313e3', 500.0, 2, 4.75, '', 'WW_901O_STACK_ONEOFF_BESTLATAM2_500MB_2D', 'Mo'),
-
--- Andorre
-
-('8439d3f8-34f3-4378-b736-2e8dad45b7b1', '05d44374-2606-4100-a79c-64c9699db094', 1.0, 7, 2.85, '', 'WW_901O_STACK_ONEOFF_ANDORRA_1GB_7D', 'Go'),
-('99e62f90-d9d9-464e-bca0-c7ab575e433c', '05d44374-2606-4100-a79c-64c9699db094', 3.0, 15, 5.7, '', 'WW_901O_STACK_ONEOFF_ANDORRA_3GB_15D', 'Go'),
-('bb4a744c-16ef-4888-b99b-fc16074494f8', '05d44374-2606-4100-a79c-64c9699db094', 10.0, 7, 11.4, '', 'WW_901O_STACK_ONEOFF_ANDORRA_10GB_7D', 'Go'),
-('1b78ee55-5ffe-4172-bbf5-9c51cab0013e', '05d44374-2606-4100-a79c-64c9699db094', 10.0, 30, 13.3, '', 'WW_901O_STACK_ONEOFF_ANDORRA_10GB_30D', 'Go'),
-('4ae4505c-aad9-4eaa-aa1d-8c429c0958ea', '05d44374-2606-4100-a79c-64c9699db094', 50.0, 7, 33.25, '', 'WW_901O_STACK_ONEOFF_ANDORRA_UNLIMITED_7D_FUP25', 'UNLI'),
-
--- Angola
-
-('ec5baa98-abce-4ee3-8609-54386c9b0394', '88a6ae89-0dba-4b60-a600-495c1d7ca834', 1.0, 7, 27.55, '', 'WW_901O_STACK_ONEOFF_ANGOLA_1GB_7D', 'Go'),
-
--- Arabie saoudite
-
-('0cf7206e-e035-4dca-9345-50f0d0928842', '0d9a1def-7bb9-401d-8aa9-3cd84db2a141', 1.0, 7, 6.65, '', 'WW_901O_STACK_ONEOFF_KSA_1GB_7D', 'Go'),
-('40270ffb-225e-43ec-b2a1-fa78e35b4fba', '0d9a1def-7bb9-401d-8aa9-3cd84db2a141', 3.0, 30, 11.4, '', 'WW_901O_STACK_ONEOFF_KSA_3GB_30D', 'Go'),
-('3ef417d0-6156-46d9-a5f0-c3891800413e', '0d9a1def-7bb9-401d-8aa9-3cd84db2a141', 10.0, 7, 23.75, '', 'WW_901O_STACK_ONEOFF_KSA_10GB_7D', 'Go'),
-('069aaefb-f748-48c1-9ee0-6bdcc43d100f', '0d9a1def-7bb9-401d-8aa9-3cd84db2a141', 10.0, 30, 25.65, '', 'WW_901O_STACK_ONEOFF_KSA_10GB_30D', 'Go'),
-
--- Argentine
-
-('504c8ebb-dfa6-41bf-b9c2-b04a90848786', '9abae76a-9068-494e-b529-819fdaecbadd', 1.0, 7, 5.7, '', 'WW_901O_STACK_ONEOFF_ARG_1GB_7D', 'Go'),
-('c1b1f478-465a-4ec3-9458-823914a3ef8b', '9abae76a-9068-494e-b529-819fdaecbadd', 3.0, 15, 11.4, '', 'WW_901O_STACK_ONEOFF_ARG_3GB_15D', 'Go'),
-('498b3635-3f08-405e-89ab-c3e1b74ef183', '9abae76a-9068-494e-b529-819fdaecbadd', 10.0, 30, 21.85, '', 'WW_901O_STACK_ONEOFF_ARG_10GB_30D', 'Go'),
-('0a2ea162-dc42-44cb-aafa-abb3e219a7bf', '9abae76a-9068-494e-b529-819fdaecbadd', 25.0, 30, 41.8, '', 'WW_901O_STACK_ONEOFF_ARG_25GB_30D', 'Go'),
-('61acbe92-c1be-49b9-9e20-1df50423adec', '9abae76a-9068-494e-b529-819fdaecbadd', 40.0, 7, 33.25, '', 'WW_901O_STACK_ONEOFF_ARG_UNLIMITED_7D_FUP20', 'UNLI'),
-('183b909b-b06b-416b-acee-a8542c7d10a2', '9abae76a-9068-494e-b529-819fdaecbadd', 120.0, 30, 74.1, '', 'WW_901O_STACK_ONEOFF_ARG_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Arménie
-
-('0a18e93a-331b-47bc-b953-8a0762a89570', 'db0671c5-fee7-484c-962e-20e4ee9f5f43', 1.0, 7, 7.6, '', 'WW_901O_STACK_ONEOFF_ARMENIA_1GB_7D', 'Go'),
-('dc8a4958-1c45-4844-b7f6-9bf8f016d717', 'db0671c5-fee7-484c-962e-20e4ee9f5f43', 1.0, 30, 14.25, '', 'WW_901O_STACK_ONEOFF_AMERICA_1GB_30D', 'Go'),
-('e7412575-3c6e-419b-8fc0-7937ae00a6f8', 'db0671c5-fee7-484c-962e-20e4ee9f5f43', 3.0, 15, 27.55, '', 'WW_901O_STACK_ONEOFF_AMERICA_3GB_15D', 'Go'),
-('b6ae6d00-2b5d-45bb-beb4-e37583d52367', 'db0671c5-fee7-484c-962e-20e4ee9f5f43', 3.0, 15, 15.2, '', 'WW_901O_STACK_ONEOFF_ARMENIA_3GB_15D', 'Go'),
-('58b1a931-ce98-48f0-832c-7948d912963e', 'db0671c5-fee7-484c-962e-20e4ee9f5f43', 10.0, 7, 24.7, '', 'WW_901O_STACK_ONEOFF_ARMENIA_10GB_7D', 'Go'),
-('8953b6fe-e653-4bca-8181-3230e46c2772', 'db0671c5-fee7-484c-962e-20e4ee9f5f43', 10.0, 30, 27.55, '', 'WW_901O_STACK_ONEOFF_ARMENIA_10GB_30D', 'Go'),
-('eb839e57-d283-4ca6-8953-341144b1dd03', 'db0671c5-fee7-484c-962e-20e4ee9f5f43', 40.0, 7, 37.05, '', 'WW_901O_STACK_ONEOFF_ARMENIA_UNLIMITED_7D_FUP20', 'UNLI'),
-('bf243289-1113-405d-a7a5-f4cd8ec91ddf', 'db0671c5-fee7-484c-962e-20e4ee9f5f43', 60.0, 15, 65.55, '', 'WW_901O_STACK_ONEOFF_ARMENIA_UNLIMITED_15D_FUP30', 'UNLI'),
-
--- Aruba
-
-('2144921d-d442-4e67-89ef-c6af80bf8ae5', 'fe125ecb-1101-4aec-ab06-038fc05e976c', 1.0, 7, 6.65, '', 'WW_901O_STACK_ONEOFF_ARUBA_1GB_7D', 'Go'),
-('2d55731c-54da-42c3-b3f6-9d17a3d10d28', 'fe125ecb-1101-4aec-ab06-038fc05e976c', 3.0, 15, 13.3, '', 'WW_901O_STACK_ONEOFF_ARUBA_3GB_15D', 'Go'),
-('f95e1e33-1160-46d5-9619-6398b5a78f0c', 'fe125ecb-1101-4aec-ab06-038fc05e976c', 10.0, 7, 26.6, '', 'WW_901O_STACK_ONEOFF_ARUBA_10GB_7D', 'Go'),
-('4132d6f4-507b-458e-8671-4f991caa7061', 'fe125ecb-1101-4aec-ab06-038fc05e976c', 10.0, 30, 32.3, '', 'WW_901O_STACK_ONEOFF_ARUBA_10GB_30D', 'Go'),
-
--- Asie
-
-('66a91b90-2e97-4cc3-a61c-346f07d368df', 'd02a228e-6a2b-4b05-8570-fe7956f08628', 1.0, 30, 8.55, '', 'WW_901O_STACK_ONEOFF_ASIA_1GB_30D', 'Go'),
-('6b88f64a-1d12-4de3-917b-0b2b5db6704d', 'd02a228e-6a2b-4b05-8570-fe7956f08628', 3.0, 15, 18.05, '', 'WW_901O_STACK_ONEOFF_ASIA_3GB_15D', 'Go'),
-('af9cb82b-291c-4125-ae49-cb0c0d9c9b5f', 'd02a228e-6a2b-4b05-8570-fe7956f08628', 10.0, 30, 41.8, '', 'WW_901O_STACK_ONEOFF_ASIA_10GB_30D', 'Go'),
-('63ad7169-e2b5-43ca-afde-5c75df68a10e', 'd02a228e-6a2b-4b05-8570-fe7956f08628', 500.0, 1, 1.9, '', 'WW_901O_STACK_ONEOFF_ASIA_500MB_1D', 'Mo'),
-
--- Asie (étendue)
-
-('13d6d80f-2e83-4ba5-9f00-18065215f5fe', 'd5b45760-9074-4142-abe8-df4dafdf5391', 1.0, 1, 1.9, '', 'WW_901O_STACK_ONEOFF_BESTASIA3_1GB_1D', 'Go'),
-('104efa14-f43b-4d80-a56a-2532859dc837', 'd5b45760-9074-4142-abe8-df4dafdf5391', 1.0, 7, 2.38, '', 'WW_901O_STACK_ONEOFF_BESTASIA3_1GB_7D', 'Go'),
-('d3edc42f-887c-4af0-b3eb-4ccc4fdf093b', 'd5b45760-9074-4142-abe8-df4dafdf5391', 3.0, 30, 11.4, '', 'WW_901O_STACK_ONEOFF_BESTASIA3_3GB_30D', 'Go'),
-('cca8fea4-77a3-42d3-bb62-3381ff2eb508', 'd5b45760-9074-4142-abe8-df4dafdf5391', 10.0, 7, 22.8, '', 'WW_901O_STACK_ONEOFF_BESTASIA3_10GB_7D', 'Go'),
-('b810f29a-7540-46f7-bce3-a63996f9abd5', 'd5b45760-9074-4142-abe8-df4dafdf5391', 10.0, 30, 26.6, '', 'WW_901O_STACK_ONEOFF_BESTASIA3_10GB_30D', 'Go'),
-('965d6d04-c635-4b00-9bec-f76f29a94535', 'd5b45760-9074-4142-abe8-df4dafdf5391', 25.0, 30, 41.8, '', 'WW_901O_STACK_ONEOFF_BESTASIA3_25GB_30D', 'Go'),
-('76b2f318-3717-4d51-a667-83e8cb747d61', 'd5b45760-9074-4142-abe8-df4dafdf5391', 50.0, 7, 23.75, '', 'WW_901O_STACK_ONEOFF_BESTASIA3_UNLIMITED_7D_FUP25', 'UNLI'),
-('37b59917-f871-41d8-bd65-919746582fe6', 'd5b45760-9074-4142-abe8-df4dafdf5391', 60.0, 15, 42.75, '', 'WW_901O_STACK_ONEOFF_BESTASIA3_UNLIMITED_15D_FUP30', 'UNLI'),
-('82772d5e-eb26-49a4-8b1e-21bb27cac96a', 'd5b45760-9074-4142-abe8-df4dafdf5391', 120.0, 30, 62.7, '', 'WW_901O_STACK_ONEOFF_BESTASIA3_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Australie
-
-('a0c6b829-9db4-42ae-9f8f-c218b52f2ad8', 'a6ce2d02-3950-4de5-b945-b380ae095ea9', 1.0, 7, 3.8, '', 'WW_901O_STACK_ONEOFF_AUS_1GB_7D', 'Go'),
-('d180a801-342f-4748-abfa-7291d696aa63', 'a6ce2d02-3950-4de5-b945-b380ae095ea9', 3.0, 15, 7.6, '', 'WW_901O_STACK_ONEOFF_AUS_3GB_15D', 'Go'),
-('3dc0a2e2-ea80-43cf-9e67-af99d745a422', 'a6ce2d02-3950-4de5-b945-b380ae095ea9', 10.0, 7, 13.3, '', 'WW_901O_STACK_ONEOFF_AUS_10GB_7D', 'Go'),
-('f3809200-2ebe-4a53-8c38-96bc89f85bfa', 'a6ce2d02-3950-4de5-b945-b380ae095ea9', 10.0, 30, 15.2, '', 'WW_901O_STACK_ONEOFF_AUS_10GB_30D', 'Go'),
-('d992222f-d291-4c68-ad10-0e328d61a798', 'a6ce2d02-3950-4de5-b945-b380ae095ea9', 25.0, 30, 33.25, '', 'WW_901O_STACK_ONEOFF_AUS_25GB_30D', 'Go'),
-('2301cae1-243b-4407-8286-d4cc9241a08f', 'a6ce2d02-3950-4de5-b945-b380ae095ea9', 40.0, 7, 22.8, '', 'WW_901O_STACK_ONEOFF_AUS_UNLIMITED_7D_FUP20', 'UNLI'),
-('5e630711-c6da-4d17-b10f-f5aa564e2cf1', 'a6ce2d02-3950-4de5-b945-b380ae095ea9', 50.0, 30, 56.05, '', 'WW_901O_STACK_ONEOFF_AUS_50GB_30D', 'Go'),
-('758e97d0-cbbb-4fc2-9b81-e30998e9d7cc', 'a6ce2d02-3950-4de5-b945-b380ae095ea9', 60.0, 15, 42.75, '', 'WW_901O_STACK_ONEOFF_AUS_UNLIMITED_15D_FUP30', 'UNLI'),
-('5940ba65-876a-484b-92af-8ad6ddc31687', 'a6ce2d02-3950-4de5-b945-b380ae095ea9', 120.0, 30, 65.55, '', 'WW_901O_STACK_ONEOFF_AUS_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Australie & NZ
-
-('60702bb6-7a0a-4796-9253-d43701264943', 'ffe3fed4-6311-49eb-80c0-d24b2744c355', 1.0, 7, 6.65, '', 'WW_901O_STACK_ONEOFF_ANZ_1GB_7D', 'Go'),
-
--- Autriche
-
-('9bd218b0-6989-4d65-ba0a-74241dc8ac09', '547e8d96-fb59-4cb0-a469-db74bf912703', 3.0, 15, 4.75, '', 'WW_901O_STACK_ONEOFF_AUSTRIA_3GB_15D', 'Go'),
-('0d1b95bb-2dd5-424a-a344-185f274b1ca0', '547e8d96-fb59-4cb0-a469-db74bf912703', 10.0, 7, 8.55, '', 'WW_901O_STACK_ONEOFF_AUSTRIA_10GB_7D', 'Go'),
-('7329e650-b367-476d-beb6-357f0b8fc58f', '547e8d96-fb59-4cb0-a469-db74bf912703', 10.0, 30, 10.45, '', 'WW_901O_STACK_ONEOFF_AUSTRIA_10GB_30D', 'Go'),
-('b850429e-29f4-4044-8898-28dc8170c4c6', '547e8d96-fb59-4cb0-a469-db74bf912703', 25.0, 30, 20.9, '', 'WW_901O_STACK_ONEOFF_AUSTRIA_25GB_30D', 'Go'),
-('f9254e1a-39f4-47a8-9117-210b616d80f1', '547e8d96-fb59-4cb0-a469-db74bf912703', 40.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_AUSTRIA_UNLIMITED_7D_FUP20', 'UNLI'),
-('6c81cc5b-97d8-4d2f-9c03-fc5486bcd3ee', '547e8d96-fb59-4cb0-a469-db74bf912703', 50.0, 30, 34.2, '', 'WW_901O_STACK_ONEOFF_AUSTRIA_50GB_30D', 'Go'),
-('9c451a85-d29c-4474-98f8-fd754d7b1531', '547e8d96-fb59-4cb0-a469-db74bf912703', 120.0, 30, 41.8, '', 'WW_901O_STACK_ONEOFF_AUSTRIA_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Azerbaïdjan
-
-('ea35fc6d-f351-4a29-a19a-99e102b9969c', '6f074ac8-c8a2-47e7-9966-7193db9fa1dc', 1.0, 7, 5.7, '', 'WW_901O_STACK_ONEOFF_AZE_1GB_7D', 'Go'),
-('defe50f6-a15a-49c3-9a6c-48a76c417579', '6f074ac8-c8a2-47e7-9966-7193db9fa1dc', 3.0, 15, 11.4, '', 'WW_901O_STACK_ONEOFF_AZE_3GB_15D', 'Go'),
-
--- Bahamas
-
-('5bc22a20-3c55-40d8-b527-d08d490df96a', '2c6b087d-239f-4d39-99d2-fe45c4f32672', 1.0, 7, 6.65, '', 'WW_901O_STACK_ONEOFF_BAHAMAS_1GB_7D', 'Go'),
-('ede2fc31-0d46-488a-aba1-32cc34b4cbec', '2c6b087d-239f-4d39-99d2-fe45c4f32672', 3.0, 15, 13.3, '', 'WW_901O_STACK_ONEOFF_BAHAMAS_3GB_15D', 'Go'),
-('11745485-19e5-4b99-be59-d83fec307ff0', '2c6b087d-239f-4d39-99d2-fe45c4f32672', 10.0, 7, 26.6, '', 'WW_901O_STACK_ONEOFF_BAHAMAS_10GB_7D', 'Go'),
-('0e903708-3118-4b7f-b17c-1e5789f87147', '2c6b087d-239f-4d39-99d2-fe45c4f32672', 10.0, 30, 32.3, '', 'WW_901O_STACK_ONEOFF_BAHAMAS_10GB_30D', 'Go'),
-
--- Bahreïn
-
-('f52cb253-c500-4293-95f6-61f4da96bde9', '72776ef6-113d-4171-b418-d99377b38ab5', 1.0, 7, 4.75, '', 'WW_901O_STACK_ONEOFF_BAHRAIN_1GB_7D', 'Go'),
-('1880c6db-3126-4a8b-91a4-a6b9bdb058fb', '72776ef6-113d-4171-b418-d99377b38ab5', 3.0, 15, 8.55, '', 'WW_901O_STACK_ONEOFF_BAHRAIN_3GB_15D', 'Go'),
-('f2541b61-c47f-477d-b2a8-5e39eefb7b78', '72776ef6-113d-4171-b418-d99377b38ab5', 10.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_BAHRAIN_10GB_7D', 'Go'),
-('52dae417-77ef-4f14-82c6-71be53b572c6', '72776ef6-113d-4171-b418-d99377b38ab5', 10.0, 30, 19.95, '', 'WW_901O_STACK_ONEOFF_BAHRAIN_10GB_30D', 'Go'),
-('45a8aba9-0b13-439e-b057-09f276468c54', '72776ef6-113d-4171-b418-d99377b38ab5', 25.0, 30, 34.2, '', 'WW_901O_STACK_ONEOFF_BAHRAIN_25GB_30D', 'Go'),
-('da72dbae-dea5-4027-9471-56b912a320e3', '72776ef6-113d-4171-b418-d99377b38ab5', 40.0, 7, 35.15, '', 'WW_901O_STACK_ONEOFF_BAHRAIN_UNLIMITED_7D_FUP20', 'UNLI'),
-('81b6041f-9b0c-409e-bfd5-a5ba8f8ec4fd', '72776ef6-113d-4171-b418-d99377b38ab5', 60.0, 15, 52.25, '', 'WW_901O_STACK_ONEOFF_BAHRAIN_UNLIMITED_15D_FUP30', 'UNLI'),
-
--- Belgique
-
-('dbebe9a0-e77d-40bf-8bbf-2244205640ba', 'a7448b2c-6d84-428e-bd9c-f6330b52f880', 3.0, 30, 5.7, '', 'WW_901O_STACK_ONEOFF_BEL_3GB_30D', 'Go'),
-('5e8fab32-9748-4001-8083-6c57a84af5a8', 'a7448b2c-6d84-428e-bd9c-f6330b52f880', 10.0, 7, 11.4, '', 'WW_901O_STACK_ONEOFF_BEL_10GB_7D', 'Go'),
-('ad722f2c-3c03-47b3-8b62-157f7593f020', 'a7448b2c-6d84-428e-bd9c-f6330b52f880', 10.0, 30, 13.3, '', 'WW_901O_STACK_ONEOFF_BEL_10GB_30D', 'Go'),
-('071a9443-1f44-48b0-b2a3-d0dfc50de91e', 'a7448b2c-6d84-428e-bd9c-f6330b52f880', 25.0, 30, 24.7, '', 'WW_901O_STACK_ONEOFF_BEL_25GB_30D', 'Go'),
-('c1310f8c-c577-420c-b701-ffbe053563d3', 'a7448b2c-6d84-428e-bd9c-f6330b52f880', 40.0, 7, 24.7, '', 'WW_901O_STACK_ONEOFF_BEL_UNLIMITED_7D_FUP20', 'UNLI'),
-('f6af0a11-c84a-4fb2-b6d4-19a19ed967a0', 'a7448b2c-6d84-428e-bd9c-f6330b52f880', 50.0, 30, 45.6, '', 'WW_901O_STACK_ONEOFF_BEL_50GB_30D', 'Go'),
-('27b64e00-58b6-4b5f-b71c-85121df2987a', 'a7448b2c-6d84-428e-bd9c-f6330b52f880', 60.0, 15, 37.05, '', 'WW_901O_STACK_ONEOFF_BEL_UNLIMITED_15D_FUP30', 'UNLI'),
-('db65bf75-f9b0-4948-828a-ed39e2ba2a3b', 'a7448b2c-6d84-428e-bd9c-f6330b52f880', 120.0, 30, 53.2, '', 'WW_901O_STACK_ONEOFF_BEL_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Belize
-
-('c1ebe57f-3573-46de-baf0-88fd0462b930', '300a0580-3eb9-4780-a42f-944459198313', 1.0, 7, 14.25, '', 'WW_901O_STACK_ONEOFF_BELIZE_1GB_7D', 'Go'),
-
--- Bhoutan
-
-('4941f9a9-e34f-49ac-b8a4-6bdf675b2dd7', 'd15b65f7-df13-4df6-9e79-e0463791e071', 1.0, 7, 47.5, '', 'WW_901O_STACK_ONEOFF_BHUTAN_1GB_7D', 'Go'),
-
--- Biélorussie
-
-('369a6e8b-2c9e-41ea-b130-45158e3b2d0f', '01cd0f2e-f4be-4904-b08c-8ae448ddc80e', 1.0, 7, 5.7, '', 'WW_901O_STACK_ONEOFF_BELARUS_1GB_7D', 'Go'),
-('89c049ee-3231-4441-84d3-6f9db6f3996f', '01cd0f2e-f4be-4904-b08c-8ae448ddc80e', 3.0, 15, 11.4, '', 'WW_901O_STACK_ONEOFF_BELARUS_3GB_15D', 'Go'),
-('dc8fea0c-8780-443f-98de-b75a59d4616a', '01cd0f2e-f4be-4904-b08c-8ae448ddc80e', 10.0, 7, 20.9, '', 'WW_901O_STACK_ONEOFF_BELARUS_10GB_7D', 'Go'),
-('ab829d28-e929-49a3-b377-d65874826437', '01cd0f2e-f4be-4904-b08c-8ae448ddc80e', 10.0, 30, 22.8, '', 'WW_901O_STACK_ONEOFF_BELARUS_10GB_30D', 'Go'),
-
--- Bolivie
-
-('2edd3684-bc0f-422c-a570-d49c907b264d', '666cd467-8716-4b94-bc10-8bfae45d1ccb', 1.0, 7, 5.7, '', 'WW_901O_STACK_ONEOFF_BOL_1GB_7D', 'Go'),
-('36103791-ec35-4a83-9dab-6398e97e1cb4', '666cd467-8716-4b94-bc10-8bfae45d1ccb', 3.0, 15, 11.4, '', 'WW_901O_STACK_ONEOFF_BOL_3GB_15D', 'Go'),
-('72c6da25-2a45-4d73-a594-aad23d22016b', '666cd467-8716-4b94-bc10-8bfae45d1ccb', 10.0, 7, 22.8, '', 'WW_901O_STACK_ONEOFF_BOL_10GB_7D', 'Go'),
-('9bb8841b-8f5f-4c4c-95b6-2c229768dd30', '666cd467-8716-4b94-bc10-8bfae45d1ccb', 10.0, 30, 27.55, '', 'WW_901O_STACK_ONEOFF_BOL_10GB_30D', 'Go'),
-('f8f0def6-3975-475e-9c7a-7760a438a195', '666cd467-8716-4b94-bc10-8bfae45d1ccb', 40.0, 7, 33.25, '', 'WW_901O_STACK_ONEOFF_BOL_UNLIMITED_7D_FUP20', 'UNLI'),
-('4eb5e336-515c-4ec0-b53b-272caf63c87d', '666cd467-8716-4b94-bc10-8bfae45d1ccb', 60.0, 15, 56.05, '', 'WW_901O_STACK_ONEOFF_BOL_UNLIMITED_15D_FUP30', 'UNLI'),
-
--- Bosnie-Herzégovine
-
-('c0f0f71f-a9dc-4717-ac32-49b8ff9d9e0f', '5ae1cd2e-6859-41cd-accb-ae5a1abe947c', 3.0, 15, 8.55, '', 'WW_901O_STACK_ONEOFF_BOSNIA_3GB_15D', 'Go'),
-('5b1ff9a8-606a-4970-ab24-51e778e7b259', '5ae1cd2e-6859-41cd-accb-ae5a1abe947c', 10.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_BOSNIA_10GB_7D', 'Go'),
-('8ff9be6a-bfa5-4a71-8c76-5f152427809c', '5ae1cd2e-6859-41cd-accb-ae5a1abe947c', 10.0, 30, 22.8, '', 'WW_901O_STACK_ONEOFF_BOSNIA_10GB_30D', 'Go'),
-('4c5acd9e-9a87-4f5d-b686-f054382bc5fd', '5ae1cd2e-6859-41cd-accb-ae5a1abe947c', 40.0, 7, 26.6, '', 'WW_901O_STACK_ONEOFF_BOSNIA_UNLIMITED_7D_FUP20', 'UNLI'),
-('d92210c7-b174-4f94-a370-0d5dbbacd6ce', '5ae1cd2e-6859-41cd-accb-ae5a1abe947c', 120.0, 30, 64.6, '', 'WW_901O_STACK_ONEOFF_BOSNIA_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Botswana
-
-('068f0a4a-a3a7-477d-82b7-69acb3e44466', '8affb6bf-f360-4bcb-b08c-086989eae7df', 1.0, 7, 5.7, '', 'WW_901O_STACK_ONEOFF_BOTSWANA_1GB_7D', 'Go'),
-('9d38d963-4bba-4eee-8484-f7c7199c8ceb', '8affb6bf-f360-4bcb-b08c-086989eae7df', 3.0, 15, 11.4, '', 'WW_901O_STACK_ONEOFF_BOTSWANA_3GB_15D', 'Go'),
-('856ee504-d672-403c-b3ac-5937f46d36d7', '8affb6bf-f360-4bcb-b08c-086989eae7df', 10.0, 30, 24.7, '', 'WW_901O_STACK_ONEOFF_BOTSWANA_10GB_30D', 'Go'),
-('caa21218-4832-4cd4-a0ab-8f97aec507e7', '8affb6bf-f360-4bcb-b08c-086989eae7df', 25.0, 30, 46.55, '', 'WW_901O_STACK_ONEOFF_BOTSWANA_25GB_30D', 'Go'),
-
--- Brunei
-
-('ba85e742-9157-46c3-9527-923b2add3b64', 'd228e113-01ec-4173-a275-67e5dbd3f00a', 1.0, 7, 7.6, '', 'WW_901O_STACK_ONEOFF_BRUNEI_1GB_7D', 'Go'),
-('e51badf5-3da7-45b8-bcb4-315ac7843cc8', 'd228e113-01ec-4173-a275-67e5dbd3f00a', 3.0, 15, 15.2, '', 'WW_901O_STACK_ONEOFF_BRUNEI_3GB_15D', 'Go'),
-('46ded56d-ed17-4b98-b1c4-b9097bf604eb', 'd228e113-01ec-4173-a275-67e5dbd3f00a', 10.0, 7, 33.25, '', 'WW_901O_STACK_ONEOFF_BRUNEI_10GB_7D', 'Go'),
-('a7f6ed64-9adf-4d40-94e4-f151fa24fd69', 'd228e113-01ec-4173-a275-67e5dbd3f00a', 10.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_BRUNEI_10GB_30D', 'Go'),
-
--- Brésil
-
-('4dbc8292-5a45-4032-99d9-c36a076e8771', '940caea8-d149-46ee-8afc-a5f45e5283ef', 1.0, 7, 4.75, '', 'WW_901O_STACK_ONEOFF_BRAZIL_1GB_7D', 'Go'),
-('74567454-1161-42d8-8ddd-cc94a2f0939d', '940caea8-d149-46ee-8afc-a5f45e5283ef', 3.0, 15, 8.55, '', 'WW_901O_STACK_ONEOFF_BRAZIL_3GB_15D', 'Go'),
-('cccf500d-5f76-4243-a687-1022201932bb', '940caea8-d149-46ee-8afc-a5f45e5283ef', 10.0, 7, 16.15, '', 'WW_901O_STACK_ONEOFF_BRAZIL_10GB_7D', 'Go'),
-('e155b7e7-3add-4527-8947-44af88819be5', '940caea8-d149-46ee-8afc-a5f45e5283ef', 10.0, 30, 18.05, '', 'WW_901O_STACK_ONEOFF_BRAZIL_10GB_30D', 'Go'),
-('2c798d17-9a7d-4611-b072-d8b299057f2e', '940caea8-d149-46ee-8afc-a5f45e5283ef', 25.0, 30, 42.75, '', 'WW_901O_STACK_ONEOFF_BRAZIL_25GB_30D', 'Go'),
-('2e056886-25fd-4ac1-8733-9677d7edea68', '940caea8-d149-46ee-8afc-a5f45e5283ef', 40.0, 7, 27.55, '', 'WW_901O_STACK_ONEOFF_BRAZIL_UNLIMITED_7D_FUP20', 'UNLI'),
-('67b5d5b2-87b7-489f-85a3-9bee22ec5f83', '940caea8-d149-46ee-8afc-a5f45e5283ef', 60.0, 15, 46.55, '', 'WW_901O_STACK_ONEOFF_BRAZIL_UNLIMITED_15D_FUP30', 'UNLI'),
-('ccabb228-a53e-409f-9859-156622ee26ab', '940caea8-d149-46ee-8afc-a5f45e5283ef', 120.0, 30, 65.55, '', 'WW_901O_STACK_ONEOFF_BRAZIL_UNLIMITED_30D_FUP60', 'UNLI'),
-('9a807762-644a-4143-a9dd-336e66998f93', '940caea8-d149-46ee-8afc-a5f45e5283ef', 500.0, 2, 3.8, '', 'WW_901O_STACK_ONEOFF_BRAZIL_500MB_2D', 'Mo'),
-
--- Bulgarie
-
-('0fcb48a8-38eb-4783-8f11-d6f71786193c', '138a1373-d698-4310-bbc2-28a411aedb55', 3.0, 15, 3.8, '', 'WW_901O_STACK_ONEOFF_BULGARIA_3GB_15D', 'Go'),
-('bdb5692f-6c99-49a7-9ea0-823a60345c70', '138a1373-d698-4310-bbc2-28a411aedb55', 10.0, 7, 7.6, '', 'WW_901O_STACK_ONEOFF_BULGARIA_10GB_7D', 'Go'),
-('d211c59f-a0bd-478c-b166-0246c298380e', '138a1373-d698-4310-bbc2-28a411aedb55', 10.0, 30, 10.45, '', 'WW_901O_STACK_ONEOFF_BULGARIA_10GB_30D', 'Go'),
-('a34c2aaf-2e71-4725-8185-83e897e21e15', '138a1373-d698-4310-bbc2-28a411aedb55', 25.0, 30, 18.05, '', 'WW_901O_STACK_ONEOFF_BULGARIA_25GB_30D', 'Go'),
-('e54fe6c4-fba4-4907-806a-ef9e847b4390', '138a1373-d698-4310-bbc2-28a411aedb55', 40.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_BULGARIA_UNLIMITED_7D_FUP20', 'UNLI'),
-('88303408-f6a4-4254-bcb5-46f5b67bd162', '138a1373-d698-4310-bbc2-28a411aedb55', 50.0, 30, 32.3, '', 'WW_901O_STACK_ONEOFF_BULGARIA_50GB_30D', 'Go'),
-('c8cd2221-9c87-47c5-8e9b-cf8294139bca', '138a1373-d698-4310-bbc2-28a411aedb55', 60.0, 15, 30.4, '', 'WW_901O_STACK_ONEOFF_BULGARIA_UNLIMITED_15D_FUP30', 'UNLI'),
-('02a5178e-7e0a-47d2-bc05-6a9d9d98b165', '138a1373-d698-4310-bbc2-28a411aedb55', 120.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_BULGARIA_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Burkina Faso
-
-('e6628c67-e13a-4253-9531-71b17716d12f', '18d78ee2-4be5-4458-b15e-723e30e1f812', 1.0, 7, 17.1, '', 'WW_901O_STACK_ONEOFF_BURKINAFASO_1GB_7D', 'Go'),
-('5aff99c6-762f-455f-88f2-52c428e93d46', '18d78ee2-4be5-4458-b15e-723e30e1f812', 3.0, 15, 32.3, '', 'WW_901O_STACK_ONEOFF_BURKINAFASO_3GB_15D', 'Go'),
-
--- Burundi
-
-('3f6ae7f3-5cc4-4c95-8511-160f0c4e160f', '8100fc37-7d2d-47f2-92c5-12f9d0986e86', 1.0, 7, 17.1, '', 'WW_901O_STACK_ONEOFF_BURUNDI_1GB_7D', 'Go'),
-('eff71ac2-6a74-43a6-831f-b205681804eb', '8100fc37-7d2d-47f2-92c5-12f9d0986e86', 3.0, 15, 32.3, '', 'WW_901O_STACK_ONEOFF_BURUNDI_3GB_15D', 'Go'),
-
--- Bénin
-
-('176f865b-6bc1-4fe9-98b7-a7c4d7adcccc', '4bcc5461-d8b0-4088-b045-40270850cea0', 3.0, 15, 11.4, '', 'WW_901O_STACK_ONEOFF_BENIN_3GB_15D', 'Go'),
-('57c58ac4-9904-4537-af82-00535badc628', '4bcc5461-d8b0-4088-b045-40270850cea0', 10.0, 7, 22.8, '', 'WW_901O_STACK_ONEOFF_BENIN_10GB_7D', 'Go'),
-('4dd68b02-8a7e-4f15-b32f-d4c8ee3b5140', '4bcc5461-d8b0-4088-b045-40270850cea0', 10.0, 30, 25.65, '', 'WW_901O_STACK_ONEOFF_BENIN_10GB_30D', 'Go'),
-
--- Cambodge
-
-('799010ce-b54b-4e87-a2b6-f54eda58f800', 'b3043532-ec5a-4c7b-86be-d7c14b401168', 1.0, 7, 4.75, '', 'WW_901O_STACK_ONEOFF_CAMBO_1GB_7D', 'Go'),
-('4a965774-1ec3-47b6-af9d-d4ead42d7d2a', 'b3043532-ec5a-4c7b-86be-d7c14b401168', 3.0, 15, 8.55, '', 'WW_901O_STACK_ONEOFF_CAMBO_3GB_15D', 'Go'),
-('78a7f1a0-ba10-473c-80b0-19de35410fc8', 'b3043532-ec5a-4c7b-86be-d7c14b401168', 10.0, 7, 17.1, '', 'WW_901O_STACK_ONEOFF_CAMBO_10GB_7D', 'Go'),
-('8b1c4d2b-0dc6-4fcb-8225-825aa36e2d6d', 'b3043532-ec5a-4c7b-86be-d7c14b401168', 10.0, 30, 19.0, '', 'WW_901O_STACK_ONEOFF_CAMBO_10GB_30D', 'Go'),
-('862b5766-ed98-4ea1-a1c4-fee4d4f249df', 'b3043532-ec5a-4c7b-86be-d7c14b401168', 25.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_CAMBO_25GB_30D', 'Go'),
-('390145ef-cd88-402c-9f1b-0d0ddb8f7774', 'b3043532-ec5a-4c7b-86be-d7c14b401168', 120.0, 30, 64.6, '', 'WW_901O_STACK_ONEOFF_CAMBO_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Cameroun
-
-('72382a09-a762-4412-ae68-1916767de415', '18e22b43-0f2b-4a3f-a4a5-64dc48802086', 3.0, 15, 11.4, '', 'WW_901O_STACK_ONEOFF_CAMEROON_3GB_15D', 'Go'),
-('709cbf7d-3b8e-4875-9291-6182e9051563', '18e22b43-0f2b-4a3f-a4a5-64dc48802086', 10.0, 7, 22.8, '', 'WW_901O_STACK_ONEOFF_CAMEROON_10GB_7D', 'Go'),
-('385690e9-20f5-4c10-9f11-ca3d06e67c77', '18e22b43-0f2b-4a3f-a4a5-64dc48802086', 10.0, 30, 25.65, '', 'WW_901O_STACK_ONEOFF_CAMEROON_10GB_30D', 'Go'),
-
--- Canada
-
-('646583ba-50ce-43af-8e72-6e1378dff8e0', 'fb942b0c-f7ba-4a3b-a901-e568ad216991', 3.0, 15, 8.55, '', 'WW_901O_STACK_ONEOFF_CAN_3GB_15D', 'Go'),
-('2f540bd4-e5d1-4dfe-bcaf-357b39804340', 'fb942b0c-f7ba-4a3b-a901-e568ad216991', 10.0, 7, 14.25, '', 'WW_901O_STACK_ONEOFF_CAN_10GB_7D', 'Go'),
-('741c964a-5ecf-47d9-906f-3533d1a71150', 'fb942b0c-f7ba-4a3b-a901-e568ad216991', 10.0, 30, 18.05, '', 'WW_901O_STACK_ONEOFF_CAN_10GB_30D', 'Go'),
-('332e6cd6-b4ab-4f47-a827-f6b8e2db93df', 'fb942b0c-f7ba-4a3b-a901-e568ad216991', 25.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_CAN_25GB_30D', 'Go'),
-('d232722b-186b-48dd-83a9-d4c3edd9eac7', 'fb942b0c-f7ba-4a3b-a901-e568ad216991', 40.0, 7, 23.75, '', 'WW_901O_STACK_ONEOFF_CAN_UNLIMITED_7D_FUP20', 'UNLI'),
-('d84d5b54-e169-4540-a28d-372fef8b8d0c', 'fb942b0c-f7ba-4a3b-a901-e568ad216991', 50.0, 30, 56.05, '', 'WW_901O_STACK_ONEOFF_CAN_50GB_30D', 'Go'),
-('830adc46-95f9-44fd-ba1b-5fb8ba9054e5', 'fb942b0c-f7ba-4a3b-a901-e568ad216991', 60.0, 15, 37.05, '', 'WW_901O_STACK_ONEOFF_CAN_UNLIMITED_15D_FUP30', 'UNLI'),
-('e7049964-eea3-4e96-babe-858e75f3cd27', 'fb942b0c-f7ba-4a3b-a901-e568ad216991', 120.0, 30, 61.75, '', 'WW_901O_STACK_ONEOFF_CAN_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Cap-Vert
-
-('c3b2271c-52f3-4c2c-9198-58da411d5796', 'bece1e79-beda-42a7-835e-fbf7d62cf22c', 1.0, 7, 17.1, '', 'WW_901O_STACK_ONEOFF_CAPEVERDE_1GB_7D', 'Go'),
-('b26839e2-426e-41ab-b02c-fa0677ec76ac', 'bece1e79-beda-42a7-835e-fbf7d62cf22c', 3.0, 15, 34.2, '', 'WW_901O_STACK_ONEOFF_CAPEVERDE_3GB_15D', 'Go'),
-
--- Caraïbes (B)
-
-('b8bbafec-faea-474a-be8b-6b79029bebf5', '3efa96a5-227e-41fd-85dc-39718ebf399f', 1.0, 7, 6.65, '', 'WW_901O_STACK_ONEOFF_CARIBBEAN2_1GB_7D', 'Go'),
-('d0201ebe-dbfa-463d-b9cd-19e9441530b9', '3efa96a5-227e-41fd-85dc-39718ebf399f', 3.0, 15, 13.3, '', 'WW_901O_STACK_ONEOFF_CARIBBEAN2_3GB_15D', 'Go'),
-('0935bf9b-e7b7-4652-a31a-df133757a591', '3efa96a5-227e-41fd-85dc-39718ebf399f', 10.0, 7, 26.6, '', 'WW_901O_STACK_ONEOFF_CARIBBEAN2_10GB_7D', 'Go'),
-('c8964e53-2343-44da-adff-7f68a53db364', '3efa96a5-227e-41fd-85dc-39718ebf399f', 10.0, 30, 32.3, '', 'WW_901O_STACK_ONEOFF_CARIBBEAN2_10GB_30D', 'Go'),
-('e8f90374-786b-45f6-af22-66bd90b37eac', '3efa96a5-227e-41fd-85dc-39718ebf399f', 40.0, 7, 46.55, '', 'WW_901O_STACK_ONEOFF_CARIBBEAN2_UNLIMITED_7D_FUP20', 'UNLI'),
-('78c780fa-7f4f-46ab-9e2a-ae5fae17cd15', '3efa96a5-227e-41fd-85dc-39718ebf399f', 60.0, 15, 83.6, '', 'WW_901O_STACK_ONEOFF_CARIBBEAN2_UNLIMITED_15D_FUP30', 'UNLI'),
-
--- Caraïbes (étendue)
-
-('17c9416c-11af-4331-8625-f05f82e6cf04', 'e3dcd9c5-3512-454f-92b0-0637d5ced156', 3.0, 30, 8.55, '', 'WW_901O_STACK_ONEOFF_BESTCARIBBEAN2_3GB_30D', 'Go'),
-('47554cf5-6a7f-4541-a430-620df5bdbc47', 'e3dcd9c5-3512-454f-92b0-0637d5ced156', 10.0, 30, 18.05, '', 'WW_901O_STACK_ONEOFF_BESTCARIBBEAN2_10GB_30D', 'Go'),
-('aa04fedd-d22e-4fd3-abb1-899944dbd2b2', 'e3dcd9c5-3512-454f-92b0-0637d5ced156', 40.0, 7, 25.65, '', 'WW_901O_STACK_ONEOFF_BESTCARIBBEAN2_UNLIMITED_7D_FUP20', 'UNLI'),
-('647ce5db-ea2e-419a-8738-5001c74d5d93', 'e3dcd9c5-3512-454f-92b0-0637d5ced156', 120.0, 30, 65.55, '', 'WW_901O_STACK_ONEOFF_BESTCARIBBEAN2_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Chili
-
-('f45a4187-7fb9-41b3-adb8-f92166e7496e', '9dc48c68-a75f-4cc4-a7d4-ce6ff01cbec9', 25.0, 30, 45.6, '', 'WW_901O_STACK_ONEOFF_CHILE_25GB_30D', 'Go'),
-('25238e38-0660-4667-8332-277a9eae8bc0', '9dc48c68-a75f-4cc4-a7d4-ce6ff01cbec9', 40.0, 7, 27.55, '', 'WW_901O_STACK_ONEOFF_CHILE_UNLIMITED_7D_FUP20', 'UNLI'),
-('91897b0f-bd8b-4e74-b8e8-aa5f30cb47cc', '9dc48c68-a75f-4cc4-a7d4-ce6ff01cbec9', 120.0, 30, 64.6, '', 'WW_901O_STACK_ONEOFF_CHILE_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Chine
-
-('af319e65-23e7-4666-9274-241cd1c5befa', 'dc3a745e-a756-4fa1-9503-e8520c2d69d3', 1.0, 7, 3.8, '', 'WW_901O_STACK_ONEOFF_CHINA_1GB_7D', 'Go'),
-('d6914596-0933-450c-bd25-2ab9cae47991', 'dc3a745e-a756-4fa1-9503-e8520c2d69d3', 3.0, 30, 7.6, '', 'WW_901O_STACK_ONEOFF_CHINA_3GB_30D', 'Go'),
-('12240317-9001-4635-9015-6b074dae413b', 'dc3a745e-a756-4fa1-9503-e8520c2d69d3', 10.0, 7, 13.3, '', 'WW_901O_STACK_ONEOFF_CHINA_10GB_7D', 'Go'),
-('d352f654-60ec-4533-b04b-fa3185410b26', 'dc3a745e-a756-4fa1-9503-e8520c2d69d3', 10.0, 30, 16.15, '', 'WW_901O_STACK_ONEOFF_CHINA_10GB_30D', 'Go'),
-('0f49331e-4ba3-4fa3-b13e-74ab41393f01', 'dc3a745e-a756-4fa1-9503-e8520c2d69d3', 25.0, 30, 33.25, '', 'WW_901O_STACK_ONEOFF_CHINA_25GB_30D', 'Go'),
-('57484d53-5b4c-4713-82e7-7e53c6fb65c9', 'dc3a745e-a756-4fa1-9503-e8520c2d69d3', 40.0, 7, 24.7, '', 'WW_901O_STACK_ONEOFF_CHINA_UNLIMITED_7D_FUP20', 'UNLI'),
-('fe4b3b6b-3bbd-4136-a853-2443fe1240dc', 'dc3a745e-a756-4fa1-9503-e8520c2d69d3', 60.0, 15, 46.55, '', 'WW_901O_STACK_ONEOFF_CHINA_UNLIMITED_15D_FUP30', 'UNLI'),
-('5528dddc-be75-414d-ab01-c32be0576423', 'dc3a745e-a756-4fa1-9503-e8520c2d69d3', 120.0, 30, 74.1, '', 'WW_901O_STACK_ONEOFF_CHINA_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Chypre
-
-('cdd2b417-1a10-4932-b385-9707f0593f23', 'e30e8612-39ab-40af-80c1-8bb389a7b874', 3.0, 15, 4.75, '', 'WW_901O_STACK_ONEOFF_CYPRUS_3GB_15D', 'Go'),
-('f5f6a4a5-924b-42ae-a0fb-946ecf11b5b4', 'e30e8612-39ab-40af-80c1-8bb389a7b874', 10.0, 7, 8.55, '', 'WW_901O_STACK_ONEOFF_CYPRUS_10GB_7D', 'Go'),
-('d250d975-0474-4e26-a187-f38034a2131b', 'e30e8612-39ab-40af-80c1-8bb389a7b874', 10.0, 30, 10.45, '', 'WW_901O_STACK_ONEOFF_CYPRUS_10GB_30D', 'Go'),
-('36a898ff-86f0-4e25-acdf-3a633c844ec1', 'e30e8612-39ab-40af-80c1-8bb389a7b874', 25.0, 30, 18.05, '', 'WW_901O_STACK_ONEOFF_CYPRUS_25GB_30D', 'Go'),
-('5ff1f6e4-7751-4dc0-b051-ad82e04d52ca', 'e30e8612-39ab-40af-80c1-8bb389a7b874', 40.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_CYPRUS_UNLIMITED_7D_FUP20', 'UNLI'),
-('6ca4f2fc-373d-4967-a323-8abcfade8478', 'e30e8612-39ab-40af-80c1-8bb389a7b874', 50.0, 30, 33.25, '', 'WW_901O_STACK_ONEOFF_CYPRUS_50GB_30D', 'Go'),
-('e76e53fb-a203-4742-97ef-c86c2e75921e', 'e30e8612-39ab-40af-80c1-8bb389a7b874', 60.0, 15, 27.55, '', 'WW_901O_STACK_ONEOFF_CYPRUS_UNLIMITED_15D_FUP30', 'UNLI'),
-('59c1bb57-dfcf-4010-88fa-1d7dc97d19fc', 'e30e8612-39ab-40af-80c1-8bb389a7b874', 120.0, 30, 46.55, '', 'WW_901O_STACK_ONEOFF_CYPRUS_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Colombie
-
-('d3df2211-2997-49ac-9f3b-01f2730096f6', '8eec889b-4487-4c46-b2ec-aa680bbdd721', 1.0, 7, 5.7, '', 'WW_901O_STACK_ONEOFF_COLOMBIA_1GB_7D', 'Go'),
-('945b9e1d-0849-4217-bbca-f6cd2df9f365', '8eec889b-4487-4c46-b2ec-aa680bbdd721', 3.0, 15, 11.4, '', 'WW_901O_STACK_ONEOFF_COLOMBIA_3GB_15D', 'Go'),
-('2b15be99-ee16-4212-bbef-a54a028f1ed9', '8eec889b-4487-4c46-b2ec-aa680bbdd721', 10.0, 7, 21.85, '', 'WW_901O_STACK_ONEOFF_COLOMBIA_10GB_7D', 'Go'),
-('a3f08907-b864-4d12-82d2-083a07bcfa62', '8eec889b-4487-4c46-b2ec-aa680bbdd721', 10.0, 30, 23.75, '', 'WW_901O_STACK_ONEOFF_COLOMBIA_10GB_30D', 'Go'),
-('18757e80-8818-4fdd-8c2b-c8b50aaf895d', '8eec889b-4487-4c46-b2ec-aa680bbdd721', 40.0, 7, 27.55, '', 'WW_901O_STACK_ONEOFF_COLOMBIA_UNLIMITED_7D_FUP20', 'UNLI'),
-('e398e4e0-e1de-4619-8109-e59815493368', '8eec889b-4487-4c46-b2ec-aa680bbdd721', 60.0, 15, 56.05, '', 'WW_901O_STACK_ONEOFF_COLOMBIA_UNLIMITED_15D_FUP30', 'UNLI'),
-
--- Comores
-
-('96341a26-6050-46b3-aad9-a73b6c940e1e', 'b18078e3-5ea0-404b-b015-4b7e06196a03', 1.0, 7, 7.6, '', 'WW_901O_STACK_ONEOFF_COMOROS_1GB_7D', 'Go'),
-('f0f88626-b8a7-479e-b691-ce90f246a6a9', 'b18078e3-5ea0-404b-b015-4b7e06196a03', 3.0, 15, 15.2, '', 'WW_901O_STACK_ONEOFF_COMOROS_3GB_15D', 'Go'),
-
--- Congo
-
-('2b4d7f70-6733-42b8-9a04-83a1a393947c', 'b7073514-059e-4f7f-8626-6a11215414ae', 10.0, 7, 22.8, '', 'WW_901O_STACK_ONEOFF_CONGO_10GB_7D', 'Go'),
-('14614df4-3fb1-447f-8ab0-6a8ab7bf149a', 'b7073514-059e-4f7f-8626-6a11215414ae', 10.0, 30, 25.65, '', 'WW_901O_STACK_ONEOFF_CONGO_10GB_30D', 'Go'),
-
--- Corée du Sud
-
-('01744cb1-29da-4a82-a2a0-b3fea82d7660', '0a01dc2b-374f-4deb-b5df-997410a54ee5', 1.0, 7, 3.8, '', 'WW_901O_STACK_ONEOFF_KOREA_1GB_7D', 'Go'),
-('bb0240f1-8df9-4710-96fc-322d3337aefe', '0a01dc2b-374f-4deb-b5df-997410a54ee5', 3.0, 7, 6.65, '', 'WW_901O_STACK_ONEOFF_KOREA_3GB_7D', 'Go'),
-('1cc49e14-37d2-4955-949f-2e5f4b6b6bd6', '0a01dc2b-374f-4deb-b5df-997410a54ee5', 3.0, 30, 8.55, '', 'WW_901O_STACK_ONEOFF_KOREA_3GB_30D', 'Go'),
-('478dea6a-dcf7-4c7c-8c81-62af551516a7', '0a01dc2b-374f-4deb-b5df-997410a54ee5', 10.0, 7, 11.4, '', 'WW_901O_STACK_ONEOFF_KOREA_10GB_7D', 'Go'),
-('40e422f2-ddb6-447a-a037-11a7c4d263bc', '0a01dc2b-374f-4deb-b5df-997410a54ee5', 10.0, 30, 13.3, '', 'WW_901O_STACK_ONEOFF_KOREA_10GB_30D', 'Go'),
-('023a600c-b7fc-47be-a56e-c2e936517b24', '0a01dc2b-374f-4deb-b5df-997410a54ee5', 25.0, 30, 23.75, '', 'WW_901O_STACK_ONEOFF_KOREA_25GB_30D', 'Go'),
-('38526a60-edc6-456d-beb6-1d9446653c00', '0a01dc2b-374f-4deb-b5df-997410a54ee5', 50.0, 7, 23.75, '', 'WW_901O_STACK_ONEOFF_KOREA_UNLIMITED_7D_FUP25', 'UNLI'),
-('0177ac45-ab8b-48e2-bee5-cf3d4b0d95f6', '0a01dc2b-374f-4deb-b5df-997410a54ee5', 60.0, 15, 32.3, '', 'WW_901O_STACK_ONEOFF_KOREA_UNLIMITED_15D_FUP30', 'UNLI'),
-('7c32f021-1e1f-47be-bd05-e0df07d333d7', '0a01dc2b-374f-4deb-b5df-997410a54ee5', 120.0, 30, 46.55, '', 'WW_901O_STACK_ONEOFF_KOREA_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Costa Rica
-
-('084b596d-d0f0-4587-b145-bc6aea491ede', '1bf2b466-363b-4fa1-971f-040ac6da7850', 1.0, 7, 3.8, '', 'WW_901O_STACK_ONEOFF_COSTARICA_1GB_7D', 'Go'),
-('42c44e25-d642-4569-9e93-a9f6daebc095', '1bf2b466-363b-4fa1-971f-040ac6da7850', 3.0, 15, 7.6, '', 'WW_901O_STACK_ONEOFF_COSTARICA_3GB_15D', 'Go'),
-('c033fa0a-857a-4078-a295-a4001f1497a4', '1bf2b466-363b-4fa1-971f-040ac6da7850', 10.0, 7, 16.15, '', 'WW_901O_STACK_ONEOFF_COSTA-RICA_10GB_7D', 'Go'),
-('727b9b69-c264-48dd-8aef-665d2f0ba0cf', '1bf2b466-363b-4fa1-971f-040ac6da7850', 10.0, 30, 18.05, '', 'WW_901O_STACK_ONEOFF_COSTA-RICA_10GB_30D', 'Go'),
-('f91d5e05-97a1-43eb-90ec-54ae5791dc53', '1bf2b466-363b-4fa1-971f-040ac6da7850', 25.0, 30, 27.55, '', 'WW_901O_STACK_ONEOFF_COSTA-RICA_25GB_30D', 'Go'),
-('acc4b7f5-b1a3-4c1b-8807-f605ed415573', '1bf2b466-363b-4fa1-971f-040ac6da7850', 40.0, 7, 24.7, '', 'WW_901O_STACK_ONEOFF_COSTA-RICA_UNLIMITED_7D_FUP20', 'UNLI'),
-('126406c8-8f31-464f-a1e1-65caac508705', '1bf2b466-363b-4fa1-971f-040ac6da7850', 120.0, 30, 65.55, '', 'WW_901O_STACK_ONEOFF_COSTA-RICA_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Croatie
-
-('cbc50943-78a4-4ef7-9685-d929f48fbf42', '11df7336-ec98-4b37-b02c-29095ebb3d45', 3.0, 15, 5.7, '', 'WW_901O_STACK_ONEOFF_CROATIA_3GB_15D', 'Go'),
-('8f03e33a-2132-475c-b93c-579a080bd56b', '11df7336-ec98-4b37-b02c-29095ebb3d45', 10.0, 7, 9.5, '', 'WW_901O_STACK_ONEOFF_CROATIA_10GB_7D', 'Go'),
-('ca177188-ccc9-4614-8d10-eae84a75575d', '11df7336-ec98-4b37-b02c-29095ebb3d45', 10.0, 30, 11.4, '', 'WW_901O_STACK_ONEOFF_CROATIA_10GB_30D', 'Go'),
-('9fa0fdf6-b465-496b-9b8b-d68314bbc74f', '11df7336-ec98-4b37-b02c-29095ebb3d45', 25.0, 30, 22.8, '', 'WW_901O_STACK_ONEOFF_CROATIA_25GB_30D', 'Go'),
-('3b31ef39-db2d-4c45-acd3-4b17d03f089f', '11df7336-ec98-4b37-b02c-29095ebb3d45', 40.0, 7, 19.0, '', 'WW_901O_STACK_ONEOFF_CROATIA_UNLIMITED_7D_FUP20', 'UNLI'),
-('43841265-3796-4968-a076-329e7a06b3e3', '11df7336-ec98-4b37-b02c-29095ebb3d45', 120.0, 30, 46.55, '', 'WW_901O_STACK_ONEOFF_CROATIA_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Curaçao
-
-('4eb7f00e-37a3-4c22-85c8-8a431323645b', '3a211984-8c5a-4b7b-83bf-0b9f6d039916', 1.0, 7, 6.65, '', 'WW_901O_STACK_ONEOFF_CUW_1GB_7D', 'Go'),
-('77f30bbf-88eb-407d-a0c4-c4fba41208b3', '3a211984-8c5a-4b7b-83bf-0b9f6d039916', 3.0, 15, 13.3, '', 'WW_901O_STACK_ONEOFF_CUW_3GB_15D', 'Go'),
-('99c78e26-4556-4f42-896e-5e78051fe068', '3a211984-8c5a-4b7b-83bf-0b9f6d039916', 10.0, 7, 26.6, '', 'WW_901O_STACK_ONEOFF_CUW_10GB_7D', 'Go'),
-('53209fc8-7776-4584-b37a-ef7a4fcad2de', '3a211984-8c5a-4b7b-83bf-0b9f6d039916', 10.0, 30, 32.3, '', 'WW_901O_STACK_ONEOFF_CUW_10GB_30D', 'Go'),
-
--- Danemark
-
-('734470b3-2648-4d33-9510-c20d4474ccc5', '3014d626-9c7f-4803-8fe8-270f67da6833', 3.0, 15, 4.75, '', 'WW_901O_STACK_ONEOFF_DENMARK_3GB_15D', 'Go'),
-('4384ad33-d80f-480e-a0c4-e13c28b2b6e8', '3014d626-9c7f-4803-8fe8-270f67da6833', 10.0, 7, 8.55, '', 'WW_901O_STACK_ONEOFF_DENMARK_10GB_7D', 'Go'),
-('fd9fee5b-83ee-4a2d-ba2c-089eecbffe04', '3014d626-9c7f-4803-8fe8-270f67da6833', 10.0, 30, 10.45, '', 'WW_901O_STACK_ONEOFF_DENMARK_10GB_30D', 'Go'),
-('da6f295f-456a-456b-b3bd-40918a4bfa5b', '3014d626-9c7f-4803-8fe8-270f67da6833', 25.0, 30, 19.95, '', 'WW_901O_STACK_ONEOFF_DENMARK_25GB_30D', 'Go'),
-('a9f96501-e977-4a39-a334-ea7f1914c3bd', '3014d626-9c7f-4803-8fe8-270f67da6833', 40.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_DENMARK_UNLIMITED_7D_FUP20', 'UNLI'),
-('57d1f8ca-795f-4406-b2f2-f4477401e518', '3014d626-9c7f-4803-8fe8-270f67da6833', 50.0, 30, 35.15, '', 'WW_901O_STACK_ONEOFF_DENMARK_50GB_30D', 'Go'),
-('3ad3cc9a-8a8d-4e89-96dc-f36cfb7bab36', '3014d626-9c7f-4803-8fe8-270f67da6833', 60.0, 15, 27.55, '', 'WW_901O_STACK_ONEOFF_DENMARK_UNLIMITED_15D_FUP30', 'UNLI'),
-('f56f3973-2896-45a6-8a43-d8288d8e3906', '3014d626-9c7f-4803-8fe8-270f67da6833', 120.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_DENMARK_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Djibouti
-
-('41cda9ed-1bdf-4f03-b9d4-4f7e3bc3cd8c', 'f1ff57fd-3196-49ee-8de7-11d6f886cd5f', 1.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_DJIBOUTI_1GB_7D', 'Go'),
-('a1556e76-57fc-46a9-a8ab-b63ebb5c8596', 'f1ff57fd-3196-49ee-8de7-11d6f886cd5f', 3.0, 15, 41.8, '', 'WW_901O_STACK_ONEOFF_DJIBOUTI_3GB_15D', 'Go'),
-('94552951-93c9-472a-abbe-fd1ff489c8cf', 'f1ff57fd-3196-49ee-8de7-11d6f886cd5f', 10.0, 30, 93.1, '', 'WW_901O_STACK_ONEOFF_DJIBOUTI_10GB_30D', 'Go'),
-
--- El Salvador
-
-('29987f90-80f5-46c6-bf59-4f260f0d52d7', 'bfef0194-d761-4587-9229-45771ff85965', 3.0, 15, 11.4, '', 'WW_901O_STACK_ONEOFF_SLV_3GB_15D', 'Go'),
-('f2a8755f-efa1-44eb-bddb-4e90275129b5', 'bfef0194-d761-4587-9229-45771ff85965', 10.0, 7, 22.8, '', 'WW_901O_STACK_ONEOFF_SLV_10GB_7D', 'Go'),
-('33314d8b-fb07-4a2a-91dc-b5989dbe63a8', 'bfef0194-d761-4587-9229-45771ff85965', 10.0, 30, 26.6, '', 'WW_901O_STACK_ONEOFF_SLV_10GB_30D', 'Go'),
-('f170bba9-6742-4cc2-9652-5ff886cbd205', 'bfef0194-d761-4587-9229-45771ff85965', 40.0, 7, 33.25, '', 'WW_901O_STACK_ONEOFF_SLV_UNLIMITED_7D_FUP20', 'UNLI'),
-('97f99922-e4ee-4868-b040-eb3201f5d8ae', 'bfef0194-d761-4587-9229-45771ff85965', 60.0, 15, 56.05, '', 'WW_901O_STACK_ONEOFF_SLV_UNLIMITED_15D_FUP30', 'UNLI'),
-
--- Espagne
-
-('3dfdb16d-c91d-4e85-83bb-771b2b3a9161', '867d5991-013b-4922-a9e5-f00aae98b9cd', 3.0, 30, 4.75, '', 'WW_901O_STACK_ONEOFF_ESP_3GB_30D', 'Go'),
-('5a40e583-14f7-44ee-a862-c0e36210361f', '867d5991-013b-4922-a9e5-f00aae98b9cd', 10.0, 8, 8.55, '', 'WW_901O_STACK_ONEOFF_ESP_10GB_8D', 'Go'),
-('7af8faea-bb90-4b87-952b-7221c66f5f96', '867d5991-013b-4922-a9e5-f00aae98b9cd', 10.0, 30, 11.4, '', 'WW_901O_STACK_ONEOFF_ESP_10GB_30D', 'Go'),
-('8c039ba6-3b02-4023-8c64-8006b5d37007', '867d5991-013b-4922-a9e5-f00aae98b9cd', 25.0, 30, 18.05, '', 'WW_901O_STACK_ONEOFF_ESP_25GB_30D', 'Go'),
-('7756925d-c59e-4b3c-a67c-7e27b1e9c3d5', '867d5991-013b-4922-a9e5-f00aae98b9cd', 50.0, 30, 32.3, '', 'WW_901O_STACK_ONEOFF_ESP_50GB_30D', 'Go'),
-('aa2e6b8e-7122-4258-aba7-8302c779b382', '867d5991-013b-4922-a9e5-f00aae98b9cd', 60.0, 15, 32.3, '', 'WW_901O_STACK_ONEOFF_ESP_UNLIMITED_15D_FUP30', 'UNLI'),
-('9add1c13-1f04-43fd-8f76-ff80325aef04', '867d5991-013b-4922-a9e5-f00aae98b9cd', 120.0, 30, 41.8, '', 'WW_901O_STACK_ONEOFF_ESP_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Estonie
-
-('4a08f067-abd7-4cab-8b89-121d1526f09b', '2531b471-becf-4b17-98a7-77e8b3ffcd75', 3.0, 15, 3.8, '', 'WW_901O_STACK_ONEOFF_ESTONIA_3GB_15D', 'Go'),
-('dd04f14c-cecd-4b04-9862-3e09cf93d3d2', '2531b471-becf-4b17-98a7-77e8b3ffcd75', 10.0, 7, 6.65, '', 'WW_901O_STACK_ONEOFF_ESTONIA_10GB_7D', 'Go'),
-('8b41db34-31ce-456a-9c84-667bc9c0784a', '2531b471-becf-4b17-98a7-77e8b3ffcd75', 10.0, 30, 8.55, '', 'WW_901O_STACK_ONEOFF_ESTONIA_10GB_30D', 'Go'),
-('adf34d37-8550-4453-9b2b-9ee4d287b119', '2531b471-becf-4b17-98a7-77e8b3ffcd75', 40.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_ESTONIA_UNLIMITED_7D_FUP20', 'UNLI'),
-('14612c96-a250-4058-9834-76e11a31a63c', '2531b471-becf-4b17-98a7-77e8b3ffcd75', 50.0, 30, 34.2, '', 'WW_901O_STACK_ONEOFF_ESTONIA_50GB_30D', 'Go'),
-('d6b9f3ac-511d-4750-a382-dc567b5f8bb3', '2531b471-becf-4b17-98a7-77e8b3ffcd75', 60.0, 15, 27.55, '', 'WW_901O_STACK_ONEOFF_ESTONIA_UNLIMITED_15D_FUP30', 'UNLI'),
-('86e0f448-e3bf-4b3c-a90c-56f27070ace1', '2531b471-becf-4b17-98a7-77e8b3ffcd75', 120.0, 30, 46.55, '', 'WW_901O_STACK_ONEOFF_ESTONIA_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Eswatini
-
-('7b89fd3b-4e66-49d8-883f-5be645401145', '85610ad8-2345-4089-81b2-23d08b4f5197', 10.0, 7, 22.8, '', 'WW_901O_STACK_ONEOFF_ESWATINI_10GB_7D', 'Go'),
-
--- Europe
-
-('c29feb40-e61b-4e02-b9ab-122da6047653', 'e746daaf-52d0-4e9c-8b18-d97506fea34b', 3.0, 30, 6.65, '', 'WW_901O_STACK_ONEOFF_EU28PLUS_3GB_30D', 'Go'),
-('e85e601d-3f85-43c6-b1df-af0a5434e859', 'e746daaf-52d0-4e9c-8b18-d97506fea34b', 10.0, 7, 11.4, '', 'WW_901O_STACK_ONEOFF_EU28PLUS_10GB_7D', 'Go'),
-('36d5b5b3-b962-4e4b-ae76-312d0009e9ae', 'e746daaf-52d0-4e9c-8b18-d97506fea34b', 10.0, 30, 14.25, '', 'WW_901O_STACK_ONEOFF_EU28PLUS_10GB_30D', 'Go'),
-('d5f7ebe2-1c49-4977-bb8c-39f67dee0589', 'e746daaf-52d0-4e9c-8b18-d97506fea34b', 25.0, 30, 27.55, '', 'WW_901O_STACK_ONEOFF_EU28PLUS_25GB_30D', 'Go'),
-('cf3c150e-a773-4f34-aeef-cc289e06029f', 'e746daaf-52d0-4e9c-8b18-d97506fea34b', 50.0, 7, 21.85, '', 'WW_901O_STACK_ONEOFF_EU28PLUS_UNLIMITED_7D_FUP25', 'UNLI'),
-('3264dbb9-299b-4f33-a11e-363f3abf5839', 'e746daaf-52d0-4e9c-8b18-d97506fea34b', 50.0, 30, 51.3, '', 'WW_901O_STACK_ONEOFF_EU28PLUS_50GB_30D', 'Go'),
-('5e8f6f22-d5e1-4bdc-955b-c07c0a74ca6c', 'e746daaf-52d0-4e9c-8b18-d97506fea34b', 60.0, 15, 36.1, '', 'WW_901O_STACK_ONEOFF_EU28PLUS_UNLIMITED_15D_FUP30', 'UNLI'),
-('279e2447-9ef9-406e-aaa9-425b800b3e17', 'e746daaf-52d0-4e9c-8b18-d97506fea34b', 120.0, 30, 58.9, '', 'WW_901O_STACK_ONEOFF_EU28PLUS_UNLIMITED_30D_FUP60', 'UNLI'),
-('950ef290-ea07-4a2d-b184-d6ba0c12c816', 'e746daaf-52d0-4e9c-8b18-d97506fea34b', 500.0, 2, 1.9, '', 'WW_901O_STACK_ONEOFF_EU28PLUS_500MB_2D', 'Mo'),
-
--- Europe étendue
-
-('6cd2f877-340c-4502-9702-f1b71d4cafdc', '47bd11e5-2c92-4c8d-b53e-294b128ebac7', 1.0, 30, 7.6, '', 'WW_901O_STACK_ONEOFF_EU_EXTENDED_1GB_30D', 'Go'),
-('e77a80c2-7578-453c-8007-f9758d67721e', '47bd11e5-2c92-4c8d-b53e-294b128ebac7', 3.0, 15, 15.2, '', 'WW_901O_STACK_ONEOFF_EU_EXTENDED_3GB_15D', 'Go'),
-('a6365570-aaa5-498f-8dc3-6400d085b730', '47bd11e5-2c92-4c8d-b53e-294b128ebac7', 3.0, 30, 22.8, '', 'WW_901O_STACK_ONEOFF_EU_EXTENDED_3GB_30D', 'Go'),
-('71e61014-e4b5-4a35-8f12-d49475a70075', '47bd11e5-2c92-4c8d-b53e-294b128ebac7', 10.0, 7, 30.4, '', 'WW_901O_STACK_ONEOFF_EU_EXTENDED_10GB_7D', 'Go'),
-('3c978f47-1b71-4a91-a215-c366f35697e1', '47bd11e5-2c92-4c8d-b53e-294b128ebac7', 10.0, 30, 33.25, '', 'WW_901O_STACK_ONEOFF_EU_EXTENDED_10GB_30D', 'Go'),
-('b922f565-214b-4721-8d36-e3b293b24ee6', '47bd11e5-2c92-4c8d-b53e-294b128ebac7', 25.0, 30, 52.25, '', 'WW_901O_STACK_ONEOFF_EU_EXTENDED_25GB_30D', 'Go'),
-('e8b96298-c510-49c1-a722-6a93b6453e11', '47bd11e5-2c92-4c8d-b53e-294b128ebac7', 40.0, 7, 46.55, '', 'WW_901O_STACK_ONEOFF_EU_EXTENDED_UNLIMITED_7D_FUP20', 'UNLI'),
-('ba7c6aba-d692-4565-b1cf-515f42afb5d3', '47bd11e5-2c92-4c8d-b53e-294b128ebac7', 60.0, 15, 56.05, '', 'WW_901O_STACK_ONEOFF_EU_EXTENDED_UNLIMITED_15D_FUP30', 'UNLI'),
-('726c75dd-7652-4e6b-b82e-a3b7446b4692', '47bd11e5-2c92-4c8d-b53e-294b128ebac7', 120.0, 30, 73.15, '', 'WW_901O_STACK_ONEOFF_EU_EXTENDED_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Fidji
-
-('eccd5910-fb5f-45cc-ab62-86539622a183', '4643c960-c4df-413e-8eb1-28795ebc13f2', 1.0, 7, 17.1, '', 'WW_901O_STACK_ONEOFF_FIJI_1GB_7D', 'Go'),
-('540c2828-65ca-4995-82a4-a02660979508', '4643c960-c4df-413e-8eb1-28795ebc13f2', 3.0, 15, 32.3, '', 'WW_901O_STACK_ONEOFF_FIJI_3GB_15D', 'Go'),
-
--- Finlande
-
-('ebe5696b-fc3d-469f-ae07-3dc1422342be', '0a06379a-dba0-4082-872e-40645e1c0393', 3.0, 15, 4.75, '', 'WW_901O_STACK_ONEOFF_FINLAND_3GB_15D', 'Go'),
-('38d30a50-86ee-459b-89cf-0dcccc5c6bb3', '0a06379a-dba0-4082-872e-40645e1c0393', 10.0, 7, 8.55, '', 'WW_901O_STACK_ONEOFF_FINLAND_10GB_7D', 'Go'),
-('d089f1ca-5b4c-47fd-923f-e4ea81cbf41a', '0a06379a-dba0-4082-872e-40645e1c0393', 10.0, 30, 10.45, '', 'WW_901O_STACK_ONEOFF_FINLAND_10GB_30D', 'Go'),
-('29c9d470-9ba5-4c58-9168-184835173b37', '0a06379a-dba0-4082-872e-40645e1c0393', 40.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_FINLAND_UNLIMITED_7D_FUP20', 'UNLI'),
-('0e7d003d-64c0-404a-9598-d1ae8a975adb', '0a06379a-dba0-4082-872e-40645e1c0393', 50.0, 30, 35.15, '', 'WW_901O_STACK_ONEOFF_FINLAND_50GB_30D', 'Go'),
-('93684256-51df-4363-b947-fa439db58bc3', '0a06379a-dba0-4082-872e-40645e1c0393', 60.0, 15, 27.55, '', 'WW_901O_STACK_ONEOFF_FINLAND_UNLIMITED_15D_FUP30', 'UNLI'),
-('9da60ea7-49e5-469b-bc11-36140e9bf08a', '0a06379a-dba0-4082-872e-40645e1c0393', 120.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_FINLAND_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- France
-
-('36fec956-3486-4bbf-bb6a-77bfb801b20f', '996f27cf-e96a-42fd-8795-d92d46138607', 3.0, 30, 3.8, '', 'WW_901O_STACK_ONEOFF_FRA_3GB_30D', 'Go'),
-('439e9c1f-f365-466a-9848-4513476dc887', '996f27cf-e96a-42fd-8795-d92d46138607', 10.0, 7, 7.6, '', 'WW_901O_STACK_ONEOFF_FRA_10GB_7D', 'Go'),
-('ee5a2629-2740-404e-a28f-efdf87c2cade', '996f27cf-e96a-42fd-8795-d92d46138607', 10.0, 30, 9.5, '', 'WW_901O_STACK_ONEOFF_FRA_10GB_30D', 'Go'),
-('e860ce7a-9100-43cf-8034-57975fb79d5e', '996f27cf-e96a-42fd-8795-d92d46138607', 14.0, 1, 5.7, '', 'WW_901O_STACK_ONEOFF_FRANCE_UNLIMITED_1D_FUP7', 'UNLI'),
-('73aacfdc-4be1-4b6b-aa23-0fba6a8fa014', '996f27cf-e96a-42fd-8795-d92d46138607', 25.0, 30, 18.05, '', 'WW_901O_STACK_ONEOFF_FRA_25GB_30D', 'Go'),
-('69e4a46b-2883-45fc-a328-a2a582902571', '996f27cf-e96a-42fd-8795-d92d46138607', 50.0, 7, 19.0, '', 'WW_901O_STACK_ONEOFF_FRA_UNLIMITED_7D_FUP25', 'UNLI'),
-('7778b151-3c0f-4893-aa8c-478b5a55121a', '996f27cf-e96a-42fd-8795-d92d46138607', 50.0, 30, 27.55, '', 'WW_901O_STACK_ONEOFF_FRA_50GB_30D', 'Go'),
-('6d14319f-7bf8-45ad-a356-02756df900bd', '996f27cf-e96a-42fd-8795-d92d46138607', 60.0, 15, 23.75, '', 'WW_901O_STACK_ONEOFF_FRA_UNLIMITED_15D_FUP30', 'UNLI'),
-('c5c5cb89-29d9-419c-9885-c86337f93714', '996f27cf-e96a-42fd-8795-d92d46138607', 120.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_FRA_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Gabon
-
-('ab8554a4-59f2-4571-bcf1-a0115403728d', '622f5c1c-542b-4d4b-8044-aaa9d6260463', 1.0, 7, 8.55, '', 'WW_901O_STACK_ONEOFF_GABON_1GB_7D', 'Go'),
-('1cd1acad-c94f-46a7-9cdb-66144eb5fd40', '622f5c1c-542b-4d4b-8044-aaa9d6260463', 3.0, 15, 17.1, '', 'WW_901O_STACK_ONEOFF_GABON_3GB_15D', 'Go'),
-
--- Ghana
-
-('fd94d783-a147-4aa6-98a6-2c8cee95f8d5', '73fa0649-807d-4962-8ebb-0a67c70f06b6', 1.0, 7, 5.7, '', 'WW_901O_STACK_ONEOFF_GHANA_1GB_7D', 'Go'),
-('2b9a0123-5fe1-4b5d-8592-f661327a5ccd', '73fa0649-807d-4962-8ebb-0a67c70f06b6', 3.0, 15, 13.3, '', 'WW_901O_STACK_ONEOFF_GHANA_3GB_15D', 'Go'),
-
--- Gibraltar
-
-('b366dd40-05ce-4892-bd2a-2dcac02d051d', '3c87a8ac-01d1-4d0a-80e2-a869c56deb95', 1.0, 7, 6.65, '', 'WW_901O_STACK_ONEOFF_GIBRALTAR_1GB_7D', 'Go'),
-('0451eb1d-18a0-4d2b-a849-8d16bef6c07f', '3c87a8ac-01d1-4d0a-80e2-a869c56deb95', 3.0, 15, 17.1, '', 'WW_901O_STACK_ONEOFF_GIBRALTAR_3GB_15D', 'Go'),
-
--- Groenland
-
-('ebecfe33-1062-4b29-aa76-e82cfee38e53', 'd4535f19-cff0-4456-a4e8-4218275df8e5', 1.0, 7, 11.4, '', 'WW_901O_STACK_ONEOFF_GROENLAND_1GB_7D', 'Go'),
-('fb4ab176-cb23-4e8f-9e07-2615a58bf4b5', 'd4535f19-cff0-4456-a4e8-4218275df8e5', 3.0, 15, 22.8, '', 'WW_901O_STACK_ONEOFF_GROENLAND_3GB_15D', 'Go'),
-('007d24a5-97f5-49b3-93f7-665b3a2a2fbf', 'd4535f19-cff0-4456-a4e8-4218275df8e5', 10.0, 30, 46.55, '', 'WW_901O_STACK_ONEOFF_GROENLAND_10GB_30D', 'Go'),
-
--- Grèce
-
-('eada8f65-fa23-4bdc-8b16-ae899e2615ec', '986d56f4-6c08-4fe7-8b7b-6b425e186f6c', 3.0, 30, 5.7, '', 'WW_901O_STACK_ONEOFF_GREECE_3GB_30D', 'Go'),
-('892cd6cc-cdc8-4f0c-b500-1ff2fc7a5421', '986d56f4-6c08-4fe7-8b7b-6b425e186f6c', 10.0, 7, 9.5, '', 'WW_901O_STACK_ONEOFF_GREECE_10GB_7D', 'Go'),
-('5de183eb-29ba-4c74-b492-ec985e8c0701', '986d56f4-6c08-4fe7-8b7b-6b425e186f6c', 10.0, 30, 11.4, '', 'WW_901O_STACK_ONEOFF_GREECE_10GB_30D', 'Go'),
-('7595240c-59aa-4f5a-899e-97838b5b632c', '986d56f4-6c08-4fe7-8b7b-6b425e186f6c', 25.0, 30, 20.9, '', 'WW_901O_STACK_ONEOFF_GREECE_25GB_30D', 'Go'),
-('26ed573d-8cf0-40d8-a71b-d7d94388b1e1', '986d56f4-6c08-4fe7-8b7b-6b425e186f6c', 40.0, 7, 22.8, '', 'WW_901O_STACK_ONEOFF_GREECE_UNLIMITED_7D_FUP20', 'UNLI'),
-('38b93f74-4597-4dc4-b58a-0565aaab7c58', '986d56f4-6c08-4fe7-8b7b-6b425e186f6c', 50.0, 30, 30.4, '', 'WW_901O_STACK_ONEOFF_GREECE_50GB_30D', 'Go'),
-('1c20ebb8-8d0d-4f42-8718-2dc5df9df426', '986d56f4-6c08-4fe7-8b7b-6b425e186f6c', 60.0, 15, 37.05, '', 'WW_901O_STACK_ONEOFF_GREECE_UNLIMITED_15D_FUP30', 'UNLI'),
-('4b4f27b5-6ee2-4de9-91d9-a067c672c807', '986d56f4-6c08-4fe7-8b7b-6b425e186f6c', 120.0, 30, 52.25, '', 'WW_901O_STACK_ONEOFF_GREECE_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Guadeloupe
-
-('1f67ccb9-6620-4497-bc0e-bdc8c136923d', 'd574eb3d-d1af-46de-867c-12b162d2cbf4', 1.0, 7, 3.8, '', 'WW_901O_STACK_ONEOFF_GUADELOUPE_1GB_7D', 'Go'),
-('b0fae600-5e75-48eb-92c2-d08ccc34669a', 'd574eb3d-d1af-46de-867c-12b162d2cbf4', 3.0, 15, 7.6, '', 'WW_901O_STACK_ONEOFF_GUADELOUPE_3GB_15D', 'Go'),
-
--- Guam
-
-('de300d55-9378-4e28-9eb4-a39d4b5122b4', '47560712-bb5b-43e6-b88c-55ae6fca9a0a', 1.0, 7, 8.55, '', 'WW_901O_STACK_ONEOFF_GUAM_1GB_7D', 'Go'),
-('58d04b51-a52e-4bab-b9bc-5b5235047a0b', '47560712-bb5b-43e6-b88c-55ae6fca9a0a', 3.0, 15, 18.05, '', 'WW_901O_STACK_ONEOFF_GUAM_3GB_15D', 'Go'),
-('390deeee-d290-4d97-9df8-1add4e3d9c93', '47560712-bb5b-43e6-b88c-55ae6fca9a0a', 10.0, 8, 37.05, '', 'WW_901O_STACK_ONEOFF_GUAM_10GB_8D', 'Go'),
-
--- Guatemala
-
-('ed241fe0-93f9-4ef6-8865-cd020c17ca28', '1cf701c6-f7c4-4a73-889a-b66a60f80062', 1.0, 7, 5.7, '', 'WW_901O_STACK_ONEOFF_GTM_1GB_7D', 'Go'),
-('84d40a4e-4c62-4916-8d7e-7bc2e24779a1', '1cf701c6-f7c4-4a73-889a-b66a60f80062', 3.0, 15, 11.4, '', 'WW_901O_STACK_ONEOFF_GTM_3GB_15D', 'Go'),
-('ea60000e-c45b-4719-ad98-545e4357c58f', '1cf701c6-f7c4-4a73-889a-b66a60f80062', 10.0, 30, 26.6, '', 'WW_901O_STACK_ONEOFF_GTM_10GB_30D', 'Go'),
-('2b3da9b7-6141-4e6d-9dc1-1206a7cb14f2', '1cf701c6-f7c4-4a73-889a-b66a60f80062', 25.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_GTM_25GB_30D', 'Go'),
-('f9bac2e9-b329-41fc-a7d2-094d91ece266', '1cf701c6-f7c4-4a73-889a-b66a60f80062', 40.0, 7, 32.3, '', 'WW_901O_STACK_ONEOFF_GTM_UNLIMITED_7D_FUP20', 'UNLI'),
-('e620206c-c4e7-4361-bb34-dc5f4304e1de', '1cf701c6-f7c4-4a73-889a-b66a60f80062', 60.0, 15, 52.25, '', 'WW_901O_STACK_ONEOFF_GTM_UNLIMITED_15D_FUP30', 'UNLI'),
-
--- Guinée
-
-('b64e882c-2082-47f0-bfe4-57f368706e47', '01e0eff2-6e95-4955-b771-72ac99b68657', 1.0, 7, 7.6, '', 'WW_901O_STACK_ONEOFF_GUINEA_1GB_7D', 'Go'),
-('6540b77c-78b4-44c9-8d83-e615026a761b', '01e0eff2-6e95-4955-b771-72ac99b68657', 3.0, 15, 16.15, '', 'WW_901O_STACK_ONEOFF_GUINEA_3GB_15D', 'Go'),
-('121f7e46-edbb-4bc1-82a2-e15040bdf183', '01e0eff2-6e95-4955-b771-72ac99b68657', 10.0, 7, 29.45, '', 'WW_901O_STACK_ONEOFF_GUINEA_10GB_7D', 'Go'),
-('43483c14-c2e1-4b65-a9ad-50d80df6dc64', '01e0eff2-6e95-4955-b771-72ac99b68657', 10.0, 30, 33.25, '', 'WW_901O_STACK_ONEOFF_GUINEA_10GB_30D', 'Go'),
-
--- Guinée-Bissau
-
-('7682f499-25f0-4437-98d3-38f39d7f0c13', 'dfbcaeb9-a04f-4e37-a7a5-743bb7f72ae8', 1.0, 7, 5.7, '', 'WW_901O_STACK_ONEOFF_GUINEA-BISSAU_1GB_7D', 'Go'),
-('5db977a2-c9ba-4814-adb5-d70572722c05', 'dfbcaeb9-a04f-4e37-a7a5-743bb7f72ae8', 3.0, 15, 13.3, '', 'WW_901O_STACK_ONEOFF_GUINEA-BISSAU_3GB_15D', 'Go'),
-('a34709b4-0a18-43d5-9968-ce65bd81c5ee', 'dfbcaeb9-a04f-4e37-a7a5-743bb7f72ae8', 10.0, 30, 27.55, '', 'WW_901O_STACK_ONEOFF_GUINEA-BISSAU_10GB_30D', 'Go'),
-('19031c61-9ab1-4db9-a0b5-ed37ca9b404e', 'dfbcaeb9-a04f-4e37-a7a5-743bb7f72ae8', 25.0, 30, 56.05, '', 'WW_901O_STACK_ONEOFF_GUINEA-BISSAU_25GB_30D', 'Go'),
-('f6555764-20da-47ad-b4b1-8cbc3684c194', 'dfbcaeb9-a04f-4e37-a7a5-743bb7f72ae8', 50.0, 7, 45.6, '', 'WW_901O_STACK_ONEOFF_GUINEA-BISSAU_UNLIMITED_7D_FUP20', 'UNLI'),
-
--- Guyana
-
-('f0952a50-95e0-4348-81dd-884cf2a1986e', '9d7fa02d-1f49-4e1c-89b4-db961eed8142', 1.0, 7, 11.4, '', 'WW_901O_STACK_ONEOFF_GUYANA_1GB_7D', 'Go'),
-('7a7d5581-4cfb-4cff-ac35-811f23a0c052', '9d7fa02d-1f49-4e1c-89b4-db961eed8142', 3.0, 15, 13.3, '', 'WW_901O_STACK_ONEOFF_GUYANA_3GB_15D', 'Go'),
-('069d9335-aad0-429c-9a36-086519764c10', '9d7fa02d-1f49-4e1c-89b4-db961eed8142', 10.0, 7, 26.6, '', 'WW_901O_STACK_ONEOFF_GUYANA_10GB_7D', 'Go'),
-('11e20369-f6cc-4fb0-86b6-b08b86992fcb', '9d7fa02d-1f49-4e1c-89b4-db961eed8142', 10.0, 30, 32.3, '', 'WW_901O_STACK_ONEOFF_GUYANA_10GB_30D', 'Go'),
-
--- Guyane française
-
-('65b124e5-895f-40a7-8082-5cd58be9cfeb', '443e4e46-ed50-4816-9a10-4ff4990b643e', 3.0, 15, 7.6, '', 'WW_901O_STACK_ONEOFF_FRGUIANA_3GB_15D', 'Go'),
-
--- Géorgie
-
-('fb8272b0-39cc-4132-9e04-6ab67c378e7e', '6f7d9aef-77cf-41e5-81ef-af251505a5f5', 1.0, 7, 5.7, '', 'WW_901O_STACK_ONEOFF_GEORGIA_1GB_7D', 'Go'),
-('2814803b-191d-4cc1-ade4-11504153ab2e', '6f7d9aef-77cf-41e5-81ef-af251505a5f5', 3.0, 15, 8.55, '', 'WW_901O_STACK_ONEOFF_GEORGIA_3GB_15D', 'Go'),
-('7fa0c7de-1317-43cb-87c0-ecc837f892ce', '6f7d9aef-77cf-41e5-81ef-af251505a5f5', 10.0, 7, 16.15, '', 'WW_901O_STACK_ONEOFF_GEORGIA_10GB_7D', 'Go'),
-('b50ffee4-e4a0-4b72-b4cc-8017760a933a', '6f7d9aef-77cf-41e5-81ef-af251505a5f5', 10.0, 30, 18.05, '', 'WW_901O_STACK_ONEOFF_GEORGIA_10GB_30D', 'Go'),
-('9ad3efc3-bfc2-4bad-b375-d53540848478', '6f7d9aef-77cf-41e5-81ef-af251505a5f5', 25.0, 30, 46.55, '', 'WW_901O_STACK_ONEOFF_GEORGIA_25GB_30D', 'Go'),
-('af5da2dc-ab78-4f71-96fc-740bc7ac0218', '6f7d9aef-77cf-41e5-81ef-af251505a5f5', 40.0, 7, 27.55, '', 'WW_901O_STACK_ONEOFF_GEORGIA_UNLIMITED_7D_FUP20', 'UNLI'),
-('480f0fba-1eeb-4cc3-a164-df322377c1b9', '6f7d9aef-77cf-41e5-81ef-af251505a5f5', 60.0, 15, 46.55, '', 'WW_901O_STACK_ONEOFF_GEORGIA_UNLIMITED_15D_FUP30', 'UNLI'),
-
--- Honduras
-
-('1edd9be4-a7f7-4d3d-b626-ce158a9cad91', '1fa157a8-1c21-4495-a7ad-0e38c6e70769', 1.0, 7, 4.75, '', 'WW_901O_STACK_ONEOFF_HONDURAS_1GB_7D', 'Go'),
-('a7e6f74d-aa27-4793-9713-fe7f1dbe18f4', '1fa157a8-1c21-4495-a7ad-0e38c6e70769', 3.0, 15, 9.5, '', 'WW_901O_STACK_ONEOFF_HONDURAS_3GB_15D', 'Go'),
-('f1cd1247-6cb9-4425-80f9-0f14df35433b', '1fa157a8-1c21-4495-a7ad-0e38c6e70769', 10.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_HONDURAS_10GB_7D', 'Go'),
-('ec6c7419-79c9-4779-8773-3f91a4dfa867', '1fa157a8-1c21-4495-a7ad-0e38c6e70769', 10.0, 30, 20.9, '', 'WW_901O_STACK_ONEOFF_HONDURAS_10GB_30D', 'Go'),
-('c51481c0-a939-4ada-9945-9ee30951f248', '1fa157a8-1c21-4495-a7ad-0e38c6e70769', 40.0, 7, 32.3, '', 'WW_901O_STACK_ONEOFF_HONDURAS_UNLIMITED_7D_FUP20', 'UNLI'),
-('0ee026c4-7e16-4d69-baf0-f53ec60d5022', '1fa157a8-1c21-4495-a7ad-0e38c6e70769', 60.0, 15, 56.05, '', 'WW_901O_STACK_ONEOFF_HONDURAS_UNLIMITED_15D_FUP30', 'UNLI'),
-
--- Hong Kong
-
-('f5c8a61a-66ca-4567-a181-bf20d9f3aac7', 'b3378ac1-e71a-4172-b73a-fda355742af2', 3.0, 15, 6.65, '', 'WW_901O_STACK_ONEOFF_HKG_3GB_15D', 'Go'),
-('2c7fc00e-5fa6-48c7-8af9-d3f287f7d57c', 'b3378ac1-e71a-4172-b73a-fda355742af2', 10.0, 7, 11.4, '', 'WW_901O_STACK_ONEOFF_HKG_10GB_7D', 'Go'),
-('638cf32d-ff94-4d10-b246-405b1334f6f0', 'b3378ac1-e71a-4172-b73a-fda355742af2', 10.0, 30, 13.3, '', 'WW_901O_STACK_ONEOFF_HKG_10GB_30D', 'Go'),
-('172d81c3-c214-4d73-8c4f-48598c672ab9', 'b3378ac1-e71a-4172-b73a-fda355742af2', 25.0, 30, 24.7, '', 'WW_901O_STACK_ONEOFF_HKG_25GB_30D', 'Go'),
-('be0a82df-5340-488b-b197-1b6f3cf41344', 'b3378ac1-e71a-4172-b73a-fda355742af2', 40.0, 7, 21.85, '', 'WW_901O_STACK_ONEOFF_HKG_UNLIMITED_7D_FUP20', 'UNLI'),
-('d2e22887-6991-438b-8883-685c6e89deba', 'b3378ac1-e71a-4172-b73a-fda355742af2', 60.0, 15, 37.05, '', 'WW_901O_STACK_ONEOFF_HKG_UNLIMITED_15D_FUP30', 'UNLI'),
-('72296a95-60ec-493b-973c-814e00db3a94', 'b3378ac1-e71a-4172-b73a-fda355742af2', 120.0, 30, 52.25, '', 'WW_901O_STACK_ONEOFF_HKG_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Hongrie
-
-('b93f79c9-6d9d-44c9-a6b2-cee9eecbf58d', '81125430-b0dd-4e2a-a90f-6169b00a5afd', 3.0, 15, 4.75, '', 'WW_901O_STACK_ONEOFF_HUNGARY_3GB_15D', 'Go'),
-('b7352be9-181f-491f-bc93-cc7fbf1f2acc', '81125430-b0dd-4e2a-a90f-6169b00a5afd', 10.0, 7, 8.55, '', 'WW_901O_STACK_ONEOFF_HUNGARY_10GB_7D', 'Go'),
-('67736658-bc5a-4f54-a837-fbb94f6e0b6c', '81125430-b0dd-4e2a-a90f-6169b00a5afd', 10.0, 30, 10.45, '', 'WW_901O_STACK_ONEOFF_HUNGARY_10GB_30D', 'Go'),
-('b478aaf6-2b66-4499-a661-231afe3bd392', '81125430-b0dd-4e2a-a90f-6169b00a5afd', 40.0, 7, 22.8, '', 'WW_901O_STACK_ONEOFF_HUNGARY_UNLIMITED_7D_FUP20', 'UNLI'),
-('4a9a8f44-480c-49f4-b42f-1aed57b9aac6', '81125430-b0dd-4e2a-a90f-6169b00a5afd', 50.0, 30, 32.3, '', 'WW_901O_STACK_ONEOFF_HUNGARY_50GB_30D', 'Go'),
-('dbec9557-020b-47d9-bb59-7f89da5be04b', '81125430-b0dd-4e2a-a90f-6169b00a5afd', 60.0, 15, 34.2, '', 'WW_901O_STACK_ONEOFF_HUNGARY_UNLIMITED_15D_FUP30', 'UNLI'),
-
--- Inde
-
-('5782cf23-f998-4904-b85b-6c88cac87dc3', 'c704ae62-138d-46c2-b63e-e584fcaf102d', 1.0, 7, 3.32, '', 'WW_901O_STACK_ONEOFF_IND_1GB_7D', 'Go'),
-('fd470790-3566-47f2-b564-939397dee6dd', 'c704ae62-138d-46c2-b63e-e584fcaf102d', 3.0, 30, 6.65, '', 'WW_901O_STACK_ONEOFF_IND_3GB_30D', 'Go'),
-('f83cf81f-4476-4474-8a57-f83176e8ce49', 'c704ae62-138d-46c2-b63e-e584fcaf102d', 10.0, 7, 12.35, '', 'WW_901O_STACK_ONEOFF_IND_10GB_7D', 'Go'),
-('8ac2d7fa-ed8b-4190-904c-853c0afded60', 'c704ae62-138d-46c2-b63e-e584fcaf102d', 10.0, 30, 14.25, '', 'WW_901O_STACK_ONEOFF_IND_10GB_30D', 'Go'),
-('bee51d70-ee80-4ef0-bb9c-bec0426e1c77', 'c704ae62-138d-46c2-b63e-e584fcaf102d', 25.0, 30, 27.55, '', 'WW_901O_STACK_ONEOFF_INDIA_25GB_30D', 'Go'),
-('ef023146-a3de-4a31-ab34-adacb5407c20', 'c704ae62-138d-46c2-b63e-e584fcaf102d', 50.0, 7, 22.8, '', 'WW_901O_STACK_ONEOFF_IND_UNLIMITED_7D_FUP25', 'UNLI'),
-('f2937d07-6873-40ea-9073-3c4b46bb1ac4', 'c704ae62-138d-46c2-b63e-e584fcaf102d', 50.0, 30, 56.05, '', 'WW_901O_STACK_ONEOFF_IND_50GB_30D', 'Go'),
-('537e8177-3584-43fd-bd73-c487cd220f05', 'c704ae62-138d-46c2-b63e-e584fcaf102d', 60.0, 15, 43.7, '', 'WW_901O_STACK_ONEOFF_IND_UNLIMITED_15D_FUP30', 'UNLI'),
-('e07305a7-6919-4034-b1e3-f5ced0b9e9a7', 'c704ae62-138d-46c2-b63e-e584fcaf102d', 120.0, 30, 64.6, '', 'WW_901O_STACK_ONEOFF_IND_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Indonésie
-
-('9440b72e-2601-4e78-9f04-e5ebaae13033', '8d5b3c0b-7f30-4372-a8bb-08859f172450', 1.0, 7, 3.8, '', 'WW_901O_STACK_ONEOFF_INDONESIA_1GB_7D', 'Go'),
-('2d257cab-c08f-4ec2-a64d-ba375145437e', '8d5b3c0b-7f30-4372-a8bb-08859f172450', 3.0, 15, 6.65, '', 'WW_901O_STACK_ONEOFF_INDONESIA_3GB_15D', 'Go'),
-('424eb7c9-8e67-4f7b-8de7-938296ac0352', '8d5b3c0b-7f30-4372-a8bb-08859f172450', 10.0, 7, 13.3, '', 'WW_901O_STACK_ONEOFF_INDONESIA_10GB_7D', 'Go'),
-('940c8ba6-017c-4486-b012-d89c33fe8740', '8d5b3c0b-7f30-4372-a8bb-08859f172450', 10.0, 30, 15.2, '', 'WW_901O_STACK_ONEOFF_INDONESIA_10GB_30D', 'Go'),
-('84273483-eea0-43ac-a07c-5f17896b6991', '8d5b3c0b-7f30-4372-a8bb-08859f172450', 25.0, 30, 26.6, '', 'WW_901O_STACK_ONEOFF_INDONESIA_25GB_30D', 'Go'),
-('ac744be3-4c4f-4c52-876f-c6bacb0b0031', '8d5b3c0b-7f30-4372-a8bb-08859f172450', 40.0, 7, 22.8, '', 'WW_901O_STACK_ONEOFF_INDONESIA_UNLIMITED_7D_FUP20', 'UNLI'),
-('bb7fd413-e467-4d79-873e-ed0ca0784e1b', '8d5b3c0b-7f30-4372-a8bb-08859f172450', 60.0, 15, 38.0, '', 'WW_901O_STACK_ONEOFF_INDONESIA_UNLIMITED_15D_FUP30', 'UNLI'),
-('54cb51db-e054-447d-b311-f27cd22ed084', '8d5b3c0b-7f30-4372-a8bb-08859f172450', 120.0, 30, 56.05, '', 'WW_901O_STACK_ONEOFF_INDONESIA_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Irak
-
-('6821f9b9-8297-4e44-bac8-45216cbb4df6', '673f0f6e-745b-411e-8900-f13f3275ea21', 3.0, 15, 10.45, '', 'WW_901O_STACK_ONEOFF_IRAQ_3GB_15D', 'Go'),
-('50224900-c9e4-4c7a-a8e4-dd6d17c8eba1', '673f0f6e-745b-411e-8900-f13f3275ea21', 10.0, 30, 20.9, '', 'WW_901O_STACK_ONEOFF_IRAQ_10GB_30D', 'Go'),
-
--- Irlande
-
-('b03f8352-1ee3-49a9-9bac-ea1e76ebbe33', 'f197448d-ed17-4091-94d8-8a932c534aab', 3.0, 15, 6.65, '', 'WW_901O_STACK_ONEOFF_IRELAND_3GB_15D', 'Go'),
-('800e58f5-22c3-424c-8274-939e5c13feae', 'f197448d-ed17-4091-94d8-8a932c534aab', 10.0, 7, 8.55, '', 'WW_901O_STACK_ONEOFF_IRELAND_10GB_7D', 'Go'),
-('e5ed204d-853d-44ce-aa3b-fc406bd5b5d3', 'f197448d-ed17-4091-94d8-8a932c534aab', 10.0, 30, 11.4, '', 'WW_901O_STACK_ONEOFF_IRELAND_10GB_30D', 'Go'),
-('e4833952-781b-4e0a-bdc1-462d943736b2', 'f197448d-ed17-4091-94d8-8a932c534aab', 40.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_IRELAND_UNLIMITED_7D_FUP20', 'UNLI'),
-('6f6927b0-b96d-47ef-b1e4-d800eff51453', 'f197448d-ed17-4091-94d8-8a932c534aab', 50.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_IRELAND_50GB_30D', 'Go'),
-('d3ece54e-834b-4eb2-9522-44bcf74a0786', 'f197448d-ed17-4091-94d8-8a932c534aab', 60.0, 15, 27.55, '', 'WW_901O_STACK_ONEOFF_IRELAND_UNLIMITED_15D_FUP30', 'UNLI'),
-('ba8938b1-60f4-4e57-9493-fe1d2aaa1139', 'f197448d-ed17-4091-94d8-8a932c534aab', 120.0, 30, 46.55, '', 'WW_901O_STACK_ONEOFF_IRELAND_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Islande
-
-('33146399-8ca2-42ef-8ce8-e2bc2a0c928f', '6a2f4266-ddac-4e4c-b3b4-e208c6bceb45', 3.0, 15, 5.7, '', 'WW_901O_STACK_ONEOFF_ICELAND_3GB_15D', 'Go'),
-('0aeac8c0-eb2b-4e6b-9c0b-9345eef0a6be', '6a2f4266-ddac-4e4c-b3b4-e208c6bceb45', 10.0, 7, 10.45, '', 'WW_901O_STACK_ONEOFF_ICELAND_10GB_7D', 'Go'),
-('6acb18ab-c78e-45dd-a557-aeb7c75d623a', '6a2f4266-ddac-4e4c-b3b4-e208c6bceb45', 10.0, 30, 11.4, '', 'WW_901O_STACK_ONEOFF_ICELAND_10GB_30D', 'Go'),
-('c78e9d7e-a11e-406b-a6e8-4f2c417c2bcc', '6a2f4266-ddac-4e4c-b3b4-e208c6bceb45', 40.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_ICELAND_UNLIMITED_7D_FUP20', 'UNLI'),
-('ea14cbb6-43ea-41a9-be87-47013172e1f0', '6a2f4266-ddac-4e4c-b3b4-e208c6bceb45', 50.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_ICELAND_50GB_30D', 'Go'),
-
--- Israël
-
-('efb6dfd0-f9e6-478d-b164-b072e76e7443', '30401a5f-c030-4d51-8210-f7abcb030f4e', 3.0, 30, 5.7, '', 'WW_901O_STACK_ONEOFF_ISRAEL_3GB_30D', 'Go'),
-('4f00fb33-3c89-47b4-a428-d856582b0a2a', '30401a5f-c030-4d51-8210-f7abcb030f4e', 10.0, 7, 9.5, '', 'WW_901O_STACK_ONEOFF_ISRAEL_10GB_7D', 'Go'),
-('6b8d3cc6-1f9d-4db2-abad-c8d4f9fd76c4', '30401a5f-c030-4d51-8210-f7abcb030f4e', 10.0, 30, 11.4, '', 'WW_901O_STACK_ONEOFF_ISRAEL_10GB_30D', 'Go'),
-('41c31a89-6208-40fa-9f59-c2014521747e', '30401a5f-c030-4d51-8210-f7abcb030f4e', 40.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_ISRAEL_UNLIMITED_7D_FUP20', 'UNLI'),
-('9e56e8cb-690b-4829-8445-99ac5b4a64ea', '30401a5f-c030-4d51-8210-f7abcb030f4e', 50.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_ISRAEL_50GB_30D', 'Go'),
-('97d5f093-d84d-499d-9e76-76fc8bd03e55', '30401a5f-c030-4d51-8210-f7abcb030f4e', 60.0, 15, 32.3, '', 'WW_901O_STACK_ONEOFF_ISRAEL_UNLIMITED_15D_FUP30', 'UNLI'),
-('bf1e83ab-691c-44a5-a767-91e536e30d65', '30401a5f-c030-4d51-8210-f7abcb030f4e', 120.0, 30, 46.55, '', 'WW_901O_STACK_ONEOFF_ISRAEL_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Italie
-
-('f7b1323c-c119-4a9c-a477-3626af5280fe', '09815bac-d9a8-4f9f-9aaf-1f9928480480', 3.0, 30, 4.75, '', 'WW_901O_STACK_ONEOFF_ITA_3GB_30D', 'Go'),
-('d1bf991e-5d56-42ab-811d-9c9c235f4e02', '09815bac-d9a8-4f9f-9aaf-1f9928480480', 10.0, 8, 8.55, '', 'WW_901O_STACK_ONEOFF_ITA_10GB_8D', 'Go'),
-('b0879b97-4544-4443-8b36-bb865c064336', '09815bac-d9a8-4f9f-9aaf-1f9928480480', 10.0, 30, 11.4, '', 'WW_901O_STACK_ONEOFF_ITA_10GB_30D', 'Go'),
-('b617f226-433b-44f2-8fdd-ee592b68f883', '09815bac-d9a8-4f9f-9aaf-1f9928480480', 25.0, 30, 18.05, '', 'WW_901O_STACK_ONEOFF_ITA_25GB_30D', 'Go'),
-('c2424845-b8b8-4503-8cf3-616cf2c375cc', '09815bac-d9a8-4f9f-9aaf-1f9928480480', 50.0, 30, 27.55, '', 'WW_901O_STACK_ONEOFF_ITA_50GB_30D', 'Go'),
-('53ddd6a1-b2e7-432b-86d9-b1ec673b0d3b', '09815bac-d9a8-4f9f-9aaf-1f9928480480', 60.0, 15, 23.75, '', 'WW_901O_STACK_ONEOFF_ITA_UNLIMITED_15D_FUP30', 'UNLI'),
-('c6ec4059-5dc0-4846-808f-7507f63cef84', '09815bac-d9a8-4f9f-9aaf-1f9928480480', 120.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_ITA_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Japon
-
-('a08b7a97-221e-4d1b-a97c-05b0babd2ce3', 'fe2547a3-2ab2-49e1-84e3-5a6e265a3f58', 1.0, 30, 3.8, '', 'WW_901O_STACK_ONEOFF_JPN_1GB_30D', 'Go'),
-('5693e20b-e506-4ee7-971b-29f5606e99d8', 'fe2547a3-2ab2-49e1-84e3-5a6e265a3f58', 3.0, 15, 7.12, '', 'WW_901O_STACK_ONEOFF_JPN_3GB_15D', 'Go'),
-('36a1bb9c-0008-4136-87e6-8a048542c45f', 'fe2547a3-2ab2-49e1-84e3-5a6e265a3f58', 10.0, 7, 13.3, '', 'WW_901O_STACK_ONEOFF_JPN_10GB_7D', 'Go'),
-('cd1d3864-2c2f-4a9a-9e0f-00c5f0fe9290', 'fe2547a3-2ab2-49e1-84e3-5a6e265a3f58', 10.0, 30, 15.67, '', 'WW_901O_STACK_ONEOFF_JPN_10GB_30D', 'Go'),
-('a893b40e-c7f1-4e89-abd9-a9a4bf053fd5', 'fe2547a3-2ab2-49e1-84e3-5a6e265a3f58', 25.0, 30, 30.4, '', 'WW_901O_STACK_ONEOFF_JPN_25GB_30D', 'Go'),
-('b9ca223c-e63b-499d-b856-d89d6244dca1', 'fe2547a3-2ab2-49e1-84e3-5a6e265a3f58', 50.0, 7, 23.75, '', 'WW_901O_STACK_ONEOFF_JPN_UNLIMITED_7D_FUP25', 'UNLI'),
-('e3bb2ace-b314-46b1-b832-8c5014064e47', 'fe2547a3-2ab2-49e1-84e3-5a6e265a3f58', 50.0, 30, 52.25, '', 'WW_901O_STACK_ONEOFF_JPN_50GB_30D', 'Go'),
-('d1242b1c-c73b-4aec-b7b2-0339ef76dbb3', 'fe2547a3-2ab2-49e1-84e3-5a6e265a3f58', 60.0, 15, 37.05, '', 'WW_901O_STACK_ONEOFF_JPN_UNLIMITED_15D_FUP30', 'UNLI'),
-('060a4387-3be8-4dc4-9251-1f47914f24a8', 'fe2547a3-2ab2-49e1-84e3-5a6e265a3f58', 120.0, 30, 61.75, '', 'WW_901O_STACK_ONEOFF_JPN_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Jersey, Guernesey & Île de Man
-
-('1dd9e6f3-f4c8-4b85-9b18-b23bc0e771d2', 'e11eaf06-a7b3-4bcb-aa19-00f695b9e272', 1.0, 7, 3.8, '', 'WW_901O_STACK_ONEOFF_JEY-GGY-IMN_1GB_7D', 'Go'),
-('4c42cb0d-2c93-46ac-acae-37ca1c7b7b94', 'e11eaf06-a7b3-4bcb-aa19-00f695b9e272', 3.0, 15, 6.65, '', 'WW_901O_STACK_ONEOFF_JEY-GGY-IMN_3GB_15D', 'Go'),
-('f39212d3-6691-4a4e-a773-f9983943d543', 'e11eaf06-a7b3-4bcb-aa19-00f695b9e272', 10.0, 7, 13.3, '', 'WW_901O_STACK_ONEOFF_JEY-GGY-IMN_10GB_7D', 'Go'),
-('90dd3198-9f3b-48b4-a192-6b76248e8f94', 'e11eaf06-a7b3-4bcb-aa19-00f695b9e272', 10.0, 30, 15.2, '', 'WW_901O_STACK_ONEOFF_JEY-GGY-IMN_10GB_30D', 'Go'),
-('e7bb97f5-1c28-4ef9-b70d-8f271343e6d4', 'e11eaf06-a7b3-4bcb-aa19-00f695b9e272', 40.0, 7, 23.75, '', 'WW_901O_STACK_ONEOFF_JEY-GGY-IMN2_UNLIMITED_7D_FUP20', 'UNLI'),
-('58eefc1f-e5ea-4cc1-b41b-91596b73d51c', 'e11eaf06-a7b3-4bcb-aa19-00f695b9e272', 60.0, 15, 37.05, '', 'WW_901O_STACK_ONEOFF_JEY-GGY-IMN_UNLIMITED_15D_FUP30', 'UNLI'),
-
--- Jordanie
-
-('c7046bfc-6261-46b5-a27c-0c7b6900d5c9', '0c2281a3-3b02-4875-9663-40847e1c5bf7', 1.0, 7, 7.6, '', 'WW_901O_STACK_ONEOFF_JORDAN_1GB_7D', 'Go'),
-('2222e4c7-0c05-49a0-ac74-1ddd9d7662d8', '0c2281a3-3b02-4875-9663-40847e1c5bf7', 3.0, 15, 15.2, '', 'WW_901O_STACK_ONEOFF_JORDAN_3GB_15D', 'Go'),
-('9a63fcae-9888-4748-bfa5-79740f4715ff', '0c2281a3-3b02-4875-9663-40847e1c5bf7', 10.0, 30, 32.3, '', 'WW_901O_STACK_ONEOFF_JORDAN_10GB_30D', 'Go'),
-
--- Kazakhstan
-
-('5e35a25f-92e7-4867-b2ed-3f078d6db32f', 'd82a6d65-7c19-4b61-a1a9-5c2d3f0bc3a0', 1.0, 7, 5.7, '', 'WW_901O_STACK_ONEOFF_KAZ_1GB_7D', 'Go'),
-('f16394f5-2aa1-4889-a785-2e4a65b30953', 'd82a6d65-7c19-4b61-a1a9-5c2d3f0bc3a0', 3.0, 15, 8.55, '', 'WW_901O_STACK_ONEOFF_KAZ_3GB_15D', 'Go'),
-('3f6d5f48-5cec-4877-9b7e-db82d73c9a46', 'd82a6d65-7c19-4b61-a1a9-5c2d3f0bc3a0', 10.0, 7, 16.15, '', 'WW_901O_STACK_ONEOFF_KAZ_10GB_7D', 'Go'),
-('7481b66a-8fcc-4e4d-90b2-d2d3a658638b', 'd82a6d65-7c19-4b61-a1a9-5c2d3f0bc3a0', 10.0, 30, 18.05, '', 'WW_901O_STACK_ONEOFF_KAZ_10GB_30D', 'Go'),
-('e195d9b2-1fd5-4412-bfd0-522fb0443a59', 'd82a6d65-7c19-4b61-a1a9-5c2d3f0bc3a0', 25.0, 30, 46.55, '', 'WW_901O_STACK_ONEOFF_KAZ_25GB_30D', 'Go'),
-('f086cfaf-19f7-433c-8789-8d8d9b52d7dc', 'd82a6d65-7c19-4b61-a1a9-5c2d3f0bc3a0', 40.0, 7, 27.55, '', 'WW_901O_STACK_ONEOFF_KAZ_UNLIMITED_7D_FUP20', 'UNLI'),
-('09edb5f2-b807-4c2a-be1b-c16d20ad983a', 'd82a6d65-7c19-4b61-a1a9-5c2d3f0bc3a0', 60.0, 15, 46.55, '', 'WW_901O_STACK_ONEOFF_KAZ_UNLIMITED_15D_FUP30', 'UNLI'),
-
--- Kenya
-
-('74a6643b-a3c7-4f6a-ba0a-a797c5cb19a0', '2af7024e-0176-42cb-b595-9cfcb49b3a06', 1.0, 7, 8.55, '', 'WW_901O_STACK_ONEOFF_KENYA_1GB_7D', 'Go'),
-('ca1f0fa5-93c5-464a-936e-f8ce36ea568a', '2af7024e-0176-42cb-b595-9cfcb49b3a06', 3.0, 15, 18.05, '', 'WW_901O_STACK_ONEOFF_KENYA_3GB_15D', 'Go'),
-('b3769bb6-5e2d-42b3-91db-e09545b139dc', '2af7024e-0176-42cb-b595-9cfcb49b3a06', 10.0, 7, 37.05, '', 'WW_901O_STACK_ONEOFF_KENYA_10GB_7D', 'Go'),
-('0478feaa-25b6-4b55-9814-70f9222a1299', '2af7024e-0176-42cb-b595-9cfcb49b3a06', 10.0, 30, 39.9, '', 'WW_901O_STACK_ONEOFF_KENYA_10GB_30D', 'Go'),
-('c470077a-f2dd-4d96-868e-bbc41af58236', '2af7024e-0176-42cb-b595-9cfcb49b3a06', 40.0, 7, 56.05, '', 'WW_901O_STACK_ONEOFF_KENYA_UNLIMITED_7D_FUP20', 'UNLI'),
-('2d921bb6-579b-4dc7-a5ca-69047029e58c', '2af7024e-0176-42cb-b595-9cfcb49b3a06', 60.0, 15, 83.6, '', 'WW_901O_STACK_ONEOFF_KENYA_UNLIMITED_15D_FUP30', 'UNLI'),
-
--- Kirghizistan
-
-('10859e57-22c3-4165-997d-ba770b56672e', '601ef2d4-ce42-4620-b7f3-551ef4a910a6', 1.0, 7, 5.7, '', 'WW_901O_STACK_ONEOFF_KGZ_1GB_7D', 'Go'),
-('6bb7e189-9883-4d5a-a9db-13d49ec82b48', '601ef2d4-ce42-4620-b7f3-551ef4a910a6', 3.0, 15, 8.55, '', 'WW_901O_STACK_ONEOFF_KGZ_3GB_15D', 'Go'),
-('0b3c513a-8a32-478c-8355-29794a84f9c1', '601ef2d4-ce42-4620-b7f3-551ef4a910a6', 10.0, 7, 16.15, '', 'WW_901O_STACK_ONEOFF_KGZ_10GB_7D', 'Go'),
-('dc450d53-be0a-4b39-9202-c2dca5a2bb84', '601ef2d4-ce42-4620-b7f3-551ef4a910a6', 10.0, 30, 18.05, '', 'WW_901O_STACK_ONEOFF_KGZ_10GB_30D', 'Go'),
-('25811b84-73a6-4fdb-94ec-064fcdefff6e', '601ef2d4-ce42-4620-b7f3-551ef4a910a6', 25.0, 30, 46.55, '', 'WW_901O_STACK_ONEOFF_KGZ_25GB_30D', 'Go'),
-('82707c1d-c477-4bd8-8493-426601688dc4', '601ef2d4-ce42-4620-b7f3-551ef4a910a6', 40.0, 7, 27.55, '', 'WW_901O_STACK_ONEOFF_KGZ_UNLIMITED_7D_FUP20', 'UNLI'),
-('16eba399-e803-41dd-8428-12c8de72bfbe', '601ef2d4-ce42-4620-b7f3-551ef4a910a6', 60.0, 15, 46.55, '', 'WW_901O_STACK_ONEOFF_KGZ_UNLIMITED_15D_FUP30', 'UNLI'),
-
--- Koweït
-
-('2f6d8fed-8731-42b3-9a13-31287aa4fbc0', 'ff3bf3ce-7219-42db-89d7-43adbc1a263b', 1.0, 7, 5.7, '', 'WW_901O_STACK_ONEOFF_KUWAIT_1GB_7D', 'Go'),
-('6d4dd030-1df4-4753-a5ce-123dfac54c76', 'ff3bf3ce-7219-42db-89d7-43adbc1a263b', 3.0, 15, 11.4, '', 'WW_901O_STACK_ONEOFF_KUWAIT_3GB_15D', 'Go'),
-('50ff8dfc-4a8f-437a-931e-6396d237f50e', 'ff3bf3ce-7219-42db-89d7-43adbc1a263b', 10.0, 7, 22.8, '', 'WW_901O_STACK_ONEOFF_KUWAIT_10GB_7D', 'Go'),
-('1f5d45a7-4caf-4c1a-af47-926f51785602', 'ff3bf3ce-7219-42db-89d7-43adbc1a263b', 10.0, 30, 25.65, '', 'WW_901O_STACK_ONEOFF_KUWAIT_10GB_30D', 'Go'),
-('a27c1dbc-3390-4f07-ab3b-c862b759e4bb', 'ff3bf3ce-7219-42db-89d7-43adbc1a263b', 40.0, 7, 24.7, '', 'WW_901O_STACK_ONEOFF_KUWAIT_UNLIMITED_7D_FUP20', 'UNLI'),
-('7f26c4f1-c274-4540-b83b-2530a0fbb23b', 'ff3bf3ce-7219-42db-89d7-43adbc1a263b', 60.0, 15, 42.75, '', 'WW_901O_STACK_ONEOFF_KUWAIT_UNLIMITED_15D_FUP30', 'UNLI'),
-
--- Lettonie
-
-('0c94766b-620e-4dea-8158-93c1f9785a5e', 'fcff9806-45b3-471b-89ec-d4716f90d013', 10.0, 7, 8.55, '', 'WW_901O_STACK_ONEOFF_LATVIA_10GB_7D', 'Go'),
-('cfa24429-7f70-40a9-b124-5aa95494f8ed', 'fcff9806-45b3-471b-89ec-d4716f90d013', 10.0, 30, 10.45, '', 'WW_901O_STACK_ONEOFF_LATVIA_10GB_30D', 'Go'),
-('1f472220-4e5e-45f6-92b9-405fbacb6a72', 'fcff9806-45b3-471b-89ec-d4716f90d013', 40.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_LATVIA_UNLIMITED_7D_FUP20', 'UNLI'),
-('0af572a0-deeb-4ffa-922b-9cf9fc2017aa', 'fcff9806-45b3-471b-89ec-d4716f90d013', 50.0, 30, 30.4, '', 'WW_901O_STACK_ONEOFF_LATVIA_50GB_30D', 'Go'),
-('79d9ac93-ae66-442c-bf65-e3b411af297f', 'fcff9806-45b3-471b-89ec-d4716f90d013', 60.0, 15, 27.55, '', 'WW_901O_STACK_ONEOFF_LATVIA_UNLIMITED_15D_FUP30', 'UNLI'),
-('60d01ef2-b1fd-4543-9972-f264a53ae8a9', 'fcff9806-45b3-471b-89ec-d4716f90d013', 120.0, 30, 46.55, '', 'WW_901O_STACK_ONEOFF_LATVIA_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Lituanie
-
-('68a8ca68-a02f-459a-a520-5b3310a1b0ed', '91fca936-4213-418b-9121-01faebcc45ef', 10.0, 7, 6.65, '', 'WW_901O_STACK_ONEOFF_LITHUANIA_10GB_7D', 'Go'),
-('f29fb070-2abe-4993-a08c-ecc2934c6f03', '91fca936-4213-418b-9121-01faebcc45ef', 10.0, 30, 8.55, '', 'WW_901O_STACK_ONEOFF_LITHUANIA_10GB_30D', 'Go'),
-('9ba5c148-af92-40da-8f3e-b767e5594d34', '91fca936-4213-418b-9121-01faebcc45ef', 25.0, 30, 18.05, '', 'WW_901O_STACK_ONEOFF_LITHUANIA_25GB_30D', 'Go'),
-('b985fcc7-48b9-4c18-b437-dc7106be44ab', '91fca936-4213-418b-9121-01faebcc45ef', 40.0, 7, 14.25, '', 'WW_901O_STACK_ONEOFF_LITHUANIA_UNLIMITED_7D_FUP20', 'UNLI'),
-('3389a636-ecd6-428f-9746-a25169309bc8', '91fca936-4213-418b-9121-01faebcc45ef', 60.0, 15, 27.55, '', 'WW_901O_STACK_ONEOFF_LITHUANIA_UNLIMITED_15D_FUP30', 'UNLI'),
-('a4c20cd1-17a0-46f0-8dff-4dff8428a658', '91fca936-4213-418b-9121-01faebcc45ef', 120.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_LITHUANIA_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Luxembourg
-
-('be64e4cd-186a-454d-8fb2-458a725a5dfc', '5955df61-0197-4e53-85ff-ba92c3289ebc', 3.0, 15, 4.75, '', 'WW_901O_STACK_ONEOFF_LUXEMBOURG_3GB_15D', 'Go'),
-('6e8ea168-4cfa-4003-936f-8edad1968fe9', '5955df61-0197-4e53-85ff-ba92c3289ebc', 10.0, 7, 9.5, '', 'WW_901O_STACK_ONEOFF_LUXEMBOURG_10GB_7D', 'Go'),
-
--- Macao
-
-('e437fe8c-0031-4dbc-97d1-e5e393dd7e5d', 'fc9e9738-ece0-426b-99e9-af330604674f', 3.0, 15, 7.6, '', 'WW_901O_STACK_ONEOFF_MAC_3GB_15D', 'Go'),
-('c489eac0-fccf-45a3-8d05-f45e9b834064', 'fc9e9738-ece0-426b-99e9-af330604674f', 10.0, 7, 13.3, '', 'WW_901O_STACK_ONEOFF_MAC_10GB_7D', 'Go'),
-('ebf7379f-bfc4-4b49-a21d-72b914814fec', 'fc9e9738-ece0-426b-99e9-af330604674f', 10.0, 30, 15.2, '', 'WW_901O_STACK_ONEOFF_MAC_10GB_30D', 'Go'),
-('6aaa9744-c988-4186-b653-0e1bc6a54437', 'fc9e9738-ece0-426b-99e9-af330604674f', 25.0, 30, 27.55, '', 'WW_901O_STACK_ONEOFF_MAC_25GB_30D', 'Go'),
-('54fd24b1-944f-4ebf-87b0-582477b99d6a', 'fc9e9738-ece0-426b-99e9-af330604674f', 40.0, 7, 24.7, '', 'WW_901O_STACK_ONEOFF_MAC_UNLIMITED_7D_FUP20', 'UNLI'),
-('c1820c36-9c33-4a91-9dce-31fc84e35a07', 'fc9e9738-ece0-426b-99e9-af330604674f', 60.0, 15, 46.55, '', 'WW_901O_STACK_ONEOFF_MAC_UNLIMITED_15D_FUP30', 'UNLI'),
-
--- Macédoine du Nord
-
-('dcc1d2db-a8ef-4ce1-8dbf-2802bcf002eb', '0dee01ad-1df3-4ce9-b355-25bec805ec91', 1.0, 7, 6.65, '', 'WW_901O_STACK_ONEOFF_MACEDONIA_1GB_7D', 'Go'),
-('d756752b-4ff2-43b6-ae43-b5ee622f3682', '0dee01ad-1df3-4ce9-b355-25bec805ec91', 3.0, 15, 17.1, '', 'WW_901O_STACK_ONEOFF_MACEDONIA_3GB_15D', 'Go'),
-
--- Madagascar
-
-('a335e82b-b657-42c4-8ff9-034c8a438513', 'c36b3ba2-e433-4a4d-bceb-46171388bb28', 1.0, 7, 5.7, '', 'WW_901O_STACK_ONEOFF_MDG_1GB_7D', 'Go'),
-('375c7bbe-5bb4-4442-b789-0afc3c814951', 'c36b3ba2-e433-4a4d-bceb-46171388bb28', 3.0, 15, 13.3, '', 'WW_901O_STACK_ONEOFF_MDG_3GB_15D', 'Go'),
-('7e69da3a-d575-45a8-b282-fb5fc22eec38', 'c36b3ba2-e433-4a4d-bceb-46171388bb28', 10.0, 7, 24.7, '', 'WW_901O_STACK_ONEOFF_MDG_10GB_7D', 'Go'),
-('4915ec21-bd1d-4730-8e19-d865b7d7515a', 'c36b3ba2-e433-4a4d-bceb-46171388bb28', 10.0, 30, 27.55, '', 'WW_901O_STACK_ONEOFF_MDG_10GB_30D', 'Go'),
-
--- Malaisie
-
-('a5de25bd-63e0-464b-a058-8f7527f1ef42', 'a44d6f2f-61cc-4a05-b984-568c02f6f111', 3.0, 15, 5.7, '', 'WW_901O_STACK_ONEOFF_MALAYSIA_3GB_15D', 'Go'),
-('5c44ee7f-0126-4857-9acd-f65d9ef840c8', 'a44d6f2f-61cc-4a05-b984-568c02f6f111', 10.0, 7, 10.45, '', 'WW_901O_STACK_ONEOFF_MALAYSIA_10GB_7D', 'Go'),
-('7a35a62e-9446-4b45-8196-695bf9aaeb2a', 'a44d6f2f-61cc-4a05-b984-568c02f6f111', 10.0, 30, 11.4, '', 'WW_901O_STACK_ONEOFF_MALAYSIA_10GB_30D', 'Go'),
-('514a163b-1858-47fd-aafa-44310d40119d', 'a44d6f2f-61cc-4a05-b984-568c02f6f111', 25.0, 30, 20.9, '', 'WW_901O_STACK_ONEOFF_MALAYSIA_25GB_30D', 'Go'),
-('77c9dfa7-9f8f-4f29-a736-3ea9a425ada1', 'a44d6f2f-61cc-4a05-b984-568c02f6f111', 40.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_MALAYSIA_UNLIMITED_7D_FUP20', 'UNLI'),
-('5806d766-ba70-49a2-b0c1-2ca3fc6d6038', 'a44d6f2f-61cc-4a05-b984-568c02f6f111', 60.0, 15, 27.55, '', 'WW_901O_STACK_ONEOFF_MALAYSIA_UNLIMITED_15D_FUP30', 'UNLI'),
-('46169ddb-7b8b-4f35-983d-fd2953cdbc8d', 'a44d6f2f-61cc-4a05-b984-568c02f6f111', 120.0, 30, 46.55, '', 'WW_901O_STACK_ONEOFF_MALAYSIA_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Malaisie & Singapour
-
-('3aeff6cf-28e7-40e4-9966-f311873b7558', 'af3cfa07-0c05-45da-aa01-b0f8a54df2ed', 1.0, 7, 6.65, '', 'WW_901O_STACK_ONEOFF_MYS_SGP_1GB_7D', 'Go'),
-('b7ef42e9-f54e-4d45-8941-e19b10a63b6b', 'af3cfa07-0c05-45da-aa01-b0f8a54df2ed', 3.0, 15, 11.4, '', 'WW_901O_STACK_ONEOFF_MYS_SGP_3GB_15D', 'Go'),
-('75d9a0e1-e254-43d7-81ed-870d004f1e36', 'af3cfa07-0c05-45da-aa01-b0f8a54df2ed', 10.0, 30, 16.15, '', 'WW_901O_STACK_ONEOFF_MYS_SGP_10GB_30D', 'Go'),
-
--- Malawi
-
-('317f9755-45c1-4614-b58d-e3cb7c3a7f45', 'c3e18708-3553-4175-9587-6e2281101020', 1.0, 7, 17.1, '', 'WW_901O_STACK_ONEOFF_MALAWI_1GB_7D', 'Go'),
-('429b67b7-85de-4985-b87a-3bca3bcf8804', 'c3e18708-3553-4175-9587-6e2281101020', 3.0, 15, 32.3, '', 'WW_901O_STACK_ONEOFF_MALAWI_3GB_15D', 'Go'),
-
--- Mali
-
-('87b200f8-c2ce-481e-aba7-999513f57361', '4c47c065-c066-4e24-ad4e-963da4de4be6', 1.0, 7, 5.7, '', 'WW_901O_STACK_ONEOFF_MALI_1GB_7D', 'Go'),
-('c28891b3-134c-493a-ab12-7410579db2fe', '4c47c065-c066-4e24-ad4e-963da4de4be6', 3.0, 15, 13.3, '', 'WW_901O_STACK_ONEOFF_MALI_3GB_15D', 'Go'),
-('78d48cc1-73d2-47fd-8f4f-27ce4af76d52', '4c47c065-c066-4e24-ad4e-963da4de4be6', 10.0, 7, 37.05, '', 'WW_901O_STACK_ONEOFF_MALI_10GB_7D', 'Go'),
-('420becbc-139f-43b2-b9b4-583308539619', '4c47c065-c066-4e24-ad4e-963da4de4be6', 10.0, 30, 27.55, '', 'WW_901O_STACK_ONEOFF_MALI_10GB_30D', 'Go'),
-
--- Malte
-
-('50402a90-d643-4b92-a6d0-00aedbed61fb', '1ede8fa4-4262-4136-8ad7-2058de17a117', 3.0, 15, 5.7, '', 'WW_901O_STACK_ONEOFF_MALTA_3GB_15D', 'Go'),
-('9d0d572e-dba2-4e6c-ab1b-7bff338fc953', '1ede8fa4-4262-4136-8ad7-2058de17a117', 10.0, 7, 8.55, '', 'WW_901O_STACK_ONEOFF_MALTA_10GB_7D', 'Go'),
-('e182c795-65a0-4840-a4cc-7acf4337d029', '1ede8fa4-4262-4136-8ad7-2058de17a117', 10.0, 30, 11.4, '', 'WW_901O_STACK_ONEOFF_MALTA_10GB_30D', 'Go'),
-('3e42cd29-2519-4468-b73a-878382a06c78', '1ede8fa4-4262-4136-8ad7-2058de17a117', 40.0, 7, 22.8, '', 'WW_901O_STACK_ONEOFF_MALTA_UNLIMITED_7D_FUP20', 'UNLI'),
-('a64717b8-ec8d-4889-8986-08b5c401b109', '1ede8fa4-4262-4136-8ad7-2058de17a117', 50.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_MALTA_50GB_30D', 'Go'),
-('bb55f43b-18a8-471c-826d-99216eb1f7f0', '1ede8fa4-4262-4136-8ad7-2058de17a117', 60.0, 15, 27.55, '', 'WW_901O_STACK_ONEOFF_MALTA_UNLIMITED_15D_FUP30', 'UNLI'),
-('3eb4c3fc-eeee-4fa1-84a6-b939bd971040', '1ede8fa4-4262-4136-8ad7-2058de17a117', 120.0, 30, 46.55, '', 'WW_901O_STACK_ONEOFF_MALTA_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Maroc
-
-('eb534544-76d6-47f1-81fb-5df3fb46f80a', '20a7b210-b291-4913-8932-de05a4a17fd7', 1.0, 7, 5.7, '', 'WW_901O_STACK_ONEOFF_MOROCCO_1GB_7D', 'Go'),
-('eaf6fdd5-87a7-470e-81bf-71cf5a8ef825', '20a7b210-b291-4913-8932-de05a4a17fd7', 3.0, 15, 13.3, '', 'WW_901O_STACK_ONEOFF_MOROCCO_3GB_15D', 'Go'),
-('3d765db5-4910-4ee8-b5bf-25089fcbfca1', '20a7b210-b291-4913-8932-de05a4a17fd7', 10.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_MOROCCO_10GB_7D', 'Go'),
-('d67503bc-4357-4cac-9d28-8e3c4f0d9bad', '20a7b210-b291-4913-8932-de05a4a17fd7', 10.0, 30, 21.85, '', 'WW_901O_STACK_ONEOFF_MOROCCO_10GB_30D', 'Go'),
-('3090ea2c-ba2f-43a1-8738-8c742e847d71', '20a7b210-b291-4913-8932-de05a4a17fd7', 25.0, 30, 42.75, '', 'WW_901O_STACK_ONEOFF_MOROCCO_25GB_30D', 'Go'),
-('fad276f8-6c63-490d-be22-927ebf97b680', '20a7b210-b291-4913-8932-de05a4a17fd7', 50.0, 7, 23.75, '', 'WW_901O_STACK_ONEOFF_MOROCCO_UNLIMITED_7D_FUP25', 'UNLI'),
-('da19953d-da19-4e64-b8bd-69e8b919dda6', '20a7b210-b291-4913-8932-de05a4a17fd7', 60.0, 15, 42.75, '', 'WW_901O_STACK_ONEOFF_MOROCCO_UNLIMITED_15D_FUP30', 'UNLI'),
-('5ce4f867-5026-4b66-af5b-231853cbae06', '20a7b210-b291-4913-8932-de05a4a17fd7', 120.0, 30, 65.55, '', 'WW_901O_STACK_ONEOFF_MOROCCO_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Martinique
-
-('7e2ff748-fbfa-416e-a237-1eea7fb014be', '3e418e21-0282-4d16-9a75-da6874d50698', 1.0, 7, 3.8, '', 'WW_901O_STACK_ONEOFF_MARTINIQUE_1GB_7D', 'Go'),
-('87e2f924-7610-49e9-b813-db1df05c095b', '3e418e21-0282-4d16-9a75-da6874d50698', 3.0, 15, 7.6, '', 'WW_901O_STACK_ONEOFF_MARTINIQUE_3GB_15D', 'Go'),
-
--- Maurice
-
-('c4845449-e4f9-4387-b35d-e796f189edaf', '2dcc8be7-f717-4749-a4aa-170b2fa1e160', 1.0, 7, 4.75, '', 'WW_901O_STACK_ONEOFF_MAURITIUS_1GB_7D', 'Go'),
-('30a0a75c-63bc-462d-af0d-836bef996670', '2dcc8be7-f717-4749-a4aa-170b2fa1e160', 3.0, 15, 9.5, '', 'WW_901O_STACK_ONEOFF_MAURITIUS_3GB_15D', 'Go'),
-('3809ee08-bd71-48c1-b035-362948226261', '2dcc8be7-f717-4749-a4aa-170b2fa1e160', 10.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_MAURITIUS_10GB_7D', 'Go'),
-('2935d59c-e4f1-4b9b-8acb-a929fdcca246', '2dcc8be7-f717-4749-a4aa-170b2fa1e160', 10.0, 30, 20.9, '', 'WW_901O_STACK_ONEOFF_MAURITIUS_10GB_30D', 'Go'),
-('97bcb58c-d5ce-4712-9878-382f33fd857b', '2dcc8be7-f717-4749-a4aa-170b2fa1e160', 40.0, 7, 27.55, '', 'WW_901O_STACK_ONEOFF_MAURITIUS_UNLIMITED_7D_FUP20', 'UNLI'),
-('fde3ec1e-3461-4a09-9a2c-8894f83196be', '2dcc8be7-f717-4749-a4aa-170b2fa1e160', 60.0, 15, 52.25, '', 'WW_901O_STACK_ONEOFF_MAURITIUS_UNLIMITED_15D_FUP30', 'UNLI'),
-
--- Mauritanie
-
-('5b8774b8-a206-4014-a139-e27396d8c4da', 'b82bde93-00a9-4d61-9111-7a29f0433642', 1.0, 7, 11.4, '', 'WW_901O_STACK_ONEOFF_MAURITANIA_1GB_7D', 'Go'),
-('b23dfb03-4399-406a-8bc4-e2502c33662d', 'b82bde93-00a9-4d61-9111-7a29f0433642', 3.0, 15, 22.8, '', 'WW_901O_STACK_ONEOFF_MAURITANIA_3GB_15D', 'Go'),
-
--- Mayotte
-
-('f6a577d5-b317-4d51-890c-2382d042ac45', '507f3503-1f2d-4428-a46d-a82e2fad56ce', 1.0, 7, 5.7, '', 'WW_901O_STACK_ONEOFF_MAYOTTE_1GB_7D', 'Go'),
-('a862292b-70cc-49a9-8628-c1740be65dbb', '507f3503-1f2d-4428-a46d-a82e2fad56ce', 3.0, 15, 13.3, '', 'WW_901O_STACK_ONEOFF_MAYOTTE_3GB_15D', 'Go'),
-
--- Mexique
-
-('73e8903f-3f09-4fbf-92f8-bacaf3b38b32', 'f50b53f8-ab49-4b71-9226-727124563dce', 1.0, 30, 4.75, '', 'WW_901O_STACK_ONEOFF_MEXICO_1GB_30D', 'Go'),
-('03037495-af49-45d8-abe8-1c892558321b', 'f50b53f8-ab49-4b71-9226-727124563dce', 3.0, 30, 9.5, '', 'WW_901O_STACK_ONEOFF_MEXICO_3GB_30D', 'Go'),
-('8821ac87-fb69-4541-b15c-bff203ab5b4a', 'f50b53f8-ab49-4b71-9226-727124563dce', 10.0, 7, 27.55, '', 'WW_901O_STACK_ONEOFF_MEXICO_10GB_7D', 'Go'),
-('f00899a0-3250-4945-b5ac-7bdbf18ac15c', 'f50b53f8-ab49-4b71-9226-727124563dce', 10.0, 30, 33.25, '', 'WW_901O_STACK_ONEOFF_MEXICO_10GB_30D', 'Go'),
-('1145490c-46d5-446e-b2fb-b15bb8c5bf57', 'f50b53f8-ab49-4b71-9226-727124563dce', 40.0, 7, 46.55, '', 'WW_901O_STACK_ONEOFF_MEXICO_UNLIMITED_7D_FUP20', 'UNLI'),
-('9f4dcdba-3fdb-43c7-94c3-d175c7aab024', 'f50b53f8-ab49-4b71-9226-727124563dce', 500.0, 2, 2.85, '', 'WW_901O_STACK_ONEOFF_MEXICO_500MB_2D', 'Mo'),
-
--- Moldavie
-
-('c1c9971e-bd8b-4f7b-bcb0-d1477799729c', '4fe9ee34-3e98-4dd6-a484-2272c3bf7261', 3.0, 15, 5.7, '', 'WW_901O_STACK_ONEOFF_MOLDOVA_3GB_15D', 'Go'),
-('765759c5-8a4e-43d0-8a55-6efccf2bfd4a', '4fe9ee34-3e98-4dd6-a484-2272c3bf7261', 10.0, 7, 10.45, '', 'WW_901O_STACK_ONEOFF_MOLDOVA_10GB_7D', 'Go'),
-('9bfa2a17-1585-4ce9-9d90-2b39d1c32097', '4fe9ee34-3e98-4dd6-a484-2272c3bf7261', 10.0, 30, 14.25, '', 'WW_901O_STACK_ONEOFF_MOLDOVA_10GB_30D', 'Go'),
-('cbf08f76-a961-4c22-862b-dd3de0806ee3', '4fe9ee34-3e98-4dd6-a484-2272c3bf7261', 25.0, 30, 29.45, '', 'WW_901O_STACK_ONEOFF_MOLDOVA_25GB_30D', 'Go'),
-('e4722ba7-caf6-4912-a4f3-150d99ea903b', '4fe9ee34-3e98-4dd6-a484-2272c3bf7261', 50.0, 30, 53.2, '', 'WW_901O_STACK_ONEOFF_MOLDOVA_50GB_30D', 'Go'),
-
--- Monde (179 pays)
-
-('76d880fc-4570-4f62-a644-23327cf118bf', '63adfa4b-f6a1-4064-b34b-1dae578c03ef', 1.0, 30, 8.55, '', 'WW_901O_STACK_ONEOFF_BEST_WORLD_1GB_30D', 'Go'),
-('1d42ae19-6014-4eb5-9b26-875f7364c077', '63adfa4b-f6a1-4064-b34b-1dae578c03ef', 3.0, 30, 18.05, '', 'WW_901O_STACK_ONEOFF_BEST_WORLD_3GB_30D', 'Go'),
-('3d15ea0d-e441-4a90-9ebd-25424c460cc5', '63adfa4b-f6a1-4064-b34b-1dae578c03ef', 10.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_BEST_WORLD_10GB_30D', 'Go'),
-('56f9b2b8-78ae-47d5-83be-18254de43d99', '63adfa4b-f6a1-4064-b34b-1dae578c03ef', 25.0, 90, 56.05, '', 'WW_901O_STACK_ONEOFF_BEST_WORLD_25GB_3M', 'Go'),
-('f07dc256-479d-4fcd-a4de-eaea0f95f716', '63adfa4b-f6a1-4064-b34b-1dae578c03ef', 50.0, 8, 46.55, '', 'WW_901O_STACK_ONEOFF_BEST_WORLD_UNLIMITED_8D_FUP25', 'UNLI'),
-('18a5967d-245d-489b-b539-903bba6c6aa6', '63adfa4b-f6a1-4064-b34b-1dae578c03ef', 50.0, 180, 94.05, '', 'WW_901O_STACK_ONEOFF_BEST_WORLD_50GB_6M', 'Go'),
-('f23a48dd-5bda-4a4a-8ac7-4cc1039d210d', '63adfa4b-f6a1-4064-b34b-1dae578c03ef', 60.0, 15, 73.15, '', 'WW_901O_STACK_ONEOFF_BEST_WORLD_UNLIMITED_15D_FUP30', 'UNLI'),
-('d413c126-afe6-4cff-9d44-f63d87dccd0f', '63adfa4b-f6a1-4064-b34b-1dae578c03ef', 120.0, 30, 113.05, '', 'WW_901O_STACK_ONEOFF_BEST_WORLD_UNLIMITED_30D_FUP60', 'UNLI'),
-('66d1cbfa-62c3-492a-9646-4643ed98d08c', '63adfa4b-f6a1-4064-b34b-1dae578c03ef', 500.0, 30, 4.75, '', 'WW_901O_STACK_ONEOFF_BEST_WORLD_500MB_30D', 'Mo'),
-
--- Monde (202 pays)
-
-('804c476a-7c63-4f77-b365-20e49511b382', '8df03d84-b222-41f2-8560-a268aa57ef94', 1.0, 30, 15.2, '', 'WW_901O_STACK_ONEOFF_WORLD2_1GB_30D', 'Go'),
-('ea01803c-77ea-4b0e-abf3-c64aad4acc3a', '8df03d84-b222-41f2-8560-a268aa57ef94', 3.0, 30, 24.7, '', 'WW_901O_STACK_ONEOFF_WORLD2_3GB_30D', 'Go'),
-('8f6309a7-1096-4616-9f2a-1595beec35c1', '8df03d84-b222-41f2-8560-a268aa57ef94', 10.0, 30, 56.05, '', 'WW_901O_STACK_ONEOFF_WORLD2_10GB_30D', 'Go'),
-('aa91cfeb-fa33-4d83-875f-49775464b589', '8df03d84-b222-41f2-8560-a268aa57ef94', 25.0, 90, 121.6, '', 'WW_901O_STACK_ONEOFF_WORLD2_25GB_3M', 'Go'),
-('3be0e033-abe0-459f-bea8-6f9e1a5d6b43', '8df03d84-b222-41f2-8560-a268aa57ef94', 50.0, 180, 178.6, '', 'WW_901O_STACK_ONEOFF_WORLD2_50GB_6M', 'Go'),
-('77ddafee-910a-4cf0-baaf-0191066e55f6', '8df03d84-b222-41f2-8560-a268aa57ef94', 500.0, 1, 7.6, '', 'WW_901O_STACK_ONEOFF_WORLD2_500MB_1D', 'Mo'),
-('2bde36c0-6f73-4272-bfe6-93f557f83832', '8df03d84-b222-41f2-8560-a268aa57ef94', 500.0, 30, 8.55, '', 'WW_901O_STACK_ONEOFF_WORLD2_500MB_30D', 'Mo'),
-
--- Mongolie
-
-('7f25358a-28a9-4320-8cdb-ced9233e1cc8', '0d75c093-7466-476c-a75f-d87f621eb86d', 1.0, 7, 15.2, '', 'WW_901O_STACK_ONEOFF_MONGOLIA_1GB_7D', 'Go'),
-('49f26109-bc77-4fc2-b200-0abc358580f3', '0d75c093-7466-476c-a75f-d87f621eb86d', 3.0, 15, 30.4, '', 'WW_901O_STACK_ONEOFF_MONGOLIA_3GB_15D', 'Go'),
-
--- Monténégro
-
-('95862e3b-3f23-4102-b8da-d0be104d3789', '385aeecb-fb20-47e6-bbf9-dfb6e506cc88', 1.0, 7, 4.75, '', 'WW_901O_STACK_ONEOFF_MONTENEGRO_1GB_7D', 'Go'),
-('fd3ed2a2-d3ec-4d1c-b4b7-84a9fbde4ca8', '385aeecb-fb20-47e6-bbf9-dfb6e506cc88', 3.0, 15, 8.55, '', 'WW_901O_STACK_ONEOFF_MONTENEGRO_3GB_15D', 'Go'),
-('11c71f83-fc79-437d-8839-c6433861537a', '385aeecb-fb20-47e6-bbf9-dfb6e506cc88', 10.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_MONTENEGRO_10GB_7D', 'Go'),
-('32e42699-8842-4b32-8f41-db376b98ad72', '385aeecb-fb20-47e6-bbf9-dfb6e506cc88', 10.0, 30, 19.95, '', 'WW_901O_STACK_ONEOFF_MONTENEGRO_10GB_30D', 'Go'),
-('8a91ab37-1203-44cf-92c4-851a5cc18d94', '385aeecb-fb20-47e6-bbf9-dfb6e506cc88', 40.0, 7, 27.55, '', 'WW_901O_STACK_ONEOFF_MONTENEGRO_UNLIMITED_7D_FUP20', 'UNLI'),
-('f1eeeb9a-f9fa-4647-9f7f-7d976f3053dc', '385aeecb-fb20-47e6-bbf9-dfb6e506cc88', 60.0, 15, 41.8, '', 'WW_901O_STACK_ONEOFF_MONTENEGRO_UNLIMITED_15D_FUP30', 'UNLI'),
-
--- Moyen-Orient (sans Israël)
-
-('eec5585d-b6c9-49d7-bff6-40897fb29855', 'e52f1848-d286-4c99-9c67-221cb876f6ee', 1.0, 30, 13.3, '', 'WW_901O_STACK_ONEOFF_ME_Wo_Israel_1GB_30D', 'Go'),
-('f8e37d90-f9dc-417f-baaa-4273691da75e', 'e52f1848-d286-4c99-9c67-221cb876f6ee', 3.0, 15, 26.6, '', 'WW_901O_STACK_ONEOFF_ME_Wo_Israel_3GB_15D', 'Go'),
-
--- Moyen-Orient (sélection)
-
-('4009a8c5-3bcb-4598-93e0-49c289d52c87', '7505117e-4acd-437f-a3e6-ed4978df651e', 3.0, 30, 18.05, '', 'WW_901O_STACK_ONEOFF_BESTME_3GB_30D', 'Go'),
-
--- Moyen-Orient (étendu)
-
-('81fe2dc0-423e-4139-8528-c5f4fb7e2983', '8dea511e-d8f9-4b4b-81d1-dca0251866cb', 10.0, 7, 32.3, '', 'WW_901O_STACK_ONEOFF_BEST_ME_10GB_7D', 'Go'),
-('18fb80c8-aa9d-45cf-a91c-d0904851ce69', '8dea511e-d8f9-4b4b-81d1-dca0251866cb', 10.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_BEST_ME_10GB_30D', 'Go'),
-('198a8c25-1c55-4d8b-99b7-1094eac65982', '8dea511e-d8f9-4b4b-81d1-dca0251866cb', 40.0, 7, 46.55, '', 'WW_901O_STACK_ONEOFF_BEST_ME_UNLIMITED_7D_FUP20', 'UNLI'),
-('6f488bd9-bb61-4d4c-bb38-8ecc420852cb', '8dea511e-d8f9-4b4b-81d1-dca0251866cb', 60.0, 15, 83.6, '', 'WW_901O_STACK_ONEOFF_BEST_ME_UNLIMITED_15D_FUP30', 'UNLI'),
-('2b7d8f7d-0be3-4a16-8fff-4d27094dc071', '8dea511e-d8f9-4b4b-81d1-dca0251866cb', 120.0, 30, 141.55, '', 'WW_901O_STACK_ONEOFF_BEST_ME_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Mozambique
-
-('6f9a50b0-00df-401f-81f5-a29843488d1e', '79a013f3-3374-4972-a748-3cdb0fb98b48', 1.0, 7, 17.1, '', 'WW_901O_STACK_ONEOFF_MOZAMBIQUE_1GB_7D', 'Go'),
-('25efbde9-c1e4-4f46-9377-a474e832c087', '79a013f3-3374-4972-a748-3cdb0fb98b48', 3.0, 15, 32.3, '', 'WW_901O_STACK_ONEOFF_MOZAMBIQUE_3GB_15D', 'Go'),
-
--- Namibie
-
-('d94f8952-6054-416f-baee-f3e8f7b3eb9b', '950518ff-16b8-46f2-8280-8653a0f4aa2e', 1.0, 7, 47.5, '', 'WW_901O_STACK_ONEOFF_NAMIBIA_1GB_7D', 'Go'),
-
--- Nauru
-
-('a5057766-cbc1-4c7b-8ef6-ae80c4efa978', '64feb637-d560-4b7b-ac2f-f81a347e9098', 1.0, 7, 17.1, '', 'WW_901O_STACK_ONEOFF_NAURU_1GB_7D', 'Go'),
-('9ed14883-581e-4dea-b7f6-f4ec4b0a7831', '64feb637-d560-4b7b-ac2f-f81a347e9098', 3.0, 15, 32.3, '', 'WW_901O_STACK_ONEOFF_NAURU_3GB_15D', 'Go'),
-
--- Nicaragua
-
-('e895af37-771d-413a-8107-4f1007d85ed4', 'e9f15ed5-016c-451d-b96c-482463e316d2', 1.0, 7, 4.75, '', 'WW_901O_STACK_ONEOFF_NICARAGUA_1GB_7D', 'Go'),
-('08940c0e-0dc3-41ca-a551-a5a4b8ea1fa3', 'e9f15ed5-016c-451d-b96c-482463e316d2', 3.0, 15, 8.55, '', 'WW_901O_STACK_ONEOFF_NICARAGUA_3GB_15D', 'Go'),
-('ef1f82fd-487a-4264-a2ff-ac8a48605ef7', 'e9f15ed5-016c-451d-b96c-482463e316d2', 10.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_NICARAGUA_10GB_7D', 'Go'),
-('af45cdea-1643-4d20-be7b-83eda5a0a9f8', 'e9f15ed5-016c-451d-b96c-482463e316d2', 10.0, 30, 22.8, '', 'WW_901O_STACK_ONEOFF_NICARAGUA_10GB_30D', 'Go'),
-('4f0b0ffd-52cd-45bb-93bb-f957e0efa654', 'e9f15ed5-016c-451d-b96c-482463e316d2', 25.0, 30, 41.8, '', 'WW_901O_STACK_ONEOFF_NICARAGUA_25GB_30D', 'Go'),
-('0f97101f-b485-43a5-87c0-70f16cbc7732', 'e9f15ed5-016c-451d-b96c-482463e316d2', 40.0, 7, 34.2, '', 'WW_901O_STACK_ONEOFF_NICARAGUA_UNLIMITED_7D_FUP20', 'UNLI'),
-('15f87bd3-fb2f-46cc-b6c0-f4b990ec3833', 'e9f15ed5-016c-451d-b96c-482463e316d2', 60.0, 15, 62.7, '', 'WW_901O_STACK_ONEOFF_NICARAGUA_UNLIMITED_15D_FUP30', 'UNLI'),
-
--- Nigeria
-
-('f5ab03b2-5784-4ba0-b296-213e38e8d622', '04d7b769-7c89-4bae-9554-55e2ee926929', 3.0, 15, 11.4, '', 'WW_901O_STACK_ONEOFF_NIGERIA_3GB_15D', 'Go'),
-('ea32aa77-1549-4fe9-b18f-db3ae4b0e3eb', '04d7b769-7c89-4bae-9554-55e2ee926929', 10.0, 7, 22.8, '', 'WW_901O_STACK_ONEOFF_NIGERIA_10GB_7D', 'Go'),
-('492777d0-333f-48d6-88fa-70be555054c5', '04d7b769-7c89-4bae-9554-55e2ee926929', 10.0, 30, 25.65, '', 'WW_901O_STACK_ONEOFF_NIGERIA_10GB_30D', 'Go'),
-('266b5294-12d7-406d-a9d2-6207a91408e0', '04d7b769-7c89-4bae-9554-55e2ee926929', 25.0, 30, 45.6, '', 'WW_901O_STACK_ONEOFF_NIGERIA_25GB_30D', 'Go'),
-
--- Norvège
-
-('6a87cedc-9e23-4422-8b6a-954af761ba46', '5b6b03d9-538a-4f60-9aed-ffa1ba91ec08', 3.0, 15, 4.75, '', 'WW_901O_STACK_ONEOFF_NORWAY_3GB_15D', 'Go'),
-('da09261d-f7fe-4d94-85f3-d5b23d37c61c', '5b6b03d9-538a-4f60-9aed-ffa1ba91ec08', 10.0, 7, 8.55, '', 'WW_901O_STACK_ONEOFF_NORWAY_10GB_7D', 'Go'),
-('67b62312-1780-473a-b865-30023271f8e4', '5b6b03d9-538a-4f60-9aed-ffa1ba91ec08', 10.0, 30, 10.45, '', 'WW_901O_STACK_ONEOFF_NORWAY_10GB_30D', 'Go'),
-('9a7b8d74-857c-45c1-82e0-5eea38523b64', '5b6b03d9-538a-4f60-9aed-ffa1ba91ec08', 25.0, 30, 19.95, '', 'WW_901O_STACK_ONEOFF_NORWAY_25GB_30D', 'Go'),
-('c4328d2d-6ff8-4b3f-8e38-87fd717763ca', '5b6b03d9-538a-4f60-9aed-ffa1ba91ec08', 40.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_NORWAY_UNLIMITED_7D_FUP20', 'UNLI'),
-('72a08373-7d16-4e7e-a70d-d3d7fb33dde8', '5b6b03d9-538a-4f60-9aed-ffa1ba91ec08', 50.0, 30, 35.15, '', 'WW_901O_STACK_ONEOFF_NORWAY_50GB_30D', 'Go'),
-('2a32202c-8a93-45b0-865c-b30525b48364', '5b6b03d9-538a-4f60-9aed-ffa1ba91ec08', 60.0, 15, 27.55, '', 'WW_901O_STACK_ONEOFF_NORWAY_UNLIMITED_15D_FUP30', 'UNLI'),
-('b303749f-2722-4d21-9ab6-b4c18aa9556e', '5b6b03d9-538a-4f60-9aed-ffa1ba91ec08', 120.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_NORWAY_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Nouvelle-Calédonie
-
-('5b70b121-2de7-4000-99a2-cc1607d0e497', 'adde12c2-76bd-4f99-8229-f96af97c5f8b', 1.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_NCL_1GB_7D', 'Go'),
-('2f39c839-f75c-44ad-9aa8-4b3f27908c2a', 'adde12c2-76bd-4f99-8229-f96af97c5f8b', 3.0, 15, 36.1, '', 'WW_901O_STACK_ONEOFF_NCL_3GB_15D', 'Go'),
-
--- Nouvelle-Zélande
-
-('211635bd-451e-4207-b1ac-891fddc913e2', '1333abeb-1fdc-4f02-84e9-d8a24da65e5f', 3.0, 30, 6.65, '', 'WW_901O_STACK_ONEOFF_NZL_3GB_30D', 'Go'),
-('b6ca5e12-585e-4b6c-821f-0e13ffc3d2e1', '1333abeb-1fdc-4f02-84e9-d8a24da65e5f', 10.0, 7, 13.3, '', 'WW_901O_STACK_ONEOFF_NZL_10GB_7D', 'Go'),
-('79825763-74c0-43f6-bace-475f8231660e', '1333abeb-1fdc-4f02-84e9-d8a24da65e5f', 10.0, 30, 15.2, '', 'WW_901O_STACK_ONEOFF_NZL_10GB_30D', 'Go'),
-('d20dcc47-fbb7-4169-8cfa-31a26d289028', '1333abeb-1fdc-4f02-84e9-d8a24da65e5f', 25.0, 30, 33.25, '', 'WW_901O_STACK_ONEOFF_NZL_25GB_30D', 'Go'),
-('47f5fe66-11fc-4ddf-afe7-d47b0176264a', '1333abeb-1fdc-4f02-84e9-d8a24da65e5f', 40.0, 7, 27.55, '', 'WW_901O_STACK_ONEOFF_NZL_UNLIMITED_7D_FUP20', 'UNLI'),
-('7078a7b0-4112-4f53-a954-4d3797c3800a', '1333abeb-1fdc-4f02-84e9-d8a24da65e5f', 60.0, 15, 41.8, '', 'WW_901O_STACK_ONEOFF_NZL_UNLIMITED_15D_FUP30', 'UNLI'),
-('85e5f67b-d392-4b37-9ba3-48aff6219d6c', '1333abeb-1fdc-4f02-84e9-d8a24da65e5f', 120.0, 30, 61.75, '', 'WW_901O_STACK_ONEOFF_NZL_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Népal
-
-('93a9ce79-49bb-4add-88f4-f433d868535c', '607fb6b6-fa55-461a-9535-41bba2e710f2', 1.0, 7, 17.1, '', 'WW_901O_STACK_ONEOFF_NEPAL_1GB_7D', 'Go'),
-('8d336927-d5dc-4c78-809f-e6719a67d43b', '607fb6b6-fa55-461a-9535-41bba2e710f2', 3.0, 15, 32.3, '', 'WW_901O_STACK_ONEOFF_NEPAL_3GB_15D', 'Go'),
-
--- Océanie
-
-('2889729a-4abe-4d6a-8a0b-cc1ef540000a', 'b9a02fc3-b556-4460-895d-3065cd377641', 1.0, 30, 14.25, '', 'WW_901O_STACK_ONEOFF_OCEANIA_1GB_30D', 'Go'),
-('4c8a0b5f-54e7-4fa6-aa58-cec5b44687ab', 'b9a02fc3-b556-4460-895d-3065cd377641', 3.0, 15, 27.55, '', 'WW_901O_STACK_ONEOFF_OCEANIA_3GB_15D', 'Go'),
-('9b19103c-f943-4440-9948-f23b29fe072c', 'b9a02fc3-b556-4460-895d-3065cd377641', 10.0, 30, 56.05, '', 'WW_901O_STACK_ONEOFF_OCEANIA_10GB_30D', 'Go'),
-
--- Oman
-
-('a9ea967b-0988-42f0-84cd-eab085810576', 'a60ee5dd-3acf-4afb-9d20-01edd5d60cb7', 1.0, 7, 5.7, '', 'WW_901O_STACK_ONEOFF_OMAN_1GB_7D', 'Go'),
-('4fca443f-b0b5-4836-8ed8-21d9d3f8c673', 'a60ee5dd-3acf-4afb-9d20-01edd5d60cb7', 3.0, 30, 11.4, '', 'WW_901O_STACK_ONEOFF_OMAN_3GB_30D', 'Go'),
-('7487b085-e636-4621-ade3-04c78afde7dc', 'a60ee5dd-3acf-4afb-9d20-01edd5d60cb7', 10.0, 7, 22.8, '', 'WW_901O_STACK_ONEOFF_OMAN_10GB_7D', 'Go'),
-
--- Ouganda
-
-('18761479-a3f0-4f60-8793-3897cfefa7b5', '552e2cd2-b1c8-448b-a123-4c63756cbad0', 1.0, 7, 5.7, '', 'WW_901O_STACK_ONEOFF_UGANDA_1GB_7D', 'Go'),
-('32fe7cd0-50f0-4979-b6ba-041d4f17d218', '552e2cd2-b1c8-448b-a123-4c63756cbad0', 3.0, 15, 13.3, '', 'WW_901O_STACK_ONEOFF_UGANDA_3GB_15D', 'Go'),
-
--- Ouzbékistan
-
-('81367572-26cb-4671-bf86-44d5a510db95', '6f5da76e-1dc2-4cab-84b7-d48ec289ff40', 1.0, 7, 3.8, '', 'WW_901O_STACK_ONEOFF_UZBEKISTAN_1GB_7D', 'Go'),
-('84459e6b-5197-48a5-8cc0-16dce8ae1cef', '6f5da76e-1dc2-4cab-84b7-d48ec289ff40', 3.0, 15, 8.55, '', 'WW_901O_STACK_ONEOFF_UZBEKISTAN_3GB_15D', 'Go'),
-('022c0987-602f-4dac-8c00-3f62fbf81d08', '6f5da76e-1dc2-4cab-84b7-d48ec289ff40', 10.0, 7, 16.15, '', 'WW_901O_STACK_ONEOFF_UZBEKISTAN_10GB_7D', 'Go'),
-('ec4b5d9e-cef8-453a-8520-a70f81456b72', '6f5da76e-1dc2-4cab-84b7-d48ec289ff40', 10.0, 30, 18.05, '', 'WW_901O_STACK_ONEOFF_UZBEKISTAN_10GB_30D', 'Go'),
-('9404aa20-8df8-4c36-b959-26a0a33577cd', '6f5da76e-1dc2-4cab-84b7-d48ec289ff40', 25.0, 30, 46.55, '', 'WW_901O_STACK_ONEOFF_UZBEKISTAN_25GB_30D', 'Go'),
-('e1eec9b1-4fd4-4365-be10-fdf1259efed9', '6f5da76e-1dc2-4cab-84b7-d48ec289ff40', 40.0, 7, 27.55, '', 'WW_901O_STACK_ONEOFF_UZBEKISTAN_UNLIMITED_7D_FUP20', 'UNLI'),
-('b6cfe6cc-a8e2-4c1e-b20c-93a68f53a866', '6f5da76e-1dc2-4cab-84b7-d48ec289ff40', 60.0, 15, 46.55, '', 'WW_901O_STACK_ONEOFF_UZBEKISTAN_UNLIMITED_15D_FUP30', 'UNLI'),
-
--- Pakistan
-
-('53d86146-3743-4f8c-92d2-82a120e3efbc', '89c1c33a-f4fa-4ed3-bb19-22982321e116', 1.0, 7, 3.8, '', 'WW_901O_STACK_ONEOFF_PAKISTAN_1GB_7D', 'Go'),
-('599cb7d1-309c-46a8-b5b3-62ecbc087e5a', '89c1c33a-f4fa-4ed3-bb19-22982321e116', 3.0, 15, 7.6, '', 'WW_901O_STACK_ONEOFF_PAKISTAN_3GB_15D', 'Go'),
-('480faa79-0189-4001-a360-1fc23525d9df', '89c1c33a-f4fa-4ed3-bb19-22982321e116', 10.0, 7, 13.3, '', 'WW_901O_STACK_ONEOFF_PAKISTAN_10GB_7D', 'Go'),
-('44e68321-5753-4893-bd06-a067cdb94149', '89c1c33a-f4fa-4ed3-bb19-22982321e116', 10.0, 30, 15.2, '', 'WW_901O_STACK_ONEOFF_PAKISTAN_10GB_30D', 'Go'),
-('04841c67-3686-4826-8d05-4b1f754d26cb', '89c1c33a-f4fa-4ed3-bb19-22982321e116', 25.0, 30, 27.55, '', 'WW_901O_STACK_ONEOFF_PAKISTAN_25GB_30D', 'Go'),
-('ecd9cd19-398c-41c5-a545-76d173f82d17', '89c1c33a-f4fa-4ed3-bb19-22982321e116', 40.0, 7, 25.65, '', 'WW_901O_STACK_ONEOFF_PAKISTAN_UNLIMITED_7D_FUP20', 'UNLI'),
-('18396c12-f1de-4510-aeee-af699d62c60f', '89c1c33a-f4fa-4ed3-bb19-22982321e116', 60.0, 15, 46.55, '', 'WW_901O_STACK_ONEOFF_PAKISTAN_UNLIMITED_15D_FUP30', 'UNLI'),
-
--- Palestine
-
-('3b2e9015-0cf5-43d3-90ad-771e8f0ce6bd', '5b6fa89d-9c96-47a3-a7b2-a4f0e18c6eb3', 1.0, 7, 8.55, '', 'WW_901O_STACK_ONEOFF_PALESTINE_1GB_7D', 'Go'),
-('281d3ca3-2a2b-4325-afc6-a43cb63925bf', '5b6fa89d-9c96-47a3-a7b2-a4f0e18c6eb3', 3.0, 15, 18.05, '', 'WW_901O_STACK_ONEOFF_PALESTINE_3GB_15D', 'Go'),
-('2c954532-af6c-44b2-a51f-639a9985899f', '5b6fa89d-9c96-47a3-a7b2-a4f0e18c6eb3', 10.0, 30, 46.55, '', 'WW_901O_STACK_ONEOFF_PALESTINE_10GB_30D', 'Go'),
-
--- Panama
-
-('cf74a6de-5aa8-4e6f-a14d-cd599dcf5064', '668509e8-a2c4-40cd-bcd1-62b53a93b87e', 1.0, 7, 4.75, '', 'WW_901O_STACK_ONEOFF_PANAMA_1GB_7D', 'Go'),
-('116a1c92-22f0-4ef3-8947-76ddbb11f4a4', '668509e8-a2c4-40cd-bcd1-62b53a93b87e', 3.0, 15, 9.5, '', 'WW_901O_STACK_ONEOFF_PANAMA_3GB_15D', 'Go'),
-('e558784d-ae76-4fb0-a836-e38cbe9bf84b', '668509e8-a2c4-40cd-bcd1-62b53a93b87e', 10.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_PANAMA_10GB_7D', 'Go'),
-('1008db4c-fd9c-4edd-9b2f-0df1e8482dc7', '668509e8-a2c4-40cd-bcd1-62b53a93b87e', 10.0, 30, 20.9, '', 'WW_901O_STACK_ONEOFF_PANAMA_10GB_30D', 'Go'),
-('2a12fdc3-00e2-4d4c-bb41-94ebd5bfa97f', '668509e8-a2c4-40cd-bcd1-62b53a93b87e', 25.0, 30, 41.8, '', 'WW_901O_STACK_ONEOFF_PANAMA_25GB_30D', 'Go'),
-('063bf57b-594a-4146-ab96-9c3941f4acf6', '668509e8-a2c4-40cd-bcd1-62b53a93b87e', 40.0, 7, 29.45, '', 'WW_901O_STACK_ONEOFF_PANAMA_UNLIMITED_7D_FUP20', 'UNLI'),
-('00c69cc2-04cc-450c-9fa2-bca6d6c4d3c2', '668509e8-a2c4-40cd-bcd1-62b53a93b87e', 60.0, 15, 52.25, '', 'WW_901O_STACK_ONEOFF_PANAMA_UNLIMITED_15D_FUP30', 'UNLI'),
-
--- Paraguay
-
-('e46ec141-a649-4aee-99d5-4350464b6308', '1f8980af-30bc-4485-b093-d17d94c09ec6', 1.0, 7, 3.8, '', 'WW_901O_STACK_ONEOFF_PARAGUAY_1GB_7D', 'Go'),
-('39509f0a-9352-4565-ab14-85785d0578b4', '1f8980af-30bc-4485-b093-d17d94c09ec6', 3.0, 15, 7.6, '', 'WW_901O_STACK_ONEOFF_PARAGUAY_3GB_15D', 'Go'),
-('181e2d13-d11b-49d9-a226-9338d2797d51', '1f8980af-30bc-4485-b093-d17d94c09ec6', 10.0, 7, 14.25, '', 'WW_901O_STACK_ONEOFF_PARAGUAY_10GB_7D', 'Go'),
-('74df43dd-e17b-40c6-8978-b11d2f6c71c5', '1f8980af-30bc-4485-b093-d17d94c09ec6', 10.0, 30, 17.1, '', 'WW_901O_STACK_ONEOFF_PARAGUAY_10GB_30D', 'Go'),
-('ec9fb923-81f3-443b-bfa6-51526ae51309', '1f8980af-30bc-4485-b093-d17d94c09ec6', 25.0, 30, 32.3, '', 'WW_901O_STACK_ONEOFF_PARAGUAY_25GB_30D', 'Go'),
-('83d84048-7027-4c9f-aa58-b2f91b9115a8', '1f8980af-30bc-4485-b093-d17d94c09ec6', 40.0, 7, 23.75, '', 'WW_901O_STACK_ONEOFF_PARAGUAY_UNLIMITED_7D_FUP20', 'UNLI'),
-('a6f4fa98-ce0f-4b18-ab36-ac09ef09abc1', '1f8980af-30bc-4485-b093-d17d94c09ec6', 60.0, 15, 53.2, '', 'WW_901O_STACK_ONEOFF_PARAGUAY_UNLIMITED_15D_FUP30', 'UNLI'),
-
--- Pays-Bas
-
-('d572ad66-5555-4b9c-bc25-48d5d7734892', '3d13fecc-40a5-49a6-942c-9202eaf1fdf1', 3.0, 15, 5.7, '', 'WW_901O_STACK_ONEOFF_NETHERLANDS_3GB_15D', 'Go'),
-('e182c61c-c404-45b0-9827-a586de986b02', '3d13fecc-40a5-49a6-942c-9202eaf1fdf1', 10.0, 7, 8.55, '', 'WW_901O_STACK_ONEOFF_NETHERLANDS_10GB_7D', 'Go'),
-('4243016e-f958-4a01-8145-679ddf161b5c', '3d13fecc-40a5-49a6-942c-9202eaf1fdf1', 10.0, 30, 10.45, '', 'WW_901O_STACK_ONEOFF_NETHERLANDS_10GB_30D', 'Go'),
-('2641ece8-3c83-4fb8-957f-888f9239432b', '3d13fecc-40a5-49a6-942c-9202eaf1fdf1', 25.0, 30, 18.05, '', 'WW_901O_STACK_ONEOFF_NETHERLANDS_25GB_30D', 'Go'),
-('7c124ca7-2b13-44ae-bdb7-4584f4fa2163', '3d13fecc-40a5-49a6-942c-9202eaf1fdf1', 40.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_NETHERLANDS_UNLIMITED_7D_FUP20', 'UNLI'),
-('4c6a274b-6f55-4041-81fe-1d5db523f499', '3d13fecc-40a5-49a6-942c-9202eaf1fdf1', 50.0, 30, 31.35, '', 'WW_901O_STACK_ONEOFF_NETHERLANDS_50GB_30D', 'Go'),
-('20e75d61-6abd-4e0f-885d-42c13d5e1991', '3d13fecc-40a5-49a6-942c-9202eaf1fdf1', 60.0, 15, 27.55, '', 'WW_901O_STACK_ONEOFF_NETHERLANDS_UNLIMITED_15D_FUP30', 'UNLI'),
-('35504fea-7466-4c79-9501-0f1d483602f9', '3d13fecc-40a5-49a6-942c-9202eaf1fdf1', 120.0, 30, 41.8, '', 'WW_901O_STACK_ONEOFF_NETHERLANDS_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Philippines
-
-('a53ab37d-d9df-4df3-90a2-4fbccd2cdb07', '37e79854-50fe-4d7b-9845-9e62704c1a3f', 1.0, 7, 3.8, '', 'WW_901O_STACK_ONEOFF_PHILIPPINES_1GB_7D', 'Go'),
-('9663e328-5891-4d0c-83ba-d41c73ab6ebf', '37e79854-50fe-4d7b-9845-9e62704c1a3f', 3.0, 15, 7.6, '', 'WW_901O_STACK_ONEOFF_PHILIPPINES_3GB_15D', 'Go'),
-('bd57198d-1ec0-4f23-a4c0-6aca8527280e', '37e79854-50fe-4d7b-9845-9e62704c1a3f', 10.0, 7, 13.3, '', 'WW_901O_STACK_ONEOFF_PHILIPPINES_10GB_7D', 'Go'),
-('52d553d4-6307-4986-91d6-7935f8b32a8d', '37e79854-50fe-4d7b-9845-9e62704c1a3f', 10.0, 30, 15.2, '', 'WW_901O_STACK_ONEOFF_PHILIPPINES_10GB_30D', 'Go'),
-('8e7245bf-0d47-4f80-b8e0-039fa4ed8586', '37e79854-50fe-4d7b-9845-9e62704c1a3f', 25.0, 30, 27.55, '', 'WW_901O_STACK_ONEOFF_PHILIPPINES_25GB_30D', 'Go'),
-('935f7e44-85af-45f9-99fa-2275c204a911', '37e79854-50fe-4d7b-9845-9e62704c1a3f', 40.0, 7, 22.8, '', 'WW_901O_STACK_ONEOFF_PHILIPPINES_UNLIMITED_7D_FUP20', 'UNLI'),
-('f57f4b23-6ec1-410b-8ce2-71a7e3e0789d', '37e79854-50fe-4d7b-9845-9e62704c1a3f', 50.0, 30, 46.55, '', 'WW_901O_STACK_ONEOFF_PHILIPPINES_50GB_30D', 'Go'),
-('4f2dd794-9ffe-4a0a-b895-e8bf85e353ae', '37e79854-50fe-4d7b-9845-9e62704c1a3f', 60.0, 15, 41.8, '', 'WW_901O_STACK_ONEOFF_PHILIPPINES_UNLIMITED_15D_FUP30', 'UNLI'),
-('9f8473af-d77e-48b9-9bfb-b92ef8a23ac7', '37e79854-50fe-4d7b-9845-9e62704c1a3f', 120.0, 30, 56.05, '', 'WW_901O_STACK_ONEOFF_PHILIPPINES_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Pologne
-
-('ba1f0224-47a1-43e1-bf5f-ecdf755eca63', '1a84c505-5df0-4eda-8ba8-7a05c4d3e5c8', 3.0, 30, 4.75, '', 'WW_901O_STACK_ONEOFF_POL_3GB_30D', 'Go'),
-('a6198269-a7a0-4ca6-9cff-023fe8dc7840', '1a84c505-5df0-4eda-8ba8-7a05c4d3e5c8', 10.0, 7, 7.6, '', 'WW_901O_STACK_ONEOFF_POL_10GB_7D', 'Go'),
-('b02b212b-a00c-4ae2-98c9-3a9cd6777713', '1a84c505-5df0-4eda-8ba8-7a05c4d3e5c8', 10.0, 30, 8.55, '', 'WW_901O_STACK_ONEOFF_POL_10GB_30D', 'Go'),
-('f51fc58a-b91d-4cde-9bd3-214602629bc8', '1a84c505-5df0-4eda-8ba8-7a05c4d3e5c8', 25.0, 30, 18.05, '', 'WW_901O_STACK_ONEOFF_POL_25GB_30D', 'Go'),
-('f5c3e31a-f01b-4e73-bfb1-db83e490dbfb', '1a84c505-5df0-4eda-8ba8-7a05c4d3e5c8', 40.0, 7, 14.25, '', 'WW_901O_STACK_ONEOFF_POL_UNLIMITED_7D_FUP20', 'UNLI'),
-('2e4fef18-3144-44f2-929f-cac086f72f8e', '1a84c505-5df0-4eda-8ba8-7a05c4d3e5c8', 60.0, 15, 27.55, '', 'WW_901O_STACK_ONEOFF_POL_UNLIMITED_15D_FUP30', 'UNLI'),
-('52d4c18a-1480-449e-8f98-587748e48a4c', '1a84c505-5df0-4eda-8ba8-7a05c4d3e5c8', 120.0, 30, 46.55, '', 'WW_901O_STACK_ONEOFF_POL_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Polynésie française
-
-('0be7b734-a3ca-49ff-a9c8-91e7f27e564c', 'd1824057-970c-4dde-89bb-1433a20ae7cc', 1.0, 7, 8.55, '', 'WW_901O_STACK_ONEOFF_POLYNESIA_1GB_7D', 'Go'),
-('ea2d6ba0-6dfb-4c13-ba43-30b243766300', 'd1824057-970c-4dde-89bb-1433a20ae7cc', 3.0, 15, 20.9, '', 'WW_901O_STACK_ONEOFF_POLYNESIA_3GB_15D', 'Go'),
-('1b48fc66-4031-453a-b8b7-f3ee7bbde9b1', 'd1824057-970c-4dde-89bb-1433a20ae7cc', 10.0, 7, 34.2, '', 'WW_901O_STACK_ONEOFF_POLYNESIA_10GB_7D', 'Go'),
-('c3313c48-d974-42cb-ae50-820ba2891839', 'd1824057-970c-4dde-89bb-1433a20ae7cc', 10.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_POLYNESIA_10GB_30D', 'Go'),
-('b5a6965e-fb1d-42ba-a860-fd57df322721', 'd1824057-970c-4dde-89bb-1433a20ae7cc', 25.0, 30, 75.05, '', 'WW_901O_STACK_ONEOFF_POLYNESIA_25GB_30D', 'Go'),
-('6d9f8992-3f8d-41db-9fee-0cea843c73e9', 'd1824057-970c-4dde-89bb-1433a20ae7cc', 40.0, 7, 69.35, '', 'WW_901O_STACK_ONEOFF_POLYNESIA_UNLIMITED_7D_FUP20', 'UNLI'),
-
--- Portugal
-
-('e33c5fd1-0188-42ab-b4e3-54bdad62da81', '037b8737-045b-4a50-beae-a2af6d1c4106', 3.0, 30, 5.7, '', 'WW_901O_STACK_ONEOFF_PORTUGAL_3GB_30D', 'Go'),
-('4dd38daa-c4a8-4af6-ad86-ffe6d5d58389', '037b8737-045b-4a50-beae-a2af6d1c4106', 10.0, 7, 8.55, '', 'WW_901O_STACK_ONEOFF_PORTUGAL_10GB_7D', 'Go'),
-('8975cb75-268c-4540-a4e5-9f00cbb3c5d0', '037b8737-045b-4a50-beae-a2af6d1c4106', 10.0, 30, 10.45, '', 'WW_901O_STACK_ONEOFF_PORTUGAL_10GB_30D', 'Go'),
-('794e9abf-6a2b-4e36-b388-a85e9aa3cf0f', '037b8737-045b-4a50-beae-a2af6d1c4106', 25.0, 30, 26.6, '', 'WW_901O_STACK_ONEOFF_PORTUGAL_25GB_30D', 'Go'),
-('b1474894-07c5-442f-90bd-0729d90fb822', '037b8737-045b-4a50-beae-a2af6d1c4106', 40.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_PORTUGAL_UNLIMITED_7D_FUP20', 'UNLI'),
-('67f484b1-02f6-4864-b8bd-873fa354fbf9', '037b8737-045b-4a50-beae-a2af6d1c4106', 50.0, 30, 33.25, '', 'WW_901O_STACK_ONEOFF_PORTUGAL_50GB_30D', 'Go'),
-('70778c0d-9c8e-460d-bbfe-b7cda27467fd', '037b8737-045b-4a50-beae-a2af6d1c4106', 60.0, 15, 32.3, '', 'WW_901O_STACK_ONEOFF_PORTUGAL_UNLIMITED_15D_FUP30', 'UNLI'),
-('c05ecea3-4a42-44e2-8e82-471f2f465400', '037b8737-045b-4a50-beae-a2af6d1c4106', 120.0, 30, 45.6, '', 'WW_901O_STACK_ONEOFF_PORTUGAL_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Pérou
-
-('e48746c5-450e-4b4e-81d5-a62a46e1cd11', 'e4c02753-cbb2-4fcf-89a6-ada2538552ce', 1.0, 7, 5.7, '', 'WW_901O_STACK_ONEOFF_PERU_1GB_7D', 'Go'),
-('b1eff6b4-2af6-4c30-889e-12ccc5a189a7', 'e4c02753-cbb2-4fcf-89a6-ada2538552ce', 3.0, 15, 11.4, '', 'WW_901O_STACK_ONEOFF_PERU_3GB_15D', 'Go'),
-('ad8d7cdb-1f36-45f0-bb07-54b20d0be5ea', 'e4c02753-cbb2-4fcf-89a6-ada2538552ce', 10.0, 7, 20.9, '', 'WW_901O_STACK_ONEOFF_PERU_10GB_7D', 'Go'),
-('4cca6d91-47c1-4ad0-9e29-455b9f0da089', 'e4c02753-cbb2-4fcf-89a6-ada2538552ce', 10.0, 30, 22.8, '', 'WW_901O_STACK_ONEOFF_PERU_10GB_30D', 'Go'),
-('0c77c246-b099-46eb-931b-f4bde27ff77e', 'e4c02753-cbb2-4fcf-89a6-ada2538552ce', 25.0, 30, 39.9, '', 'WW_901O_STACK_ONEOFF_PERU_25GB_30D', 'Go'),
-('26438a68-49c2-4729-a91f-3e037dee697e', 'e4c02753-cbb2-4fcf-89a6-ada2538552ce', 40.0, 7, 33.25, '', 'WW_901O_STACK_ONEOFF_PERU_UNLIMITED_7D_FUP20', 'UNLI'),
-('cff4f7f4-c716-4f8b-acd4-581113d7fda0', 'e4c02753-cbb2-4fcf-89a6-ada2538552ce', 120.0, 30, 75.05, '', 'WW_901O_STACK_ONEOFF_PERU_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Qatar
-
-('e482da51-9721-427a-8380-ef3cb04d9d33', 'd934bb7c-f750-48b3-ac92-86903494333b', 3.0, 30, 7.6, '', 'WW_901O_STACK_ONEOFF_QATAR_3GB_30D', 'Go'),
-('44a8850e-1188-425b-875f-9868ebc0d997', 'd934bb7c-f750-48b3-ac92-86903494333b', 10.0, 7, 15.2, '', 'WW_901O_STACK_ONEOFF_QATAR_10GB_7D', 'Go'),
-('a34ade3f-84b5-40f5-bfd5-8b349e1f2af1', 'd934bb7c-f750-48b3-ac92-86903494333b', 10.0, 30, 18.05, '', 'WW_901O_STACK_ONEOFF_QATAR_10GB_30D', 'Go'),
-('6555045f-c5f5-478c-836b-47703fecc759', 'd934bb7c-f750-48b3-ac92-86903494333b', 40.0, 7, 30.4, '', 'WW_901O_STACK_ONEOFF_QATAR_UNLIMITED_7D_FUP20', 'UNLI'),
-
--- RD Congo
-
-('9a9c5c59-f7ac-4ca7-9f1e-954ebd8cfe99', 'f8651905-903a-46a8-9237-e9fc5e88a59d', 1.0, 7, 47.5, '', 'WW_901O_STACK_ONEOFF_DRCONGO_1GB_7D', 'Go'),
-
--- Roumanie
-
-('22a893f4-16d4-401f-8e51-ce16e7d06a9d', 'dc0946f2-13db-4f2a-8259-d32977418215', 3.0, 15, 5.7, '', 'WW_901O_STACK_ONEOFF_ROMANIA_3GB_15D', 'Go'),
-('1adc7ad6-be92-48aa-90e6-bf2d8dd5b710', 'dc0946f2-13db-4f2a-8259-d32977418215', 10.0, 30, 11.4, '', 'WW_901O_STACK_ONEOFF_ROMANIA_10GB_30D', 'Go'),
-('3dc9e49f-db94-451a-94bf-e988a6a09949', 'dc0946f2-13db-4f2a-8259-d32977418215', 50.0, 30, 32.3, '', 'WW_901O_STACK_ONEOFF_ROMANIA_50GB_30D', 'Go'),
-
--- Royaume-Uni
-
-('c29b81f7-0fb3-4f58-bd98-a413b18168c7', '327f649b-460b-49c2-ab74-ccc84adc615c', 3.0, 30, 6.65, '', 'WW_901O_STACK_ONEOFF_UKONLY_3GB_30D', 'Go'),
-('6817b27a-a874-405e-a7ba-0baff48f99db', '327f649b-460b-49c2-ab74-ccc84adc615c', 10.0, 7, 8.55, '', 'WW_901O_STACK_ONEOFF_UKONLY_10GB_7D', 'Go'),
-('b80e9cec-370d-479e-af8c-730dee72107b', '327f649b-460b-49c2-ab74-ccc84adc615c', 10.0, 30, 10.45, '', 'WW_901O_STACK_ONEOFF_UKONLY_10GB_30D', 'Go'),
-('c8728f5e-05f5-4984-ac08-0084a035bce8', '327f649b-460b-49c2-ab74-ccc84adc615c', 14.0, 1, 7.6, '', 'WW_901O_STACK_ONEOFF_UKONLY_UNLIMITED_1D_FUP7', 'UNLI'),
-('6a266036-123e-4398-90b4-95b2aec024f1', '327f649b-460b-49c2-ab74-ccc84adc615c', 25.0, 30, 20.9, '', 'WW_901O_STACK_ONEOFF_UKONLY_25GB_30D', 'Go'),
-('7e1d5f81-2253-46da-a538-24b922adbdd2', '327f649b-460b-49c2-ab74-ccc84adc615c', 50.0, 7, 20.9, '', 'WW_901O_STACK_ONEOFF_UKONLY_UNLIMITED_7D_FUP25', 'UNLI'),
-('04f6d5ab-d53a-4111-88db-ca06179ca744', '327f649b-460b-49c2-ab74-ccc84adc615c', 50.0, 30, 30.4, '', 'WW_901O_STACK_ONEOFF_UKONLY_50GB_30D', 'Go'),
-('e81228a4-2c92-4dec-9504-dd3460495401', '327f649b-460b-49c2-ab74-ccc84adc615c', 120.0, 30, 41.8, '', 'WW_901O_STACK_ONEOFF_UKONLY_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Russie
-
-('d9835478-4e49-4f55-b2b4-1da52e7f627e', '891ee240-1d18-4fe9-b626-b93f55225f93', 1.0, 7, 2.85, '', 'WW_901O_STACK_ONEOFF_RUSSIA_1GB_7D', 'Go'),
-('6d6dd60e-37ac-4ae2-8886-a998c58a1f74', '891ee240-1d18-4fe9-b626-b93f55225f93', 3.0, 15, 5.7, '', 'WW_901O_STACK_ONEOFF_RUSSIA_3GB_15D', 'Go'),
-('22e96ff3-cc82-4812-8fba-629480f8c907', '891ee240-1d18-4fe9-b626-b93f55225f93', 10.0, 7, 11.4, '', 'WW_901O_STACK_ONEOFF_RUSSIA_10GB_7D', 'Go'),
-('ebf4de82-b73f-4db0-ba96-a06cc7245212', '891ee240-1d18-4fe9-b626-b93f55225f93', 10.0, 30, 13.3, '', 'WW_901O_STACK_ONEOFF_RUSSIA_10GB_30D', 'Go'),
-('d8215f92-f73a-4575-a50b-7d7b9f6b583c', '891ee240-1d18-4fe9-b626-b93f55225f93', 25.0, 30, 27.55, '', 'WW_901O_STACK_ONEOFF_RUSSIA_25GB_30D', 'Go'),
-('235e03d6-7bce-487e-aa90-e761132dc8ac', '891ee240-1d18-4fe9-b626-b93f55225f93', 40.0, 7, 20.9, '', 'WW_901O_STACK_ONEOFF_RUSSIA_UNLIMITED_7D_FUP20', 'UNLI'),
-('0c04032e-8d9b-4ddd-b21a-32cd4b282ecb', '891ee240-1d18-4fe9-b626-b93f55225f93', 50.0, 30, 43.7, '', 'WW_901O_STACK_ONEOFF_RUSSIA_50GB_30D', 'Go'),
-('d0111101-9594-45a8-94fc-79eed1ea6a4d', '891ee240-1d18-4fe9-b626-b93f55225f93', 60.0, 15, 39.9, '', 'WW_901O_STACK_ONEOFF_RUSSIA_UNLIMITED_15D_FUP30', 'UNLI'),
-('87f39d23-732c-4590-8c27-7fa5de95eed3', '891ee240-1d18-4fe9-b626-b93f55225f93', 120.0, 30, 60.8, '', 'WW_901O_STACK_ONEOFF_RUSSIA_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Rwanda
-
-('811673b2-6d73-43d1-86c0-a7e729e23c19', '0ae6b101-ba17-49cd-b9c8-92ba770903be', 3.0, 15, 11.4, '', 'WW_901O_STACK_ONEOFF_RWANDA_3GB_15D', 'Go'),
-('22ecfb9b-9f8b-4673-b502-759db69ce160', '0ae6b101-ba17-49cd-b9c8-92ba770903be', 10.0, 7, 22.8, '', 'WW_901O_STACK_ONEOFF_RWANDA_10GB_7D', 'Go'),
-('b56d6741-5bd4-4739-86c3-24c8acc92961', '0ae6b101-ba17-49cd-b9c8-92ba770903be', 10.0, 30, 25.65, '', 'WW_901O_STACK_ONEOFF_RWANDA_10GB_30D', 'Go'),
-('a8b41ad9-f2a0-463e-8555-23e43f0ead6a', '0ae6b101-ba17-49cd-b9c8-92ba770903be', 25.0, 30, 45.6, '', 'WW_901O_STACK_ONEOFF_RWANDA_25GB_30D', 'Go'),
-
--- Rép. centrafricaine
-
-('5aafa0d2-a62d-43af-ac60-1a72008f8eee', 'aa747bc5-2197-48b1-90a8-fb7b4e448ff1', 1.0, 7, 8.55, '', 'WW_901O_STACK_ONEOFF_CAF_1GB_7D', 'Go'),
-('bd7a1b55-c6a2-45ff-b5c4-9b3a2b82693a', 'aa747bc5-2197-48b1-90a8-fb7b4e448ff1', 3.0, 15, 17.1, '', 'WW_901O_STACK_ONEOFF_CAF_3GB_15D', 'Go'),
-('f2abfcac-209d-4b02-b103-69c83ed34972', 'aa747bc5-2197-48b1-90a8-fb7b4e448ff1', 10.0, 7, 35.15, '', 'WW_901O_STACK_ONEOFF_CAF_10GB_7D', 'Go'),
-('e1653bc2-c093-4a42-84c5-94a87634c342', 'aa747bc5-2197-48b1-90a8-fb7b4e448ff1', 10.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_CAF_10GB_30D', 'Go'),
-
--- Rép. dominicaine
-
-('8c50a6b6-8243-44af-a485-a8b8fb0174ca', '4efd99a5-16fc-48a1-97d8-98b4b2a90070', 1.0, 7, 4.75, '', 'WW_901O_STACK_ONEOFF_DOM_1GB_7D', 'Go'),
-('2d65ba3d-cf74-4a6d-a50c-fe1cdad0cf6a', '4efd99a5-16fc-48a1-97d8-98b4b2a90070', 3.0, 15, 8.55, '', 'WW_901O_STACK_ONEOFF_DOM_3GB_15D', 'Go'),
-('5bb06d8f-c4de-4da9-9346-c473543f050a', '4efd99a5-16fc-48a1-97d8-98b4b2a90070', 10.0, 7, 17.1, '', 'WW_901O_STACK_ONEOFF_DOM_10GB_7D', 'Go'),
-('58efb478-6ec6-4adf-be85-d0669d847072', '4efd99a5-16fc-48a1-97d8-98b4b2a90070', 10.0, 30, 19.95, '', 'WW_901O_STACK_ONEOFF_DOM_10GB_30D', 'Go'),
-('039fa36e-352e-4623-8844-5ffd089d1b26', '4efd99a5-16fc-48a1-97d8-98b4b2a90070', 25.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_DOM_25GB_30D', 'Go'),
-('993d6ad5-15fb-4ca5-b2fa-1f27e1f3f059', '4efd99a5-16fc-48a1-97d8-98b4b2a90070', 40.0, 7, 32.3, '', 'WW_901O_STACK_ONEOFF_DOM_UNLIMITED_7D_FUP20', 'UNLI'),
-('f2938dc9-1a60-47d1-8c4f-7aab638b559e', '4efd99a5-16fc-48a1-97d8-98b4b2a90070', 60.0, 15, 50.35, '', 'WW_901O_STACK_ONEOFF_DOM_UNLIMITED_15D_FUP30', 'UNLI'),
-('1978b6d5-b4a0-421f-a414-84f08accfcb4', '4efd99a5-16fc-48a1-97d8-98b4b2a90070', 120.0, 30, 65.55, '', 'WW_901O_STACK_ONEOFF_DOM_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Réunion
-
-('0061627c-acb9-419a-9412-861ec0dbe0b0', 'cd35dcc4-dc9d-4f6a-8818-7f262d933276', 3.0, 15, 5.7, '', 'WW_901O_STACK_ONEOFF_REUNION_3GB_15D', 'Go'),
-('8f9ba9e1-36b4-48bf-a4b3-7293f8e2cf29', 'cd35dcc4-dc9d-4f6a-8818-7f262d933276', 10.0, 30, 11.4, '', 'WW_901O_STACK_ONEOFF_REUNION_10GB_30D', 'Go'),
-
--- Saint-Barthélemy
-
-('e9b1e879-ca09-4378-ad85-69a5bcda9171', '57a98d28-3af6-4ee3-9b4a-27d0e44f41a6', 3.0, 15, 7.6, '', 'WW_901O_STACK_ONEOFF_S-BARTHELEMY_3GB_15D', 'Go'),
-
--- Saint-Martin
-
-('2c318add-dfec-4d04-b238-9ec38524310f', '8d3484bd-f560-419e-ae65-a43236eb7754', 1.0, 7, 3.8, '', 'WW_901O_STACK_ONEOFF_S-MARTIN_1GB_7D', 'Go'),
-('123eedd8-caf8-494b-8e2f-8db64ec980bd', '8d3484bd-f560-419e-ae65-a43236eb7754', 3.0, 15, 7.6, '', 'WW_901O_STACK_ONEOFF_S-MARTIN_3GB_15D', 'Go'),
-
--- Samoa
-
-('281f0284-1721-413e-968c-539bb6828f94', '90e23d02-e342-490a-8353-c2c85145d7b3', 1.0, 7, 17.1, '', 'WW_901O_STACK_ONEOFF_SAMOA_1GB_7D', 'Go'),
-('93105069-972f-46b9-b419-43aabcb6dc32', '90e23d02-e342-490a-8353-c2c85145d7b3', 3.0, 15, 32.3, '', 'WW_901O_STACK_ONEOFF_SAMOA_3GB_15D', 'Go'),
-
--- Scandinavie
-
-('aabc0cd1-7265-467b-89a8-535796c2778f', '4b5f225e-3828-46bc-86c9-5bdef91d2e86', 3.0, 15, 5.7, '', 'WW_901O_STACK_ONEOFF_SCANDINAVIA_3GB_15D', 'Go'),
-('14f46a70-e1e7-44fd-9735-ec3f8d21113c', '4b5f225e-3828-46bc-86c9-5bdef91d2e86', 10.0, 30, 11.4, '', 'WW_901O_STACK_ONEOFF_SCANDINAVIA_10GB_30D', 'Go'),
-('4fa54878-44db-4a60-a658-3ae848966899', '4b5f225e-3828-46bc-86c9-5bdef91d2e86', 50.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_SCANDINAVIA_50GB_30D', 'Go'),
-
--- Serbie
-
-('8549d314-3df2-45d0-8d57-e80c96df6f48', '7e713e18-46ed-45d2-b54e-bf087123ab60', 3.0, 15, 6.65, '', 'WW_901O_STACK_ONEOFF_SERBIA_3GB_15D', 'Go'),
-('faffa26a-eecd-4fda-a99f-85a528575369', '7e713e18-46ed-45d2-b54e-bf087123ab60', 10.0, 7, 12.35, '', 'WW_901O_STACK_ONEOFF_SERBIA_10GB_7D', 'Go'),
-('b66c02f1-2ab2-4d53-b5b8-5b572f8a746d', '7e713e18-46ed-45d2-b54e-bf087123ab60', 10.0, 30, 14.25, '', 'WW_901O_STACK_ONEOFF_SERBIA_10GB_30D', 'Go'),
-('4e7d10f2-1185-416a-bae1-5087cf3bc4cb', '7e713e18-46ed-45d2-b54e-bf087123ab60', 25.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_SERBIA_25GB_30D', 'Go'),
-('c4868888-8c47-47f2-be46-7b0899bb3970', '7e713e18-46ed-45d2-b54e-bf087123ab60', 40.0, 7, 27.55, '', 'WW_901O_STACK_ONEOFF_SERBIA_UNLIMITED_7D_FUP20', 'UNLI'),
-('5b61ca6a-9b99-453e-a584-d0f301c159de', '7e713e18-46ed-45d2-b54e-bf087123ab60', 60.0, 15, 37.05, '', 'WW_901O_STACK_ONEOFF_SERBIA_UNLIMITED_15D_FUP30', 'UNLI'),
-
--- Seychelles
-
-('faf1d23c-26dc-4131-8400-29181860b531', '57884e9b-f978-4090-bce4-75b6e93b3feb', 1.0, 7, 7.6, '', 'WW_901O_STACK_ONEOFF_SEYCHELLES_1GB_7D', 'Go'),
-('88f58440-9562-40ad-8403-5dccba5404e9', '57884e9b-f978-4090-bce4-75b6e93b3feb', 3.0, 15, 15.2, '', 'WW_901O_STACK_ONEOFF_SEYCHELLES_3GB_15D', 'Go'),
-('85e28636-aa91-46d0-8c58-55f8466e8347', '57884e9b-f978-4090-bce4-75b6e93b3feb', 10.0, 7, 30.4, '', 'WW_901O_STACK_ONEOFF_SEYCHELLES_10GB_7D', 'Go'),
-('771d0cb2-c59f-4130-bdac-6f23a106d19e', '57884e9b-f978-4090-bce4-75b6e93b3feb', 10.0, 30, 33.25, '', 'WW_901O_STACK_ONEOFF_SEYCHELLES_10GB_30D', 'Go'),
-
--- Sierra Leone
-
-('8aef9093-bde4-4987-a10a-00d0de5d0452', '3d9541fe-8d81-4733-834a-9d94668fa9fe', 1.0, 7, 8.55, '', 'WW_901O_STACK_ONEOFF_SIERRALEONE_1GB_7D', 'Go'),
-('ee93f073-73b4-4854-b875-1e08a1a61c2c', '3d9541fe-8d81-4733-834a-9d94668fa9fe', 3.0, 15, 18.05, '', 'WW_901O_STACK_ONEOFF_SIERRALEONE_3GB_15D', 'Go'),
-('82e01d4f-4f28-47a7-8675-f62288b8fadf', '3d9541fe-8d81-4733-834a-9d94668fa9fe', 10.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_SIERRALEONE_10GB_30D', 'Go'),
-
--- Singapour
-
-('0766ce4e-aecd-44bc-8d28-e49ddece09bf', '67e347cb-a6e4-4e87-a714-179bba2d6829', 1.0, 7, 2.85, '', 'WW_901O_STACK_ONEOFF_SINGAPORE_1GB_7D', 'Go'),
-('1003f516-9588-4819-99aa-d09fc2673e3d', '67e347cb-a6e4-4e87-a714-179bba2d6829', 3.0, 15, 5.7, '', 'WW_901O_STACK_ONEOFF_SINGAPORE_3GB_15D', 'Go'),
-('495ade42-34fc-4135-b2ac-c3e115fbe741', '67e347cb-a6e4-4e87-a714-179bba2d6829', 10.0, 7, 10.45, '', 'WW_901O_STACK_ONEOFF_SINGAPORE_10GB_7D', 'Go'),
-('82e59a08-432a-4b7d-a871-f2dbd0b23ab5', '67e347cb-a6e4-4e87-a714-179bba2d6829', 10.0, 30, 13.3, '', 'WW_901O_STACK_ONEOFF_SINGAPORE_10GB_30D', 'Go'),
-('a3e894d0-0d41-4f21-bea2-e92655a3a897', '67e347cb-a6e4-4e87-a714-179bba2d6829', 20.0, 2, 8.55, '', 'WW_901O_STACK_ONEOFF_SINGAPORE_UNLIMITED_2D_FUP10', 'UNLI'),
-('2c4eabf7-d46b-4eb9-9c02-f7a35fd98912', '67e347cb-a6e4-4e87-a714-179bba2d6829', 25.0, 30, 22.8, '', 'WW_901O_STACK_ONEOFF_SINGAPORE_25GB_30D', 'Go'),
-('425137f0-b33f-45ae-bd52-18258478155d', '67e347cb-a6e4-4e87-a714-179bba2d6829', 40.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_SINGAPORE_UNLIMITED_7D_FUP20', 'UNLI'),
-('f28b4cad-6e50-4144-8278-36299782e54c', '67e347cb-a6e4-4e87-a714-179bba2d6829', 60.0, 15, 33.25, '', 'WW_901O_STACK_ONEOFF_SINGAPORE_UNLIMITED_15D_FUP30', 'UNLI'),
-('abcdf9ad-e5a6-4204-b6e2-4a4164877d11', '67e347cb-a6e4-4e87-a714-179bba2d6829', 120.0, 30, 46.55, '', 'WW_901O_STACK_ONEOFF_SINGAPORE_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Slovaquie
-
-('4265a098-4c48-4dce-a475-6ad19fe8a806', '66ec6adb-dd58-479f-8547-cfb41e664528', 3.0, 15, 4.75, '', 'WW_901O_STACK_ONEOFF_SLOVAKIA_3GB_15D', 'Go'),
-('bbe2c731-6f6d-42ad-beb5-014d0fa8664a', '66ec6adb-dd58-479f-8547-cfb41e664528', 10.0, 7, 11.4, '', 'WW_901O_STACK_ONEOFF_SLOVAKIA_10GB_7D', 'Go'),
-('cd786475-bc0b-456a-985c-93e10ced34be', '66ec6adb-dd58-479f-8547-cfb41e664528', 10.0, 30, 9.5, '', 'WW_901O_STACK_ONEOFF_SLOVAKIA_10GB_30D', 'Go'),
-('57f2a289-3015-4abc-872d-10c2b3d51f17', '66ec6adb-dd58-479f-8547-cfb41e664528', 25.0, 30, 18.05, '', 'WW_901O_STACK_ONEOFF_SLOVAKIA_25GB_30D', 'Go'),
-('9782566e-98af-409a-aac7-a7298321dcba', '66ec6adb-dd58-479f-8547-cfb41e664528', 40.0, 7, 22.8, '', 'WW_901O_STACK_ONEOFF_SLOVAKIA_UNLIMITED_7D_FUP20', 'UNLI'),
-('e61b0ef1-6ae5-41e4-b70f-963d1d4463f8', '66ec6adb-dd58-479f-8547-cfb41e664528', 60.0, 15, 34.2, '', 'WW_901O_STACK_ONEOFF_SLOVAKIA_UNLIMITED_15D_FUP30', 'UNLI'),
-('bdfe87ad-c74c-446e-b9ff-1c70b6b9362c', '66ec6adb-dd58-479f-8547-cfb41e664528', 120.0, 30, 46.55, '', 'WW_901O_STACK_ONEOFF_SLOVAKIA_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Slovénie
-
-('12c55a35-efb4-41d6-839a-e330cfdaf935', '0e795b5a-64a6-47de-82ff-11c8eff90077', 3.0, 15, 5.7, '', 'WW_901O_STACK_ONEOFF_SLOVENIA_3GB_15D', 'Go'),
-('531fc087-b12d-4d45-95f8-5544c87c8b0b', '0e795b5a-64a6-47de-82ff-11c8eff90077', 10.0, 7, 9.5, '', 'WW_901O_STACK_ONEOFF_SLOVENIA_10GB_7D', 'Go'),
-('c83ff411-9d69-4a4e-a0ee-9bc1f03ec0e2', '0e795b5a-64a6-47de-82ff-11c8eff90077', 10.0, 30, 12.35, '', 'WW_901O_STACK_ONEOFF_SLOVENIA_10GB_30D', 'Go'),
-
--- Soudan
-
-('5cd1ba6d-5adc-4cf7-acf6-4a15f7679f8a', '18944f45-0a29-4a74-b05c-2edf9002c388', 3.0, 15, 16.15, '', 'WW_901O_STACK_ONEOFF_SUDAN_3GB_15D', 'Go'),
-('e6a507e1-bf66-4366-aeae-19ee42736718', '18944f45-0a29-4a74-b05c-2edf9002c388', 10.0, 30, 32.3, '', 'WW_901O_STACK_ONEOFF_SUDAN_10GB_30D', 'Go'),
-
--- Soudan du Sud
-
-('76c83f16-096d-43a2-90cf-8b201cdf074c', 'c8f5dddd-43ba-4e19-8da8-d0db121694ce', 1.0, 7, 5.7, '', 'WW_901O_STACK_ONEOFF_SOUTHSUDAN_1GB_7D', 'Go'),
-('8e8fe611-99c3-4f6e-9838-5f28b3b932bf', 'c8f5dddd-43ba-4e19-8da8-d0db121694ce', 3.0, 15, 13.3, '', 'WW_901O_STACK_ONEOFF_SOUTHSUDAN_3GB_15D', 'Go'),
-
--- Sri Lanka
-
-('87db52bd-7aba-4733-adf8-baf9078f5239', '09925e99-4237-47de-acd4-f9c83f739e0f', 3.0, 15, 5.7, '', 'WW_901O_STACK_ONEOFF_SRILANKA_3GB_15D', 'Go'),
-('0c8e11fc-4e7b-4c44-9fd2-48a97e345bee', '09925e99-4237-47de-acd4-f9c83f739e0f', 10.0, 7, 9.5, '', 'WW_901O_STACK_ONEOFF_SRILANKA_10GB_7D', 'Go'),
-('3b2f3d2a-6396-4b73-96b6-c087855219dd', '09925e99-4237-47de-acd4-f9c83f739e0f', 10.0, 30, 11.4, '', 'WW_901O_STACK_ONEOFF_SRILANKA_10GB_30D', 'Go'),
-('e0362614-c0c1-4d32-a11d-278545892b78', '09925e99-4237-47de-acd4-f9c83f739e0f', 40.0, 7, 23.75, '', 'WW_901O_STACK_ONEOFF_SRILANKA_UNLIMITED_7D_FUP20', 'UNLI'),
-('4f7cc58a-a3e0-471b-9664-4ea43f7ef309', '09925e99-4237-47de-acd4-f9c83f739e0f', 50.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_SRILANKA_50GB_30D', 'Go'),
-('95211e54-2614-4b67-959c-ad1fad26a952', '09925e99-4237-47de-acd4-f9c83f739e0f', 60.0, 15, 42.75, '', 'WW_901O_STACK_ONEOFF_SRILANKA_UNLIMITED_15D_FUP30', 'UNLI'),
-('46adc5f3-d742-4c91-91c9-bac422e2eace', '09925e99-4237-47de-acd4-f9c83f739e0f', 120.0, 30, 61.75, '', 'WW_901O_STACK_ONEOFF_SRILANKA_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Suisse
-
-('7bb8c39d-fb16-4226-a2b5-a295868b7942', '66e3a4ba-392a-41a0-af87-ccb569fb02a2', 3.0, 30, 6.17, '', 'WW_901O_STACK_ONEOFF_SWITZERLAND_3GB_30D', 'Go'),
-('98dc89d5-559f-4338-a939-de1289e798bb', '66e3a4ba-392a-41a0-af87-ccb569fb02a2', 10.0, 7, 8.55, '', 'WW_901O_STACK_ONEOFF_SWITZERLAND_10GB_7D', 'Go'),
-('afbef729-871b-4065-9363-5a959b286daa', '66e3a4ba-392a-41a0-af87-ccb569fb02a2', 10.0, 30, 10.45, '', 'WW_901O_STACK_ONEOFF_SWITZERLAND_10GB_30D', 'Go'),
-('10081a61-ae5e-42d7-a94e-c7064520f754', '66e3a4ba-392a-41a0-af87-ccb569fb02a2', 25.0, 30, 22.8, '', 'WW_901O_STACK_ONEOFF_SWITZERLAND_25GB_30D', 'Go'),
-('5fc90077-5028-4616-9b4d-2938437da673', '66e3a4ba-392a-41a0-af87-ccb569fb02a2', 50.0, 30, 32.3, '', 'WW_901O_STACK_ONEOFF_SWITZERLAND_50GB_30D', 'Go'),
-('dab0bee0-64cf-4b67-9330-f542a75bedf8', '66e3a4ba-392a-41a0-af87-ccb569fb02a2', 60.0, 15, 37.05, '', 'WW_901O_STACK_ONEOFF_SWITZERLAND_UNLIMITED_15D_FUP30', 'UNLI'),
-('b6ee7589-6198-4b64-9679-5a64e74997f4', '66e3a4ba-392a-41a0-af87-ccb569fb02a2', 120.0, 30, 56.05, '', 'WW_901O_STACK_ONEOFF_SWITZERLAND_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Suriname
-
-('24dc5ce9-4fdd-4852-8fe3-29dd9b3fefc0', 'd3844292-5c75-4af2-8c36-21d59ca7c4ac', 1.0, 7, 6.65, '', 'WW_901O_STACK_ONEOFF_SURINAME_1GB_7D', 'Go'),
-('4fb10113-1ae3-4cef-8fe4-26f5669c6447', 'd3844292-5c75-4af2-8c36-21d59ca7c4ac', 3.0, 15, 13.3, '', 'WW_901O_STACK_ONEOFF_SURINAME_3GB_15D', 'Go'),
-('cf69787a-1579-4fe0-a6e3-8665e6f0b33e', 'd3844292-5c75-4af2-8c36-21d59ca7c4ac', 10.0, 7, 26.6, '', 'WW_901O_STACK_ONEOFF_SURINAME_10GB_7D', 'Go'),
-('74413547-3147-403b-9b54-afa0eebe2741', 'd3844292-5c75-4af2-8c36-21d59ca7c4ac', 10.0, 30, 32.3, '', 'WW_901O_STACK_ONEOFF_SURINAME_10GB_30D', 'Go'),
-
--- Suède
-
-('320236c1-064e-40e8-8d84-a712537dd207', '797526bb-9f4f-4325-8f80-856fb2496c3b', 3.0, 15, 5.7, '', 'WW_901O_STACK_ONEOFF_SWEDEN_3GB_15D', 'Go'),
-('02046805-2ed0-4281-b867-08cb084b7698', '797526bb-9f4f-4325-8f80-856fb2496c3b', 10.0, 7, 9.5, '', 'WW_901O_STACK_ONEOFF_SWEDEN_10GB_7D', 'Go'),
-('3b8d8a97-609a-41a7-a4e5-d7e571578b75', '797526bb-9f4f-4325-8f80-856fb2496c3b', 10.0, 30, 11.4, '', 'WW_901O_STACK_ONEOFF_SWEDEN_10GB_30D', 'Go'),
-('297c257a-18ba-4500-b62c-0ab9127b9e6c', '797526bb-9f4f-4325-8f80-856fb2496c3b', 40.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_SWEDEN_UNLIMITED_7D_FUP20', 'UNLI'),
-('321a3c03-ff4f-47da-9275-5b62730690db', '797526bb-9f4f-4325-8f80-856fb2496c3b', 50.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_SWEDEN_50GB_30D', 'Go'),
-('b7d51c33-3d9a-4df6-8a8c-9eb23833e095', '797526bb-9f4f-4325-8f80-856fb2496c3b', 60.0, 15, 27.55, '', 'WW_901O_STACK_ONEOFF_SWEDEN_UNLIMITED_15D_FUP30', 'UNLI'),
-('436a13a2-0e19-4602-b894-3c6405fbc316', '797526bb-9f4f-4325-8f80-856fb2496c3b', 120.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_SWEDEN_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Sénégal
-
-('b867594a-a6dc-4739-a36b-7afdae2206c2', '20647fac-7e92-481f-a6a7-ca1e8c451910', 1.0, 7, 5.7, '', 'WW_901O_STACK_ONEOFF_SENEGAL_1GB_7D', 'Go'),
-('27bfa7b3-d43a-404e-a660-0bb2a26018fb', '20647fac-7e92-481f-a6a7-ca1e8c451910', 3.0, 15, 13.3, '', 'WW_901O_STACK_ONEOFF_SENEGAL_3GB_15D', 'Go'),
-('f31092b1-6db4-4cc0-89c4-9008f79fa77c', '20647fac-7e92-481f-a6a7-ca1e8c451910', 10.0, 30, 27.55, '', 'WW_901O_STACK_ONEOFF_SENEGAL_10GB_30D', 'Go'),
-('2d2b178a-15d3-4a5d-9de9-6a1ca41a64d0', '20647fac-7e92-481f-a6a7-ca1e8c451910', 25.0, 30, 56.05, '', 'WW_901O_STACK_ONEOFF_SENEGAL_25GB_30D', 'Go'),
-('d7fcf1d9-06d4-4b66-8a96-e205d8336ae5', '20647fac-7e92-481f-a6a7-ca1e8c451910', 40.0, 7, 41.8, '', 'WW_901O_STACK_ONEOFF_SENEGAL_UNLIMITED_7D_FUP20', 'UNLI'),
-
--- Tadjikistan
-
-('7a027f76-efff-40db-a9b5-49a0ae71c3ee', '92a5002d-021b-41f0-aa54-b6d6350a3ce8', 1.0, 7, 3.8, '', 'WW_901O_STACK_ONEOFF_TAJIKISTAN_1GB_7D', 'Go'),
-('01b2b2f3-7d7f-43b5-9518-fa5b4e33c015', '92a5002d-021b-41f0-aa54-b6d6350a3ce8', 3.0, 15, 7.6, '', 'WW_901O_STACK_ONEOFF_TAJIKISTAN_3GB_15D', 'Go'),
-('590af1c7-32c7-437b-ada2-41e8f7b92b68', '92a5002d-021b-41f0-aa54-b6d6350a3ce8', 10.0, 7, 17.1, '', 'WW_901O_STACK_ONEOFF_TAJIKISTAN_10GB_7D', 'Go'),
-('79cc01c7-fdbf-416c-a6bd-af8bd8ee71cd', '92a5002d-021b-41f0-aa54-b6d6350a3ce8', 10.0, 30, 19.0, '', 'WW_901O_STACK_ONEOFF_TAJIKISTAN_10GB_30D', 'Go'),
-('27fdbdbe-9dad-4422-b38f-0e1e9a68d29f', '92a5002d-021b-41f0-aa54-b6d6350a3ce8', 25.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_TAJIKISTAN_25GB_30D', 'Go'),
-('47c1e6d3-5949-490e-9ceb-a140341d0dd0', '92a5002d-021b-41f0-aa54-b6d6350a3ce8', 50.0, 7, 34.2, '', 'WW_901O_STACK_ONEOFF_TAJIKISTAN_UNLIMITED_7D_FUP25', 'UNLI'),
-('6570c193-d440-41d3-be10-7c23c4ec732b', '92a5002d-021b-41f0-aa54-b6d6350a3ce8', 60.0, 15, 46.55, '', 'WW_901O_STACK_ONEOFF_TAJIKISTAN_UNLIMITED_15D_FUP30', 'UNLI'),
-('9bb5ce1b-cadf-4c61-a870-f3d02ff130af', '92a5002d-021b-41f0-aa54-b6d6350a3ce8', 120.0, 30, 84.55, '', 'WW_901O_STACK_ONEOFF_TAJIKISTAN_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Tanzanie
-
-('be9dc282-0d05-48ad-8b0c-fc6a927fd30e', 'b71ac246-e162-4d99-a087-bf499b50b789', 1.0, 7, 8.55, '', 'WW_901O_STACK_ONEOFF_TANZANIA_1GB_7D', 'Go'),
-('92164222-ba0b-41de-a158-81e044289222', 'b71ac246-e162-4d99-a087-bf499b50b789', 3.0, 15, 17.1, '', 'WW_901O_STACK_ONEOFF_TANZANIA_3GB_15D', 'Go'),
-('e3a696d4-f91c-4b5a-a6f7-aec411e4b58c', 'b71ac246-e162-4d99-a087-bf499b50b789', 10.0, 8, 34.2, '', 'WW_901O_STACK_ONEOFF_TANZANIA_10GB_8D', 'Go'),
-
--- Taïwan
-
-('6391a9c2-4ca9-41c9-a2fa-0be49d3824f3', '4b712600-a89d-45bf-a2e5-227208769c2c', 1.0, 7, 2.85, '', 'WW_901O_STACK_ONEOFF_TAIWAN_1GB_7D', 'Go'),
-('04681511-6f11-4f08-98ff-46bf0175046e', '4b712600-a89d-45bf-a2e5-227208769c2c', 3.0, 7, 5.7, '', 'WW_901O_STACK_ONEOFF_TAIWAN_3GB_7D', 'Go'),
-('b473766c-5c46-48c4-985b-75bad5275a1c', '4b712600-a89d-45bf-a2e5-227208769c2c', 10.0, 7, 11.4, '', 'WW_901O_STACK_ONEOFF_TAIWAN_10GB_7D', 'Go'),
-('9cf0c084-f09f-41bf-9059-9814c06222a6', '4b712600-a89d-45bf-a2e5-227208769c2c', 10.0, 30, 13.3, '', 'WW_901O_STACK_ONEOFF_TAIWAN_10GB_30D', 'Go'),
-('fc102216-8b50-4ee5-8e1a-e9313de0ee4d', '4b712600-a89d-45bf-a2e5-227208769c2c', 25.0, 30, 26.6, '', 'WW_901O_STACK_ONEOFF_TAIWAN_25GB_30D', 'Go'),
-('9328fec5-05fd-4ceb-9556-7065b2f76320', '4b712600-a89d-45bf-a2e5-227208769c2c', 40.0, 7, 20.9, '', 'WW_901O_STACK_ONEOFF_TAIWAN_UNLIMITED_7D_FUP20', 'UNLI'),
-('bd5ee2c4-82b4-4cb8-8dfc-cab9be262e24', '4b712600-a89d-45bf-a2e5-227208769c2c', 60.0, 15, 37.05, '', 'WW_901O_STACK_ONEOFF_TAIWAN_UNLIMITED_15D_FUP30', 'UNLI'),
-('a5f3f051-8766-42bd-bf40-a5106aaf49b0', '4b712600-a89d-45bf-a2e5-227208769c2c', 120.0, 30, 46.55, '', 'WW_901O_STACK_ONEOFF_TAIWAN_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Tchéquie
-
-('71537df1-cfdc-4069-bd8c-3ccd5571ec5d', '44ea41be-40ed-4339-8bff-de45994a77a2', 3.0, 15, 5.7, '', 'WW_901O_STACK_ONEOFF_CZECHIA_3GB_15D', 'Go'),
-('0077adf8-239b-454d-9634-029b0011acfb', '44ea41be-40ed-4339-8bff-de45994a77a2', 10.0, 7, 11.4, '', 'WW_901O_STACK_ONEOFF_CZECHIA_10GB_7D', 'Go'),
-('bdee1e09-fde7-4faa-8010-4cd75cdec19c', '44ea41be-40ed-4339-8bff-de45994a77a2', 10.0, 30, 13.3, '', 'WW_901O_STACK_ONEOFF_CZECHIA_10GB_30D', 'Go'),
-('926119d1-a74e-4a93-8d31-5f742f65697a', '44ea41be-40ed-4339-8bff-de45994a77a2', 25.0, 30, 24.7, '', 'WW_901O_STACK_ONEOFF_CZECHIA_25GB_30D', 'Go'),
-('a39be41a-0330-4485-8478-1e7b2b63ccfc', '44ea41be-40ed-4339-8bff-de45994a77a2', 40.0, 7, 22.8, '', 'WW_901O_STACK_ONEOFF_CZECHIA_UNLIMITED_7D_FUP20', 'UNLI'),
-('2d6d6efe-8be7-4315-ad06-afabe1ce55d2', '44ea41be-40ed-4339-8bff-de45994a77a2', 50.0, 30, 34.2, '', 'WW_901O_STACK_ONEOFF_CZECHIA_50GB_30D', 'Go'),
-('5a04bcef-d774-404a-b532-edd3b9c42e45', '44ea41be-40ed-4339-8bff-de45994a77a2', 60.0, 15, 34.2, '', 'WW_901O_STACK_ONEOFF_CZECHIA_UNLIMITED_15D_FUP30', 'UNLI'),
-
--- Thaïlande
-
-('4fa37269-ea52-4142-8371-5fa7bd1ce84c', 'ccda7780-bccf-4df5-866d-2512fe061197', 1.0, 7, 3.7, '', 'WW_901O_STACK_ONEOFF_THAILAND_1GB_7D', 'Go'),
-('eef4b4d8-f1e6-471d-83a4-1a96b385e54b', 'ccda7780-bccf-4df5-866d-2512fe061197', 3.0, 15, 6.55, '', 'WW_901O_STACK_ONEOFF_THAILAND_3GB_15D', 'Go'),
-('47de1b03-cd47-4610-a16c-b36a2fe97cef', 'ccda7780-bccf-4df5-866d-2512fe061197', 10.0, 7, 11.3, '', 'WW_901O_STACK_ONEOFF_THAILAND_10GB_7D', 'Go'),
-('9891dd04-d385-4a0a-8729-00b19c71e0b3', 'ccda7780-bccf-4df5-866d-2512fe061197', 10.0, 30, 13.21, '', 'WW_901O_STACK_ONEOFF_THAILAND_10GB_30D', 'Go'),
-('6907c446-908c-4410-b0d2-72f19a39f511', 'ccda7780-bccf-4df5-866d-2512fe061197', 25.0, 30, 23.65, '', 'WW_901O_STACK_ONEOFF_THAILAND_25GB_30D', 'Go'),
-('82c2c4d5-f6e6-4f1f-a546-5e52f3907029', 'ccda7780-bccf-4df5-866d-2512fe061197', 50.0, 7, 21.75, '', 'WW_901O_STACK_ONEOFF_THAILAND_UNLIMITED_7D_FUP25', 'UNLI'),
-('e9f2fc19-f1f3-455e-b992-0eeb0c2b3a21', 'ccda7780-bccf-4df5-866d-2512fe061197', 60.0, 15, 45.6, '', 'WW_901O_STACK_ONEOFF_THAILAND_UNLIMITED_15D_FUP30', 'UNLI'),
-('b7bedf36-04a1-4f1f-bd4c-af11aec5f916', 'ccda7780-bccf-4df5-866d-2512fe061197', 120.0, 30, 55.0, '', 'WW_901O_STACK_ONEOFF_THAILAND_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Togo
-
-('eb116a56-a9d7-41d8-9c5c-76c54e2cc4ef', 'c0e8360d-63e2-4005-80e5-c9f4cddf64f9', 1.0, 7, 22.8, '', 'WW_901O_STACK_ONEOFF_TOGO_1GB_7D', 'Go'),
-
--- Tonga
-
-('683a4c9a-248a-41e9-b785-596e7dab0427', 'f5dc92b9-1137-40ea-8031-7f097fe7a5e1', 3.0, 15, 32.3, '', 'WW_901O_STACK_ONEOFF_TONGA_3GB_15D', 'Go'),
-
--- Trinité-et-Tobago
-
-('d1cf3fb0-2f69-45d2-8708-e262b30300c0', 'd4b597b3-46da-429b-9de6-b2110f2fb552', 1.0, 7, 6.65, '', 'WW_901O_STACK_ONEOFF_TRINIDAD_1GB_7D', 'Go'),
-('a44b4d45-ad15-4bb6-84ad-31441b8837a0', 'd4b597b3-46da-429b-9de6-b2110f2fb552', 3.0, 15, 13.3, '', 'WW_901O_STACK_ONEOFF_TRINIDAD_3GB_15D', 'Go'),
-('27d692be-ae54-4401-831d-4821a8f196aa', 'd4b597b3-46da-429b-9de6-b2110f2fb552', 10.0, 7, 26.6, '', 'WW_901O_STACK_ONEOFF_TRINIDAD_10GB_7D', 'Go'),
-('d404e5c6-19df-4a0b-b550-2fb48722c96c', 'd4b597b3-46da-429b-9de6-b2110f2fb552', 10.0, 30, 32.3, '', 'WW_901O_STACK_ONEOFF_TRINIDAD_10GB_30D', 'Go'),
-
--- Tunisie
-
-('207e6890-fae0-410c-ae55-6842387620ed', '9331f629-cc33-4f38-8294-4757e8627b74', 1.0, 7, 3.8, '', 'WW_901O_STACK_ONEOFF_TUNISIA_1GB_7D', 'Go'),
-('920aba6d-6661-4aad-92a5-e600233aac74', '9331f629-cc33-4f38-8294-4757e8627b74', 3.0, 15, 7.6, '', 'WW_901O_STACK_ONEOFF_TUNISIA_3GB_15D', 'Go'),
-('d210ddbb-edc6-4035-8735-ab53ed22b957', '9331f629-cc33-4f38-8294-4757e8627b74', 10.0, 7, 16.15, '', 'WW_901O_STACK_ONEOFF_TUNISIA_10GB_7D', 'Go'),
-('61222e0d-38d2-4c60-9244-7afed35b9299', '9331f629-cc33-4f38-8294-4757e8627b74', 10.0, 30, 18.05, '', 'WW_901O_STACK_ONEOFF_TUNISIA_10GB_30D', 'Go'),
-('8728f82f-03b4-4ef5-9a5d-a6161ef9e432', '9331f629-cc33-4f38-8294-4757e8627b74', 25.0, 30, 36.1, '', 'WW_901O_STACK_ONEOFF_TUNISIA_25GB_30D', 'Go'),
-('b1a90df3-b0b1-44b0-a221-9b5fa66e8d3d', '9331f629-cc33-4f38-8294-4757e8627b74', 40.0, 7, 31.35, '', 'WW_901O_STACK_ONEOFF_TUNISIA_UNLIMITED_7D_FUP20', 'UNLI'),
-('8b22a19f-4c14-4fcf-acb4-ca219b5e75a1', '9331f629-cc33-4f38-8294-4757e8627b74', 60.0, 15, 46.55, '', 'WW_901O_STACK_ONEOFF_TUNISIA_UNLIMITED_15D_FUP30', 'UNLI'),
-
--- Turquie
-
-('03cfd0d9-d1f4-412c-8ae1-dfc1f1188ff6', 'ebaff4c3-2062-4908-8641-c00568028c7e', 1.0, 7, 3.8, '', 'WW_901O_STACK_ONEOFF_TURKEY_1GB_7D', 'Go'),
-('bf03fcdc-bc93-40e6-a998-de07692a4870', 'ebaff4c3-2062-4908-8641-c00568028c7e', 3.0, 30, 6.65, '', 'WW_901O_STACK_ONEOFF_TURKEY_3GB_30D', 'Go'),
-('aafdacb4-a2a8-462f-b42c-bbf5988839b6', 'ebaff4c3-2062-4908-8641-c00568028c7e', 10.0, 7, 11.4, '', 'WW_901O_STACK_ONEOFF_TURKEY_10GB_7D', 'Go'),
-('bd27888a-ed02-4f8e-91ba-96574de00531', 'ebaff4c3-2062-4908-8641-c00568028c7e', 10.0, 30, 13.3, '', 'WW_901O_STACK_ONEOFF_TURKEY_10GB_30D', 'Go'),
-('8b5d8610-0c9c-495d-aa02-534a38c515dd', 'ebaff4c3-2062-4908-8641-c00568028c7e', 14.0, 1, 8.55, '', 'WW_901O_STACK_ONEOFF_TURKEY_UNLIMITED_1D_FUP7', 'UNLI'),
-('ab9de4e2-c369-429e-aa0f-59d1632b313e', 'ebaff4c3-2062-4908-8641-c00568028c7e', 25.0, 30, 27.55, '', 'WW_901O_STACK_ONEOFF_TURKEY_25GB_30D', 'Go'),
-('b0fa6cb1-ad07-49b9-a741-a200e783ef09', 'ebaff4c3-2062-4908-8641-c00568028c7e', 40.0, 7, 23.75, '', 'WW_901O_STACK_ONEOFF_TURKEY_UNLIMITED_7D_FUP20', 'UNLI'),
-('9c1a8ac9-49ca-401a-8ad3-7951cb1ddb74', 'ebaff4c3-2062-4908-8641-c00568028c7e', 60.0, 15, 37.05, '', 'WW_901O_STACK_ONEOFF_TURKEY_UNLIMITED_15D_FUP30', 'UNLI'),
-('e095122c-3a99-4de6-b763-2e55a267060b', 'ebaff4c3-2062-4908-8641-c00568028c7e', 120.0, 30, 65.55, '', 'WW_901O_STACK_ONEOFF_TURKEY_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- USA & Canada
-
-('b58d7b64-9efd-4c41-99c1-fad5aef6d001', 'e4197d22-7677-40b4-b61a-ddf6fc3d0aec', 40.0, 7, 23.75, '', 'WW_901O_STACK_ONEOFF_USACAN_UNLIMITED_7D_FUP20', 'UNLI'),
-('c4edd664-d568-4df5-a402-43a6fbaaaa60', 'e4197d22-7677-40b4-b61a-ddf6fc3d0aec', 60.0, 15, 37.05, '', 'WW_901O_STACK_ONEOFF_USACAN_UNLIMITED_15D_FUP30', 'UNLI'),
-('f8b7c087-da5a-4cce-a802-2845b0ae7c1a', 'e4197d22-7677-40b4-b61a-ddf6fc3d0aec', 120.0, 30, 61.75, '', 'WW_901O_STACK_ONEOFF_USACAN_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Ukraine
-
-('9009b30c-f938-4889-b504-50046a7f5ef2', 'af28a2cc-8c89-4347-82bf-14d4ccf4373d', 10.0, 30, 7.6, '', 'WW_901O_STACK_ONEOFF_UKRAINE_10GB_30D', 'Go'),
-('c8d529d7-582f-41a1-882b-370f2044d0f4', 'af28a2cc-8c89-4347-82bf-14d4ccf4373d', 40.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_UKRAINE_UNLIMITED_7D_FUP20', 'UNLI'),
-('95a21fcb-528f-4bf1-994c-f7a16691a2f0', 'af28a2cc-8c89-4347-82bf-14d4ccf4373d', 50.0, 30, 20.9, '', 'WW_901O_STACK_ONEOFF_UKRAINE_50GB_30D', 'Go'),
-('eb434721-bc0d-4869-8e3b-b5e9673ef5a9', 'af28a2cc-8c89-4347-82bf-14d4ccf4373d', 120.0, 30, 27.55, '', 'WW_901O_STACK_ONEOFF_UKRAINE_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Uruguay
-
-('57fbb82a-8b9c-4822-9319-3fe74a629725', 'f25dc363-1fd7-4f44-839d-57aaa59c9ee9', 1.0, 7, 3.8, '', 'WW_901O_STACK_ONEOFF_URUGUAY_1GB_7D', 'Go'),
-('ba3bf403-790c-4e9c-adb6-c5bd5068eca0', 'f25dc363-1fd7-4f44-839d-57aaa59c9ee9', 3.0, 15, 8.55, '', 'WW_901O_STACK_ONEOFF_URUGUAY_3GB_15D', 'Go'),
-('4bde4885-9c45-4da7-82be-e434a684d92e', 'f25dc363-1fd7-4f44-839d-57aaa59c9ee9', 10.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_URUGUAY_10GB_7D', 'Go'),
-('dc17c316-a522-4245-8581-820b6992481c', 'f25dc363-1fd7-4f44-839d-57aaa59c9ee9', 10.0, 30, 20.9, '', 'WW_901O_STACK_ONEOFF_URUGUAY_10GB_30D', 'Go'),
-('8452ad37-1c1a-41e1-a44a-aa15db59e66d', 'f25dc363-1fd7-4f44-839d-57aaa59c9ee9', 25.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_URUGUAY_25GB_30D', 'Go'),
-('9b9390cd-6ac9-477b-b35c-a2a7300764d4', 'f25dc363-1fd7-4f44-839d-57aaa59c9ee9', 40.0, 7, 27.55, '', 'WW_901O_STACK_ONEOFF_URUGUAY_UNLIMITED_7D_FUP20', 'UNLI'),
-('f00dccd1-d0e1-4e60-aa9c-8de00708957d', 'f25dc363-1fd7-4f44-839d-57aaa59c9ee9', 120.0, 30, 83.6, '', 'WW_901O_STACK_ONEOFF_URUGUAY_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Vanuatu
-
-('37f77a29-eaf4-46c3-86aa-ffdd8262d889', '9ba71685-57e6-48c9-b6e2-e660851d15ee', 1.0, 7, 17.1, '', 'WW_901O_STACK_ONEOFF_VANUATU_1GB_7D', 'Go'),
-('15d57601-d4db-4f0e-bdda-b8207315cf88', '9ba71685-57e6-48c9-b6e2-e660851d15ee', 3.0, 15, 32.3, '', 'WW_901O_STACK_ONEOFF_VANUATU_3GB_15D', 'Go'),
-
--- Venezuela
-
-('f1009497-f7d7-4ec9-82bd-d6eb97190b13', 'fc8adfb9-fe36-45c0-8d06-69bfd508c899', 1.0, 7, 6.65, '', 'WW_901O_STACK_ONEOFF_VENEZUELA_1GB_7D', 'Go'),
-('0dd542ae-f155-4881-9cbf-bc462f234cd4', 'fc8adfb9-fe36-45c0-8d06-69bfd508c899', 3.0, 15, 13.3, '', 'WW_901O_STACK_ONEOFF_VENEZUELA_3GB_15D', 'Go'),
-('96e61c1c-48b1-470c-990b-ba7b55217793', 'fc8adfb9-fe36-45c0-8d06-69bfd508c899', 10.0, 30, 26.6, '', 'WW_901O_STACK_ONEOFF_VENEZUELA_10GB_30D', 'Go'),
-('03a27457-f13d-49ed-b4d0-2c316529948c', 'fc8adfb9-fe36-45c0-8d06-69bfd508c899', 25.0, 30, 46.55, '', 'WW_901O_STACK_ONEOFF_VENEZUELA_25GB_30D', 'Go'),
-
--- Vietnam
-
-('a82bffc5-28f4-44df-a3c5-ac913fab7ac5', '03be8bc2-1e20-4482-8dc6-036064614db6', 3.0, 15, 6.55, '', 'WW_901O_STACK_ONEOFF_VIETNAM_3GB_15D', 'Go'),
-('e63e0416-0b1e-4a18-990a-8ae09e0ef2a2', '03be8bc2-1e20-4482-8dc6-036064614db6', 10.0, 7, 10.36, '', 'WW_901O_STACK_ONEOFF_VIETNAM_10GB_7D', 'Go'),
-('7b36cd55-bc84-4b0d-a072-646caca870e5', '03be8bc2-1e20-4482-8dc6-036064614db6', 10.0, 30, 12.25, '', 'WW_901O_STACK_ONEOFF_VIETNAM_10GB_30D', 'Go'),
-('b44f6537-5024-42d6-87f1-53b8eb7bb586', '03be8bc2-1e20-4482-8dc6-036064614db6', 40.0, 7, 22.8, '', 'WW_901O_STACK_ONEOFF_VIETNAM_UNLIMITED_7D_FUP20', 'UNLI'),
-('45c85cae-ad71-4409-ae19-fc56b6c878d6', '03be8bc2-1e20-4482-8dc6-036064614db6', 50.0, 30, 35.05, '', 'WW_901O_STACK_ONEOFF_VIETNAM_50GB_30D', 'Go'),
-('187a4437-e2c7-4dca-b154-f163323ba146', '03be8bc2-1e20-4482-8dc6-036064614db6', 60.0, 15, 37.9, '', 'WW_901O_STACK_ONEOFF_VIETNAM_UNLIMITED_15D_FUP30', 'UNLI'),
-('65c446ed-106e-4636-92dd-def44c5e9383', '03be8bc2-1e20-4482-8dc6-036064614db6', 120.0, 30, 52.15, '', 'WW_901O_STACK_ONEOFF_VIETNAM_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Zambie
-
-('08a7cef5-a310-486e-8df8-b7b4bf1470ca', '4a0d10c5-4fe0-48a3-bc50-8e3e5047bbcd', 1.0, 7, 4.75, '', 'WW_901O_STACK_ONEOFF_ZAMBIA_1GB_7D', 'Go'),
-('f51e9e2a-49d7-4b5b-8b66-9c9c24861c63', '4a0d10c5-4fe0-48a3-bc50-8e3e5047bbcd', 3.0, 15, 13.3, '', 'WW_901O_STACK_ONEOFF_ZAMBIA_3GB_15D', 'Go'),
-
--- Égypte
-
-('a3d78229-6d29-4c17-bdef-d089cf249849', 'df6771d7-ea09-42c4-9ff8-a752a462d64e', 1.0, 30, 4.75, '', 'WW_901O_STACK_ONEOFF_EGYPT_1GB_30D', 'Go'),
-('5a497c18-5b2d-4f27-8e12-74152cf53e22', 'df6771d7-ea09-42c4-9ff8-a752a462d64e', 3.0, 30, 8.55, '', 'WW_901O_STACK_ONEOFF_EGYPT_3GB_30D', 'Go'),
-('a72aeff0-0878-4591-a0da-2fbae1c5853b', 'df6771d7-ea09-42c4-9ff8-a752a462d64e', 10.0, 7, 16.15, '', 'WW_901O_STACK_ONEOFF_EGYPT_10GB_7D', 'Go'),
-('8f52fc93-31cd-4ddb-9565-98061626ea20', 'df6771d7-ea09-42c4-9ff8-a752a462d64e', 10.0, 30, 18.05, '', 'WW_901O_STACK_ONEOFF_EGYPT_10GB_30D', 'Go'),
-('064c279a-c212-4761-8abb-43f5a1fbf5e1', 'df6771d7-ea09-42c4-9ff8-a752a462d64e', 25.0, 30, 37.05, '', 'WW_901O_STACK_ONEOFF_EGYPT_25GB_30D', 'Go'),
-('043b954a-3af2-44a6-adfc-21b7f979c49c', 'df6771d7-ea09-42c4-9ff8-a752a462d64e', 50.0, 7, 27.55, '', 'WW_901O_STACK_ONEOFF_EGYPT_UNLIMITED_7D_FUP25', 'UNLI'),
-('5a163e1f-2599-4c48-bcc9-da3d445460e5', 'df6771d7-ea09-42c4-9ff8-a752a462d64e', 60.0, 15, 41.8, '', 'WW_901O_STACK_ONEOFF_EGYPT_UNLIMITED_15D_FUP30', 'UNLI'),
-('78084c58-1589-4240-9b48-157d68949a5d', 'df6771d7-ea09-42c4-9ff8-a752a462d64e', 120.0, 30, 65.55, '', 'WW_901O_STACK_ONEOFF_EGYPT_UNLIMITED_30D_FUP60', 'UNLI'),
-
--- Émirats arabes unis
-
-('eb5511c3-c80b-46ed-afd0-f9c5a0ad2548', '4e141b22-bb56-406b-a0b5-42a48bf1af59', 1.0, 7, 4.75, '', 'WW_901O_STACK_ONEOFF_UAE_1GB_7D', 'Go'),
-('01c655e5-a4c6-4f7d-9d87-21f17e8e6a93', '4e141b22-bb56-406b-a0b5-42a48bf1af59', 3.0, 15, 9.5, '', 'WW_901O_STACK_ONEOFF_UAE_3GB_15D', 'Go'),
-('c843ee06-6d8c-437d-9cc5-572caf523ce1', '4e141b22-bb56-406b-a0b5-42a48bf1af59', 10.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_UAE_10GB_7D', 'Go'),
-('9416eac4-9a17-47cd-aa8e-583005014ef1', '4e141b22-bb56-406b-a0b5-42a48bf1af59', 14.0, 1, 11.4, '', 'WW_901O_STACK_ONEOFF_UAE_UNLIMITED_1D_FUP7', 'UNLI'),
-('9ef9bc36-3564-47f5-81ea-1b7981757c13', '4e141b22-bb56-406b-a0b5-42a48bf1af59', 25.0, 30, 46.55, '', 'WW_901O_STACK_ONEOFF_UAE_25GB_30D', 'Go'),
-('83f2647c-61af-48d0-9002-51308a63df41', '4e141b22-bb56-406b-a0b5-42a48bf1af59', 40.0, 7, 34.2, '', 'WW_901O_STACK_ONEOFF_UAE_UNLIMITED_7D_FUP20', 'UNLI'),
-
--- Équateur
-
-('3e8ebd8a-7c72-4632-90ce-ef4ca1ff5396', 'c0b05975-5b74-4d19-bf7b-6d6c93a562a2', 1.0, 30, 6.65, '', 'WW_901O_STACK_ONEOFF_ECUADOR_1GB_30D', 'Go'),
-('5c8fe830-3897-4374-b254-9ae3922484a1', 'c0b05975-5b74-4d19-bf7b-6d6c93a562a2', 3.0, 15, 13.3, '', 'WW_901O_STACK_ONEOFF_ECUADOR_3GB_15D', 'Go'),
-('ad952b7c-d5c4-470f-9527-b339665d5362', 'c0b05975-5b74-4d19-bf7b-6d6c93a562a2', 10.0, 30, 26.6, '', 'WW_901O_STACK_ONEOFF_ECUADOR_10GB_30D', 'Go'),
-
--- États-Unis & territoires
-
-('33a38092-b54c-495d-b4a7-a14569d0c97c', '2a6b3054-99e6-4a24-b5ea-37a008934996', 1.0, 7, 3.8, '', 'WW_901O_STACK_ONEOFF_USA_1GB_7D', 'Go'),
-('737884fb-4203-4467-9e2f-c4f2bf27b1c8', '2a6b3054-99e6-4a24-b5ea-37a008934996', 3.0, 15, 6.65, '', 'WW_901O_STACK_ONEOFF_USA_3GB_15D', 'Go'),
-('34be8e5a-8e2c-49c5-9025-93c1784a222e', '2a6b3054-99e6-4a24-b5ea-37a008934996', 10.0, 7, 11.4, '', 'WW_901O_STACK_ONEOFF_USA_10GB_7D', 'Go'),
-('c43650bd-df12-4538-8e75-8376d6afc1be', '2a6b3054-99e6-4a24-b5ea-37a008934996', 10.0, 30, 13.3, '', 'WW_901O_STACK_ONEOFF_USA_10GB_30D', 'Go'),
-('75da561c-8e84-48fe-b00c-81ef8c2eb616', '2a6b3054-99e6-4a24-b5ea-37a008934996', 14.0, 1, 8.55, '', 'WW_901O_STACK_ONEOFF_USA_UNLIMITED_1D_FUP7', 'UNLI'),
-('907e3185-abf6-4086-a702-d6141d0b6de5', '2a6b3054-99e6-4a24-b5ea-37a008934996', 25.0, 30, 30.4, '', 'WW_901O_STACK_ONEOFF_USA_25GB_30D', 'Go'),
-('2a88118d-ff5b-4f80-8c60-6f4511974937', '2a6b3054-99e6-4a24-b5ea-37a008934996', 50.0, 7, 23.75, '', 'WW_901O_STACK_ONEOFF_USA_UNLIMITED_7D_FUP25', 'UNLI'),
-('736b03d5-442e-486b-af93-51974501c83a', '2a6b3054-99e6-4a24-b5ea-37a008934996', 50.0, 30, 45.6, '', 'WW_901O_STACK_ONEOFF_USA_50GB_30D', 'Go'),
-('589c577e-696c-49e5-9ca3-bee373882005', '2a6b3054-99e6-4a24-b5ea-37a008934996', 60.0, 15, 37.05, '', 'WW_901O_STACK_ONEOFF_USA_UNLIMITED_15D_FUP30', 'UNLI'),
-('023f8dfe-483d-46d1-9ec6-9ea0a85d57bb', '2a6b3054-99e6-4a24-b5ea-37a008934996', 120.0, 30, 61.75, '', 'WW_901O_STACK_ONEOFF_USA_UNLIMITED_30D_FUP60', 'UNLI'),
-('3d4b2f1f-7354-4863-ba57-d59b716afd2f', '2a6b3054-99e6-4a24-b5ea-37a008934996', 500.0, 1, 2.75, '', 'WW_901O_STACK_ONEOFF_USA_500MB_1D', 'Mo'),
-
--- Éthiopie
-
-('d6f7c965-3061-4051-ac0e-ba5f6a89bd1c', '3e60394e-1329-4788-9578-d6f600fc9ae5', 1.0, 7, 18.05, '', 'WW_901O_STACK_ONEOFF_ETHIOPIA_1GB_7D', 'Go'),
-('5b8142c7-5de8-43e4-a7cf-0003c1001933', '3e60394e-1329-4788-9578-d6f600fc9ae5', 3.0, 15, 36.1, '', 'WW_901O_STACK_ONEOFF_ETHIOPIA_3GB_15D', 'Go'),
-
--- Îles Féroé
-
-('5df92778-afd1-4584-be8d-f836b339e7d6', '36129492-21ba-443f-9197-a7623a997c2c', 3.0, 15, 5.7, '', 'WW_901O_STACK_ONEOFF_FAROE_3GB_15D', 'Go'),
-('9b9cbc24-8c94-4de0-beda-1800e5d6fbec', '36129492-21ba-443f-9197-a7623a997c2c', 10.0, 7, 11.4, '', 'WW_901O_STACK_ONEOFF_FAROE_10GB_7D', 'Go'),
-('432e7266-abdd-4928-8084-5aad0487a19c', '36129492-21ba-443f-9197-a7623a997c2c', 10.0, 30, 13.3, '', 'WW_901O_STACK_ONEOFF_FAROE_10GB_30D', 'Go'),
-('4a45edb6-12e5-42d2-b588-95857c8cf712', '36129492-21ba-443f-9197-a7623a997c2c', 25.0, 30, 24.7, '', 'WW_901O_STACK_ONEOFF_FAROE_25GB_30D', 'Go');
+INSERT INTO offers (destination_id, data_quantity, data_unit, duration_quantity, duration_unit, base_price, provider_product_id) VALUES
+((SELECT id FROM destinations WHERE code='af' AND type='local'), 1, 'Go', 7, 'days', 14.25, 'WW_901O_STACK_ONEOFF_AFG_1GB_7D'),
+((SELECT id FROM destinations WHERE code='af' AND type='local'), 3, 'Go', 15, 'days', 26.92, 'WW_901O_STACK_ONEOFF_AFG_3GB_15D'),
+((SELECT id FROM destinations WHERE code='AFRICA2' AND type='region'), 1, 'Go', 30, 'days', 15.04, 'WW_901O_STACK_ONEOFF_AFRICA2_1GB_30D'),
+((SELECT id FROM destinations WHERE code='AFRICA2' AND type='region'), 3, 'Go', 15, 'days', 34.83, 'WW_901O_STACK_ONEOFF_AFRICA2_3GB_15D'),
+((SELECT id FROM destinations WHERE code='al' AND type='local'), 10, 'Go', 30, 'days', 12.67, 'WW_901O_STACK_ONEOFF_ALBANIA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='al' AND type='local'), 10, 'Go', 7, 'days', 11.08, 'WW_901O_STACK_ONEOFF_ALBANIA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='al' AND type='local'), 1, 'Go', 7, 'days', 3.96, 'WW_901O_STACK_ONEOFF_ALBANIA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='al' AND type='local'), 3, 'Go', 15, 'days', 6.33, 'WW_901O_STACK_ONEOFF_ALBANIA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='al' AND type='local'), 30, 'Go', 15, 'days', 38.79, 'WW_901O_STACK_ONEOFF_ALBANIA_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='al' AND type='local'), 20, 'Go', 7, 'days', 22.96, 'WW_901O_STACK_ONEOFF_ALBANIA_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='dz' AND type='local'), 10, 'Go', 30, 'days', 15.83, 'WW_901O_STACK_ONEOFF_ALGERIA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='dz' AND type='local'), 10, 'Go', 7, 'days', 14.25, 'WW_901O_STACK_ONEOFF_ALGERIA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='dz' AND type='local'), 1, 'Go', 7, 'days', 3.96, 'WW_901O_STACK_ONEOFF_ALGERIA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='dz' AND type='local'), 25, 'Go', 30, 'days', 30.08, 'WW_901O_STACK_ONEOFF_ALGERIA_25GB_30D'),
+((SELECT id FROM destinations WHERE code='dz' AND type='local'), 3, 'Go', 15, 'days', 7.12, 'WW_901O_STACK_ONEOFF_ALGERIA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='dz' AND type='local'), 40, 'Go', 8, 'days', 28.5, 'WW_901O_STACK_ONEOFF_ALGERIA_DF_UNLIMITED_8D_FUP5'),
+((SELECT id FROM destinations WHERE code='dz' AND type='local'), 30, 'Go', 15, 'days', 43.54, 'WW_901O_STACK_ONEOFF_ALGERIA_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='AMERICA' AND type='region'), 1, 'Go', 30, 'days', 11.88, 'WW_901O_STACK_ONEOFF_AMERICA_1GB_30D'),
+((SELECT id FROM destinations WHERE code='AMERICA' AND type='region'), 3, 'Go', 15, 'days', 22.96, 'WW_901O_STACK_ONEOFF_AMERICA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='ad' AND type='local'), 10, 'Go', 30, 'days', 11.08, 'WW_901O_STACK_ONEOFF_ANDORRA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='ad' AND type='local'), 10, 'Go', 7, 'days', 9.5, 'WW_901O_STACK_ONEOFF_ANDORRA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='ad' AND type='local'), 1, 'Go', 7, 'days', 2.38, 'WW_901O_STACK_ONEOFF_ANDORRA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='ad' AND type='local'), 3, 'Go', 15, 'days', 4.75, 'WW_901O_STACK_ONEOFF_ANDORRA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='ad' AND type='local'), 25, 'Go', 7, 'days', 27.71, 'WW_901O_STACK_ONEOFF_ANDORRA_UNLIMITED_7D_FUP25'),
+((SELECT id FROM destinations WHERE code='ao' AND type='local'), 1, 'Go', 7, 'days', 22.96, 'WW_901O_STACK_ONEOFF_ANGOLA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='ao' AND type='local'), 3, 'Go', 15, 'days', 46.71, 'WW_901O_STACK_ONEOFF_ANGOLA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='ANZ' AND type='region'), 1, 'Go', 7, 'days', 3.96, 'WW_901O_STACK_ONEOFF_ANZ_1GB_7D'),
+((SELECT id FROM destinations WHERE code='ar' AND type='local'), 10, 'Go', 30, 'days', 18.21, 'WW_901O_STACK_ONEOFF_ARG_10GB_30D'),
+((SELECT id FROM destinations WHERE code='ar' AND type='local'), 1, 'Go', 7, 'days', 4.75, 'WW_901O_STACK_ONEOFF_ARG_1GB_7D'),
+((SELECT id FROM destinations WHERE code='ar' AND type='local'), 25, 'Go', 30, 'days', 34.83, 'WW_901O_STACK_ONEOFF_ARG_25GB_30D'),
+((SELECT id FROM destinations WHERE code='ar' AND type='local'), 3, 'Go', 15, 'days', 9.5, 'WW_901O_STACK_ONEOFF_ARG_3GB_15D'),
+((SELECT id FROM destinations WHERE code='ar' AND type='local'), 60, 'Go', 30, 'days', 61.75, 'WW_901O_STACK_ONEOFF_ARG_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='ar' AND type='local'), 20, 'Go', 7, 'days', 27.71, 'WW_901O_STACK_ONEOFF_ARG_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='am' AND type='local'), 10, 'Go', 30, 'days', 22.96, 'WW_901O_STACK_ONEOFF_ARMENIA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='am' AND type='local'), 10, 'Go', 7, 'days', 20.58, 'WW_901O_STACK_ONEOFF_ARMENIA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='am' AND type='local'), 1, 'Go', 7, 'days', 6.33, 'WW_901O_STACK_ONEOFF_ARMENIA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='am' AND type='local'), 3, 'Go', 15, 'days', 12.67, 'WW_901O_STACK_ONEOFF_ARMENIA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='am' AND type='local'), 30, 'Go', 15, 'days', 54.62, 'WW_901O_STACK_ONEOFF_ARMENIA_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='am' AND type='local'), 20, 'Go', 7, 'days', 30.88, 'WW_901O_STACK_ONEOFF_ARMENIA_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='aw' AND type='local'), 10, 'Go', 30, 'days', 26.92, 'WW_901O_STACK_ONEOFF_ARUBA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='aw' AND type='local'), 10, 'Go', 7, 'days', 22.17, 'WW_901O_STACK_ONEOFF_ARUBA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='aw' AND type='local'), 1, 'Go', 7, 'days', 5.54, 'WW_901O_STACK_ONEOFF_ARUBA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='aw' AND type='local'), 3, 'Go', 15, 'days', 11.08, 'WW_901O_STACK_ONEOFF_ARUBA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='ASIA' AND type='region'), 10, 'Go', 30, 'days', 34.83, 'WW_901O_STACK_ONEOFF_ASIA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='ASIA' AND type='region'), 1, 'Go', 30, 'days', 7.12, 'WW_901O_STACK_ONEOFF_ASIA_1GB_30D'),
+((SELECT id FROM destinations WHERE code='ASIA' AND type='region'), 3, 'Go', 15, 'days', 15.04, 'WW_901O_STACK_ONEOFF_ASIA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='ASIA' AND type='region'), 500, 'Mo', 1, 'days', 1.58, 'WW_901O_STACK_ONEOFF_ASIA_500MB_1D'),
+((SELECT id FROM destinations WHERE code='at' AND type='local'), 10, 'Go', 30, 'days', 8.71, 'WW_901O_STACK_ONEOFF_AUSTRIA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='at' AND type='local'), 10, 'Go', 7, 'days', 7.12, 'WW_901O_STACK_ONEOFF_AUSTRIA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='at' AND type='local'), 25, 'Go', 30, 'days', 17.42, 'WW_901O_STACK_ONEOFF_AUSTRIA_25GB_30D'),
+((SELECT id FROM destinations WHERE code='at' AND type='local'), 3, 'Go', 15, 'days', 3.96, 'WW_901O_STACK_ONEOFF_AUSTRIA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='at' AND type='local'), 50, 'Go', 30, 'days', 28.5, 'WW_901O_STACK_ONEOFF_AUSTRIA_50GB_30D'),
+((SELECT id FROM destinations WHERE code='at' AND type='local'), 60, 'Go', 30, 'days', 34.83, 'WW_901O_STACK_ONEOFF_AUSTRIA_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='at' AND type='local'), 20, 'Go', 7, 'days', 15.04, 'WW_901O_STACK_ONEOFF_AUSTRIA_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='au' AND type='local'), 10, 'Go', 30, 'days', 12.67, 'WW_901O_STACK_ONEOFF_AUS_10GB_30D'),
+((SELECT id FROM destinations WHERE code='au' AND type='local'), 10, 'Go', 7, 'days', 11.08, 'WW_901O_STACK_ONEOFF_AUS_10GB_7D'),
+((SELECT id FROM destinations WHERE code='au' AND type='local'), 1, 'Go', 7, 'days', 3.17, 'WW_901O_STACK_ONEOFF_AUS_1GB_7D'),
+((SELECT id FROM destinations WHERE code='au' AND type='local'), 25, 'Go', 30, 'days', 27.71, 'WW_901O_STACK_ONEOFF_AUS_25GB_30D'),
+((SELECT id FROM destinations WHERE code='au' AND type='local'), 3, 'Go', 15, 'days', 6.33, 'WW_901O_STACK_ONEOFF_AUS_3GB_15D'),
+((SELECT id FROM destinations WHERE code='au' AND type='local'), 50, 'Go', 30, 'days', 46.71, 'WW_901O_STACK_ONEOFF_AUS_50GB_30D'),
+((SELECT id FROM destinations WHERE code='au' AND type='local'), 30, 'Go', 15, 'days', 35.62, 'WW_901O_STACK_ONEOFF_AUS_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='au' AND type='local'), 60, 'Go', 30, 'days', 54.62, 'WW_901O_STACK_ONEOFF_AUS_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='au' AND type='local'), 20, 'Go', 7, 'days', 19.0, 'WW_901O_STACK_ONEOFF_AUS_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='az' AND type='local'), 1, 'Go', 7, 'days', 4.75, 'WW_901O_STACK_ONEOFF_AZE_1GB_7D'),
+((SELECT id FROM destinations WHERE code='az' AND type='local'), 3, 'Go', 15, 'days', 9.5, 'WW_901O_STACK_ONEOFF_AZE_3GB_15D'),
+((SELECT id FROM destinations WHERE code='bs' AND type='local'), 10, 'Go', 30, 'days', 26.92, 'WW_901O_STACK_ONEOFF_BAHAMAS_10GB_30D'),
+((SELECT id FROM destinations WHERE code='bs' AND type='local'), 10, 'Go', 7, 'days', 22.17, 'WW_901O_STACK_ONEOFF_BAHAMAS_10GB_7D'),
+((SELECT id FROM destinations WHERE code='bs' AND type='local'), 1, 'Go', 7, 'days', 5.54, 'WW_901O_STACK_ONEOFF_BAHAMAS_1GB_7D'),
+((SELECT id FROM destinations WHERE code='bs' AND type='local'), 3, 'Go', 15, 'days', 11.08, 'WW_901O_STACK_ONEOFF_BAHAMAS_3GB_15D'),
+((SELECT id FROM destinations WHERE code='bh' AND type='local'), 10, 'Go', 30, 'days', 16.62, 'WW_901O_STACK_ONEOFF_BAHRAIN_10GB_30D'),
+((SELECT id FROM destinations WHERE code='bh' AND type='local'), 10, 'Go', 7, 'days', 15.04, 'WW_901O_STACK_ONEOFF_BAHRAIN_10GB_7D'),
+((SELECT id FROM destinations WHERE code='bh' AND type='local'), 1, 'Go', 7, 'days', 3.96, 'WW_901O_STACK_ONEOFF_BAHRAIN_1GB_7D'),
+((SELECT id FROM destinations WHERE code='bh' AND type='local'), 25, 'Go', 30, 'days', 28.5, 'WW_901O_STACK_ONEOFF_BAHRAIN_25GB_30D'),
+((SELECT id FROM destinations WHERE code='bh' AND type='local'), 3, 'Go', 15, 'days', 7.12, 'WW_901O_STACK_ONEOFF_BAHRAIN_3GB_15D'),
+((SELECT id FROM destinations WHERE code='bh' AND type='local'), 30, 'Go', 15, 'days', 43.54, 'WW_901O_STACK_ONEOFF_BAHRAIN_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='bh' AND type='local'), 20, 'Go', 7, 'days', 29.29, 'WW_901O_STACK_ONEOFF_BAHRAIN_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='by' AND type='local'), 10, 'Go', 30, 'days', 15.04, 'WW_901O_STACK_ONEOFF_BELARUS_10GB_30D'),
+((SELECT id FROM destinations WHERE code='by' AND type='local'), 10, 'Go', 7, 'days', 14.25, 'WW_901O_STACK_ONEOFF_BELARUS_10GB_7D'),
+((SELECT id FROM destinations WHERE code='by' AND type='local'), 1, 'Go', 7, 'days', 3.96, 'WW_901O_STACK_ONEOFF_BELARUS_1GB_7D'),
+((SELECT id FROM destinations WHERE code='by' AND type='local'), 3, 'Go', 15, 'days', 7.12, 'WW_901O_STACK_ONEOFF_BELARUS_3GB_15D'),
+((SELECT id FROM destinations WHERE code='by' AND type='local'), 40, 'Go', 8, 'days', 20.58, 'WW_901O_STACK_ONEOFF_BELARUS_DF_UNLIMITED_8D_FUP5'),
+((SELECT id FROM destinations WHERE code='bz' AND type='local'), 1, 'Go', 7, 'days', 11.88, 'WW_901O_STACK_ONEOFF_BELIZE_1GB_7D'),
+((SELECT id FROM destinations WHERE code='be' AND type='local'), 10, 'Go', 30, 'days', 11.08, 'WW_901O_STACK_ONEOFF_BEL_10GB_30D'),
+((SELECT id FROM destinations WHERE code='be' AND type='local'), 10, 'Go', 7, 'days', 9.5, 'WW_901O_STACK_ONEOFF_BEL_10GB_7D'),
+((SELECT id FROM destinations WHERE code='be' AND type='local'), 25, 'Go', 30, 'days', 20.58, 'WW_901O_STACK_ONEOFF_BEL_25GB_30D'),
+((SELECT id FROM destinations WHERE code='be' AND type='local'), 3, 'Go', 30, 'days', 4.75, 'WW_901O_STACK_ONEOFF_BEL_3GB_30D'),
+((SELECT id FROM destinations WHERE code='be' AND type='local'), 50, 'Go', 30, 'days', 38.0, 'WW_901O_STACK_ONEOFF_BEL_50GB_30D'),
+((SELECT id FROM destinations WHERE code='be' AND type='local'), 30, 'Go', 15, 'days', 30.88, 'WW_901O_STACK_ONEOFF_BEL_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='be' AND type='local'), 60, 'Go', 30, 'days', 44.33, 'WW_901O_STACK_ONEOFF_BEL_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='be' AND type='local'), 20, 'Go', 7, 'days', 20.58, 'WW_901O_STACK_ONEOFF_BEL_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='bj' AND type='local'), 10, 'Go', 30, 'days', 21.38, 'WW_901O_STACK_ONEOFF_BENIN_10GB_30D'),
+((SELECT id FROM destinations WHERE code='bj' AND type='local'), 10, 'Go', 7, 'days', 19.0, 'WW_901O_STACK_ONEOFF_BENIN_10GB_7D'),
+((SELECT id FROM destinations WHERE code='bj' AND type='local'), 3, 'Go', 15, 'days', 9.5, 'WW_901O_STACK_ONEOFF_BENIN_3GB_15D'),
+((SELECT id FROM destinations WHERE code='BESTAFRICA2' AND type='region'), 10, 'Go', 30, 'days', 23.75, 'WW_901O_STACK_ONEOFF_BESTAFRICA2_10GB_30D'),
+((SELECT id FROM destinations WHERE code='BESTAFRICA2' AND type='region'), 1, 'Go', 30, 'days', 5.54, 'WW_901O_STACK_ONEOFF_BESTAFRICA2_1GB_30D'),
+((SELECT id FROM destinations WHERE code='BESTAFRICA2' AND type='region'), 3, 'Go', 30, 'days', 11.88, 'WW_901O_STACK_ONEOFF_BESTAFRICA2_3GB_30D'),
+((SELECT id FROM destinations WHERE code='BESTAFRICA2' AND type='region'), 60, 'Go', 30, 'days', 102.12, 'WW_901O_STACK_ONEOFF_BESTAFRICA2_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='BESTAFRICA2' AND type='region'), 20, 'Go', 7, 'days', 38.79, 'WW_901O_STACK_ONEOFF_BESTAFRICA2_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='BESTASIA3' AND type='region'), 10, 'Go', 30, 'days', 22.17, 'WW_901O_STACK_ONEOFF_BESTASIA3_10GB_30D'),
+((SELECT id FROM destinations WHERE code='BESTASIA3' AND type='region'), 10, 'Go', 7, 'days', 19.0, 'WW_901O_STACK_ONEOFF_BESTASIA3_10GB_7D'),
+((SELECT id FROM destinations WHERE code='BESTASIA3' AND type='region'), 1, 'Go', 1, 'days', 1.58, 'WW_901O_STACK_ONEOFF_BESTASIA3_1GB_1D'),
+((SELECT id FROM destinations WHERE code='BESTASIA3' AND type='region'), 1, 'Go', 7, 'days', 1.98, 'WW_901O_STACK_ONEOFF_BESTASIA3_1GB_7D'),
+((SELECT id FROM destinations WHERE code='BESTASIA3' AND type='region'), 25, 'Go', 30, 'days', 34.83, 'WW_901O_STACK_ONEOFF_BESTASIA3_25GB_30D'),
+((SELECT id FROM destinations WHERE code='BESTASIA3' AND type='region'), 3, 'Go', 30, 'days', 9.5, 'WW_901O_STACK_ONEOFF_BESTASIA3_3GB_30D'),
+((SELECT id FROM destinations WHERE code='BESTASIA3' AND type='region'), 30, 'Go', 15, 'days', 35.62, 'WW_901O_STACK_ONEOFF_BESTASIA3_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='BESTASIA3' AND type='region'), 60, 'Go', 30, 'days', 52.25, 'WW_901O_STACK_ONEOFF_BESTASIA3_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='BESTASIA3' AND type='region'), 25, 'Go', 7, 'days', 19.79, 'WW_901O_STACK_ONEOFF_BESTASIA3_UNLIMITED_7D_FUP25'),
+((SELECT id FROM destinations WHERE code='BESTCARIBBEAN2' AND type='region'), 10, 'Go', 30, 'days', 15.04, 'WW_901O_STACK_ONEOFF_BESTCARIBBEAN2_10GB_30D'),
+((SELECT id FROM destinations WHERE code='BESTCARIBBEAN2' AND type='region'), 3, 'Go', 30, 'days', 7.12, 'WW_901O_STACK_ONEOFF_BESTCARIBBEAN2_3GB_30D'),
+((SELECT id FROM destinations WHERE code='BESTCARIBBEAN2' AND type='region'), 60, 'Go', 30, 'days', 54.62, 'WW_901O_STACK_ONEOFF_BESTCARIBBEAN2_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='BESTCARIBBEAN2' AND type='region'), 20, 'Go', 7, 'days', 21.38, 'WW_901O_STACK_ONEOFF_BESTCARIBBEAN2_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='BESTLATAM2' AND type='region'), 10, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_BESTLATAM2_10GB_30D'),
+((SELECT id FROM destinations WHERE code='BESTLATAM2' AND type='region'), 1, 'Go', 30, 'days', 7.12, 'WW_901O_STACK_ONEOFF_BESTLATAM2_1GB_30D'),
+((SELECT id FROM destinations WHERE code='BESTLATAM2' AND type='region'), 25, 'Go', 30, 'days', 45.92, 'WW_901O_STACK_ONEOFF_BESTLATAM2_25GB_30D'),
+((SELECT id FROM destinations WHERE code='BESTLATAM2' AND type='region'), 3, 'Go', 30, 'days', 15.04, 'WW_901O_STACK_ONEOFF_BESTLATAM2_3GB_30D'),
+((SELECT id FROM destinations WHERE code='BESTLATAM2' AND type='region'), 500, 'Mo', 2, 'days', 3.96, 'WW_901O_STACK_ONEOFF_BESTLATAM2_500MB_2D'),
+((SELECT id FROM destinations WHERE code='BESTLATAM2' AND type='region'), 60, 'Go', 30, 'days', 78.38, 'WW_901O_STACK_ONEOFF_BESTLATAM2_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='BESTLATAM2' AND type='region'), 20, 'Go', 7, 'days', 34.83, 'WW_901O_STACK_ONEOFF_BESTLATAM2_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='BESTME' AND type='region'), 3, 'Go', 30, 'days', 15.04, 'WW_901O_STACK_ONEOFF_BESTME_3GB_30D'),
+((SELECT id FROM destinations WHERE code='BEST_ME' AND type='region'), 10, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_BEST_ME_10GB_30D'),
+((SELECT id FROM destinations WHERE code='BEST_ME' AND type='region'), 10, 'Go', 7, 'days', 26.92, 'WW_901O_STACK_ONEOFF_BEST_ME_10GB_7D'),
+((SELECT id FROM destinations WHERE code='BEST_ME' AND type='region'), 30, 'Go', 15, 'days', 69.67, 'WW_901O_STACK_ONEOFF_BEST_ME_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='BEST_ME' AND type='region'), 60, 'Go', 30, 'days', 117.96, 'WW_901O_STACK_ONEOFF_BEST_ME_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='BEST_ME' AND type='region'), 20, 'Go', 7, 'days', 38.79, 'WW_901O_STACK_ONEOFF_BEST_ME_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='BEST_WORLD' AND type='global'), 100, 'Go', 12, 'months', 150.42, 'WW_901O_STACK_ONEOFF_BEST_WORLD_100GB_12M'),
+((SELECT id FROM destinations WHERE code='BEST_WORLD' AND type='global'), 10, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_BEST_WORLD_10GB_30D'),
+((SELECT id FROM destinations WHERE code='BEST_WORLD' AND type='global'), 1, 'Go', 30, 'days', 7.12, 'WW_901O_STACK_ONEOFF_BEST_WORLD_1GB_30D'),
+((SELECT id FROM destinations WHERE code='BEST_WORLD' AND type='global'), 200, 'Go', 12, 'months', 229.58, 'WW_901O_STACK_ONEOFF_BEST_WORLD_200GB_12M'),
+((SELECT id FROM destinations WHERE code='BEST_WORLD' AND type='global'), 25, 'Go', 90, 'days', 46.71, 'WW_901O_STACK_ONEOFF_BEST_WORLD_25GB_3M'),
+((SELECT id FROM destinations WHERE code='BEST_WORLD' AND type='global'), 3, 'Go', 30, 'days', 15.04, 'WW_901O_STACK_ONEOFF_BEST_WORLD_3GB_30D'),
+((SELECT id FROM destinations WHERE code='BEST_WORLD' AND type='global'), 500, 'Mo', 30, 'days', 3.96, 'WW_901O_STACK_ONEOFF_BEST_WORLD_500MB_30D'),
+((SELECT id FROM destinations WHERE code='BEST_WORLD' AND type='global'), 50, 'Go', 180, 'days', 78.38, 'WW_901O_STACK_ONEOFF_BEST_WORLD_50GB_6M'),
+((SELECT id FROM destinations WHERE code='BEST_WORLD' AND type='global'), 30, 'Go', 15, 'days', 60.96, 'WW_901O_STACK_ONEOFF_BEST_WORLD_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='BEST_WORLD' AND type='global'), 60, 'Go', 30, 'days', 85.5, 'WW_901O_STACK_ONEOFF_BEST_WORLD_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='BEST_WORLD' AND type='global'), 25, 'Go', 8, 'days', 38.79, 'WW_901O_STACK_ONEOFF_BEST_WORLD_UNLIMITED_8D_FUP25'),
+((SELECT id FROM destinations WHERE code='bt' AND type='local'), 1, 'Go', 7, 'days', 39.58, 'WW_901O_STACK_ONEOFF_BHUTAN_1GB_7D'),
+((SELECT id FROM destinations WHERE code='bo' AND type='local'), 10, 'Go', 30, 'days', 22.96, 'WW_901O_STACK_ONEOFF_BOL_10GB_30D'),
+((SELECT id FROM destinations WHERE code='bo' AND type='local'), 10, 'Go', 7, 'days', 19.0, 'WW_901O_STACK_ONEOFF_BOL_10GB_7D'),
+((SELECT id FROM destinations WHERE code='bo' AND type='local'), 1, 'Go', 7, 'days', 4.75, 'WW_901O_STACK_ONEOFF_BOL_1GB_7D'),
+((SELECT id FROM destinations WHERE code='bo' AND type='local'), 3, 'Go', 15, 'days', 9.5, 'WW_901O_STACK_ONEOFF_BOL_3GB_15D'),
+((SELECT id FROM destinations WHERE code='bo' AND type='local'), 30, 'Go', 15, 'days', 46.71, 'WW_901O_STACK_ONEOFF_BOL_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='bo' AND type='local'), 20, 'Go', 7, 'days', 27.71, 'WW_901O_STACK_ONEOFF_BOL_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='ba' AND type='local'), 10, 'Go', 30, 'days', 15.83, 'WW_901O_STACK_ONEOFF_BOSNIA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='ba' AND type='local'), 10, 'Go', 7, 'days', 14.25, 'WW_901O_STACK_ONEOFF_BOSNIA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='ba' AND type='local'), 3, 'Go', 15, 'days', 7.12, 'WW_901O_STACK_ONEOFF_BOSNIA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='ba' AND type='local'), 60, 'Go', 30, 'days', 53.83, 'WW_901O_STACK_ONEOFF_BOSNIA_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='ba' AND type='local'), 20, 'Go', 7, 'days', 19.0, 'WW_901O_STACK_ONEOFF_BOSNIA_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='bw' AND type='local'), 10, 'Go', 30, 'days', 20.58, 'WW_901O_STACK_ONEOFF_BOTSWANA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='bw' AND type='local'), 1, 'Go', 7, 'days', 4.75, 'WW_901O_STACK_ONEOFF_BOTSWANA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='bw' AND type='local'), 25, 'Go', 30, 'days', 38.79, 'WW_901O_STACK_ONEOFF_BOTSWANA_25GB_30D'),
+((SELECT id FROM destinations WHERE code='bw' AND type='local'), 3, 'Go', 15, 'days', 9.5, 'WW_901O_STACK_ONEOFF_BOTSWANA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='br' AND type='local'), 10, 'Go', 30, 'days', 15.04, 'WW_901O_STACK_ONEOFF_BRAZIL_10GB_30D'),
+((SELECT id FROM destinations WHERE code='br' AND type='local'), 10, 'Go', 7, 'days', 13.46, 'WW_901O_STACK_ONEOFF_BRAZIL_10GB_7D'),
+((SELECT id FROM destinations WHERE code='br' AND type='local'), 1, 'Go', 7, 'days', 3.96, 'WW_901O_STACK_ONEOFF_BRAZIL_1GB_7D'),
+((SELECT id FROM destinations WHERE code='br' AND type='local'), 25, 'Go', 30, 'days', 35.62, 'WW_901O_STACK_ONEOFF_BRAZIL_25GB_30D'),
+((SELECT id FROM destinations WHERE code='br' AND type='local'), 3, 'Go', 15, 'days', 7.12, 'WW_901O_STACK_ONEOFF_BRAZIL_3GB_15D'),
+((SELECT id FROM destinations WHERE code='br' AND type='local'), 500, 'Mo', 2, 'days', 3.17, 'WW_901O_STACK_ONEOFF_BRAZIL_500MB_2D'),
+((SELECT id FROM destinations WHERE code='br' AND type='local'), 75, 'Go', 15, 'days', 38.79, 'WW_901O_STACK_ONEOFF_BRAZIL_DF_UNLIMITED_15D_FUP5'),
+((SELECT id FROM destinations WHERE code='br' AND type='local'), 150, 'Go', 30, 'days', 54.62, 'WW_901O_STACK_ONEOFF_BRAZIL_DF_UNLIMITED_30D_FUP5'),
+((SELECT id FROM destinations WHERE code='br' AND type='local'), 40, 'Go', 8, 'days', 22.96, 'WW_901O_STACK_ONEOFF_BRAZIL_DF_UNLIMITED_8D_FUP5'),
+((SELECT id FROM destinations WHERE code='bn' AND type='local'), 10, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_BRUNEI_10GB_30D'),
+((SELECT id FROM destinations WHERE code='bn' AND type='local'), 10, 'Go', 7, 'days', 27.71, 'WW_901O_STACK_ONEOFF_BRUNEI_10GB_7D'),
+((SELECT id FROM destinations WHERE code='bn' AND type='local'), 1, 'Go', 7, 'days', 6.33, 'WW_901O_STACK_ONEOFF_BRUNEI_1GB_7D'),
+((SELECT id FROM destinations WHERE code='bn' AND type='local'), 3, 'Go', 15, 'days', 12.67, 'WW_901O_STACK_ONEOFF_BRUNEI_3GB_15D'),
+((SELECT id FROM destinations WHERE code='bg' AND type='local'), 10, 'Go', 30, 'days', 8.71, 'WW_901O_STACK_ONEOFF_BULGARIA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='bg' AND type='local'), 10, 'Go', 7, 'days', 6.33, 'WW_901O_STACK_ONEOFF_BULGARIA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='bg' AND type='local'), 25, 'Go', 30, 'days', 15.04, 'WW_901O_STACK_ONEOFF_BULGARIA_25GB_30D'),
+((SELECT id FROM destinations WHERE code='bg' AND type='local'), 3, 'Go', 15, 'days', 3.17, 'WW_901O_STACK_ONEOFF_BULGARIA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='bg' AND type='local'), 50, 'Go', 30, 'days', 26.92, 'WW_901O_STACK_ONEOFF_BULGARIA_50GB_30D'),
+((SELECT id FROM destinations WHERE code='bg' AND type='local'), 30, 'Go', 15, 'days', 25.33, 'WW_901O_STACK_ONEOFF_BULGARIA_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='bg' AND type='local'), 60, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_BULGARIA_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='bg' AND type='local'), 20, 'Go', 7, 'days', 15.04, 'WW_901O_STACK_ONEOFF_BULGARIA_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='bf' AND type='local'), 1, 'Go', 7, 'days', 14.25, 'WW_901O_STACK_ONEOFF_BURKINAFASO_1GB_7D'),
+((SELECT id FROM destinations WHERE code='bf' AND type='local'), 3, 'Go', 15, 'days', 26.92, 'WW_901O_STACK_ONEOFF_BURKINAFASO_3GB_15D'),
+((SELECT id FROM destinations WHERE code='bi' AND type='local'), 1, 'Go', 7, 'days', 14.25, 'WW_901O_STACK_ONEOFF_BURUNDI_1GB_7D'),
+((SELECT id FROM destinations WHERE code='bi' AND type='local'), 3, 'Go', 15, 'days', 26.92, 'WW_901O_STACK_ONEOFF_BURUNDI_3GB_15D'),
+((SELECT id FROM destinations WHERE code='cf' AND type='local'), 10, 'Go', 30, 'days', 25.33, 'WW_901O_STACK_ONEOFF_CAF_10GB_30D'),
+((SELECT id FROM destinations WHERE code='cf' AND type='local'), 10, 'Go', 7, 'days', 22.17, 'WW_901O_STACK_ONEOFF_CAF_10GB_7D'),
+((SELECT id FROM destinations WHERE code='cf' AND type='local'), 1, 'Go', 7, 'days', 5.54, 'WW_901O_STACK_ONEOFF_CAF_1GB_7D'),
+((SELECT id FROM destinations WHERE code='cf' AND type='local'), 3, 'Go', 15, 'days', 11.08, 'WW_901O_STACK_ONEOFF_CAF_3GB_15D'),
+((SELECT id FROM destinations WHERE code='kh' AND type='local'), 10, 'Go', 30, 'days', 15.83, 'WW_901O_STACK_ONEOFF_CAMBO_10GB_30D'),
+((SELECT id FROM destinations WHERE code='kh' AND type='local'), 10, 'Go', 7, 'days', 14.25, 'WW_901O_STACK_ONEOFF_CAMBO_10GB_7D'),
+((SELECT id FROM destinations WHERE code='kh' AND type='local'), 1, 'Go', 7, 'days', 3.96, 'WW_901O_STACK_ONEOFF_CAMBO_1GB_7D'),
+((SELECT id FROM destinations WHERE code='kh' AND type='local'), 25, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_CAMBO_25GB_30D'),
+((SELECT id FROM destinations WHERE code='kh' AND type='local'), 3, 'Go', 15, 'days', 7.12, 'WW_901O_STACK_ONEOFF_CAMBO_3GB_15D'),
+((SELECT id FROM destinations WHERE code='kh' AND type='local'), 60, 'Go', 30, 'days', 53.83, 'WW_901O_STACK_ONEOFF_CAMBO_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='cm' AND type='local'), 10, 'Go', 30, 'days', 21.38, 'WW_901O_STACK_ONEOFF_CAMEROON_10GB_30D'),
+((SELECT id FROM destinations WHERE code='cm' AND type='local'), 10, 'Go', 7, 'days', 19.0, 'WW_901O_STACK_ONEOFF_CAMEROON_10GB_7D'),
+((SELECT id FROM destinations WHERE code='cm' AND type='local'), 3, 'Go', 15, 'days', 9.5, 'WW_901O_STACK_ONEOFF_CAMEROON_3GB_15D'),
+((SELECT id FROM destinations WHERE code='cm' AND type='local'), 40, 'Go', 8, 'days', 30.08, 'WW_901O_STACK_ONEOFF_CAMEROON_DF_UNLIMITED_8D_FUP5'),
+((SELECT id FROM destinations WHERE code='cm' AND type='local'), 30, 'Go', 15, 'days', 45.92, 'WW_901O_STACK_ONEOFF_CAMEROON_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='ca' AND type='local'), 10, 'Go', 30, 'days', 15.04, 'WW_901O_STACK_ONEOFF_CAN_10GB_30D'),
+((SELECT id FROM destinations WHERE code='ca' AND type='local'), 10, 'Go', 7, 'days', 11.88, 'WW_901O_STACK_ONEOFF_CAN_10GB_7D'),
+((SELECT id FROM destinations WHERE code='ca' AND type='local'), 25, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_CAN_25GB_30D'),
+((SELECT id FROM destinations WHERE code='ca' AND type='local'), 3, 'Go', 15, 'days', 7.12, 'WW_901O_STACK_ONEOFF_CAN_3GB_15D'),
+((SELECT id FROM destinations WHERE code='ca' AND type='local'), 50, 'Go', 30, 'days', 46.71, 'WW_901O_STACK_ONEOFF_CAN_50GB_30D'),
+((SELECT id FROM destinations WHERE code='ca' AND type='local'), 75, 'Go', 15, 'days', 30.88, 'WW_901O_STACK_ONEOFF_CAN_DF_UNLIMITED_15D_FUP5'),
+((SELECT id FROM destinations WHERE code='ca' AND type='local'), 150, 'Go', 30, 'days', 54.62, 'WW_901O_STACK_ONEOFF_CAN_DF_UNLIMITED_30D_FUP5'),
+((SELECT id FROM destinations WHERE code='ca' AND type='local'), 40, 'Go', 8, 'days', 22.96, 'WW_901O_STACK_ONEOFF_CAN_DF_UNLIMITED_8D_FUP5'),
+((SELECT id FROM destinations WHERE code='ca' AND type='local'), 20, 'Go', 7, 'days', 19.79, 'WW_901O_STACK_ONEOFF_CAN_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='cv' AND type='local'), 1, 'Go', 7, 'days', 14.25, 'WW_901O_STACK_ONEOFF_CAPEVERDE_1GB_7D'),
+((SELECT id FROM destinations WHERE code='cv' AND type='local'), 3, 'Go', 15, 'days', 28.5, 'WW_901O_STACK_ONEOFF_CAPEVERDE_3GB_15D'),
+((SELECT id FROM destinations WHERE code='CARIBBEAN2' AND type='region'), 10, 'Go', 30, 'days', 26.92, 'WW_901O_STACK_ONEOFF_CARIBBEAN2_10GB_30D'),
+((SELECT id FROM destinations WHERE code='CARIBBEAN2' AND type='region'), 10, 'Go', 7, 'days', 22.17, 'WW_901O_STACK_ONEOFF_CARIBBEAN2_10GB_7D'),
+((SELECT id FROM destinations WHERE code='CARIBBEAN2' AND type='region'), 1, 'Go', 7, 'days', 5.54, 'WW_901O_STACK_ONEOFF_CARIBBEAN2_1GB_7D'),
+((SELECT id FROM destinations WHERE code='CARIBBEAN2' AND type='region'), 3, 'Go', 15, 'days', 11.08, 'WW_901O_STACK_ONEOFF_CARIBBEAN2_3GB_15D'),
+((SELECT id FROM destinations WHERE code='CARIBBEAN2' AND type='region'), 30, 'Go', 15, 'days', 59.38, 'WW_901O_STACK_ONEOFF_CARIBBEAN2_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='CARIBBEAN2' AND type='region'), 20, 'Go', 7, 'days', 34.83, 'WW_901O_STACK_ONEOFF_CARIBBEAN2_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='cl' AND type='local'), 25, 'Go', 30, 'days', 38.0, 'WW_901O_STACK_ONEOFF_CHILE_25GB_30D'),
+((SELECT id FROM destinations WHERE code='cl' AND type='local'), 15, 'Go', 30, 'days', 34.83, 'WW_901O_STACK_ONEOFF_CHILE_UNLIMITED_30D_FUP15'),
+((SELECT id FROM destinations WHERE code='cl' AND type='local'), 60, 'Go', 30, 'days', 53.83, 'WW_901O_STACK_ONEOFF_CHILE_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='cl' AND type='local'), 20, 'Go', 7, 'days', 19.79, 'WW_901O_STACK_ONEOFF_CHILE_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='cn' AND type='local'), 10, 'Go', 30, 'days', 13.46, 'WW_901O_STACK_ONEOFF_CHINA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='cn' AND type='local'), 10, 'Go', 7, 'days', 11.08, 'WW_901O_STACK_ONEOFF_CHINA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='cn' AND type='local'), 1, 'Go', 7, 'days', 3.17, 'WW_901O_STACK_ONEOFF_CHINA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='cn' AND type='local'), 25, 'Go', 30, 'days', 26.12, 'WW_901O_STACK_ONEOFF_CHINA_25GB_30D'),
+((SELECT id FROM destinations WHERE code='cn' AND type='local'), 3, 'Go', 30, 'days', 5.54, 'WW_901O_STACK_ONEOFF_CHINA_3GB_30D'),
+((SELECT id FROM destinations WHERE code='cn' AND type='local'), 75, 'Go', 15, 'days', 38.0, 'WW_901O_STACK_ONEOFF_CHINA_DF_UNLIMITED_15D_FUP5'),
+((SELECT id FROM destinations WHERE code='cn' AND type='local'), 150, 'Go', 30, 'days', 54.62, 'WW_901O_STACK_ONEOFF_CHINA_DF_UNLIMITED_30D_FUP5'),
+((SELECT id FROM destinations WHERE code='cn' AND type='local'), 40, 'Go', 8, 'days', 19.0, 'WW_901O_STACK_ONEOFF_CHINA_DF_UNLIMITED_8D_FUP5'),
+((SELECT id FROM destinations WHERE code='ci' AND type='local'), 10, 'Go', 30, 'days', 21.38, 'WW_901O_STACK_ONEOFF_CIV_10GB_30D'),
+((SELECT id FROM destinations WHERE code='ci' AND type='local'), 10, 'Go', 7, 'days', 19.0, 'WW_901O_STACK_ONEOFF_CIV_10GB_7D'),
+((SELECT id FROM destinations WHERE code='ci' AND type='local'), 25, 'Go', 30, 'days', 38.0, 'WW_901O_STACK_ONEOFF_CIV_25GB_30D'),
+((SELECT id FROM destinations WHERE code='ci' AND type='local'), 3, 'Go', 15, 'days', 9.5, 'WW_901O_STACK_ONEOFF_CIV_3GB_15D'),
+((SELECT id FROM destinations WHERE code='co' AND type='local'), 10, 'Go', 30, 'days', 19.79, 'WW_901O_STACK_ONEOFF_COLOMBIA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='co' AND type='local'), 10, 'Go', 7, 'days', 18.21, 'WW_901O_STACK_ONEOFF_COLOMBIA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='co' AND type='local'), 1, 'Go', 7, 'days', 4.75, 'WW_901O_STACK_ONEOFF_COLOMBIA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='co' AND type='local'), 3, 'Go', 15, 'days', 9.5, 'WW_901O_STACK_ONEOFF_COLOMBIA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='co' AND type='local'), 30, 'Go', 15, 'days', 46.71, 'WW_901O_STACK_ONEOFF_COLOMBIA_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='co' AND type='local'), 20, 'Go', 7, 'days', 22.96, 'WW_901O_STACK_ONEOFF_COLOMBIA_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='km' AND type='local'), 10, 'Go', 30, 'days', 26.92, 'WW_901O_STACK_ONEOFF_COMOROS_10GB_30D'),
+((SELECT id FROM destinations WHERE code='km' AND type='local'), 10, 'Go', 7, 'days', 25.33, 'WW_901O_STACK_ONEOFF_COMOROS_10GB_7D'),
+((SELECT id FROM destinations WHERE code='km' AND type='local'), 1, 'Go', 7, 'days', 6.33, 'WW_901O_STACK_ONEOFF_COMOROS_1GB_7D'),
+((SELECT id FROM destinations WHERE code='km' AND type='local'), 3, 'Go', 15, 'days', 12.67, 'WW_901O_STACK_ONEOFF_COMOROS_3GB_15D'),
+((SELECT id FROM destinations WHERE code='cg' AND type='local'), 10, 'Go', 30, 'days', 21.38, 'WW_901O_STACK_ONEOFF_CONGO_10GB_30D'),
+((SELECT id FROM destinations WHERE code='cg' AND type='local'), 10, 'Go', 7, 'days', 19.0, 'WW_901O_STACK_ONEOFF_CONGO_10GB_7D'),
+((SELECT id FROM destinations WHERE code='cg' AND type='local'), 25, 'Go', 30, 'days', 38.0, 'WW_901O_STACK_ONEOFF_CONGO_25GB_30D'),
+((SELECT id FROM destinations WHERE code='cr' AND type='local'), 10, 'Go', 30, 'days', 15.04, 'WW_901O_STACK_ONEOFF_COSTA-RICA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='cr' AND type='local'), 10, 'Go', 7, 'days', 13.46, 'WW_901O_STACK_ONEOFF_COSTA-RICA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='cr' AND type='local'), 25, 'Go', 30, 'days', 22.96, 'WW_901O_STACK_ONEOFF_COSTA-RICA_25GB_30D'),
+((SELECT id FROM destinations WHERE code='cr' AND type='local'), 60, 'Go', 30, 'days', 54.62, 'WW_901O_STACK_ONEOFF_COSTA-RICA_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='cr' AND type='local'), 20, 'Go', 7, 'days', 20.58, 'WW_901O_STACK_ONEOFF_COSTA-RICA_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='cr' AND type='local'), 1, 'Go', 7, 'days', 3.17, 'WW_901O_STACK_ONEOFF_COSTARICA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='cr' AND type='local'), 3, 'Go', 15, 'days', 6.33, 'WW_901O_STACK_ONEOFF_COSTARICA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='hr' AND type='local'), 10, 'Go', 30, 'days', 9.5, 'WW_901O_STACK_ONEOFF_CROATIA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='hr' AND type='local'), 10, 'Go', 7, 'days', 7.92, 'WW_901O_STACK_ONEOFF_CROATIA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='hr' AND type='local'), 25, 'Go', 30, 'days', 19.0, 'WW_901O_STACK_ONEOFF_CROATIA_25GB_30D'),
+((SELECT id FROM destinations WHERE code='hr' AND type='local'), 3, 'Go', 15, 'days', 4.75, 'WW_901O_STACK_ONEOFF_CROATIA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='hr' AND type='local'), 60, 'Go', 30, 'days', 38.79, 'WW_901O_STACK_ONEOFF_CROATIA_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='hr' AND type='local'), 20, 'Go', 7, 'days', 15.83, 'WW_901O_STACK_ONEOFF_CROATIA_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='CUW' AND type='region'), 10, 'Go', 30, 'days', 26.92, 'WW_901O_STACK_ONEOFF_CUW_10GB_30D'),
+((SELECT id FROM destinations WHERE code='CUW' AND type='region'), 10, 'Go', 7, 'days', 22.17, 'WW_901O_STACK_ONEOFF_CUW_10GB_7D'),
+((SELECT id FROM destinations WHERE code='CUW' AND type='region'), 1, 'Go', 7, 'days', 5.54, 'WW_901O_STACK_ONEOFF_CUW_1GB_7D'),
+((SELECT id FROM destinations WHERE code='CUW' AND type='region'), 3, 'Go', 15, 'days', 11.08, 'WW_901O_STACK_ONEOFF_CUW_3GB_15D'),
+((SELECT id FROM destinations WHERE code='cy' AND type='local'), 10, 'Go', 30, 'days', 8.71, 'WW_901O_STACK_ONEOFF_CYPRUS_10GB_30D'),
+((SELECT id FROM destinations WHERE code='cy' AND type='local'), 10, 'Go', 7, 'days', 7.12, 'WW_901O_STACK_ONEOFF_CYPRUS_10GB_7D'),
+((SELECT id FROM destinations WHERE code='cy' AND type='local'), 25, 'Go', 30, 'days', 15.04, 'WW_901O_STACK_ONEOFF_CYPRUS_25GB_30D'),
+((SELECT id FROM destinations WHERE code='cy' AND type='local'), 3, 'Go', 15, 'days', 3.96, 'WW_901O_STACK_ONEOFF_CYPRUS_3GB_15D'),
+((SELECT id FROM destinations WHERE code='cy' AND type='local'), 50, 'Go', 30, 'days', 27.71, 'WW_901O_STACK_ONEOFF_CYPRUS_50GB_30D'),
+((SELECT id FROM destinations WHERE code='cy' AND type='local'), 30, 'Go', 15, 'days', 22.96, 'WW_901O_STACK_ONEOFF_CYPRUS_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='cy' AND type='local'), 60, 'Go', 30, 'days', 38.79, 'WW_901O_STACK_ONEOFF_CYPRUS_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='cy' AND type='local'), 20, 'Go', 7, 'days', 15.04, 'WW_901O_STACK_ONEOFF_CYPRUS_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='cz' AND type='local'), 10, 'Go', 30, 'days', 11.08, 'WW_901O_STACK_ONEOFF_CZECHIA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='cz' AND type='local'), 10, 'Go', 7, 'days', 9.5, 'WW_901O_STACK_ONEOFF_CZECHIA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='cz' AND type='local'), 25, 'Go', 30, 'days', 20.58, 'WW_901O_STACK_ONEOFF_CZECHIA_25GB_30D'),
+((SELECT id FROM destinations WHERE code='cz' AND type='local'), 3, 'Go', 15, 'days', 4.75, 'WW_901O_STACK_ONEOFF_CZECHIA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='cz' AND type='local'), 50, 'Go', 30, 'days', 28.5, 'WW_901O_STACK_ONEOFF_CZECHIA_50GB_30D'),
+((SELECT id FROM destinations WHERE code='cz' AND type='local'), 30, 'Go', 15, 'days', 28.5, 'WW_901O_STACK_ONEOFF_CZECHIA_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='cz' AND type='local'), 20, 'Go', 7, 'days', 19.0, 'WW_901O_STACK_ONEOFF_CZECHIA_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='dk' AND type='local'), 10, 'Go', 30, 'days', 8.71, 'WW_901O_STACK_ONEOFF_DENMARK_10GB_30D'),
+((SELECT id FROM destinations WHERE code='dk' AND type='local'), 10, 'Go', 7, 'days', 7.12, 'WW_901O_STACK_ONEOFF_DENMARK_10GB_7D'),
+((SELECT id FROM destinations WHERE code='dk' AND type='local'), 25, 'Go', 30, 'days', 16.62, 'WW_901O_STACK_ONEOFF_DENMARK_25GB_30D'),
+((SELECT id FROM destinations WHERE code='dk' AND type='local'), 3, 'Go', 15, 'days', 3.96, 'WW_901O_STACK_ONEOFF_DENMARK_3GB_15D'),
+((SELECT id FROM destinations WHERE code='dk' AND type='local'), 50, 'Go', 30, 'days', 29.29, 'WW_901O_STACK_ONEOFF_DENMARK_50GB_30D'),
+((SELECT id FROM destinations WHERE code='dk' AND type='local'), 30, 'Go', 15, 'days', 22.96, 'WW_901O_STACK_ONEOFF_DENMARK_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='dk' AND type='local'), 60, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_DENMARK_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='dk' AND type='local'), 20, 'Go', 7, 'days', 15.04, 'WW_901O_STACK_ONEOFF_DENMARK_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='dj' AND type='local'), 10, 'Go', 30, 'days', 69.67, 'WW_901O_STACK_ONEOFF_DJIBOUTI_10GB_30D'),
+((SELECT id FROM destinations WHERE code='dj' AND type='local'), 1, 'Go', 7, 'days', 15.04, 'WW_901O_STACK_ONEOFF_DJIBOUTI_1GB_7D'),
+((SELECT id FROM destinations WHERE code='dj' AND type='local'), 3, 'Go', 15, 'days', 34.83, 'WW_901O_STACK_ONEOFF_DJIBOUTI_3GB_15D'),
+((SELECT id FROM destinations WHERE code='do' AND type='local'), 10, 'Go', 30, 'days', 16.62, 'WW_901O_STACK_ONEOFF_DOM_10GB_30D'),
+((SELECT id FROM destinations WHERE code='do' AND type='local'), 10, 'Go', 7, 'days', 14.25, 'WW_901O_STACK_ONEOFF_DOM_10GB_7D'),
+((SELECT id FROM destinations WHERE code='do' AND type='local'), 1, 'Go', 7, 'days', 3.96, 'WW_901O_STACK_ONEOFF_DOM_1GB_7D'),
+((SELECT id FROM destinations WHERE code='do' AND type='local'), 25, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_DOM_25GB_30D'),
+((SELECT id FROM destinations WHERE code='do' AND type='local'), 3, 'Go', 15, 'days', 7.12, 'WW_901O_STACK_ONEOFF_DOM_3GB_15D'),
+((SELECT id FROM destinations WHERE code='do' AND type='local'), 30, 'Go', 15, 'days', 41.96, 'WW_901O_STACK_ONEOFF_DOM_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='do' AND type='local'), 60, 'Go', 30, 'days', 54.62, 'WW_901O_STACK_ONEOFF_DOM_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='do' AND type='local'), 20, 'Go', 7, 'days', 26.92, 'WW_901O_STACK_ONEOFF_DOM_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='cd' AND type='local'), 1, 'Go', 7, 'days', 38.79, 'WW_901O_STACK_ONEOFF_DRCONGO_1GB_7D'),
+((SELECT id FROM destinations WHERE code='ec' AND type='local'), 10, 'Go', 30, 'days', 22.17, 'WW_901O_STACK_ONEOFF_ECUADOR_10GB_30D'),
+((SELECT id FROM destinations WHERE code='ec' AND type='local'), 1, 'Go', 30, 'days', 3.96, 'WW_901O_STACK_ONEOFF_ECUADOR_1GB_30D'),
+((SELECT id FROM destinations WHERE code='ec' AND type='local'), 3, 'Go', 15, 'days', 11.08, 'WW_901O_STACK_ONEOFF_ECUADOR_3GB_15D'),
+((SELECT id FROM destinations WHERE code='ec' AND type='local'), 40, 'Go', 8, 'days', 25.33, 'WW_901O_STACK_ONEOFF_ECUADOR_DF_UNLIMITED_8D_FUP5'),
+((SELECT id FROM destinations WHERE code='ec' AND type='local'), 30, 'Go', 15, 'days', 35.62, 'WW_901O_STACK_ONEOFF_ECUADOR_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='eg' AND type='local'), 10, 'Go', 30, 'days', 15.04, 'WW_901O_STACK_ONEOFF_EGYPT_10GB_30D'),
+((SELECT id FROM destinations WHERE code='eg' AND type='local'), 10, 'Go', 7, 'days', 13.46, 'WW_901O_STACK_ONEOFF_EGYPT_10GB_7D'),
+((SELECT id FROM destinations WHERE code='eg' AND type='local'), 1, 'Go', 30, 'days', 3.96, 'WW_901O_STACK_ONEOFF_EGYPT_1GB_30D'),
+((SELECT id FROM destinations WHERE code='eg' AND type='local'), 25, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_EGYPT_25GB_30D'),
+((SELECT id FROM destinations WHERE code='eg' AND type='local'), 3, 'Go', 30, 'days', 7.12, 'WW_901O_STACK_ONEOFF_EGYPT_3GB_30D'),
+((SELECT id FROM destinations WHERE code='eg' AND type='local'), 75, 'Go', 15, 'days', 34.83, 'WW_901O_STACK_ONEOFF_EGYPT_DF_UNLIMITED_15D_FUP5'),
+((SELECT id FROM destinations WHERE code='eg' AND type='local'), 150, 'Go', 30, 'days', 54.62, 'WW_901O_STACK_ONEOFF_EGYPT_DF_UNLIMITED_30D_FUP5'),
+((SELECT id FROM destinations WHERE code='eg' AND type='local'), 40, 'Go', 8, 'days', 21.38, 'WW_901O_STACK_ONEOFF_EGYPT_DF_UNLIMITED_8D_FUP5'),
+((SELECT id FROM destinations WHERE code='es' AND type='local'), 10, 'Go', 30, 'days', 9.5, 'WW_901O_STACK_ONEOFF_ESP_10GB_30D'),
+((SELECT id FROM destinations WHERE code='es' AND type='local'), 10, 'Go', 8, 'days', 7.12, 'WW_901O_STACK_ONEOFF_ESP_10GB_8D'),
+((SELECT id FROM destinations WHERE code='es' AND type='local'), 25, 'Go', 30, 'days', 15.04, 'WW_901O_STACK_ONEOFF_ESP_25GB_30D'),
+((SELECT id FROM destinations WHERE code='es' AND type='local'), 3, 'Go', 30, 'days', 3.96, 'WW_901O_STACK_ONEOFF_ESP_3GB_30D'),
+((SELECT id FROM destinations WHERE code='es' AND type='local'), 50, 'Go', 30, 'days', 26.92, 'WW_901O_STACK_ONEOFF_ESP_50GB_30D'),
+((SELECT id FROM destinations WHERE code='es' AND type='local'), 75, 'Go', 15, 'days', 26.92, 'WW_901O_STACK_ONEOFF_ESP_DF_UNLIMITED_15D_FUP5'),
+((SELECT id FROM destinations WHERE code='es' AND type='local'), 150, 'Go', 30, 'days', 34.83, 'WW_901O_STACK_ONEOFF_ESP_DF_UNLIMITED_30D_FUP5'),
+((SELECT id FROM destinations WHERE code='ee' AND type='local'), 10, 'Go', 30, 'days', 7.12, 'WW_901O_STACK_ONEOFF_ESTONIA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='ee' AND type='local'), 10, 'Go', 7, 'days', 5.54, 'WW_901O_STACK_ONEOFF_ESTONIA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='ee' AND type='local'), 3, 'Go', 15, 'days', 3.17, 'WW_901O_STACK_ONEOFF_ESTONIA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='ee' AND type='local'), 50, 'Go', 30, 'days', 28.5, 'WW_901O_STACK_ONEOFF_ESTONIA_50GB_30D'),
+((SELECT id FROM destinations WHERE code='ee' AND type='local'), 30, 'Go', 15, 'days', 22.96, 'WW_901O_STACK_ONEOFF_ESTONIA_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='ee' AND type='local'), 60, 'Go', 30, 'days', 38.79, 'WW_901O_STACK_ONEOFF_ESTONIA_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='ee' AND type='local'), 20, 'Go', 7, 'days', 15.04, 'WW_901O_STACK_ONEOFF_ESTONIA_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='sz' AND type='local'), 10, 'Go', 7, 'days', 19.0, 'WW_901O_STACK_ONEOFF_ESWATINI_10GB_7D'),
+((SELECT id FROM destinations WHERE code='et' AND type='local'), 1, 'Go', 7, 'days', 15.04, 'WW_901O_STACK_ONEOFF_ETHIOPIA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='et' AND type='local'), 3, 'Go', 15, 'days', 30.08, 'WW_901O_STACK_ONEOFF_ETHIOPIA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='EU28PLUS' AND type='region'), 10, 'Go', 30, 'days', 11.88, 'WW_901O_STACK_ONEOFF_EU28PLUS_10GB_30D'),
+((SELECT id FROM destinations WHERE code='EU28PLUS' AND type='region'), 10, 'Go', 7, 'days', 9.5, 'WW_901O_STACK_ONEOFF_EU28PLUS_10GB_7D'),
+((SELECT id FROM destinations WHERE code='EU28PLUS' AND type='region'), 25, 'Go', 30, 'days', 22.96, 'WW_901O_STACK_ONEOFF_EU28PLUS_25GB_30D'),
+((SELECT id FROM destinations WHERE code='EU28PLUS' AND type='region'), 3, 'Go', 30, 'days', 5.54, 'WW_901O_STACK_ONEOFF_EU28PLUS_3GB_30D'),
+((SELECT id FROM destinations WHERE code='EU28PLUS' AND type='region'), 500, 'Mo', 2, 'days', 1.58, 'WW_901O_STACK_ONEOFF_EU28PLUS_500MB_2D'),
+((SELECT id FROM destinations WHERE code='EU28PLUS' AND type='region'), 50, 'Go', 30, 'days', 42.75, 'WW_901O_STACK_ONEOFF_EU28PLUS_50GB_30D'),
+((SELECT id FROM destinations WHERE code='EU28PLUS' AND type='region'), 30, 'Go', 15, 'days', 27.71, 'WW_901O_STACK_ONEOFF_EU28PLUS_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='EU28PLUS' AND type='region'), 60, 'Go', 30, 'days', 49.08, 'WW_901O_STACK_ONEOFF_EU28PLUS_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='EU28PLUS' AND type='region'), 25, 'Go', 7, 'days', 18.21, 'WW_901O_STACK_ONEOFF_EU28PLUS_UNLIMITED_7D_FUP25'),
+((SELECT id FROM destinations WHERE code='EU_EXTENDED' AND type='region'), 10, 'Go', 30, 'days', 27.71, 'WW_901O_STACK_ONEOFF_EU_EXTENDED_10GB_30D'),
+((SELECT id FROM destinations WHERE code='EU_EXTENDED' AND type='region'), 10, 'Go', 7, 'days', 25.33, 'WW_901O_STACK_ONEOFF_EU_EXTENDED_10GB_7D'),
+((SELECT id FROM destinations WHERE code='EU_EXTENDED' AND type='region'), 1, 'Go', 30, 'days', 6.33, 'WW_901O_STACK_ONEOFF_EU_EXTENDED_1GB_30D'),
+((SELECT id FROM destinations WHERE code='EU_EXTENDED' AND type='region'), 25, 'Go', 30, 'days', 43.54, 'WW_901O_STACK_ONEOFF_EU_EXTENDED_25GB_30D'),
+((SELECT id FROM destinations WHERE code='EU_EXTENDED' AND type='region'), 3, 'Go', 15, 'days', 12.67, 'WW_901O_STACK_ONEOFF_EU_EXTENDED_3GB_15D'),
+((SELECT id FROM destinations WHERE code='EU_EXTENDED' AND type='region'), 30, 'Go', 15, 'days', 46.71, 'WW_901O_STACK_ONEOFF_EU_EXTENDED_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='EU_EXTENDED' AND type='region'), 60, 'Go', 30, 'days', 60.96, 'WW_901O_STACK_ONEOFF_EU_EXTENDED_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='EU_EXTENDED' AND type='region'), 20, 'Go', 7, 'days', 38.79, 'WW_901O_STACK_ONEOFF_EU_EXTENDED_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='fo' AND type='local'), 10, 'Go', 30, 'days', 11.08, 'WW_901O_STACK_ONEOFF_FAROE_10GB_30D'),
+((SELECT id FROM destinations WHERE code='fo' AND type='local'), 10, 'Go', 7, 'days', 9.5, 'WW_901O_STACK_ONEOFF_FAROE_10GB_7D'),
+((SELECT id FROM destinations WHERE code='fo' AND type='local'), 25, 'Go', 30, 'days', 20.58, 'WW_901O_STACK_ONEOFF_FAROE_25GB_30D'),
+((SELECT id FROM destinations WHERE code='fo' AND type='local'), 3, 'Go', 15, 'days', 4.75, 'WW_901O_STACK_ONEOFF_FAROE_3GB_15D'),
+((SELECT id FROM destinations WHERE code='fj' AND type='local'), 1, 'Go', 7, 'days', 14.25, 'WW_901O_STACK_ONEOFF_FIJI_1GB_7D'),
+((SELECT id FROM destinations WHERE code='fj' AND type='local'), 3, 'Go', 15, 'days', 26.92, 'WW_901O_STACK_ONEOFF_FIJI_3GB_15D'),
+((SELECT id FROM destinations WHERE code='fi' AND type='local'), 10, 'Go', 30, 'days', 8.71, 'WW_901O_STACK_ONEOFF_FINLAND_10GB_30D'),
+((SELECT id FROM destinations WHERE code='fi' AND type='local'), 10, 'Go', 7, 'days', 7.12, 'WW_901O_STACK_ONEOFF_FINLAND_10GB_7D'),
+((SELECT id FROM destinations WHERE code='fi' AND type='local'), 3, 'Go', 15, 'days', 3.96, 'WW_901O_STACK_ONEOFF_FINLAND_3GB_15D'),
+((SELECT id FROM destinations WHERE code='fi' AND type='local'), 50, 'Go', 30, 'days', 29.29, 'WW_901O_STACK_ONEOFF_FINLAND_50GB_30D'),
+((SELECT id FROM destinations WHERE code='fi' AND type='local'), 30, 'Go', 15, 'days', 22.96, 'WW_901O_STACK_ONEOFF_FINLAND_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='fi' AND type='local'), 60, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_FINLAND_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='fi' AND type='local'), 20, 'Go', 7, 'days', 15.04, 'WW_901O_STACK_ONEOFF_FINLAND_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='fr' AND type='local'), 7, 'Go', 1, 'days', 4.75, 'WW_901O_STACK_ONEOFF_FRANCE_UNLIMITED_1D_FUP7'),
+((SELECT id FROM destinations WHERE code='fr' AND type='local'), 10, 'Go', 30, 'days', 7.92, 'WW_901O_STACK_ONEOFF_FRA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='fr' AND type='local'), 10, 'Go', 7, 'days', 6.33, 'WW_901O_STACK_ONEOFF_FRA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='fr' AND type='local'), 25, 'Go', 30, 'days', 15.04, 'WW_901O_STACK_ONEOFF_FRA_25GB_30D'),
+((SELECT id FROM destinations WHERE code='fr' AND type='local'), 3, 'Go', 30, 'days', 3.17, 'WW_901O_STACK_ONEOFF_FRA_3GB_30D'),
+((SELECT id FROM destinations WHERE code='fr' AND type='local'), 50, 'Go', 30, 'days', 22.96, 'WW_901O_STACK_ONEOFF_FRA_50GB_30D'),
+((SELECT id FROM destinations WHERE code='fr' AND type='local'), 30, 'Go', 15, 'days', 19.79, 'WW_901O_STACK_ONEOFF_FRA_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='fr' AND type='local'), 60, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_FRA_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='fr' AND type='local'), 25, 'Go', 7, 'days', 15.83, 'WW_901O_STACK_ONEOFF_FRA_UNLIMITED_7D_FUP25'),
+((SELECT id FROM destinations WHERE code='gf' AND type='local'), 3, 'Go', 15, 'days', 6.33, 'WW_901O_STACK_ONEOFF_FRGUIANA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='ga' AND type='local'), 1, 'Go', 7, 'days', 7.12, 'WW_901O_STACK_ONEOFF_GABON_1GB_7D'),
+((SELECT id FROM destinations WHERE code='ga' AND type='local'), 3, 'Go', 15, 'days', 14.25, 'WW_901O_STACK_ONEOFF_GABON_3GB_15D'),
+((SELECT id FROM destinations WHERE code='gm' AND type='local'), 10, 'Go', 30, 'days', 20.58, 'WW_901O_STACK_ONEOFF_GAMBIA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='gm' AND type='local'), 10, 'Go', 7, 'days', 19.0, 'WW_901O_STACK_ONEOFF_GAMBIA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='gm' AND type='local'), 1, 'Go', 7, 'days', 4.75, 'WW_901O_STACK_ONEOFF_GAMBIA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='gm' AND type='local'), 3, 'Go', 15, 'days', 9.5, 'WW_901O_STACK_ONEOFF_GAMBIA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='ge' AND type='local'), 10, 'Go', 30, 'days', 15.04, 'WW_901O_STACK_ONEOFF_GEORGIA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='ge' AND type='local'), 10, 'Go', 7, 'days', 13.46, 'WW_901O_STACK_ONEOFF_GEORGIA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='ge' AND type='local'), 1, 'Go', 7, 'days', 4.75, 'WW_901O_STACK_ONEOFF_GEORGIA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='ge' AND type='local'), 25, 'Go', 30, 'days', 38.79, 'WW_901O_STACK_ONEOFF_GEORGIA_25GB_30D'),
+((SELECT id FROM destinations WHERE code='ge' AND type='local'), 3, 'Go', 15, 'days', 7.12, 'WW_901O_STACK_ONEOFF_GEORGIA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='ge' AND type='local'), 30, 'Go', 15, 'days', 38.79, 'WW_901O_STACK_ONEOFF_GEORGIA_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='ge' AND type='local'), 20, 'Go', 7, 'days', 22.96, 'WW_901O_STACK_ONEOFF_GEORGIA_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='de' AND type='local'), 10, 'Go', 30, 'days', 9.9, 'WW_901O_STACK_ONEOFF_GERMANY_10GB_30D'),
+((SELECT id FROM destinations WHERE code='de' AND type='local'), 10, 'Go', 7, 'days', 7.92, 'WW_901O_STACK_ONEOFF_GERMANY_10GB_7D'),
+((SELECT id FROM destinations WHERE code='de' AND type='local'), 25, 'Go', 30, 'days', 19.79, 'WW_901O_STACK_ONEOFF_GERMANY_25GB_30D'),
+((SELECT id FROM destinations WHERE code='de' AND type='local'), 3, 'Go', 15, 'days', 5.54, 'WW_901O_STACK_ONEOFF_GERMANY_3GB_15D'),
+((SELECT id FROM destinations WHERE code='de' AND type='local'), 50, 'Go', 30, 'days', 34.83, 'WW_901O_STACK_ONEOFF_GERMANY_50GB_30D'),
+((SELECT id FROM destinations WHERE code='de' AND type='local'), 30, 'Go', 15, 'days', 35.62, 'WW_901O_STACK_ONEOFF_GERMANY_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='de' AND type='local'), 7, 'Go', 1, 'days', 6.33, 'WW_901O_STACK_ONEOFF_GERMANY_UNLIMITED_1D_FUP7'),
+((SELECT id FROM destinations WHERE code='de' AND type='local'), 60, 'Go', 30, 'days', 45.92, 'WW_901O_STACK_ONEOFF_GERMANY_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='de' AND type='local'), 20, 'Go', 7, 'days', 19.0, 'WW_901O_STACK_ONEOFF_GERMANY_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='gh' AND type='local'), 1, 'Go', 7, 'days', 4.75, 'WW_901O_STACK_ONEOFF_GHANA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='gh' AND type='local'), 3, 'Go', 15, 'days', 11.08, 'WW_901O_STACK_ONEOFF_GHANA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='gi' AND type='local'), 1, 'Go', 7, 'days', 5.54, 'WW_901O_STACK_ONEOFF_GIBRALTAR_1GB_7D'),
+((SELECT id FROM destinations WHERE code='gi' AND type='local'), 3, 'Go', 15, 'days', 14.25, 'WW_901O_STACK_ONEOFF_GIBRALTAR_3GB_15D'),
+((SELECT id FROM destinations WHERE code='gr' AND type='local'), 10, 'Go', 30, 'days', 9.5, 'WW_901O_STACK_ONEOFF_GREECE_10GB_30D'),
+((SELECT id FROM destinations WHERE code='gr' AND type='local'), 10, 'Go', 7, 'days', 7.92, 'WW_901O_STACK_ONEOFF_GREECE_10GB_7D'),
+((SELECT id FROM destinations WHERE code='gr' AND type='local'), 25, 'Go', 30, 'days', 17.42, 'WW_901O_STACK_ONEOFF_GREECE_25GB_30D'),
+((SELECT id FROM destinations WHERE code='gr' AND type='local'), 3, 'Go', 30, 'days', 4.75, 'WW_901O_STACK_ONEOFF_GREECE_3GB_30D'),
+((SELECT id FROM destinations WHERE code='gr' AND type='local'), 50, 'Go', 30, 'days', 25.33, 'WW_901O_STACK_ONEOFF_GREECE_50GB_30D'),
+((SELECT id FROM destinations WHERE code='gr' AND type='local'), 30, 'Go', 15, 'days', 30.88, 'WW_901O_STACK_ONEOFF_GREECE_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='gr' AND type='local'), 60, 'Go', 30, 'days', 43.54, 'WW_901O_STACK_ONEOFF_GREECE_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='gr' AND type='local'), 20, 'Go', 7, 'days', 19.0, 'WW_901O_STACK_ONEOFF_GREECE_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='gl' AND type='local'), 10, 'Go', 7, 'days', 38.0, 'WW_901O_STACK_ONEOFF_GREENLAND_10GB_7D'),
+((SELECT id FROM destinations WHERE code='gl' AND type='local'), 10, 'Go', 30, 'days', 38.79, 'WW_901O_STACK_ONEOFF_GROENLAND_10GB_30D'),
+((SELECT id FROM destinations WHERE code='gl' AND type='local'), 1, 'Go', 7, 'days', 9.5, 'WW_901O_STACK_ONEOFF_GROENLAND_1GB_7D'),
+((SELECT id FROM destinations WHERE code='gl' AND type='local'), 3, 'Go', 15, 'days', 19.0, 'WW_901O_STACK_ONEOFF_GROENLAND_3GB_15D'),
+((SELECT id FROM destinations WHERE code='gt' AND type='local'), 10, 'Go', 30, 'days', 22.17, 'WW_901O_STACK_ONEOFF_GTM_10GB_30D'),
+((SELECT id FROM destinations WHERE code='gt' AND type='local'), 1, 'Go', 7, 'days', 4.75, 'WW_901O_STACK_ONEOFF_GTM_1GB_7D'),
+((SELECT id FROM destinations WHERE code='gt' AND type='local'), 25, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_GTM_25GB_30D'),
+((SELECT id FROM destinations WHERE code='gt' AND type='local'), 3, 'Go', 15, 'days', 9.5, 'WW_901O_STACK_ONEOFF_GTM_3GB_15D'),
+((SELECT id FROM destinations WHERE code='gt' AND type='local'), 30, 'Go', 15, 'days', 43.54, 'WW_901O_STACK_ONEOFF_GTM_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='gt' AND type='local'), 20, 'Go', 7, 'days', 26.92, 'WW_901O_STACK_ONEOFF_GTM_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='GUADELOUPE' AND type='region'), 1, 'Go', 7, 'days', 3.17, 'WW_901O_STACK_ONEOFF_GUADELOUPE_1GB_7D'),
+((SELECT id FROM destinations WHERE code='GUADELOUPE' AND type='region'), 3, 'Go', 15, 'days', 6.33, 'WW_901O_STACK_ONEOFF_GUADELOUPE_3GB_15D'),
+((SELECT id FROM destinations WHERE code='gu' AND type='local'), 10, 'Go', 8, 'days', 30.88, 'WW_901O_STACK_ONEOFF_GUAM_10GB_8D'),
+((SELECT id FROM destinations WHERE code='gu' AND type='local'), 1, 'Go', 7, 'days', 7.12, 'WW_901O_STACK_ONEOFF_GUAM_1GB_7D'),
+((SELECT id FROM destinations WHERE code='gu' AND type='local'), 3, 'Go', 15, 'days', 15.04, 'WW_901O_STACK_ONEOFF_GUAM_3GB_15D'),
+((SELECT id FROM destinations WHERE code='gw' AND type='local'), 10, 'Go', 30, 'days', 22.96, 'WW_901O_STACK_ONEOFF_GUINEA-BISSAU_10GB_30D'),
+((SELECT id FROM destinations WHERE code='gw' AND type='local'), 1, 'Go', 7, 'days', 4.75, 'WW_901O_STACK_ONEOFF_GUINEA-BISSAU_1GB_7D'),
+((SELECT id FROM destinations WHERE code='gw' AND type='local'), 25, 'Go', 30, 'days', 46.71, 'WW_901O_STACK_ONEOFF_GUINEA-BISSAU_25GB_30D'),
+((SELECT id FROM destinations WHERE code='gw' AND type='local'), 3, 'Go', 15, 'days', 11.08, 'WW_901O_STACK_ONEOFF_GUINEA-BISSAU_3GB_15D'),
+((SELECT id FROM destinations WHERE code='gw' AND type='local'), 25, 'Go', 7, 'days', 38.0, 'WW_901O_STACK_ONEOFF_GUINEA-BISSAU_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='gn' AND type='local'), 10, 'Go', 30, 'days', 27.71, 'WW_901O_STACK_ONEOFF_GUINEA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='gn' AND type='local'), 10, 'Go', 7, 'days', 24.54, 'WW_901O_STACK_ONEOFF_GUINEA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='gn' AND type='local'), 1, 'Go', 7, 'days', 6.33, 'WW_901O_STACK_ONEOFF_GUINEA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='gn' AND type='local'), 3, 'Go', 15, 'days', 13.46, 'WW_901O_STACK_ONEOFF_GUINEA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='gy' AND type='local'), 10, 'Go', 30, 'days', 26.92, 'WW_901O_STACK_ONEOFF_GUYANA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='gy' AND type='local'), 10, 'Go', 7, 'days', 22.17, 'WW_901O_STACK_ONEOFF_GUYANA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='gy' AND type='local'), 1, 'Go', 7, 'days', 9.5, 'WW_901O_STACK_ONEOFF_GUYANA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='gy' AND type='local'), 3, 'Go', 15, 'days', 11.08, 'WW_901O_STACK_ONEOFF_GUYANA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='hk' AND type='local'), 10, 'Go', 30, 'days', 11.08, 'WW_901O_STACK_ONEOFF_HKG_10GB_30D'),
+((SELECT id FROM destinations WHERE code='hk' AND type='local'), 10, 'Go', 7, 'days', 9.5, 'WW_901O_STACK_ONEOFF_HKG_10GB_7D'),
+((SELECT id FROM destinations WHERE code='hk' AND type='local'), 25, 'Go', 30, 'days', 20.58, 'WW_901O_STACK_ONEOFF_HKG_25GB_30D'),
+((SELECT id FROM destinations WHERE code='hk' AND type='local'), 3, 'Go', 15, 'days', 5.54, 'WW_901O_STACK_ONEOFF_HKG_3GB_15D'),
+((SELECT id FROM destinations WHERE code='hk' AND type='local'), 30, 'Go', 15, 'days', 30.88, 'WW_901O_STACK_ONEOFF_HKG_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='hk' AND type='local'), 60, 'Go', 30, 'days', 43.54, 'WW_901O_STACK_ONEOFF_HKG_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='hk' AND type='local'), 20, 'Go', 7, 'days', 18.21, 'WW_901O_STACK_ONEOFF_HKG_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='hn' AND type='local'), 10, 'Go', 30, 'days', 17.42, 'WW_901O_STACK_ONEOFF_HONDURAS_10GB_30D'),
+((SELECT id FROM destinations WHERE code='hn' AND type='local'), 10, 'Go', 7, 'days', 15.04, 'WW_901O_STACK_ONEOFF_HONDURAS_10GB_7D'),
+((SELECT id FROM destinations WHERE code='hn' AND type='local'), 1, 'Go', 7, 'days', 3.96, 'WW_901O_STACK_ONEOFF_HONDURAS_1GB_7D'),
+((SELECT id FROM destinations WHERE code='hn' AND type='local'), 3, 'Go', 15, 'days', 7.92, 'WW_901O_STACK_ONEOFF_HONDURAS_3GB_15D'),
+((SELECT id FROM destinations WHERE code='hn' AND type='local'), 30, 'Go', 15, 'days', 46.71, 'WW_901O_STACK_ONEOFF_HONDURAS_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='hn' AND type='local'), 20, 'Go', 7, 'days', 26.92, 'WW_901O_STACK_ONEOFF_HONDURAS_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='hu' AND type='local'), 10, 'Go', 30, 'days', 8.71, 'WW_901O_STACK_ONEOFF_HUNGARY_10GB_30D'),
+((SELECT id FROM destinations WHERE code='hu' AND type='local'), 10, 'Go', 7, 'days', 7.12, 'WW_901O_STACK_ONEOFF_HUNGARY_10GB_7D'),
+((SELECT id FROM destinations WHERE code='hu' AND type='local'), 3, 'Go', 15, 'days', 3.96, 'WW_901O_STACK_ONEOFF_HUNGARY_3GB_15D'),
+((SELECT id FROM destinations WHERE code='hu' AND type='local'), 50, 'Go', 30, 'days', 26.92, 'WW_901O_STACK_ONEOFF_HUNGARY_50GB_30D'),
+((SELECT id FROM destinations WHERE code='hu' AND type='local'), 30, 'Go', 15, 'days', 28.5, 'WW_901O_STACK_ONEOFF_HUNGARY_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='hu' AND type='local'), 20, 'Go', 7, 'days', 19.0, 'WW_901O_STACK_ONEOFF_HUNGARY_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='is' AND type='local'), 10, 'Go', 30, 'days', 9.5, 'WW_901O_STACK_ONEOFF_ICELAND_10GB_30D'),
+((SELECT id FROM destinations WHERE code='is' AND type='local'), 10, 'Go', 7, 'days', 8.71, 'WW_901O_STACK_ONEOFF_ICELAND_10GB_7D'),
+((SELECT id FROM destinations WHERE code='is' AND type='local'), 3, 'Go', 15, 'days', 4.75, 'WW_901O_STACK_ONEOFF_ICELAND_3GB_15D'),
+((SELECT id FROM destinations WHERE code='is' AND type='local'), 50, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_ICELAND_50GB_30D'),
+((SELECT id FROM destinations WHERE code='is' AND type='local'), 20, 'Go', 7, 'days', 15.04, 'WW_901O_STACK_ONEOFF_ICELAND_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='in' AND type='local'), 25, 'Go', 30, 'days', 22.96, 'WW_901O_STACK_ONEOFF_INDIA_25GB_30D'),
+((SELECT id FROM destinations WHERE code='id' AND type='local'), 10, 'Go', 30, 'days', 12.67, 'WW_901O_STACK_ONEOFF_INDONESIA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='id' AND type='local'), 10, 'Go', 7, 'days', 11.08, 'WW_901O_STACK_ONEOFF_INDONESIA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='id' AND type='local'), 1, 'Go', 7, 'days', 3.17, 'WW_901O_STACK_ONEOFF_INDONESIA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='id' AND type='local'), 25, 'Go', 30, 'days', 22.17, 'WW_901O_STACK_ONEOFF_INDONESIA_25GB_30D'),
+((SELECT id FROM destinations WHERE code='id' AND type='local'), 3, 'Go', 15, 'days', 5.54, 'WW_901O_STACK_ONEOFF_INDONESIA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='id' AND type='local'), 30, 'Go', 15, 'days', 31.67, 'WW_901O_STACK_ONEOFF_INDONESIA_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='id' AND type='local'), 60, 'Go', 30, 'days', 46.71, 'WW_901O_STACK_ONEOFF_INDONESIA_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='id' AND type='local'), 20, 'Go', 7, 'days', 19.0, 'WW_901O_STACK_ONEOFF_INDONESIA_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='in' AND type='local'), 10, 'Go', 30, 'days', 11.88, 'WW_901O_STACK_ONEOFF_IND_10GB_30D'),
+((SELECT id FROM destinations WHERE code='in' AND type='local'), 10, 'Go', 7, 'days', 10.29, 'WW_901O_STACK_ONEOFF_IND_10GB_7D'),
+((SELECT id FROM destinations WHERE code='in' AND type='local'), 1, 'Go', 7, 'days', 2.77, 'WW_901O_STACK_ONEOFF_IND_1GB_7D'),
+((SELECT id FROM destinations WHERE code='in' AND type='local'), 3, 'Go', 30, 'days', 5.54, 'WW_901O_STACK_ONEOFF_IND_3GB_30D'),
+((SELECT id FROM destinations WHERE code='in' AND type='local'), 50, 'Go', 30, 'days', 46.71, 'WW_901O_STACK_ONEOFF_IND_50GB_30D'),
+((SELECT id FROM destinations WHERE code='in' AND type='local'), 30, 'Go', 15, 'days', 36.42, 'WW_901O_STACK_ONEOFF_IND_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='in' AND type='local'), 60, 'Go', 30, 'days', 53.83, 'WW_901O_STACK_ONEOFF_IND_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='in' AND type='local'), 25, 'Go', 7, 'days', 19.0, 'WW_901O_STACK_ONEOFF_IND_UNLIMITED_7D_FUP25'),
+((SELECT id FROM destinations WHERE code='iq' AND type='local'), 10, 'Go', 30, 'days', 17.42, 'WW_901O_STACK_ONEOFF_IRAQ_10GB_30D'),
+((SELECT id FROM destinations WHERE code='iq' AND type='local'), 3, 'Go', 15, 'days', 8.71, 'WW_901O_STACK_ONEOFF_IRAQ_3GB_15D'),
+((SELECT id FROM destinations WHERE code='ie' AND type='local'), 10, 'Go', 30, 'days', 9.5, 'WW_901O_STACK_ONEOFF_IRELAND_10GB_30D'),
+((SELECT id FROM destinations WHERE code='ie' AND type='local'), 10, 'Go', 7, 'days', 7.12, 'WW_901O_STACK_ONEOFF_IRELAND_10GB_7D'),
+((SELECT id FROM destinations WHERE code='ie' AND type='local'), 3, 'Go', 15, 'days', 5.54, 'WW_901O_STACK_ONEOFF_IRELAND_3GB_15D'),
+((SELECT id FROM destinations WHERE code='ie' AND type='local'), 50, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_IRELAND_50GB_30D'),
+((SELECT id FROM destinations WHERE code='ie' AND type='local'), 30, 'Go', 15, 'days', 22.96, 'WW_901O_STACK_ONEOFF_IRELAND_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='ie' AND type='local'), 60, 'Go', 30, 'days', 38.79, 'WW_901O_STACK_ONEOFF_IRELAND_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='ie' AND type='local'), 20, 'Go', 7, 'days', 15.04, 'WW_901O_STACK_ONEOFF_IRELAND_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='il' AND type='local'), 10, 'Go', 30, 'days', 9.5, 'WW_901O_STACK_ONEOFF_ISRAEL_10GB_30D'),
+((SELECT id FROM destinations WHERE code='il' AND type='local'), 10, 'Go', 7, 'days', 7.92, 'WW_901O_STACK_ONEOFF_ISRAEL_10GB_7D'),
+((SELECT id FROM destinations WHERE code='il' AND type='local'), 3, 'Go', 30, 'days', 4.75, 'WW_901O_STACK_ONEOFF_ISRAEL_3GB_30D'),
+((SELECT id FROM destinations WHERE code='il' AND type='local'), 50, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_ISRAEL_50GB_30D'),
+((SELECT id FROM destinations WHERE code='il' AND type='local'), 30, 'Go', 15, 'days', 26.92, 'WW_901O_STACK_ONEOFF_ISRAEL_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='il' AND type='local'), 60, 'Go', 30, 'days', 38.79, 'WW_901O_STACK_ONEOFF_ISRAEL_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='il' AND type='local'), 20, 'Go', 7, 'days', 15.04, 'WW_901O_STACK_ONEOFF_ISRAEL_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='it' AND type='local'), 10, 'Go', 30, 'days', 9.5, 'WW_901O_STACK_ONEOFF_ITA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='it' AND type='local'), 10, 'Go', 8, 'days', 7.12, 'WW_901O_STACK_ONEOFF_ITA_10GB_8D'),
+((SELECT id FROM destinations WHERE code='it' AND type='local'), 25, 'Go', 30, 'days', 15.04, 'WW_901O_STACK_ONEOFF_ITA_25GB_30D'),
+((SELECT id FROM destinations WHERE code='it' AND type='local'), 3, 'Go', 30, 'days', 3.96, 'WW_901O_STACK_ONEOFF_ITA_3GB_30D'),
+((SELECT id FROM destinations WHERE code='it' AND type='local'), 50, 'Go', 30, 'days', 22.96, 'WW_901O_STACK_ONEOFF_ITA_50GB_30D'),
+((SELECT id FROM destinations WHERE code='it' AND type='local'), 75, 'Go', 15, 'days', 19.79, 'WW_901O_STACK_ONEOFF_ITA_DF_UNLIMITED_15D_FUP5'),
+((SELECT id FROM destinations WHERE code='it' AND type='local'), 150, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_ITA_DF_UNLIMITED_30D_FUP5'),
+((SELECT id FROM destinations WHERE code='JEY-GGY-IMN2' AND type='region'), 20, 'Go', 7, 'days', 19.79, 'WW_901O_STACK_ONEOFF_JEY-GGY-IMN2_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='JEY-GGY-IMN' AND type='region'), 10, 'Go', 30, 'days', 12.67, 'WW_901O_STACK_ONEOFF_JEY-GGY-IMN_10GB_30D'),
+((SELECT id FROM destinations WHERE code='JEY-GGY-IMN' AND type='region'), 10, 'Go', 7, 'days', 11.08, 'WW_901O_STACK_ONEOFF_JEY-GGY-IMN_10GB_7D'),
+((SELECT id FROM destinations WHERE code='JEY-GGY-IMN' AND type='region'), 1, 'Go', 7, 'days', 3.17, 'WW_901O_STACK_ONEOFF_JEY-GGY-IMN_1GB_7D'),
+((SELECT id FROM destinations WHERE code='JEY-GGY-IMN' AND type='region'), 3, 'Go', 15, 'days', 5.54, 'WW_901O_STACK_ONEOFF_JEY-GGY-IMN_3GB_15D'),
+((SELECT id FROM destinations WHERE code='JEY-GGY-IMN' AND type='region'), 30, 'Go', 15, 'days', 30.88, 'WW_901O_STACK_ONEOFF_JEY-GGY-IMN_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='jo' AND type='local'), 10, 'Go', 30, 'days', 26.92, 'WW_901O_STACK_ONEOFF_JORDAN_10GB_30D'),
+((SELECT id FROM destinations WHERE code='jo' AND type='local'), 1, 'Go', 7, 'days', 6.33, 'WW_901O_STACK_ONEOFF_JORDAN_1GB_7D'),
+((SELECT id FROM destinations WHERE code='jo' AND type='local'), 3, 'Go', 15, 'days', 12.67, 'WW_901O_STACK_ONEOFF_JORDAN_3GB_15D'),
+((SELECT id FROM destinations WHERE code='jp' AND type='local'), 10, 'Go', 30, 'days', 13.06, 'WW_901O_STACK_ONEOFF_JPN_10GB_30D'),
+((SELECT id FROM destinations WHERE code='jp' AND type='local'), 10, 'Go', 7, 'days', 11.08, 'WW_901O_STACK_ONEOFF_JPN_10GB_7D'),
+((SELECT id FROM destinations WHERE code='jp' AND type='local'), 1, 'Go', 30, 'days', 3.17, 'WW_901O_STACK_ONEOFF_JPN_1GB_30D'),
+((SELECT id FROM destinations WHERE code='jp' AND type='local'), 25, 'Go', 30, 'days', 25.33, 'WW_901O_STACK_ONEOFF_JPN_25GB_30D'),
+((SELECT id FROM destinations WHERE code='jp' AND type='local'), 3, 'Go', 15, 'days', 5.94, 'WW_901O_STACK_ONEOFF_JPN_3GB_15D'),
+((SELECT id FROM destinations WHERE code='jp' AND type='local'), 50, 'Go', 30, 'days', 43.54, 'WW_901O_STACK_ONEOFF_JPN_50GB_30D'),
+((SELECT id FROM destinations WHERE code='jp' AND type='local'), 40, 'Go', 8, 'days', 19.79, 'WW_901O_STACK_ONEOFF_JPN_DF_UNLIMITED_8D_FUP5'),
+((SELECT id FROM destinations WHERE code='jp' AND type='local'), 30, 'Go', 15, 'days', 30.88, 'WW_901O_STACK_ONEOFF_JPN_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='jp' AND type='local'), 60, 'Go', 30, 'days', 51.46, 'WW_901O_STACK_ONEOFF_JPN_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='kz' AND type='local'), 10, 'Go', 30, 'days', 15.04, 'WW_901O_STACK_ONEOFF_KAZ_10GB_30D'),
+((SELECT id FROM destinations WHERE code='kz' AND type='local'), 10, 'Go', 7, 'days', 13.46, 'WW_901O_STACK_ONEOFF_KAZ_10GB_7D'),
+((SELECT id FROM destinations WHERE code='kz' AND type='local'), 1, 'Go', 7, 'days', 4.75, 'WW_901O_STACK_ONEOFF_KAZ_1GB_7D'),
+((SELECT id FROM destinations WHERE code='kz' AND type='local'), 25, 'Go', 30, 'days', 38.79, 'WW_901O_STACK_ONEOFF_KAZ_25GB_30D'),
+((SELECT id FROM destinations WHERE code='kz' AND type='local'), 3, 'Go', 15, 'days', 7.12, 'WW_901O_STACK_ONEOFF_KAZ_3GB_15D'),
+((SELECT id FROM destinations WHERE code='kz' AND type='local'), 30, 'Go', 15, 'days', 38.79, 'WW_901O_STACK_ONEOFF_KAZ_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='kz' AND type='local'), 20, 'Go', 7, 'days', 22.96, 'WW_901O_STACK_ONEOFF_KAZ_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='ke' AND type='local'), 10, 'Go', 30, 'days', 33.25, 'WW_901O_STACK_ONEOFF_KENYA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='ke' AND type='local'), 10, 'Go', 7, 'days', 30.88, 'WW_901O_STACK_ONEOFF_KENYA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='ke' AND type='local'), 1, 'Go', 7, 'days', 7.12, 'WW_901O_STACK_ONEOFF_KENYA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='ke' AND type='local'), 3, 'Go', 15, 'days', 15.04, 'WW_901O_STACK_ONEOFF_KENYA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='ke' AND type='local'), 30, 'Go', 15, 'days', 69.67, 'WW_901O_STACK_ONEOFF_KENYA_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='ke' AND type='local'), 20, 'Go', 7, 'days', 46.71, 'WW_901O_STACK_ONEOFF_KENYA_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='kg' AND type='local'), 10, 'Go', 30, 'days', 15.04, 'WW_901O_STACK_ONEOFF_KGZ_10GB_30D'),
+((SELECT id FROM destinations WHERE code='kg' AND type='local'), 10, 'Go', 7, 'days', 13.46, 'WW_901O_STACK_ONEOFF_KGZ_10GB_7D'),
+((SELECT id FROM destinations WHERE code='kg' AND type='local'), 1, 'Go', 7, 'days', 4.75, 'WW_901O_STACK_ONEOFF_KGZ_1GB_7D'),
+((SELECT id FROM destinations WHERE code='kg' AND type='local'), 25, 'Go', 30, 'days', 38.79, 'WW_901O_STACK_ONEOFF_KGZ_25GB_30D'),
+((SELECT id FROM destinations WHERE code='kg' AND type='local'), 3, 'Go', 15, 'days', 7.12, 'WW_901O_STACK_ONEOFF_KGZ_3GB_15D'),
+((SELECT id FROM destinations WHERE code='kg' AND type='local'), 30, 'Go', 15, 'days', 38.79, 'WW_901O_STACK_ONEOFF_KGZ_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='kg' AND type='local'), 20, 'Go', 7, 'days', 22.96, 'WW_901O_STACK_ONEOFF_KGZ_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='kr' AND type='local'), 10, 'Go', 30, 'days', 11.08, 'WW_901O_STACK_ONEOFF_KOREA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='kr' AND type='local'), 10, 'Go', 7, 'days', 9.5, 'WW_901O_STACK_ONEOFF_KOREA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='kr' AND type='local'), 1, 'Go', 7, 'days', 3.17, 'WW_901O_STACK_ONEOFF_KOREA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='kr' AND type='local'), 25, 'Go', 30, 'days', 19.79, 'WW_901O_STACK_ONEOFF_KOREA_25GB_30D'),
+((SELECT id FROM destinations WHERE code='kr' AND type='local'), 3, 'Go', 7, 'days', 5.54, 'WW_901O_STACK_ONEOFF_KOREA_3GB_7D'),
+((SELECT id FROM destinations WHERE code='kr' AND type='local'), 30, 'Go', 15, 'days', 26.92, 'WW_901O_STACK_ONEOFF_KOREA_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='kr' AND type='local'), 60, 'Go', 30, 'days', 38.79, 'WW_901O_STACK_ONEOFF_KOREA_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='kr' AND type='local'), 25, 'Go', 7, 'days', 19.79, 'WW_901O_STACK_ONEOFF_KOREA_UNLIMITED_7D_FUP25'),
+((SELECT id FROM destinations WHERE code='xk' AND type='local'), 10, 'Go', 30, 'days', 22.96, 'WW_901O_STACK_ONEOFF_KOSOVO_10GB_30D'),
+((SELECT id FROM destinations WHERE code='xk' AND type='local'), 10, 'Go', 30, 'days', 22.96, 'WW_901O_STACK_ONEOFF_KOSOVO_10GB_30D'),
+((SELECT id FROM destinations WHERE code='xk' AND type='local'), 40, 'Go', 8, 'days', 30.88, 'WW_901O_STACK_ONEOFF_KOSOVO_DF_UNLIMITED_8D_FUP5'),
+((SELECT id FROM destinations WHERE code='sa' AND type='local'), 10, 'Go', 30, 'days', 21.38, 'WW_901O_STACK_ONEOFF_KSA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='sa' AND type='local'), 10, 'Go', 7, 'days', 19.79, 'WW_901O_STACK_ONEOFF_KSA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='sa' AND type='local'), 1, 'Go', 7, 'days', 5.54, 'WW_901O_STACK_ONEOFF_KSA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='sa' AND type='local'), 3, 'Go', 30, 'days', 9.5, 'WW_901O_STACK_ONEOFF_KSA_3GB_30D'),
+((SELECT id FROM destinations WHERE code='kw' AND type='local'), 10, 'Go', 30, 'days', 21.38, 'WW_901O_STACK_ONEOFF_KUWAIT_10GB_30D'),
+((SELECT id FROM destinations WHERE code='kw' AND type='local'), 10, 'Go', 7, 'days', 19.0, 'WW_901O_STACK_ONEOFF_KUWAIT_10GB_7D'),
+((SELECT id FROM destinations WHERE code='kw' AND type='local'), 1, 'Go', 7, 'days', 3.96, 'WW_901O_STACK_ONEOFF_KUWAIT_1GB_7D'),
+((SELECT id FROM destinations WHERE code='kw' AND type='local'), 3, 'Go', 15, 'days', 9.5, 'WW_901O_STACK_ONEOFF_KUWAIT_3GB_15D'),
+((SELECT id FROM destinations WHERE code='kw' AND type='local'), 30, 'Go', 15, 'days', 35.62, 'WW_901O_STACK_ONEOFF_KUWAIT_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='kw' AND type='local'), 20, 'Go', 7, 'days', 20.58, 'WW_901O_STACK_ONEOFF_KUWAIT_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='lv' AND type='local'), 10, 'Go', 30, 'days', 8.71, 'WW_901O_STACK_ONEOFF_LATVIA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='lv' AND type='local'), 10, 'Go', 7, 'days', 7.12, 'WW_901O_STACK_ONEOFF_LATVIA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='lv' AND type='local'), 50, 'Go', 30, 'days', 25.33, 'WW_901O_STACK_ONEOFF_LATVIA_50GB_30D'),
+((SELECT id FROM destinations WHERE code='lv' AND type='local'), 30, 'Go', 15, 'days', 22.96, 'WW_901O_STACK_ONEOFF_LATVIA_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='lv' AND type='local'), 60, 'Go', 30, 'days', 38.79, 'WW_901O_STACK_ONEOFF_LATVIA_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='lv' AND type='local'), 20, 'Go', 7, 'days', 15.04, 'WW_901O_STACK_ONEOFF_LATVIA_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='lt' AND type='local'), 10, 'Go', 30, 'days', 7.12, 'WW_901O_STACK_ONEOFF_LITHUANIA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='lt' AND type='local'), 10, 'Go', 7, 'days', 5.54, 'WW_901O_STACK_ONEOFF_LITHUANIA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='lt' AND type='local'), 25, 'Go', 30, 'days', 15.04, 'WW_901O_STACK_ONEOFF_LITHUANIA_25GB_30D'),
+((SELECT id FROM destinations WHERE code='lt' AND type='local'), 30, 'Go', 15, 'days', 22.96, 'WW_901O_STACK_ONEOFF_LITHUANIA_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='lt' AND type='local'), 60, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_LITHUANIA_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='lt' AND type='local'), 20, 'Go', 7, 'days', 11.88, 'WW_901O_STACK_ONEOFF_LITHUANIA_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='lu' AND type='local'), 10, 'Go', 7, 'days', 7.92, 'WW_901O_STACK_ONEOFF_LUXEMBOURG_10GB_7D'),
+((SELECT id FROM destinations WHERE code='lu' AND type='local'), 3, 'Go', 15, 'days', 3.96, 'WW_901O_STACK_ONEOFF_LUXEMBOURG_3GB_15D'),
+((SELECT id FROM destinations WHERE code='mk' AND type='local'), 1, 'Go', 7, 'days', 5.54, 'WW_901O_STACK_ONEOFF_MACEDONIA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='mk' AND type='local'), 3, 'Go', 15, 'days', 14.25, 'WW_901O_STACK_ONEOFF_MACEDONIA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='mo' AND type='local'), 10, 'Go', 30, 'days', 12.67, 'WW_901O_STACK_ONEOFF_MAC_10GB_30D'),
+((SELECT id FROM destinations WHERE code='mo' AND type='local'), 10, 'Go', 7, 'days', 11.08, 'WW_901O_STACK_ONEOFF_MAC_10GB_7D'),
+((SELECT id FROM destinations WHERE code='mo' AND type='local'), 25, 'Go', 30, 'days', 22.96, 'WW_901O_STACK_ONEOFF_MAC_25GB_30D'),
+((SELECT id FROM destinations WHERE code='mo' AND type='local'), 3, 'Go', 15, 'days', 6.33, 'WW_901O_STACK_ONEOFF_MAC_3GB_15D'),
+((SELECT id FROM destinations WHERE code='mo' AND type='local'), 30, 'Go', 15, 'days', 38.79, 'WW_901O_STACK_ONEOFF_MAC_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='mo' AND type='local'), 20, 'Go', 7, 'days', 20.58, 'WW_901O_STACK_ONEOFF_MAC_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='mw' AND type='local'), 10, 'Go', 30, 'days', 46.71, 'WW_901O_STACK_ONEOFF_MALAWI_10GB_30D'),
+((SELECT id FROM destinations WHERE code='mw' AND type='local'), 1, 'Go', 7, 'days', 11.08, 'WW_901O_STACK_ONEOFF_MALAWI_1GB_7D'),
+((SELECT id FROM destinations WHERE code='mw' AND type='local'), 3, 'Go', 15, 'days', 22.96, 'WW_901O_STACK_ONEOFF_MALAWI_3GB_15D'),
+((SELECT id FROM destinations WHERE code='my' AND type='local'), 10, 'Go', 30, 'days', 9.5, 'WW_901O_STACK_ONEOFF_MALAYSIA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='my' AND type='local'), 10, 'Go', 7, 'days', 8.71, 'WW_901O_STACK_ONEOFF_MALAYSIA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='my' AND type='local'), 25, 'Go', 30, 'days', 17.42, 'WW_901O_STACK_ONEOFF_MALAYSIA_25GB_30D'),
+((SELECT id FROM destinations WHERE code='my' AND type='local'), 3, 'Go', 15, 'days', 4.75, 'WW_901O_STACK_ONEOFF_MALAYSIA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='my' AND type='local'), 30, 'Go', 15, 'days', 22.96, 'WW_901O_STACK_ONEOFF_MALAYSIA_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='my' AND type='local'), 60, 'Go', 30, 'days', 38.79, 'WW_901O_STACK_ONEOFF_MALAYSIA_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='my' AND type='local'), 20, 'Go', 7, 'days', 15.04, 'WW_901O_STACK_ONEOFF_MALAYSIA_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='ml' AND type='local'), 10, 'Go', 30, 'days', 22.96, 'WW_901O_STACK_ONEOFF_MALI_10GB_30D'),
+((SELECT id FROM destinations WHERE code='ml' AND type='local'), 10, 'Go', 7, 'days', 30.88, 'WW_901O_STACK_ONEOFF_MALI_10GB_7D'),
+((SELECT id FROM destinations WHERE code='ml' AND type='local'), 1, 'Go', 7, 'days', 4.75, 'WW_901O_STACK_ONEOFF_MALI_1GB_7D'),
+((SELECT id FROM destinations WHERE code='ml' AND type='local'), 3, 'Go', 15, 'days', 11.08, 'WW_901O_STACK_ONEOFF_MALI_3GB_15D'),
+((SELECT id FROM destinations WHERE code='ml' AND type='local'), 40, 'Go', 8, 'days', 29.29, 'WW_901O_STACK_ONEOFF_MALI_DF_UNLIMITED_8D_FUP5'),
+((SELECT id FROM destinations WHERE code='mt' AND type='local'), 10, 'Go', 30, 'days', 9.5, 'WW_901O_STACK_ONEOFF_MALTA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='mt' AND type='local'), 10, 'Go', 7, 'days', 7.12, 'WW_901O_STACK_ONEOFF_MALTA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='mt' AND type='local'), 3, 'Go', 15, 'days', 4.75, 'WW_901O_STACK_ONEOFF_MALTA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='mt' AND type='local'), 50, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_MALTA_50GB_30D'),
+((SELECT id FROM destinations WHERE code='mt' AND type='local'), 30, 'Go', 15, 'days', 22.96, 'WW_901O_STACK_ONEOFF_MALTA_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='mt' AND type='local'), 60, 'Go', 30, 'days', 38.79, 'WW_901O_STACK_ONEOFF_MALTA_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='mt' AND type='local'), 20, 'Go', 7, 'days', 19.0, 'WW_901O_STACK_ONEOFF_MALTA_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='MARTINIQUE' AND type='region'), 1, 'Go', 7, 'days', 3.17, 'WW_901O_STACK_ONEOFF_MARTINIQUE_1GB_7D'),
+((SELECT id FROM destinations WHERE code='MARTINIQUE' AND type='region'), 3, 'Go', 15, 'days', 6.33, 'WW_901O_STACK_ONEOFF_MARTINIQUE_3GB_15D'),
+((SELECT id FROM destinations WHERE code='mr' AND type='local'), 1, 'Go', 7, 'days', 9.5, 'WW_901O_STACK_ONEOFF_MAURITANIA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='mr' AND type='local'), 3, 'Go', 15, 'days', 19.0, 'WW_901O_STACK_ONEOFF_MAURITANIA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='mu' AND type='local'), 10, 'Go', 30, 'days', 17.42, 'WW_901O_STACK_ONEOFF_MAURITIUS_10GB_30D'),
+((SELECT id FROM destinations WHERE code='mu' AND type='local'), 10, 'Go', 7, 'days', 15.04, 'WW_901O_STACK_ONEOFF_MAURITIUS_10GB_7D'),
+((SELECT id FROM destinations WHERE code='mu' AND type='local'), 1, 'Go', 7, 'days', 3.96, 'WW_901O_STACK_ONEOFF_MAURITIUS_1GB_7D'),
+((SELECT id FROM destinations WHERE code='mu' AND type='local'), 3, 'Go', 15, 'days', 7.92, 'WW_901O_STACK_ONEOFF_MAURITIUS_3GB_15D'),
+((SELECT id FROM destinations WHERE code='mu' AND type='local'), 30, 'Go', 15, 'days', 43.54, 'WW_901O_STACK_ONEOFF_MAURITIUS_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='mu' AND type='local'), 20, 'Go', 7, 'days', 22.96, 'WW_901O_STACK_ONEOFF_MAURITIUS_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='yt' AND type='local'), 1, 'Go', 7, 'days', 4.75, 'WW_901O_STACK_ONEOFF_MAYOTTE_1GB_7D'),
+((SELECT id FROM destinations WHERE code='yt' AND type='local'), 3, 'Go', 15, 'days', 11.08, 'WW_901O_STACK_ONEOFF_MAYOTTE_3GB_15D'),
+((SELECT id FROM destinations WHERE code='mg' AND type='local'), 10, 'Go', 30, 'days', 22.96, 'WW_901O_STACK_ONEOFF_MDG_10GB_30D'),
+((SELECT id FROM destinations WHERE code='mg' AND type='local'), 10, 'Go', 7, 'days', 20.58, 'WW_901O_STACK_ONEOFF_MDG_10GB_7D'),
+((SELECT id FROM destinations WHERE code='mg' AND type='local'), 1, 'Go', 7, 'days', 4.75, 'WW_901O_STACK_ONEOFF_MDG_1GB_7D'),
+((SELECT id FROM destinations WHERE code='mg' AND type='local'), 25, 'Go', 30, 'days', 38.79, 'WW_901O_STACK_ONEOFF_MDG_25GB_30D'),
+((SELECT id FROM destinations WHERE code='mg' AND type='local'), 3, 'Go', 15, 'days', 11.08, 'WW_901O_STACK_ONEOFF_MDG_3GB_15D'),
+((SELECT id FROM destinations WHERE code='mg' AND type='local'), 30, 'Go', 15, 'days', 45.92, 'WW_901O_STACK_ONEOFF_MDG_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='mg' AND type='local'), 25, 'Go', 8, 'days', 30.88, 'WW_901O_STACK_ONEOFF_MDG_UNLIMITED_8D_FUP25'),
+((SELECT id FROM destinations WHERE code='mx' AND type='local'), 10, 'Go', 30, 'days', 22.96, 'WW_901O_STACK_ONEOFF_MEXICO_10GB_30D'),
+((SELECT id FROM destinations WHERE code='mx' AND type='local'), 10, 'Go', 7, 'days', 20.58, 'WW_901O_STACK_ONEOFF_MEXICO_10GB_7D'),
+((SELECT id FROM destinations WHERE code='mx' AND type='local'), 1, 'Go', 30, 'days', 3.96, 'WW_901O_STACK_ONEOFF_MEXICO_1GB_30D'),
+((SELECT id FROM destinations WHERE code='mx' AND type='local'), 3, 'Go', 30, 'days', 7.12, 'WW_901O_STACK_ONEOFF_MEXICO_3GB_30D'),
+((SELECT id FROM destinations WHERE code='mx' AND type='local'), 500, 'Mo', 2, 'days', 2.38, 'WW_901O_STACK_ONEOFF_MEXICO_500MB_2D'),
+((SELECT id FROM destinations WHERE code='mx' AND type='local'), 20, 'Go', 7, 'days', 35.62, 'WW_901O_STACK_ONEOFF_MEXICO_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='ME_Wo_Israel' AND type='region'), 1, 'Go', 30, 'days', 11.08, 'WW_901O_STACK_ONEOFF_ME_Wo_Israel_1GB_30D'),
+((SELECT id FROM destinations WHERE code='ME_Wo_Israel' AND type='region'), 3, 'Go', 15, 'days', 19.0, 'WW_901O_STACK_ONEOFF_ME_Wo_Israel_3GB_15D'),
+((SELECT id FROM destinations WHERE code='md' AND type='local'), 10, 'Go', 30, 'days', 11.88, 'WW_901O_STACK_ONEOFF_MOLDOVA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='md' AND type='local'), 10, 'Go', 7, 'days', 8.71, 'WW_901O_STACK_ONEOFF_MOLDOVA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='md' AND type='local'), 25, 'Go', 30, 'days', 22.17, 'WW_901O_STACK_ONEOFF_MOLDOVA_25GB_30D'),
+((SELECT id FROM destinations WHERE code='md' AND type='local'), 3, 'Go', 15, 'days', 4.75, 'WW_901O_STACK_ONEOFF_MOLDOVA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='md' AND type='local'), 50, 'Go', 30, 'days', 38.0, 'WW_901O_STACK_ONEOFF_MOLDOVA_50GB_30D'),
+((SELECT id FROM destinations WHERE code='md' AND type='local'), 40, 'Go', 8, 'days', 21.38, 'WW_901O_STACK_ONEOFF_MOLDOVA_DF_UNLIMITED_8D_FUP5'),
+((SELECT id FROM destinations WHERE code='mn' AND type='local'), 10, 'Go', 30, 'days', 46.71, 'WW_901O_STACK_ONEOFF_MONGOLIA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='mn' AND type='local'), 1, 'Go', 7, 'days', 12.67, 'WW_901O_STACK_ONEOFF_MONGOLIA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='mn' AND type='local'), 3, 'Go', 15, 'days', 25.33, 'WW_901O_STACK_ONEOFF_MONGOLIA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='me' AND type='local'), 10, 'Go', 30, 'days', 16.62, 'WW_901O_STACK_ONEOFF_MONTENEGRO_10GB_30D'),
+((SELECT id FROM destinations WHERE code='me' AND type='local'), 10, 'Go', 7, 'days', 15.04, 'WW_901O_STACK_ONEOFF_MONTENEGRO_10GB_7D'),
+((SELECT id FROM destinations WHERE code='me' AND type='local'), 1, 'Go', 7, 'days', 3.96, 'WW_901O_STACK_ONEOFF_MONTENEGRO_1GB_7D'),
+((SELECT id FROM destinations WHERE code='me' AND type='local'), 3, 'Go', 15, 'days', 7.12, 'WW_901O_STACK_ONEOFF_MONTENEGRO_3GB_15D'),
+((SELECT id FROM destinations WHERE code='me' AND type='local'), 30, 'Go', 15, 'days', 34.83, 'WW_901O_STACK_ONEOFF_MONTENEGRO_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='me' AND type='local'), 20, 'Go', 7, 'days', 22.96, 'WW_901O_STACK_ONEOFF_MONTENEGRO_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='ma' AND type='local'), 10, 'Go', 30, 'days', 18.21, 'WW_901O_STACK_ONEOFF_MOROCCO_10GB_30D'),
+((SELECT id FROM destinations WHERE code='ma' AND type='local'), 10, 'Go', 7, 'days', 15.04, 'WW_901O_STACK_ONEOFF_MOROCCO_10GB_7D'),
+((SELECT id FROM destinations WHERE code='ma' AND type='local'), 1, 'Go', 7, 'days', 4.75, 'WW_901O_STACK_ONEOFF_MOROCCO_1GB_7D'),
+((SELECT id FROM destinations WHERE code='ma' AND type='local'), 25, 'Go', 30, 'days', 35.62, 'WW_901O_STACK_ONEOFF_MOROCCO_25GB_30D'),
+((SELECT id FROM destinations WHERE code='ma' AND type='local'), 3, 'Go', 15, 'days', 11.08, 'WW_901O_STACK_ONEOFF_MOROCCO_3GB_15D'),
+((SELECT id FROM destinations WHERE code='ma' AND type='local'), 30, 'Go', 15, 'days', 35.62, 'WW_901O_STACK_ONEOFF_MOROCCO_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='ma' AND type='local'), 60, 'Go', 30, 'days', 54.62, 'WW_901O_STACK_ONEOFF_MOROCCO_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='ma' AND type='local'), 25, 'Go', 7, 'days', 19.79, 'WW_901O_STACK_ONEOFF_MOROCCO_UNLIMITED_7D_FUP25'),
+((SELECT id FROM destinations WHERE code='mz' AND type='local'), 1, 'Go', 7, 'days', 14.25, 'WW_901O_STACK_ONEOFF_MOZAMBIQUE_1GB_7D'),
+((SELECT id FROM destinations WHERE code='mz' AND type='local'), 3, 'Go', 15, 'days', 26.92, 'WW_901O_STACK_ONEOFF_MOZAMBIQUE_3GB_15D'),
+((SELECT id FROM destinations WHERE code='MYS_SGP' AND type='region'), 10, 'Go', 30, 'days', 13.46, 'WW_901O_STACK_ONEOFF_MYS_SGP_10GB_30D'),
+((SELECT id FROM destinations WHERE code='MYS_SGP' AND type='region'), 1, 'Go', 7, 'days', 3.17, 'WW_901O_STACK_ONEOFF_MYS_SGP_1GB_7D'),
+((SELECT id FROM destinations WHERE code='MYS_SGP' AND type='region'), 3, 'Go', 15, 'days', 9.5, 'WW_901O_STACK_ONEOFF_MYS_SGP_3GB_15D'),
+((SELECT id FROM destinations WHERE code='na' AND type='local'), 1, 'Go', 7, 'days', 39.58, 'WW_901O_STACK_ONEOFF_NAMIBIA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='nr' AND type='local'), 10, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_NAURU_10GB_30D'),
+((SELECT id FROM destinations WHERE code='nr' AND type='local'), 1, 'Go', 7, 'days', 7.12, 'WW_901O_STACK_ONEOFF_NAURU_1GB_7D'),
+((SELECT id FROM destinations WHERE code='nr' AND type='local'), 3, 'Go', 15, 'days', 15.04, 'WW_901O_STACK_ONEOFF_NAURU_3GB_15D'),
+((SELECT id FROM destinations WHERE code='nc' AND type='local'), 10, 'Go', 30, 'days', 60.96, 'WW_901O_STACK_ONEOFF_NCL_10GB_30D'),
+((SELECT id FROM destinations WHERE code='nc' AND type='local'), 1, 'Go', 7, 'days', 15.04, 'WW_901O_STACK_ONEOFF_NCL_1GB_7D'),
+((SELECT id FROM destinations WHERE code='nc' AND type='local'), 3, 'Go', 15, 'days', 30.08, 'WW_901O_STACK_ONEOFF_NCL_3GB_15D'),
+((SELECT id FROM destinations WHERE code='np' AND type='local'), 1, 'Go', 7, 'days', 14.25, 'WW_901O_STACK_ONEOFF_NEPAL_1GB_7D'),
+((SELECT id FROM destinations WHERE code='np' AND type='local'), 3, 'Go', 15, 'days', 26.92, 'WW_901O_STACK_ONEOFF_NEPAL_3GB_15D'),
+((SELECT id FROM destinations WHERE code='nl' AND type='local'), 10, 'Go', 30, 'days', 8.71, 'WW_901O_STACK_ONEOFF_NETHERLANDS_10GB_30D'),
+((SELECT id FROM destinations WHERE code='nl' AND type='local'), 10, 'Go', 7, 'days', 7.12, 'WW_901O_STACK_ONEOFF_NETHERLANDS_10GB_7D'),
+((SELECT id FROM destinations WHERE code='nl' AND type='local'), 25, 'Go', 30, 'days', 15.04, 'WW_901O_STACK_ONEOFF_NETHERLANDS_25GB_30D'),
+((SELECT id FROM destinations WHERE code='nl' AND type='local'), 3, 'Go', 15, 'days', 4.75, 'WW_901O_STACK_ONEOFF_NETHERLANDS_3GB_15D'),
+((SELECT id FROM destinations WHERE code='nl' AND type='local'), 50, 'Go', 30, 'days', 26.12, 'WW_901O_STACK_ONEOFF_NETHERLANDS_50GB_30D'),
+((SELECT id FROM destinations WHERE code='nl' AND type='local'), 30, 'Go', 15, 'days', 22.96, 'WW_901O_STACK_ONEOFF_NETHERLANDS_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='nl' AND type='local'), 60, 'Go', 30, 'days', 34.83, 'WW_901O_STACK_ONEOFF_NETHERLANDS_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='nl' AND type='local'), 20, 'Go', 7, 'days', 15.04, 'WW_901O_STACK_ONEOFF_NETHERLANDS_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='ni' AND type='local'), 10, 'Go', 30, 'days', 19.0, 'WW_901O_STACK_ONEOFF_NICARAGUA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='ni' AND type='local'), 10, 'Go', 7, 'days', 15.04, 'WW_901O_STACK_ONEOFF_NICARAGUA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='ni' AND type='local'), 1, 'Go', 7, 'days', 3.96, 'WW_901O_STACK_ONEOFF_NICARAGUA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='ni' AND type='local'), 25, 'Go', 30, 'days', 34.83, 'WW_901O_STACK_ONEOFF_NICARAGUA_25GB_30D'),
+((SELECT id FROM destinations WHERE code='ni' AND type='local'), 3, 'Go', 15, 'days', 7.12, 'WW_901O_STACK_ONEOFF_NICARAGUA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='ni' AND type='local'), 30, 'Go', 15, 'days', 52.25, 'WW_901O_STACK_ONEOFF_NICARAGUA_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='ni' AND type='local'), 20, 'Go', 7, 'days', 28.5, 'WW_901O_STACK_ONEOFF_NICARAGUA_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='ng' AND type='local'), 10, 'Go', 30, 'days', 21.38, 'WW_901O_STACK_ONEOFF_NIGERIA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='ng' AND type='local'), 10, 'Go', 7, 'days', 19.0, 'WW_901O_STACK_ONEOFF_NIGERIA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='ng' AND type='local'), 25, 'Go', 30, 'days', 38.0, 'WW_901O_STACK_ONEOFF_NIGERIA_25GB_30D'),
+((SELECT id FROM destinations WHERE code='ng' AND type='local'), 3, 'Go', 15, 'days', 9.5, 'WW_901O_STACK_ONEOFF_NIGERIA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='no' AND type='local'), 10, 'Go', 30, 'days', 8.71, 'WW_901O_STACK_ONEOFF_NORWAY_10GB_30D'),
+((SELECT id FROM destinations WHERE code='no' AND type='local'), 10, 'Go', 7, 'days', 7.12, 'WW_901O_STACK_ONEOFF_NORWAY_10GB_7D'),
+((SELECT id FROM destinations WHERE code='no' AND type='local'), 25, 'Go', 30, 'days', 16.62, 'WW_901O_STACK_ONEOFF_NORWAY_25GB_30D'),
+((SELECT id FROM destinations WHERE code='no' AND type='local'), 3, 'Go', 15, 'days', 3.96, 'WW_901O_STACK_ONEOFF_NORWAY_3GB_15D'),
+((SELECT id FROM destinations WHERE code='no' AND type='local'), 50, 'Go', 30, 'days', 29.29, 'WW_901O_STACK_ONEOFF_NORWAY_50GB_30D'),
+((SELECT id FROM destinations WHERE code='no' AND type='local'), 30, 'Go', 15, 'days', 22.96, 'WW_901O_STACK_ONEOFF_NORWAY_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='no' AND type='local'), 60, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_NORWAY_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='no' AND type='local'), 20, 'Go', 7, 'days', 15.04, 'WW_901O_STACK_ONEOFF_NORWAY_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='nz' AND type='local'), 10, 'Go', 30, 'days', 12.67, 'WW_901O_STACK_ONEOFF_NZL_10GB_30D'),
+((SELECT id FROM destinations WHERE code='nz' AND type='local'), 10, 'Go', 7, 'days', 11.08, 'WW_901O_STACK_ONEOFF_NZL_10GB_7D'),
+((SELECT id FROM destinations WHERE code='nz' AND type='local'), 25, 'Go', 30, 'days', 27.71, 'WW_901O_STACK_ONEOFF_NZL_25GB_30D'),
+((SELECT id FROM destinations WHERE code='nz' AND type='local'), 3, 'Go', 30, 'days', 5.54, 'WW_901O_STACK_ONEOFF_NZL_3GB_30D'),
+((SELECT id FROM destinations WHERE code='nz' AND type='local'), 30, 'Go', 15, 'days', 34.83, 'WW_901O_STACK_ONEOFF_NZL_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='nz' AND type='local'), 60, 'Go', 30, 'days', 51.46, 'WW_901O_STACK_ONEOFF_NZL_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='nz' AND type='local'), 20, 'Go', 7, 'days', 22.96, 'WW_901O_STACK_ONEOFF_NZL_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='OCEANIA' AND type='region'), 10, 'Go', 30, 'days', 46.71, 'WW_901O_STACK_ONEOFF_OCEANIA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='OCEANIA' AND type='region'), 1, 'Go', 30, 'days', 11.88, 'WW_901O_STACK_ONEOFF_OCEANIA_1GB_30D'),
+((SELECT id FROM destinations WHERE code='OCEANIA' AND type='region'), 3, 'Go', 15, 'days', 22.96, 'WW_901O_STACK_ONEOFF_OCEANIA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='om' AND type='local'), 10, 'Go', 7, 'days', 19.0, 'WW_901O_STACK_ONEOFF_OMAN_10GB_7D'),
+((SELECT id FROM destinations WHERE code='om' AND type='local'), 1, 'Go', 7, 'days', 4.75, 'WW_901O_STACK_ONEOFF_OMAN_1GB_7D'),
+((SELECT id FROM destinations WHERE code='om' AND type='local'), 3, 'Go', 30, 'days', 9.5, 'WW_901O_STACK_ONEOFF_OMAN_3GB_30D'),
+((SELECT id FROM destinations WHERE code='pk' AND type='local'), 10, 'Go', 30, 'days', 12.67, 'WW_901O_STACK_ONEOFF_PAKISTAN_10GB_30D'),
+((SELECT id FROM destinations WHERE code='pk' AND type='local'), 10, 'Go', 7, 'days', 11.08, 'WW_901O_STACK_ONEOFF_PAKISTAN_10GB_7D'),
+((SELECT id FROM destinations WHERE code='pk' AND type='local'), 1, 'Go', 7, 'days', 3.17, 'WW_901O_STACK_ONEOFF_PAKISTAN_1GB_7D'),
+((SELECT id FROM destinations WHERE code='pk' AND type='local'), 25, 'Go', 30, 'days', 21.38, 'WW_901O_STACK_ONEOFF_PAKISTAN_25GB_30D'),
+((SELECT id FROM destinations WHERE code='pk' AND type='local'), 3, 'Go', 15, 'days', 6.33, 'WW_901O_STACK_ONEOFF_PAKISTAN_3GB_15D'),
+((SELECT id FROM destinations WHERE code='pk' AND type='local'), 50, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_PAKISTAN_50GB_30D'),
+((SELECT id FROM destinations WHERE code='pk' AND type='local'), 30, 'Go', 15, 'days', 38.79, 'WW_901O_STACK_ONEOFF_PAKISTAN_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='pk' AND type='local'), 20, 'Go', 7, 'days', 21.38, 'WW_901O_STACK_ONEOFF_PAKISTAN_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='ps' AND type='local'), 10, 'Go', 30, 'days', 38.79, 'WW_901O_STACK_ONEOFF_PALESTINE_10GB_30D'),
+((SELECT id FROM destinations WHERE code='ps' AND type='local'), 1, 'Go', 7, 'days', 7.12, 'WW_901O_STACK_ONEOFF_PALESTINE_1GB_7D'),
+((SELECT id FROM destinations WHERE code='ps' AND type='local'), 3, 'Go', 15, 'days', 15.04, 'WW_901O_STACK_ONEOFF_PALESTINE_3GB_15D'),
+((SELECT id FROM destinations WHERE code='pa' AND type='local'), 10, 'Go', 30, 'days', 17.42, 'WW_901O_STACK_ONEOFF_PANAMA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='pa' AND type='local'), 10, 'Go', 7, 'days', 15.04, 'WW_901O_STACK_ONEOFF_PANAMA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='pa' AND type='local'), 1, 'Go', 7, 'days', 3.96, 'WW_901O_STACK_ONEOFF_PANAMA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='pa' AND type='local'), 25, 'Go', 30, 'days', 34.83, 'WW_901O_STACK_ONEOFF_PANAMA_25GB_30D'),
+((SELECT id FROM destinations WHERE code='pa' AND type='local'), 3, 'Go', 15, 'days', 7.92, 'WW_901O_STACK_ONEOFF_PANAMA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='pa' AND type='local'), 30, 'Go', 15, 'days', 43.54, 'WW_901O_STACK_ONEOFF_PANAMA_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='pa' AND type='local'), 20, 'Go', 7, 'days', 24.54, 'WW_901O_STACK_ONEOFF_PANAMA_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='py' AND type='local'), 10, 'Go', 30, 'days', 14.25, 'WW_901O_STACK_ONEOFF_PARAGUAY_10GB_30D'),
+((SELECT id FROM destinations WHERE code='py' AND type='local'), 10, 'Go', 7, 'days', 11.88, 'WW_901O_STACK_ONEOFF_PARAGUAY_10GB_7D'),
+((SELECT id FROM destinations WHERE code='py' AND type='local'), 1, 'Go', 7, 'days', 3.17, 'WW_901O_STACK_ONEOFF_PARAGUAY_1GB_7D'),
+((SELECT id FROM destinations WHERE code='py' AND type='local'), 25, 'Go', 30, 'days', 26.92, 'WW_901O_STACK_ONEOFF_PARAGUAY_25GB_30D'),
+((SELECT id FROM destinations WHERE code='py' AND type='local'), 3, 'Go', 15, 'days', 6.33, 'WW_901O_STACK_ONEOFF_PARAGUAY_3GB_15D'),
+((SELECT id FROM destinations WHERE code='py' AND type='local'), 30, 'Go', 15, 'days', 44.33, 'WW_901O_STACK_ONEOFF_PARAGUAY_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='py' AND type='local'), 20, 'Go', 7, 'days', 19.79, 'WW_901O_STACK_ONEOFF_PARAGUAY_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='pe' AND type='local'), 10, 'Go', 30, 'days', 19.0, 'WW_901O_STACK_ONEOFF_PERU_10GB_30D'),
+((SELECT id FROM destinations WHERE code='pe' AND type='local'), 10, 'Go', 7, 'days', 17.42, 'WW_901O_STACK_ONEOFF_PERU_10GB_7D'),
+((SELECT id FROM destinations WHERE code='pe' AND type='local'), 1, 'Go', 7, 'days', 4.75, 'WW_901O_STACK_ONEOFF_PERU_1GB_7D'),
+((SELECT id FROM destinations WHERE code='pe' AND type='local'), 25, 'Go', 30, 'days', 33.25, 'WW_901O_STACK_ONEOFF_PERU_25GB_30D'),
+((SELECT id FROM destinations WHERE code='pe' AND type='local'), 3, 'Go', 15, 'days', 9.5, 'WW_901O_STACK_ONEOFF_PERU_3GB_15D'),
+((SELECT id FROM destinations WHERE code='pe' AND type='local'), 60, 'Go', 30, 'days', 62.54, 'WW_901O_STACK_ONEOFF_PERU_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='pe' AND type='local'), 20, 'Go', 7, 'days', 27.71, 'WW_901O_STACK_ONEOFF_PERU_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='ph' AND type='local'), 10, 'Go', 30, 'days', 12.67, 'WW_901O_STACK_ONEOFF_PHILIPPINES_10GB_30D'),
+((SELECT id FROM destinations WHERE code='ph' AND type='local'), 10, 'Go', 7, 'days', 11.08, 'WW_901O_STACK_ONEOFF_PHILIPPINES_10GB_7D'),
+((SELECT id FROM destinations WHERE code='ph' AND type='local'), 1, 'Go', 7, 'days', 2.77, 'WW_901O_STACK_ONEOFF_PHILIPPINES_1GB_7D'),
+((SELECT id FROM destinations WHERE code='ph' AND type='local'), 25, 'Go', 30, 'days', 22.96, 'WW_901O_STACK_ONEOFF_PHILIPPINES_25GB_30D'),
+((SELECT id FROM destinations WHERE code='ph' AND type='local'), 3, 'Go', 15, 'days', 5.54, 'WW_901O_STACK_ONEOFF_PHILIPPINES_3GB_15D'),
+((SELECT id FROM destinations WHERE code='ph' AND type='local'), 50, 'Go', 30, 'days', 38.79, 'WW_901O_STACK_ONEOFF_PHILIPPINES_50GB_30D'),
+((SELECT id FROM destinations WHERE code='ph' AND type='local'), 30, 'Go', 15, 'days', 31.67, 'WW_901O_STACK_ONEOFF_PHILIPPINES_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='ph' AND type='local'), 60, 'Go', 30, 'days', 46.71, 'WW_901O_STACK_ONEOFF_PHILIPPINES_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='ph' AND type='local'), 20, 'Go', 7, 'days', 18.21, 'WW_901O_STACK_ONEOFF_PHILIPPINES_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='pf' AND type='local'), 10, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_POLYNESIA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='pf' AND type='local'), 10, 'Go', 7, 'days', 28.5, 'WW_901O_STACK_ONEOFF_POLYNESIA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='pf' AND type='local'), 1, 'Go', 7, 'days', 7.12, 'WW_901O_STACK_ONEOFF_POLYNESIA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='pf' AND type='local'), 25, 'Go', 30, 'days', 62.54, 'WW_901O_STACK_ONEOFF_POLYNESIA_25GB_30D'),
+((SELECT id FROM destinations WHERE code='pf' AND type='local'), 3, 'Go', 15, 'days', 17.42, 'WW_901O_STACK_ONEOFF_POLYNESIA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='pf' AND type='local'), 20, 'Go', 7, 'days', 57.79, 'WW_901O_STACK_ONEOFF_POLYNESIA_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='pl' AND type='local'), 10, 'Go', 30, 'days', 7.12, 'WW_901O_STACK_ONEOFF_POL_10GB_30D'),
+((SELECT id FROM destinations WHERE code='pl' AND type='local'), 10, 'Go', 7, 'days', 6.33, 'WW_901O_STACK_ONEOFF_POL_10GB_7D'),
+((SELECT id FROM destinations WHERE code='pl' AND type='local'), 25, 'Go', 30, 'days', 15.04, 'WW_901O_STACK_ONEOFF_POL_25GB_30D'),
+((SELECT id FROM destinations WHERE code='pl' AND type='local'), 3, 'Go', 30, 'days', 3.96, 'WW_901O_STACK_ONEOFF_POL_3GB_30D'),
+((SELECT id FROM destinations WHERE code='pl' AND type='local'), 30, 'Go', 15, 'days', 22.96, 'WW_901O_STACK_ONEOFF_POL_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='pl' AND type='local'), 60, 'Go', 30, 'days', 38.79, 'WW_901O_STACK_ONEOFF_POL_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='pl' AND type='local'), 20, 'Go', 7, 'days', 11.88, 'WW_901O_STACK_ONEOFF_POL_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='pt' AND type='local'), 10, 'Go', 30, 'days', 8.71, 'WW_901O_STACK_ONEOFF_PORTUGAL_10GB_30D'),
+((SELECT id FROM destinations WHERE code='pt' AND type='local'), 10, 'Go', 7, 'days', 7.12, 'WW_901O_STACK_ONEOFF_PORTUGAL_10GB_7D'),
+((SELECT id FROM destinations WHERE code='pt' AND type='local'), 25, 'Go', 30, 'days', 22.17, 'WW_901O_STACK_ONEOFF_PORTUGAL_25GB_30D'),
+((SELECT id FROM destinations WHERE code='pt' AND type='local'), 3, 'Go', 30, 'days', 4.75, 'WW_901O_STACK_ONEOFF_PORTUGAL_3GB_30D'),
+((SELECT id FROM destinations WHERE code='pt' AND type='local'), 50, 'Go', 30, 'days', 27.71, 'WW_901O_STACK_ONEOFF_PORTUGAL_50GB_30D'),
+((SELECT id FROM destinations WHERE code='pt' AND type='local'), 30, 'Go', 15, 'days', 26.92, 'WW_901O_STACK_ONEOFF_PORTUGAL_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='pt' AND type='local'), 60, 'Go', 30, 'days', 38.0, 'WW_901O_STACK_ONEOFF_PORTUGAL_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='pt' AND type='local'), 20, 'Go', 7, 'days', 15.04, 'WW_901O_STACK_ONEOFF_PORTUGAL_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='qa' AND type='local'), 10, 'Go', 30, 'days', 15.04, 'WW_901O_STACK_ONEOFF_QATAR_10GB_30D'),
+((SELECT id FROM destinations WHERE code='qa' AND type='local'), 10, 'Go', 7, 'days', 12.67, 'WW_901O_STACK_ONEOFF_QATAR_10GB_7D'),
+((SELECT id FROM destinations WHERE code='qa' AND type='local'), 3, 'Go', 30, 'days', 6.33, 'WW_901O_STACK_ONEOFF_QATAR_3GB_30D'),
+((SELECT id FROM destinations WHERE code='qa' AND type='local'), 20, 'Go', 7, 'days', 25.33, 'WW_901O_STACK_ONEOFF_QATAR_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='re' AND type='local'), 10, 'Go', 30, 'days', 9.5, 'WW_901O_STACK_ONEOFF_REUNION_10GB_30D'),
+((SELECT id FROM destinations WHERE code='re' AND type='local'), 3, 'Go', 15, 'days', 4.75, 'WW_901O_STACK_ONEOFF_REUNION_3GB_15D'),
+((SELECT id FROM destinations WHERE code='ro' AND type='local'), 10, 'Go', 30, 'days', 9.5, 'WW_901O_STACK_ONEOFF_ROMANIA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='ro' AND type='local'), 3, 'Go', 15, 'days', 4.75, 'WW_901O_STACK_ONEOFF_ROMANIA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='ro' AND type='local'), 50, 'Go', 30, 'days', 26.92, 'WW_901O_STACK_ONEOFF_ROMANIA_50GB_30D'),
+((SELECT id FROM destinations WHERE code='ru' AND type='local'), 10, 'Go', 30, 'days', 11.08, 'WW_901O_STACK_ONEOFF_RUSSIA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='ru' AND type='local'), 10, 'Go', 7, 'days', 9.5, 'WW_901O_STACK_ONEOFF_RUSSIA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='ru' AND type='local'), 1, 'Go', 7, 'days', 2.38, 'WW_901O_STACK_ONEOFF_RUSSIA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='ru' AND type='local'), 25, 'Go', 30, 'days', 22.96, 'WW_901O_STACK_ONEOFF_RUSSIA_25GB_30D'),
+((SELECT id FROM destinations WHERE code='ru' AND type='local'), 3, 'Go', 15, 'days', 4.75, 'WW_901O_STACK_ONEOFF_RUSSIA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='ru' AND type='local'), 50, 'Go', 30, 'days', 36.42, 'WW_901O_STACK_ONEOFF_RUSSIA_50GB_30D'),
+((SELECT id FROM destinations WHERE code='ru' AND type='local'), 30, 'Go', 15, 'days', 33.25, 'WW_901O_STACK_ONEOFF_RUSSIA_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='ru' AND type='local'), 60, 'Go', 30, 'days', 50.67, 'WW_901O_STACK_ONEOFF_RUSSIA_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='ru' AND type='local'), 20, 'Go', 7, 'days', 17.42, 'WW_901O_STACK_ONEOFF_RUSSIA_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='rw' AND type='local'), 10, 'Go', 30, 'days', 21.38, 'WW_901O_STACK_ONEOFF_RWANDA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='rw' AND type='local'), 10, 'Go', 7, 'days', 19.0, 'WW_901O_STACK_ONEOFF_RWANDA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='rw' AND type='local'), 25, 'Go', 30, 'days', 38.0, 'WW_901O_STACK_ONEOFF_RWANDA_25GB_30D'),
+((SELECT id FROM destinations WHERE code='rw' AND type='local'), 3, 'Go', 15, 'days', 9.5, 'WW_901O_STACK_ONEOFF_RWANDA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='S-BARTHELEMY' AND type='region'), 3, 'Go', 15, 'days', 6.33, 'WW_901O_STACK_ONEOFF_S-BARTHELEMY_3GB_15D'),
+((SELECT id FROM destinations WHERE code='S-MARTIN' AND type='region'), 1, 'Go', 7, 'days', 3.17, 'WW_901O_STACK_ONEOFF_S-MARTIN_1GB_7D'),
+((SELECT id FROM destinations WHERE code='S-MARTIN' AND type='region'), 3, 'Go', 15, 'days', 6.33, 'WW_901O_STACK_ONEOFF_S-MARTIN_3GB_15D'),
+((SELECT id FROM destinations WHERE code='ws' AND type='local'), 1, 'Go', 7, 'days', 11.88, 'WW_901O_STACK_ONEOFF_SAMOA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='ws' AND type='local'), 3, 'Go', 15, 'days', 26.92, 'WW_901O_STACK_ONEOFF_SAMOA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='SCANDINAVIA' AND type='region'), 10, 'Go', 30, 'days', 9.5, 'WW_901O_STACK_ONEOFF_SCANDINAVIA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='SCANDINAVIA' AND type='region'), 3, 'Go', 15, 'days', 4.75, 'WW_901O_STACK_ONEOFF_SCANDINAVIA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='SCANDINAVIA' AND type='region'), 50, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_SCANDINAVIA_50GB_30D'),
+((SELECT id FROM destinations WHERE code='sn' AND type='local'), 10, 'Go', 30, 'days', 22.96, 'WW_901O_STACK_ONEOFF_SENEGAL_10GB_30D'),
+((SELECT id FROM destinations WHERE code='sn' AND type='local'), 1, 'Go', 7, 'days', 4.75, 'WW_901O_STACK_ONEOFF_SENEGAL_1GB_7D'),
+((SELECT id FROM destinations WHERE code='sn' AND type='local'), 25, 'Go', 30, 'days', 46.71, 'WW_901O_STACK_ONEOFF_SENEGAL_25GB_30D'),
+((SELECT id FROM destinations WHERE code='sn' AND type='local'), 3, 'Go', 15, 'days', 11.08, 'WW_901O_STACK_ONEOFF_SENEGAL_3GB_15D'),
+((SELECT id FROM destinations WHERE code='sn' AND type='local'), 20, 'Go', 7, 'days', 34.83, 'WW_901O_STACK_ONEOFF_SENEGAL_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='rs' AND type='local'), 10, 'Go', 30, 'days', 11.88, 'WW_901O_STACK_ONEOFF_SERBIA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='rs' AND type='local'), 10, 'Go', 7, 'days', 10.29, 'WW_901O_STACK_ONEOFF_SERBIA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='rs' AND type='local'), 25, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_SERBIA_25GB_30D'),
+((SELECT id FROM destinations WHERE code='rs' AND type='local'), 3, 'Go', 15, 'days', 5.54, 'WW_901O_STACK_ONEOFF_SERBIA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='rs' AND type='local'), 30, 'Go', 15, 'days', 30.88, 'WW_901O_STACK_ONEOFF_SERBIA_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='rs' AND type='local'), 20, 'Go', 7, 'days', 22.96, 'WW_901O_STACK_ONEOFF_SERBIA_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='sc' AND type='local'), 10, 'Go', 30, 'days', 27.71, 'WW_901O_STACK_ONEOFF_SEYCHELLES_10GB_30D'),
+((SELECT id FROM destinations WHERE code='sc' AND type='local'), 10, 'Go', 7, 'days', 25.33, 'WW_901O_STACK_ONEOFF_SEYCHELLES_10GB_7D'),
+((SELECT id FROM destinations WHERE code='sc' AND type='local'), 1, 'Go', 7, 'days', 6.33, 'WW_901O_STACK_ONEOFF_SEYCHELLES_1GB_7D'),
+((SELECT id FROM destinations WHERE code='sc' AND type='local'), 25, 'Go', 30, 'days', 46.71, 'WW_901O_STACK_ONEOFF_SEYCHELLES_25GB_30D'),
+((SELECT id FROM destinations WHERE code='sc' AND type='local'), 3, 'Go', 15, 'days', 12.67, 'WW_901O_STACK_ONEOFF_SEYCHELLES_3GB_15D'),
+((SELECT id FROM destinations WHERE code='sl' AND type='local'), 10, 'Go', 30, 'days', 26.12, 'WW_901O_STACK_ONEOFF_SIERRALEONE_10GB_30D'),
+((SELECT id FROM destinations WHERE code='sl' AND type='local'), 1, 'Go', 7, 'days', 5.54, 'WW_901O_STACK_ONEOFF_SIERRALEONE_1GB_7D'),
+((SELECT id FROM destinations WHERE code='sl' AND type='local'), 3, 'Go', 15, 'days', 12.67, 'WW_901O_STACK_ONEOFF_SIERRALEONE_3GB_15D'),
+((SELECT id FROM destinations WHERE code='sg' AND type='local'), 10, 'Go', 30, 'days', 10.29, 'WW_901O_STACK_ONEOFF_SINGAPORE_10GB_30D'),
+((SELECT id FROM destinations WHERE code='sg' AND type='local'), 10, 'Go', 7, 'days', 8.71, 'WW_901O_STACK_ONEOFF_SINGAPORE_10GB_7D'),
+((SELECT id FROM destinations WHERE code='sg' AND type='local'), 1, 'Go', 7, 'days', 2.38, 'WW_901O_STACK_ONEOFF_SINGAPORE_1GB_7D'),
+((SELECT id FROM destinations WHERE code='sg' AND type='local'), 25, 'Go', 30, 'days', 17.42, 'WW_901O_STACK_ONEOFF_SINGAPORE_25GB_30D'),
+((SELECT id FROM destinations WHERE code='sg' AND type='local'), 3, 'Go', 15, 'days', 4.75, 'WW_901O_STACK_ONEOFF_SINGAPORE_3GB_15D'),
+((SELECT id FROM destinations WHERE code='sg' AND type='local'), 30, 'Go', 15, 'days', 27.71, 'WW_901O_STACK_ONEOFF_SINGAPORE_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='sg' AND type='local'), 10, 'Go', 2, 'days', 7.12, 'WW_901O_STACK_ONEOFF_SINGAPORE_UNLIMITED_2D_FUP10'),
+((SELECT id FROM destinations WHERE code='sg' AND type='local'), 60, 'Go', 30, 'days', 38.79, 'WW_901O_STACK_ONEOFF_SINGAPORE_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='sg' AND type='local'), 20, 'Go', 7, 'days', 15.04, 'WW_901O_STACK_ONEOFF_SINGAPORE_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='sk' AND type='local'), 10, 'Go', 30, 'days', 7.92, 'WW_901O_STACK_ONEOFF_SLOVAKIA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='sk' AND type='local'), 10, 'Go', 7, 'days', 9.5, 'WW_901O_STACK_ONEOFF_SLOVAKIA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='sk' AND type='local'), 25, 'Go', 30, 'days', 15.04, 'WW_901O_STACK_ONEOFF_SLOVAKIA_25GB_30D'),
+((SELECT id FROM destinations WHERE code='sk' AND type='local'), 3, 'Go', 15, 'days', 3.96, 'WW_901O_STACK_ONEOFF_SLOVAKIA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='sk' AND type='local'), 30, 'Go', 15, 'days', 28.5, 'WW_901O_STACK_ONEOFF_SLOVAKIA_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='sk' AND type='local'), 60, 'Go', 30, 'days', 38.79, 'WW_901O_STACK_ONEOFF_SLOVAKIA_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='sk' AND type='local'), 20, 'Go', 7, 'days', 19.0, 'WW_901O_STACK_ONEOFF_SLOVAKIA_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='si' AND type='local'), 10, 'Go', 30, 'days', 10.29, 'WW_901O_STACK_ONEOFF_SLOVENIA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='si' AND type='local'), 10, 'Go', 7, 'days', 7.92, 'WW_901O_STACK_ONEOFF_SLOVENIA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='si' AND type='local'), 3, 'Go', 15, 'days', 4.75, 'WW_901O_STACK_ONEOFF_SLOVENIA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='sv' AND type='local'), 10, 'Go', 30, 'days', 22.17, 'WW_901O_STACK_ONEOFF_SLV_10GB_30D'),
+((SELECT id FROM destinations WHERE code='sv' AND type='local'), 10, 'Go', 7, 'days', 19.0, 'WW_901O_STACK_ONEOFF_SLV_10GB_7D'),
+((SELECT id FROM destinations WHERE code='sv' AND type='local'), 3, 'Go', 15, 'days', 9.5, 'WW_901O_STACK_ONEOFF_SLV_3GB_15D'),
+((SELECT id FROM destinations WHERE code='sv' AND type='local'), 30, 'Go', 15, 'days', 46.71, 'WW_901O_STACK_ONEOFF_SLV_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='sv' AND type='local'), 20, 'Go', 7, 'days', 27.71, 'WW_901O_STACK_ONEOFF_SLV_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='ss' AND type='local'), 1, 'Go', 7, 'days', 4.75, 'WW_901O_STACK_ONEOFF_SOUTHSUDAN_1GB_7D'),
+((SELECT id FROM destinations WHERE code='ss' AND type='local'), 3, 'Go', 15, 'days', 11.08, 'WW_901O_STACK_ONEOFF_SOUTHSUDAN_3GB_15D'),
+((SELECT id FROM destinations WHERE code='lk' AND type='local'), 10, 'Go', 30, 'days', 8.71, 'WW_901O_STACK_ONEOFF_SRILANKA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='lk' AND type='local'), 10, 'Go', 7, 'days', 7.12, 'WW_901O_STACK_ONEOFF_SRILANKA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='lk' AND type='local'), 3, 'Go', 15, 'days', 3.96, 'WW_901O_STACK_ONEOFF_SRILANKA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='lk' AND type='local'), 50, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_SRILANKA_50GB_30D'),
+((SELECT id FROM destinations WHERE code='lk' AND type='local'), 30, 'Go', 15, 'days', 34.83, 'WW_901O_STACK_ONEOFF_SRILANKA_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='lk' AND type='local'), 60, 'Go', 30, 'days', 51.46, 'WW_901O_STACK_ONEOFF_SRILANKA_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='lk' AND type='local'), 20, 'Go', 7, 'days', 19.0, 'WW_901O_STACK_ONEOFF_SRILANKA_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='sd' AND type='local'), 10, 'Go', 30, 'days', 26.92, 'WW_901O_STACK_ONEOFF_SUDAN_10GB_30D'),
+((SELECT id FROM destinations WHERE code='sd' AND type='local'), 3, 'Go', 15, 'days', 13.46, 'WW_901O_STACK_ONEOFF_SUDAN_3GB_15D'),
+((SELECT id FROM destinations WHERE code='sr' AND type='local'), 10, 'Go', 30, 'days', 26.92, 'WW_901O_STACK_ONEOFF_SURINAME_10GB_30D'),
+((SELECT id FROM destinations WHERE code='sr' AND type='local'), 10, 'Go', 7, 'days', 22.17, 'WW_901O_STACK_ONEOFF_SURINAME_10GB_7D'),
+((SELECT id FROM destinations WHERE code='sr' AND type='local'), 1, 'Go', 7, 'days', 5.54, 'WW_901O_STACK_ONEOFF_SURINAME_1GB_7D'),
+((SELECT id FROM destinations WHERE code='sr' AND type='local'), 3, 'Go', 15, 'days', 11.08, 'WW_901O_STACK_ONEOFF_SURINAME_3GB_15D'),
+((SELECT id FROM destinations WHERE code='se' AND type='local'), 10, 'Go', 30, 'days', 9.5, 'WW_901O_STACK_ONEOFF_SWEDEN_10GB_30D'),
+((SELECT id FROM destinations WHERE code='se' AND type='local'), 10, 'Go', 7, 'days', 7.92, 'WW_901O_STACK_ONEOFF_SWEDEN_10GB_7D'),
+((SELECT id FROM destinations WHERE code='se' AND type='local'), 3, 'Go', 15, 'days', 4.75, 'WW_901O_STACK_ONEOFF_SWEDEN_3GB_15D'),
+((SELECT id FROM destinations WHERE code='se' AND type='local'), 50, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_SWEDEN_50GB_30D'),
+((SELECT id FROM destinations WHERE code='se' AND type='local'), 30, 'Go', 15, 'days', 22.96, 'WW_901O_STACK_ONEOFF_SWEDEN_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='se' AND type='local'), 60, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_SWEDEN_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='se' AND type='local'), 20, 'Go', 7, 'days', 15.04, 'WW_901O_STACK_ONEOFF_SWEDEN_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='ch' AND type='local'), 10, 'Go', 30, 'days', 8.71, 'WW_901O_STACK_ONEOFF_SWITZERLAND_10GB_30D'),
+((SELECT id FROM destinations WHERE code='ch' AND type='local'), 10, 'Go', 7, 'days', 7.12, 'WW_901O_STACK_ONEOFF_SWITZERLAND_10GB_7D'),
+((SELECT id FROM destinations WHERE code='ch' AND type='local'), 25, 'Go', 30, 'days', 19.0, 'WW_901O_STACK_ONEOFF_SWITZERLAND_25GB_30D'),
+((SELECT id FROM destinations WHERE code='ch' AND type='local'), 3, 'Go', 30, 'days', 5.15, 'WW_901O_STACK_ONEOFF_SWITZERLAND_3GB_30D'),
+((SELECT id FROM destinations WHERE code='ch' AND type='local'), 50, 'Go', 30, 'days', 26.92, 'WW_901O_STACK_ONEOFF_SWITZERLAND_50GB_30D'),
+((SELECT id FROM destinations WHERE code='ch' AND type='local'), 30, 'Go', 15, 'days', 30.88, 'WW_901O_STACK_ONEOFF_SWITZERLAND_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='ch' AND type='local'), 60, 'Go', 30, 'days', 46.71, 'WW_901O_STACK_ONEOFF_SWITZERLAND_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='tw' AND type='local'), 10, 'Go', 30, 'days', 11.08, 'WW_901O_STACK_ONEOFF_TAIWAN_10GB_30D'),
+((SELECT id FROM destinations WHERE code='tw' AND type='local'), 10, 'Go', 7, 'days', 9.5, 'WW_901O_STACK_ONEOFF_TAIWAN_10GB_7D'),
+((SELECT id FROM destinations WHERE code='tw' AND type='local'), 1, 'Go', 7, 'days', 2.38, 'WW_901O_STACK_ONEOFF_TAIWAN_1GB_7D'),
+((SELECT id FROM destinations WHERE code='tw' AND type='local'), 25, 'Go', 30, 'days', 22.17, 'WW_901O_STACK_ONEOFF_TAIWAN_25GB_30D'),
+((SELECT id FROM destinations WHERE code='tw' AND type='local'), 3, 'Go', 7, 'days', 4.75, 'WW_901O_STACK_ONEOFF_TAIWAN_3GB_7D'),
+((SELECT id FROM destinations WHERE code='tw' AND type='local'), 30, 'Go', 15, 'days', 30.88, 'WW_901O_STACK_ONEOFF_TAIWAN_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='tw' AND type='local'), 60, 'Go', 30, 'days', 38.79, 'WW_901O_STACK_ONEOFF_TAIWAN_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='tw' AND type='local'), 20, 'Go', 7, 'days', 17.42, 'WW_901O_STACK_ONEOFF_TAIWAN_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='tj' AND type='local'), 10, 'Go', 30, 'days', 15.04, 'WW_901O_STACK_ONEOFF_TAJIKISTAN_10GB_30D'),
+((SELECT id FROM destinations WHERE code='tj' AND type='local'), 10, 'Go', 7, 'days', 13.46, 'WW_901O_STACK_ONEOFF_TAJIKISTAN_10GB_7D'),
+((SELECT id FROM destinations WHERE code='tj' AND type='local'), 1, 'Go', 7, 'days', 3.17, 'WW_901O_STACK_ONEOFF_TAJIKISTAN_1GB_7D'),
+((SELECT id FROM destinations WHERE code='tj' AND type='local'), 25, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_TAJIKISTAN_25GB_30D'),
+((SELECT id FROM destinations WHERE code='tj' AND type='local'), 3, 'Go', 15, 'days', 6.33, 'WW_901O_STACK_ONEOFF_TAJIKISTAN_3GB_15D'),
+((SELECT id FROM destinations WHERE code='tj' AND type='local'), 30, 'Go', 15, 'days', 38.79, 'WW_901O_STACK_ONEOFF_TAJIKISTAN_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='tj' AND type='local'), 60, 'Go', 30, 'days', 70.46, 'WW_901O_STACK_ONEOFF_TAJIKISTAN_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='tj' AND type='local'), 25, 'Go', 7, 'days', 25.33, 'WW_901O_STACK_ONEOFF_TAJIKISTAN_UNLIMITED_7D_FUP25'),
+((SELECT id FROM destinations WHERE code='tz' AND type='local'), 10, 'Go', 8, 'days', 20.58, 'WW_901O_STACK_ONEOFF_TANZANIA_10GB_8D'),
+((SELECT id FROM destinations WHERE code='tz' AND type='local'), 1, 'Go', 7, 'days', 4.75, 'WW_901O_STACK_ONEOFF_TANZANIA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='tz' AND type='local'), 25, 'Go', 30, 'days', 35.62, 'WW_901O_STACK_ONEOFF_TANZANIA_25GB_30D'),
+((SELECT id FROM destinations WHERE code='tz' AND type='local'), 3, 'Go', 15, 'days', 10.29, 'WW_901O_STACK_ONEOFF_TANZANIA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='tz' AND type='local'), 40, 'Go', 8, 'days', 26.12, 'WW_901O_STACK_ONEOFF_TANZANIA_DF_UNLIMITED_8D_FUP5'),
+((SELECT id FROM destinations WHERE code='th' AND type='local'), 10, 'Go', 30, 'days', 9.5, 'WW_901O_STACK_ONEOFF_THAILAND_10GB_30D'),
+((SELECT id FROM destinations WHERE code='th' AND type='local'), 10, 'Go', 7, 'days', 7.92, 'WW_901O_STACK_ONEOFF_THAILAND_10GB_7D'),
+((SELECT id FROM destinations WHERE code='th' AND type='local'), 1, 'Go', 7, 'days', 3.09, 'WW_901O_STACK_ONEOFF_THAILAND_1GB_7D'),
+((SELECT id FROM destinations WHERE code='th' AND type='local'), 25, 'Go', 30, 'days', 19.71, 'WW_901O_STACK_ONEOFF_THAILAND_25GB_30D'),
+((SELECT id FROM destinations WHERE code='th' AND type='local'), 3, 'Go', 15, 'days', 5.46, 'WW_901O_STACK_ONEOFF_THAILAND_3GB_15D'),
+((SELECT id FROM destinations WHERE code='th' AND type='local'), 30, 'Go', 15, 'days', 30.88, 'WW_901O_STACK_ONEOFF_THAILAND_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='th' AND type='local'), 60, 'Go', 30, 'days', 43.54, 'WW_901O_STACK_ONEOFF_THAILAND_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='th' AND type='local'), 25, 'Go', 7, 'days', 17.42, 'WW_901O_STACK_ONEOFF_THAILAND_UNLIMITED_7D_FUP25'),
+((SELECT id FROM destinations WHERE code='tg' AND type='local'), 1, 'Go', 7, 'days', 19.0, 'WW_901O_STACK_ONEOFF_TOGO_1GB_7D'),
+((SELECT id FROM destinations WHERE code='to' AND type='local'), 3, 'Go', 15, 'days', 26.92, 'WW_901O_STACK_ONEOFF_TONGA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='tt' AND type='local'), 10, 'Go', 30, 'days', 26.92, 'WW_901O_STACK_ONEOFF_TRINIDAD_10GB_30D'),
+((SELECT id FROM destinations WHERE code='tt' AND type='local'), 10, 'Go', 7, 'days', 22.17, 'WW_901O_STACK_ONEOFF_TRINIDAD_10GB_7D'),
+((SELECT id FROM destinations WHERE code='tt' AND type='local'), 1, 'Go', 7, 'days', 5.54, 'WW_901O_STACK_ONEOFF_TRINIDAD_1GB_7D'),
+((SELECT id FROM destinations WHERE code='tt' AND type='local'), 3, 'Go', 15, 'days', 11.08, 'WW_901O_STACK_ONEOFF_TRINIDAD_3GB_15D'),
+((SELECT id FROM destinations WHERE code='tn' AND type='local'), 10, 'Go', 30, 'days', 13.46, 'WW_901O_STACK_ONEOFF_TUNISIA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='tn' AND type='local'), 10, 'Go', 7, 'days', 11.88, 'WW_901O_STACK_ONEOFF_TUNISIA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='tn' AND type='local'), 1, 'Go', 7, 'days', 3.17, 'WW_901O_STACK_ONEOFF_TUNISIA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='tn' AND type='local'), 25, 'Go', 30, 'days', 30.08, 'WW_901O_STACK_ONEOFF_TUNISIA_25GB_30D'),
+((SELECT id FROM destinations WHERE code='tn' AND type='local'), 3, 'Go', 15, 'days', 6.33, 'WW_901O_STACK_ONEOFF_TUNISIA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='tn' AND type='local'), 30, 'Go', 15, 'days', 38.79, 'WW_901O_STACK_ONEOFF_TUNISIA_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='tn' AND type='local'), 20, 'Go', 7, 'days', 26.12, 'WW_901O_STACK_ONEOFF_TUNISIA_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='tr' AND type='local'), 10, 'Go', 30, 'days', 11.08, 'WW_901O_STACK_ONEOFF_TURKEY_10GB_30D'),
+((SELECT id FROM destinations WHERE code='tr' AND type='local'), 10, 'Go', 7, 'days', 9.5, 'WW_901O_STACK_ONEOFF_TURKEY_10GB_7D'),
+((SELECT id FROM destinations WHERE code='tr' AND type='local'), 1, 'Go', 7, 'days', 3.17, 'WW_901O_STACK_ONEOFF_TURKEY_1GB_7D'),
+((SELECT id FROM destinations WHERE code='tr' AND type='local'), 25, 'Go', 30, 'days', 22.96, 'WW_901O_STACK_ONEOFF_TURKEY_25GB_30D'),
+((SELECT id FROM destinations WHERE code='tr' AND type='local'), 3, 'Go', 30, 'days', 5.54, 'WW_901O_STACK_ONEOFF_TURKEY_3GB_30D'),
+((SELECT id FROM destinations WHERE code='tr' AND type='local'), 75, 'Go', 15, 'days', 29.29, 'WW_901O_STACK_ONEOFF_TURKEY_DF_UNLIMITED_15D_FUP5'),
+((SELECT id FROM destinations WHERE code='tr' AND type='local'), 5, 'Go', 1, 'days', 3.17, 'WW_901O_STACK_ONEOFF_TURKEY_DF_UNLIMITED_1D_FUP5'),
+((SELECT id FROM destinations WHERE code='tr' AND type='local'), 150, 'Go', 30, 'days', 50.67, 'WW_901O_STACK_ONEOFF_TURKEY_DF_UNLIMITED_30D_FUP5'),
+((SELECT id FROM destinations WHERE code='tr' AND type='local'), 40, 'Go', 8, 'days', 17.42, 'WW_901O_STACK_ONEOFF_TURKEY_DF_UNLIMITED_8D_FUP5'),
+((SELECT id FROM destinations WHERE code='ae' AND type='local'), 10, 'Go', 7, 'days', 15.04, 'WW_901O_STACK_ONEOFF_UAE_10GB_7D'),
+((SELECT id FROM destinations WHERE code='ae' AND type='local'), 1, 'Go', 7, 'days', 3.96, 'WW_901O_STACK_ONEOFF_UAE_1GB_7D'),
+((SELECT id FROM destinations WHERE code='ae' AND type='local'), 25, 'Go', 30, 'days', 38.79, 'WW_901O_STACK_ONEOFF_UAE_25GB_30D'),
+((SELECT id FROM destinations WHERE code='ae' AND type='local'), 3, 'Go', 15, 'days', 7.92, 'WW_901O_STACK_ONEOFF_UAE_3GB_15D'),
+((SELECT id FROM destinations WHERE code='ae' AND type='local'), 7, 'Go', 1, 'days', 9.5, 'WW_901O_STACK_ONEOFF_UAE_UNLIMITED_1D_FUP7'),
+((SELECT id FROM destinations WHERE code='ae' AND type='local'), 20, 'Go', 7, 'days', 28.5, 'WW_901O_STACK_ONEOFF_UAE_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='ug' AND type='local'), 1, 'Go', 7, 'days', 4.75, 'WW_901O_STACK_ONEOFF_UGANDA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='ug' AND type='local'), 3, 'Go', 15, 'days', 11.08, 'WW_901O_STACK_ONEOFF_UGANDA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='gb' AND type='local'), 10, 'Go', 30, 'days', 8.71, 'WW_901O_STACK_ONEOFF_UKONLY_10GB_30D'),
+((SELECT id FROM destinations WHERE code='gb' AND type='local'), 10, 'Go', 7, 'days', 7.12, 'WW_901O_STACK_ONEOFF_UKONLY_10GB_7D'),
+((SELECT id FROM destinations WHERE code='gb' AND type='local'), 25, 'Go', 30, 'days', 17.42, 'WW_901O_STACK_ONEOFF_UKONLY_25GB_30D'),
+((SELECT id FROM destinations WHERE code='gb' AND type='local'), 3, 'Go', 30, 'days', 3.96, 'WW_901O_STACK_ONEOFF_UKONLY_3GB_30D'),
+((SELECT id FROM destinations WHERE code='gb' AND type='local'), 50, 'Go', 30, 'days', 25.33, 'WW_901O_STACK_ONEOFF_UKONLY_50GB_30D'),
+((SELECT id FROM destinations WHERE code='gb' AND type='local'), 30, 'Go', 15, 'days', 25.33, 'WW_901O_STACK_ONEOFF_UKONLY_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='gb' AND type='local'), 7, 'Go', 1, 'days', 3.96, 'WW_901O_STACK_ONEOFF_UKONLY_UNLIMITED_1D_FUP7'),
+((SELECT id FROM destinations WHERE code='gb' AND type='local'), 60, 'Go', 30, 'days', 34.83, 'WW_901O_STACK_ONEOFF_UKONLY_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='gb' AND type='local'), 25, 'Go', 7, 'days', 16.62, 'WW_901O_STACK_ONEOFF_UKONLY_UNLIMITED_7D_FUP25'),
+((SELECT id FROM destinations WHERE code='ua' AND type='local'), 10, 'Go', 30, 'days', 6.33, 'WW_901O_STACK_ONEOFF_UKRAINE_10GB_30D'),
+((SELECT id FROM destinations WHERE code='ua' AND type='local'), 50, 'Go', 30, 'days', 17.42, 'WW_901O_STACK_ONEOFF_UKRAINE_50GB_30D'),
+((SELECT id FROM destinations WHERE code='ua' AND type='local'), 60, 'Go', 30, 'days', 22.96, 'WW_901O_STACK_ONEOFF_UKRAINE_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='ua' AND type='local'), 20, 'Go', 7, 'days', 15.04, 'WW_901O_STACK_ONEOFF_UKRAINE_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='uy' AND type='local'), 10, 'Go', 30, 'days', 17.42, 'WW_901O_STACK_ONEOFF_URUGUAY_10GB_30D'),
+((SELECT id FROM destinations WHERE code='uy' AND type='local'), 10, 'Go', 7, 'days', 15.04, 'WW_901O_STACK_ONEOFF_URUGUAY_10GB_7D'),
+((SELECT id FROM destinations WHERE code='uy' AND type='local'), 1, 'Go', 7, 'days', 3.17, 'WW_901O_STACK_ONEOFF_URUGUAY_1GB_7D'),
+((SELECT id FROM destinations WHERE code='uy' AND type='local'), 25, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_URUGUAY_25GB_30D'),
+((SELECT id FROM destinations WHERE code='uy' AND type='local'), 3, 'Go', 15, 'days', 7.12, 'WW_901O_STACK_ONEOFF_URUGUAY_3GB_15D'),
+((SELECT id FROM destinations WHERE code='uy' AND type='local'), 60, 'Go', 30, 'days', 69.67, 'WW_901O_STACK_ONEOFF_URUGUAY_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='uy' AND type='local'), 20, 'Go', 7, 'days', 22.96, 'WW_901O_STACK_ONEOFF_URUGUAY_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='USA' AND type='region'), 10, 'Go', 30, 'days', 11.08, 'WW_901O_STACK_ONEOFF_USA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='USA' AND type='region'), 10, 'Go', 7, 'days', 9.5, 'WW_901O_STACK_ONEOFF_USA_10GB_7D'),
+((SELECT id FROM destinations WHERE code='USA' AND type='region'), 1, 'Go', 7, 'days', 3.17, 'WW_901O_STACK_ONEOFF_USA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='USA' AND type='region'), 25, 'Go', 30, 'days', 25.33, 'WW_901O_STACK_ONEOFF_USA_25GB_30D'),
+((SELECT id FROM destinations WHERE code='USA' AND type='region'), 3, 'Go', 15, 'days', 5.54, 'WW_901O_STACK_ONEOFF_USA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='USA' AND type='region'), 500, 'Mo', 1, 'days', 2.3, 'WW_901O_STACK_ONEOFF_USA_500MB_1D'),
+((SELECT id FROM destinations WHERE code='USA' AND type='region'), 50, 'Go', 30, 'days', 33.25, 'WW_901O_STACK_ONEOFF_USA_50GB_30D'),
+((SELECT id FROM destinations WHERE code='USA' AND type='region'), 30, 'Go', 15, 'days', 30.88, 'WW_901O_STACK_ONEOFF_USA_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='USA' AND type='region'), 7, 'Go', 1, 'days', 7.12, 'WW_901O_STACK_ONEOFF_USA_UNLIMITED_1D_FUP7'),
+((SELECT id FROM destinations WHERE code='USA' AND type='region'), 60, 'Go', 30, 'days', 51.46, 'WW_901O_STACK_ONEOFF_USA_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='USA' AND type='region'), 25, 'Go', 7, 'days', 19.79, 'WW_901O_STACK_ONEOFF_USA_UNLIMITED_7D_FUP25'),
+((SELECT id FROM destinations WHERE code='uz' AND type='local'), 10, 'Go', 30, 'days', 15.04, 'WW_901O_STACK_ONEOFF_UZBEKISTAN_10GB_30D'),
+((SELECT id FROM destinations WHERE code='uz' AND type='local'), 10, 'Go', 7, 'days', 13.46, 'WW_901O_STACK_ONEOFF_UZBEKISTAN_10GB_7D'),
+((SELECT id FROM destinations WHERE code='uz' AND type='local'), 1, 'Go', 7, 'days', 3.17, 'WW_901O_STACK_ONEOFF_UZBEKISTAN_1GB_7D'),
+((SELECT id FROM destinations WHERE code='uz' AND type='local'), 25, 'Go', 30, 'days', 34.83, 'WW_901O_STACK_ONEOFF_UZBEKISTAN_25GB_30D'),
+((SELECT id FROM destinations WHERE code='uz' AND type='local'), 3, 'Go', 15, 'days', 7.12, 'WW_901O_STACK_ONEOFF_UZBEKISTAN_3GB_15D'),
+((SELECT id FROM destinations WHERE code='uz' AND type='local'), 30, 'Go', 15, 'days', 38.79, 'WW_901O_STACK_ONEOFF_UZBEKISTAN_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='uz' AND type='local'), 20, 'Go', 7, 'days', 22.96, 'WW_901O_STACK_ONEOFF_UZBEKISTAN_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='vu' AND type='local'), 1, 'Go', 7, 'days', 14.25, 'WW_901O_STACK_ONEOFF_VANUATU_1GB_7D'),
+((SELECT id FROM destinations WHERE code='vu' AND type='local'), 3, 'Go', 15, 'days', 26.92, 'WW_901O_STACK_ONEOFF_VANUATU_3GB_15D'),
+((SELECT id FROM destinations WHERE code='ve' AND type='local'), 10, 'Go', 30, 'days', 22.17, 'WW_901O_STACK_ONEOFF_VENEZUELA_10GB_30D'),
+((SELECT id FROM destinations WHERE code='ve' AND type='local'), 1, 'Go', 7, 'days', 5.54, 'WW_901O_STACK_ONEOFF_VENEZUELA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='ve' AND type='local'), 25, 'Go', 30, 'days', 38.79, 'WW_901O_STACK_ONEOFF_VENEZUELA_25GB_30D'),
+((SELECT id FROM destinations WHERE code='ve' AND type='local'), 3, 'Go', 15, 'days', 11.08, 'WW_901O_STACK_ONEOFF_VENEZUELA_3GB_15D'),
+((SELECT id FROM destinations WHERE code='ve' AND type='local'), 40, 'Go', 8, 'days', 28.5, 'WW_901O_STACK_ONEOFF_VENEZUELA_DF_UNLIMITED_8D_FUP5'),
+((SELECT id FROM destinations WHERE code='vn' AND type='local'), 10, 'Go', 30, 'days', 10.21, 'WW_901O_STACK_ONEOFF_VIETNAM_10GB_30D'),
+((SELECT id FROM destinations WHERE code='vn' AND type='local'), 10, 'Go', 7, 'days', 8.63, 'WW_901O_STACK_ONEOFF_VIETNAM_10GB_7D'),
+((SELECT id FROM destinations WHERE code='vn' AND type='local'), 3, 'Go', 15, 'days', 5.46, 'WW_901O_STACK_ONEOFF_VIETNAM_3GB_15D'),
+((SELECT id FROM destinations WHERE code='vn' AND type='local'), 50, 'Go', 30, 'days', 29.21, 'WW_901O_STACK_ONEOFF_VIETNAM_50GB_30D'),
+((SELECT id FROM destinations WHERE code='vn' AND type='local'), 30, 'Go', 15, 'days', 31.59, 'WW_901O_STACK_ONEOFF_VIETNAM_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='vn' AND type='local'), 60, 'Go', 30, 'days', 43.46, 'WW_901O_STACK_ONEOFF_VIETNAM_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='vn' AND type='local'), 20, 'Go', 7, 'days', 19.0, 'WW_901O_STACK_ONEOFF_VIETNAM_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='WORLD2' AND type='global'), 100, 'Go', 360, 'days', 229.58, 'WW_901O_STACK_ONEOFF_WORLD2_100GB_12M'),
+((SELECT id FROM destinations WHERE code='WORLD2' AND type='global'), 10, 'Go', 30, 'days', 46.71, 'WW_901O_STACK_ONEOFF_WORLD2_10GB_30D'),
+((SELECT id FROM destinations WHERE code='WORLD2' AND type='global'), 1, 'Go', 30, 'days', 12.67, 'WW_901O_STACK_ONEOFF_WORLD2_1GB_30D'),
+((SELECT id FROM destinations WHERE code='WORLD2' AND type='global'), 200, 'Go', 360, 'days', 308.75, 'WW_901O_STACK_ONEOFF_WORLD2_200GB_12M'),
+((SELECT id FROM destinations WHERE code='WORLD2' AND type='global'), 25, 'Go', 90, 'days', 101.33, 'WW_901O_STACK_ONEOFF_WORLD2_25GB_3M'),
+((SELECT id FROM destinations WHERE code='WORLD2' AND type='global'), 3, 'Go', 30, 'days', 20.58, 'WW_901O_STACK_ONEOFF_WORLD2_3GB_30D'),
+((SELECT id FROM destinations WHERE code='WORLD2' AND type='global'), 500, 'Mo', 30, 'days', 7.12, 'WW_901O_STACK_ONEOFF_WORLD2_500MB_30D'),
+((SELECT id FROM destinations WHERE code='WORLD2' AND type='global'), 50, 'Go', 180, 'days', 148.83, 'WW_901O_STACK_ONEOFF_WORLD2_50GB_6M'),
+((SELECT id FROM destinations WHERE code='za' AND type='local'), 10, 'Go', 30, 'days', 15.83, 'WW_901O_STACK_ONEOFF_ZAF_10GB_30D'),
+((SELECT id FROM destinations WHERE code='za' AND type='local'), 10, 'Go', 7, 'days', 14.25, 'WW_901O_STACK_ONEOFF_ZAF_10GB_7D'),
+((SELECT id FROM destinations WHERE code='za' AND type='local'), 1, 'Go', 30, 'days', 3.96, 'WW_901O_STACK_ONEOFF_ZAF_1GB_30D'),
+((SELECT id FROM destinations WHERE code='za' AND type='local'), 25, 'Go', 30, 'days', 30.88, 'WW_901O_STACK_ONEOFF_ZAF_25GB_30D'),
+((SELECT id FROM destinations WHERE code='za' AND type='local'), 3, 'Go', 15, 'days', 7.12, 'WW_901O_STACK_ONEOFF_ZAF_3GB_15D'),
+((SELECT id FROM destinations WHERE code='za' AND type='local'), 50, 'Go', 30, 'days', 43.54, 'WW_901O_STACK_ONEOFF_ZAF_50GB_30D'),
+((SELECT id FROM destinations WHERE code='za' AND type='local'), 30, 'Go', 15, 'days', 38.79, 'WW_901O_STACK_ONEOFF_ZAF_UNLIMITED_15D_FUP30'),
+((SELECT id FROM destinations WHERE code='za' AND type='local'), 60, 'Go', 30, 'days', 62.54, 'WW_901O_STACK_ONEOFF_ZAF_UNLIMITED_30D_FUP60'),
+((SELECT id FROM destinations WHERE code='za' AND type='local'), 20, 'Go', 7, 'days', 27.71, 'WW_901O_STACK_ONEOFF_ZAF_UNLIMITED_7D_FUP20'),
+((SELECT id FROM destinations WHERE code='zm' AND type='local'), 1, 'Go', 7, 'days', 3.96, 'WW_901O_STACK_ONEOFF_ZAMBIA_1GB_7D'),
+((SELECT id FROM destinations WHERE code='zm' AND type='local'), 3, 'Go', 15, 'days', 11.08, 'WW_901O_STACK_ONEOFF_ZAMBIA_3GB_15D');
 
 INSERT INTO discounts (offer_id, type, value, active, starts_at, ends_at) VALUES
-('6d14319f-7bf8-45ad-a356-02756df900bd', 'fixed', 10.0, true, NOW() - INTERVAL '1 day',  NOW() + INTERVAL '30 days'),
-('db65bf75-f9b0-4948-828a-ed39e2ba2a3b', 'percentage', 5, true, NOW() - INTERVAL '1 day',  NOW() + INTERVAL '30 days');
+((SELECT id FROM offers WHERE provider_product_id = 'WW_901O_STACK_ONEOFF_ZAMBIA_3GB_15D'), 'fixed', 10.0, true, NOW() - INTERVAL '1 day',  NOW() + INTERVAL '30 days'),
+((SELECT id FROM offers WHERE provider_product_id = 'WW_901O_STACK_ONEOFF_ZAMBIA_1GB_7D'), 'percentage', 5, true, NOW() - INTERVAL '1 day',  NOW() + INTERVAL '30 days');
 
 -- =============================================================================
 -- ESIM INVENTORY
