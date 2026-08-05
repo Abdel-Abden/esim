@@ -1,10 +1,10 @@
 /**
- * OffersSections — rendu pur d'une liste d'offres, groupées par eSIM.
+ * OffersSections — rendu pur d'une liste d'offres, groupées par destinations.
  *
  * Composant purement présentationnel : ni Modal, ni fetch, ni navigation.
  * - 1 seule section → pas d'en-tête de section (juste le libellé générique
  *   "Forfaits disponibles"), comme l'ancien OfferDrawer.
- * - Plusieurs sections → un en-tête par eSIM (flag + nom + nombre de pays),
+ * - Plusieurs sections → un en-tête par destinations (flag + nom + nombre de pays),
  *   comme l'ancien GroupOfferDrawer/WorldOffersSection.
  *
  * Utilisé à la fois dans OffersDrawerModal (bottom sheet) et
@@ -14,13 +14,13 @@ import { Colors, getDisplayName } from '@ilotel/shared';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native';
-import RegionCountriesButton from '../../RegionCountryButton/RegionCountryButton';
+import CountryCoverageModal from '../../CountryCoverageModal/CountryCoverageModal';
 import { drawerStyles, sectionStyles } from './OffersDrawer.styles';
 import { OfferSection } from './useOffersDrawer';
 
 interface OffersSectionsProps {
   sections: OfferSection[];
-  onOfferPress: (esimId: string, offerIdx: number) => void;
+  onOfferPress: (destinationsId: string, offerIdx: number) => void;
   /** Par défaut : true dès qu'il y a plus d'une section */
   showSectionHeaders?: boolean;
 }
@@ -44,14 +44,14 @@ export default function OffersSections({
       )}
 
       {sections.map((section, sIdx) => (
-        <View key={section.esim.id}>
+        <View key={section.destinations.id}>
           {showSectionHeaders && (
             <View style={sectionStyles.sectionHeader}>
-              <Text style={sectionStyles.sectionFlag}>{section.esim.flag}</Text>
+              <Text style={sectionStyles.sectionFlag}>{section.destinations.flag}</Text>
               <Text style={sectionStyles.sectionName} numberOfLines={1}>
-                {getDisplayName(section.esim.code, i18n.resolvedLanguage)}
+                {getDisplayName(section.destinations.code, i18n.resolvedLanguage)}
               </Text>
-              <RegionCountriesButton esim={section.esim} inline showLabel />
+              <CountryCoverageModal destinations={section.destinations} inline showLabel />
             </View>
           )}
 
@@ -70,38 +70,37 @@ export default function OffersSections({
           ) : (
             <View style={sectionStyles.offersWrap}>
               {section.offers.map((offer, i) => {
-                const isPromo = offer.activeDiscount !== null;
-                const isExhausted = offer.availableCount === 0;
+                const isPromo = offer.discount && offer.discount.value !== null;
                 return (
                   <TouchableOpacity
                     key={offer.id}
-                    style={[drawerStyles.offerCard, isExhausted && drawerStyles.offerCardExhausted]}
-                    onPress={() => !isExhausted && onOfferPress(section.esim.id, i)}
+                    style={[drawerStyles.offerCard]}
+                    onPress={() => onOfferPress(section.destinations.id, i)}
                     activeOpacity={0.75}
                   >
                     <View style={drawerStyles.offerLeft}>
                       <Text style={drawerStyles.offerData}>
-                        {offer.dataGb} {getDataUnitDisplay(offer.unit, t)}
+                        {offer.dataQuantity} {getDataUnitDisplay(offer.dataUnit, t)}
                       </Text>
                       <Text style={drawerStyles.offerDays}>
-                        {offer.durationDays} {t('offerDrawer.days')}
+                        {offer.durationQuantity} {t(`offerDrawer.${offer.durationUnit}`)}
                       </Text>
                     </View>
                     <View style={drawerStyles.offerRight}>
-                      {isPromo && !isExhausted && (
+                      {isPromo && (
                         <View style={drawerStyles.promoBadge}>
                           <Text style={drawerStyles.promoBadgeText}>
                             {t('countryCard.promo').toUpperCase()}
                           </Text>
                         </View>
                       )}
-                      {isPromo && !isExhausted && (
+                      {isPromo && (
                         <Text style={drawerStyles.oldPrice}>{offer.basePrice.toFixed(2)}€</Text>
                       )}
                       <Text
-                        style={[drawerStyles.finalPrice, isExhausted && drawerStyles.finalPriceExhausted]}
+                        style={[drawerStyles.finalPrice]}
                       >
-                        {isExhausted ? t('offerDrawer.exhausted') : `${offer.finalPrice.toFixed(2)}€`}
+                        {`${offer.finalPrice.toFixed(2)}€`}
                       </Text>
                     </View>
                   </TouchableOpacity>

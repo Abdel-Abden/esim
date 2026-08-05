@@ -1,21 +1,21 @@
 /**
  * Contrats API — Request / Response pour chaque endpoint
  */
-import type { EsimSummary } from './models/esims.js';
-import type { OfferWithStock } from './models/offers.js';
-import type { OrderWithDetails } from './models/orders.js';
+import type { Destination } from './models/destinations.js';
+import type { Offer } from './models/offers.js';
+import type { Order } from './models/orders.js';
 
 // ─── GET /esims ───────────────────────────────────────────────────────────────
 /** Liste des destinations avec prix min et état promo/stock agrégés */
-export type GetEsimsResponse = EsimSummary[];
+export type GetDestinationResponse = Destination[];
 
 // ─── GET /esims/:id/offers ────────────────────────────────────────────────────
-export type GetOffersResponse = OfferWithStock[];
+export type GetOffersResponse = Offer[];
 /** @deprecated Utiliser GetOffersResponse */
-export type GetOffersWithStockResponse = OfferWithStock[];
+export type GetOffersWithStockResponse = Offer[];
 
 // ─── GET /orders/:id ─────────────────────────────────────────────────────────
-export type GetOrderResponse = OrderWithDetails;
+export type GetOrderResponse = Order;
 
 // ─── POST /orders/reserve ────────────────────────────────────────────────────
 export interface ReserveOrderRequest {

@@ -13,14 +13,3 @@ export const LOCALE_TIME_MAP: Record<string, string> = {
 };
 
 export const SUPPORT_EMAIL = "support@ilotel.com"
-
-export const REGION_CODES = ['eu', 'as', 'af', 'am', 'oc', 'me', 'ww'] as const;
-export type RegionCode = typeof REGION_CODES[number];
-
-export type SegFilter = 'local' | "region" | 'global';
- 
-export const SEGS: { key: SegFilter }[] = [
-  { key: 'local' },
-  { key: 'region'  },
-  { key: 'global'   },
-];

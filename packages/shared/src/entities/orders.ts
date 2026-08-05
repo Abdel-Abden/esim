@@ -2,9 +2,19 @@
  * Entité Order — table `orders`
  */
 
-export type OrderStatus = 'pending' | 'paid' | 'failed' | 'provisioned' | 'refunding' | 'refunded';
+export const OrderStatus = {
+  PENDING: 'pending',
+  PAID: 'paid',
+  FAILED: 'failed',
+  PROVISIONED: 'provisioned',
+  REFUNDING: 'refunding',
+  REFUNDED: 'refunded'
+} as const;
 
-export interface Order {
+export type OrderStatus =
+  typeof OrderStatus[keyof typeof OrderStatus];
+
+export interface OrderEntity {
   id: string;
   email: string;
   lang: string;
@@ -12,6 +22,5 @@ export interface Order {
   status: OrderStatus;
   stripePaymentIntentId: string;
   finalPrice: number;
-  discountId: string | null;
   createdAt: string;
 }

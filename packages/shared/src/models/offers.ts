@@ -1,18 +1,15 @@
 /**
- * Modèles d'offres enrichis — jointures avec esim + discount
+ * Modèles d'offres enrichis — jointures avec destination + discount
  */
-import { Esim } from '../entities/esims.js';
-import type { Discount, Offer } from '../entities/offers.js';
+import type { DiscountType, OfferEntity } from '../entities/offers.js';
 
-/** Offre avec destination + réduction active → GET /esims/:id/offers */
-export interface OfferWithDetails extends Offer {
-  activeDiscount: Discount | null;
-  esim: Esim;
-  finalPrice: number;
-  transatelProductId: string;
+export interface Discount {
+  value: number;
+  type: DiscountType;
 }
 
-/** OfferWithDetails + comptage du stock disponible */
-export interface OfferWithStock extends OfferWithDetails {
-  availableCount: number; // 0 = épuisé
+/** Offre avec destination + réduction active → GET /esims/:id/offers */
+export interface Offer extends Omit<OfferEntity, "destinationId" | "createdAt"> {
+  discount?: Discount;
+  finalPrice: number;
 }

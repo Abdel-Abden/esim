@@ -1,44 +1,41 @@
-import { OfferWithStock } from '@ilotel/shared';
+import { Offer } from '@ilotel/shared';
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { styles } from './OfferRow.styles';
 
 interface OfferRowProps {
-  offer: OfferWithStock;
+  offer: Offer;
   selected: boolean;
-  onSelect: (offer: OfferWithStock) => void;
+  onSelect: (offer: Offer) => void;
 }
 
 export default function OfferRow({ offer, selected, onSelect }: OfferRowProps) {
   const { t } = useTranslation();
-  const isPromo = offer.activeDiscount !== null;
-  const isExhausted = offer.availableCount === 0;
+  const isPromo = offer.discount !== null;
 
   return (
     <TouchableOpacity
       style={[
         styles.row,
-        selected && !isExhausted && styles.rowSelected,
-        isExhausted && { opacity: 0.4 },
+        selected && styles.rowSelected,
       ]}
-      onPress={() => !isExhausted && onSelect(offer)}
-      activeOpacity={isExhausted ? 1 : 0.8}
+      onPress={() => onSelect(offer)}
+      activeOpacity={0.8}
     >
-      <View style={[styles.radio, selected && !isExhausted && styles.radioSelected]}>
-        {selected && !isExhausted && <View style={styles.radioDot} />}
+      <View style={[styles.radio, selected && styles.radioSelected]}>
+        {selected && <View style={styles.radioDot} />}
       </View>
 
       <Text style={styles.label}>
-        {offer.dataGb} Go / {offer.durationDays}{t('offerDrawer.days').charAt(0)}
-        {isExhausted && `  · ${t('countryCard.exhausted')}`}
+        {offer.dataQuantity} {offer.dataUnit} / {offer.durationQuantity}{t(`offerDrawer.${offer.durationUnit}`).charAt(0)}
       </Text>
 
       <View style={{ alignItems: 'flex-end' }}>
-        {isPromo && !isExhausted && (
+        {isPromo && (
           <Text style={styles.originalPrice}>{offer.basePrice.toFixed(2)}€</Text>
         )}
-        <Text style={[styles.price, isPromo && !isExhausted && styles.promoPrice]}>
+        <Text style={[styles.price, isPromo && styles.promoPrice]}>
           {offer.finalPrice.toFixed(2)}€
         </Text>
       </View>

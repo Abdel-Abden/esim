@@ -57,6 +57,8 @@
     "choosePlan": "Choisissez votre forfait",
     "availablePlans": "Forfaits disponibles",
     "days": "jours",
+    "months": "mois",
+    "years": "années",
     "order": "Commander"
   },
   "payment": {

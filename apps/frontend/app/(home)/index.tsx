@@ -22,45 +22,45 @@ import SearchBar from '@/components/SearchBar/SearchBar';
 import { SkeletonList } from '@/components/SkeletonCard/SkeletonCard';
 import TutorialModal from '@/components/TutorialModal/TutorialModal';
 import i18n, { apiError } from '@/i18n/i18n';
-import { fetchEsims } from '@/service/esims';
-import { Colors, EsimSummary, SEGS, SegFilter, getDisplayName } from '@ilotel/shared';
+import { fetchDestinations } from '@/service/destination';
+import { Colors, Destination, DestinationType, getDisplayName } from '@ilotel/shared';
 import { styles } from './index.styles';
 
 const MIN_RELOAD_MS = 30_000;
 const TUTORIAL_DONE_KEY = '@ilotel_tutorial_done';
 
 /**
- * Élément affiché dans la grille : soit un esim seul (pays/monde), soit un
- * groupe d'eSIMs "région" partageant le même champ `region` (ex: "Asie" +
+ * Élément affiché dans la grille : soit un destination seul (pays/monde), soit un
+ * groupe d'destinations "région" partageant le même champ `region` (ex: "Asie" +
  * "Asie étendue" → une seule carte). N'est utilisé que par cet écran, donc
  * défini ici plutôt que dans un fichier séparé.
  */
 type DisplayItem =
-  | { kind: 'single'; esim: EsimSummary }
-  | { kind: 'group'; region: string; members: EsimSummary[] };
+  | { kind: 'single'; destination: Destination }
+  | { kind: 'group'; region: string; members: Destination[] };
 
-/** Regroupe les eSIMs "region" partageant le même champ `region` en une seule entrée d'affichage */
-function buildDisplayItems(esims: EsimSummary[]): DisplayItem[] {
+/** Regroupe les destinations "region" partageant le même champ `region` en une seule entrée d'affichage */
+function buildDisplayItems(destinations: Destination[]): DisplayItem[] {
   const groupOrder: string[] = [];
-  const groups = new Map<string, EsimSummary[]>();
+  const groups = new Map<string, Destination[]>();
   const items: DisplayItem[] = [];
 
-  for (const esim of esims) {
-    if (esim.type === 'region') {
-      const key = esim.region ?? esim.code;
+  for (const destination of destinations) {
+    if (destination.type === 'region') {
+      const key = destination.region ?? destination.code;
       if (!groups.has(key)) {
         groups.set(key, []);
         groupOrder.push(key);
       }
-      groups.get(key)!.push(esim);
+      groups.get(key)!.push(destination);
     } else {
-      items.push({ kind: 'single', esim });
+      items.push({ kind: 'single', destination });
     }
   }
 
   for (const key of groupOrder) {
     const members = groups.get(key)!;
-    items.push(members.length === 1 ? { kind: 'single', esim: members[0] } : { kind: 'group', region: key, members });
+    items.push(members.length === 1 ? { kind: 'single', destination: members[0] } : { kind: 'group', region: key, members });
   }
 
   return items;
@@ -74,14 +74,10 @@ function fallbackRegionLabel(region: string): string {
     .join(' ');
 }
 
-/** Nom affiché pour un item (esim seul ou groupe) — sert au tri et à la recherche */
+/** Nom affiché pour un item (destination seul ou groupe) — sert au tri et à la recherche */
 function getItemDisplayName(item: DisplayItem, t: (key: string, opts?: any) => string, lang?: string): string {
-  if (item.kind === 'single') return getDisplayName(item.esim.code, lang);
+  if (item.kind === 'single') return getDisplayName(item.destination.code, lang);
   return t(`home.regionGroups.${item.region}`, { defaultValue: fallbackRegionLabel(item.region) });
-}
-
-function getItemHasStock(item: DisplayItem): boolean {
-  return item.kind === 'single' ? item.esim.hasStock : item.members.some((m) => m.hasStock);
 }
 
 function itemMatchesSearch(
@@ -92,7 +88,7 @@ function itemMatchesSearch(
 ): boolean {
   const q = query.toLowerCase();
   if (item.kind === 'single') {
-    return getDisplayName(item.esim.code, lang).toLowerCase().includes(q);
+    return getDisplayName(item.destination.code, lang).toLowerCase().includes(q);
   }
   if (getItemDisplayName(item, t, lang).toLowerCase().includes(q)) return true;
   return item.members.some((m) => getDisplayName(m.code, lang).toLowerCase().includes(q));
@@ -102,11 +98,11 @@ export default function HomeScreen() {
   const router = useRouter();
   const { t } = useTranslation();
 
-  const [esims, setEsims] = useState<EsimSummary[]>([]);
+  const [destinations, setEsims] = useState<Destination[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [search, setSearch] = useState('');
-  const [activeFilter, setActiveFilter] = useState<SegFilter>('local');
+  const [activeFilter, setActiveFilter] = useState<DestinationType>(DestinationType.LOCAL);
   // true entre le tap sur un filtre et le moment où la nouvelle grille a
   // fini de se (re)monter — sert uniquement à afficher un spinner pendant
   // ce court instant, pour que l'utilisateur voie que ça travaille au lieu
@@ -143,7 +139,7 @@ export default function HomeScreen() {
     setLoading(true);
     setError(null);
 
-    const { data, errorCode } = await fetchEsims();
+    const { data, errorCode } = await fetchDestinations();
     if (errorCode || !data) {
       console.debug(errorCode);
       setError(apiError(errorCode, 'home.error.retry'));
@@ -167,7 +163,7 @@ export default function HomeScreen() {
   // laisse une frame s'écouler (le temps qu'il se peigne réellement)
   // avant de déclencher le changement de filtre — qui, lui, provoque
   // le (re)montage lourd de la grille.
-  const handleFilterPress = useCallback((key: SegFilter) => {
+  const handleFilterPress = useCallback((key: DestinationType) => {
     if (key === activeFilter) return;
     setFilterLoading(true);
     requestAnimationFrame(() => {
@@ -175,18 +171,16 @@ export default function HomeScreen() {
     });
   }, [activeFilter]);
 
-  const monde = esims.find((e) => e.code === 'ww2');
+  // destinations "à la une" affichées dans le carrousel du haut
+  const featuredEsims = useMemo(() => destinations.filter((e) => e.featured), [destinations]);
 
-  // eSIMs "à la une" affichées dans le carrousel du haut
-  const featuredEsims = useMemo(() => esims.filter((e) => e.featured), [esims]);
-
-  // eSIMs "monde" : affichées directement (pas de sélection de carte, cf. WorldOffersSection)
-  const worldEsims = useMemo(() => esims.filter((e) => e.type === 'global'), [esims]);
+  // destinations "monde" : affichées directement (pas de sélection de carte, cf. WorldOffersSection)
+  const worldEsims = useMemo(() => destinations.filter((e) => e.type === 'global'), [destinations]);
 
   const filteredEsims: DisplayItem[] = useMemo(() => {
     if (activeFilter === 'global') return []; // géré par WorldOffersSection
 
-    let list = esims;
+    let list = destinations;
 
     if (activeFilter === 'region') {
       // Filtre promos
@@ -195,7 +189,7 @@ export default function HomeScreen() {
       list = list.filter((e) => e.type === 'local');
     }
 
-    // Regroupe les eSIMs "region" partageant le même champ `region`
+    // Regroupe les destinations "region" partageant le même champ `region`
     // en une seule carte (cf. buildDisplayItems ci-dessus)
     let items = buildDisplayItems(list);
 
@@ -206,14 +200,11 @@ export default function HomeScreen() {
     }
 
     return [...items].sort((a, b) => {
-      const aStock = getItemHasStock(a);
-      const bStock = getItemHasStock(b);
-      if (bStock !== aStock) return Number(bStock) - Number(aStock);
       return getItemDisplayName(a, t, i18n.resolvedLanguage).localeCompare(
         getItemDisplayName(b, t, i18n.resolvedLanguage)
       );
     });
-  }, [search, esims, activeFilter, t, i18n.resolvedLanguage]);
+  }, [search, destinations, activeFilter, t, i18n.resolvedLanguage]);
 
   // Données réellement passées à la FlatList : liste vide si loading ou onglet
   // "monde" (ces deux cas sont gérés à part, cf. ListHeaderComponent plus bas)
@@ -229,7 +220,7 @@ export default function HomeScreen() {
   }, [activeFilter, filteredEsims, worldEsims]);
 
   const keyExtractor = useCallback(
-    (item: DisplayItem) => (item.kind === 'single' ? item.esim.id : `group-${item.region}`),
+    (item: DisplayItem) => (item.kind === 'single' ? item.destination.id : `group-${item.region}`),
     []
   );
 
@@ -237,9 +228,9 @@ export default function HomeScreen() {
     ({ item }: { item: DisplayItem }) => (
       <View style={styles.masonryItem}>
         {item.kind === 'single' ? (
-          <CountryCard esims={[item.esim]} />
+          <CountryCard destinations={[item.destination]} />
         ) : (
-          <CountryCard esims={item.members} region={item.region} />
+          <CountryCard destinations={item.members} region={item.region} />
         )}
       </View>
     ),
@@ -332,22 +323,22 @@ export default function HomeScreen() {
               {!loading && featuredEsims.length > 0 && activeFilter !== 'global' && (
                 <View style={styles.featuredZone}>
                   <Text style={styles.featLabel}>{t('home.featured.label')}</Text>
-                  <FeaturedCarousel esims={featuredEsims} />
+                  <FeaturedCarousel destinations={featuredEsims} />
                 </View>
               )}
 
               {/* ── Segmented filter ─────────────────────────────────────── */}
               <View style={styles.segmentWrap}>
                 <View style={styles.segmentContent}>
-                  {SEGS.map((s) => (
+                  {Object.values(DestinationType).map((type) => (
                     <TouchableOpacity
-                      key={s.key}
-                      style={[styles.segBtn, activeFilter === s.key && styles.segBtnActive]}
-                      onPress={() => handleFilterPress(s.key)}
+                      key={type}
+                      style={[styles.segBtn, activeFilter === type && styles.segBtnActive]}
+                      onPress={() => handleFilterPress(type)}
                       activeOpacity={0.8}
                     >
-                      <Text style={[styles.segBtnText, activeFilter === s.key && styles.segBtnTextActive]}>
-                        {t(`home.filters.${s.key}`)}
+                      <Text style={[styles.segBtnText, activeFilter === type && styles.segBtnTextActive]}>
+                        {t(`home.filters.${type}`)}
                       </Text>
                     </TouchableOpacity>
                   ))}

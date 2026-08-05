@@ -6,7 +6,7 @@ import { StyleSheet } from 'react-native';
  * - drawerStyles : chrome du bottom sheet (OffersDrawerModal) + ligne d'offre
  *   (OffersSections, modal ou inline)
  * - sectionStyles : en-tête/séparateur d'une section (visible dès que
- *   plusieurs eSIMs sont affichées ensemble — région groupée ou monde)
+ *   plusieurs destination sont affichées ensemble — région groupée ou monde)
  * - worldStyles : wrapper de WorldOffersSection (affichage inline, page Monde)
  *
  * ⚠️ Pas de styles radio/CTA ici : depuis que taper une offre déclenche la
@@ -106,7 +106,7 @@ export const drawerStyles = StyleSheet.create({
   finalPriceExhausted: { fontSize: 13, color: Colors.muted },
 });
 
-/** En-tête + séparateur d'une section (une par eSIM, visible quand il y en a plusieurs) */
+/** En-tête + séparateur d'une section (une par destination, visible quand il y en a plusieurs) */
 export const sectionStyles = StyleSheet.create({
   sectionHeader: {
     flexDirection: 'row',

@@ -1,13 +1,13 @@
 /**
  * OffersDrawerModal — bottom sheet modal générique pour choisir une offre.
  *
- * Remplace OfferDrawer.tsx (1 eSIM) et GroupOfferDrawer.tsx (N eSIMs) :
+ * Remplace OfferDrawer.tsx (1 destination) et GroupOfferDrawer.tsx (N destinations) :
  * les deux étaient un chrome de modal identique autour d'un rendu d'offres
  * quasi identique. Ici le chrome est unique, et le contenu délégué à
  * <OffersSections/> qui gère seule la différence 1 vs N via
  * `sections.length`.
  */
-import { EsimSummary, getDisplayName } from '@ilotel/shared';
+import { Destination, getDisplayName } from '@ilotel/shared';
 import React, { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Animated, Dimensions, Modal, ScrollView, Text, TouchableOpacity, View } from 'react-native';
@@ -17,20 +17,20 @@ import OffersSections from './OffersSections';
 import { OfferSection } from './useOffersDrawer';
 
 interface OffersDrawerModalProps {
-  /** eSIM "principal" affiché dans l'en-tête (flag + nom) — le premier de la liste */
-  esim: EsimSummary;
-  /** Titre affiché à la place du nom de l'eSIM (ex: nom de la région groupée) */
+  /** destination "principal" affiché dans l'en-tête (flag + nom) — le premier de la liste */
+  destination: Destination;
+  /** Titre affiché à la place du nom de l'destination (ex: nom de la région groupée) */
   title?: string;
   visible: boolean;
   sections: OfferSection[];
-  onOfferPress: (esimId: string, offerIdx: number) => void;
+  onOfferPress: (destinationId: string, offerIdx: number) => void;
   onClose: () => void;
 }
 
 const SHEET_HEIGHT = Dimensions.get('window').height;
 
 export default function OffersDrawerModal({
-  esim,
+  destination,
   title,
   visible,
   sections,
@@ -67,10 +67,10 @@ export default function OffersDrawerModal({
 
             <View style={drawerStyles.header}>
               <View style={drawerStyles.countryRow}>
-                <Text style={drawerStyles.flag}>{esim.flag}</Text>
+                <Text style={drawerStyles.flag}>{destination.flag}</Text>
                 <View>
                   <Text style={drawerStyles.countryName}>
-                    {title ?? getDisplayName(esim.code, i18n.resolvedLanguage)}
+                    {title ?? getDisplayName(destination.code, i18n.resolvedLanguage)}
                   </Text>
                   <Text style={drawerStyles.countrySub}>{t('offerDrawer.choosePlan')}</Text>
                 </View>

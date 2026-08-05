@@ -58,6 +58,8 @@
     "choosePlan": "اختر باقتك",
     "availablePlans": "الباقات المتاحة",
     "days": "أيام",
+    "months": "أشهر",
+    "years": "سنوات",
     "order": "اطلب الآن"
   },
   "payment": {

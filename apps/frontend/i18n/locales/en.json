@@ -58,6 +58,8 @@
     "choosePlan": "Choose your plan",
     "availablePlans": "Available plans",
     "days": "days",
+    "months": "months",
+    "years": "years",
     "order": "Order"
   },
   "payment": {

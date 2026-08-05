@@ -1,49 +1,48 @@
 /**
- * CountryCard — carte Masonry pour un esim unique OU un groupe de régions
+ * CountryCard — carte Masonry pour un destination unique OU un groupe de régions
  * fusionnées (ex: "Asie" + "Asie étendue" → une seule carte).
  *
  * Remplace CountryCard.tsx + RegionGroupCard.tsx : les deux affichaient une
  * carte quasi identique (flag/nom/prix/promo) et ouvraient un drawer au tap
- * — seule différence réelle : le badge RegionCountriesButton n'a de sens
- * que sur une carte à eSIM unique (sur un groupe, il apparaît dans le
+ * — seule différence réelle : le badge CountryCoverageModal n'a de sens
+ * que sur une carte à destination unique (sur un groupe, il apparaît dans le
  * drawer, une fois par section — cf. OffersSections).
  */
-import { EsimSummary, getDisplayName } from '@ilotel/shared';
+import { Destination, getDisplayName } from '@ilotel/shared';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Text, TouchableOpacity, View } from 'react-native';
-import RegionCountriesButton from '../RegionCountryButton/RegionCountryButton';
-import { rcbStyles } from '../RegionCountryButton/RegionCountryButton.styles';
+import CountryCoverageModal from '../CountryCoverageModal/CountryCoverageModal';
+import { rcbStyles } from '../CountryCoverageModal/CountryCoverageModal.styles';
 import { cardStyles } from './CountryCard.styles';
 import OffersDrawerModal from './OffersDrawer/OffersDrawerModal';
 import { useOffersDrawer } from './OffersDrawer/useOffersDrawer';
 
 interface CountryCardProps {
-  /** 1 élément = eSIM unique (pays/monde) · plusieurs = groupe de régions fusionnées */
-  esims: EsimSummary[];
-  /** Requis quand esims.length > 1 : sert à résoudre le nom affiché du groupe */
+  /** 1 élément = destination unique (pays/monde) · plusieurs = groupe de régions fusionnées */
+  destinations: Destination[];
+  /** Requis quand destinations.length > 1 : sert à résoudre le nom affiché du groupe */
   region?: string;
   accent?: boolean;
 }
 
-/** Prix mini parmi les eSIMs du groupe qui ont du stock (undefined/null ignorés) */
-function computeGroupMinPrice(esims: EsimSummary[]): number | null {
-  const prices = esims
-    .filter((e) => e.hasStock && e.minPrice != null)
+/** Prix mini parmi les destinations du groupe qui ont du stock (undefined/null ignorés) */
+function computeGroupMinPrice(destinations: Destination[]): number | null {
+  const prices = destinations
+    .filter((e) => e.minPrice != null)
     .map((e) => e.minPrice as number);
   return prices.length ? Math.min(...prices) : null;
 }
 
-function CountryCard({ esims, region, accent = false }: CountryCardProps) {
-  const drawer = useOffersDrawer(esims);
+function CountryCard({ destinations, region, accent = false }: CountryCardProps) {
+  const drawer = useOffersDrawer(destinations);
   const { t, i18n } = useTranslation();
 
-  const isGroup = esims.length > 1;
-  const primary = esims[0];
+  const isGroup = destinations.length > 1;
+  const primary = destinations[0];
 
-  const hasStock = isGroup ? esims.some((e) => e.hasStock) : primary.hasStock;
-  const hasPromo = isGroup ? esims.some((e) => e.hasPromo) : primary.hasPromo;
-  const minPrice = isGroup ? computeGroupMinPrice(esims) : primary.minPrice;
+  const hasPromo = isGroup ? destinations.some((e) => e.hasPromo) : primary.hasPromo;
+  const minPrice = isGroup ? computeGroupMinPrice(destinations) : primary.minPrice;
   const name = isGroup && region
     ? getDisplayName(region, i18n.resolvedLanguage)
     : getDisplayName(primary.code, i18n.resolvedLanguage);
@@ -53,12 +52,11 @@ function CountryCard({ esims, region, accent = false }: CountryCardProps) {
       style={[
         cardStyles.card,
         accent && cardStyles.cardAccent,
-        !hasStock && cardStyles.cardExhausted,
       ]}
       onPress={drawer.openDrawer}
       activeOpacity={0.78}
     >
-      {!isGroup && <RegionCountriesButton esim={primary} showLabel />}
+      {!isGroup && <CountryCoverageModal destinations={primary} showLabel />}
 
       <Text style={cardStyles.flag}>{primary.flag}</Text>
       <Text style={cardStyles.name} numberOfLines={1}>
@@ -93,12 +91,12 @@ function CountryCard({ esims, region, accent = false }: CountryCardProps) {
   return (
     <>
       {/* rcbStyles.wrapper (position:relative) n'est nécessaire que pour
-          ancrer le badge RegionCountriesButton en absolu — inutile pour
+          ancrer le badge CountryCoverageModal en absolu — inutile pour
           un groupe qui ne l'affiche pas sur la carte */}
       {isGroup ? card : <View style={rcbStyles.wrapper}>{card}</View>}
 
       <OffersDrawerModal
-        esim={primary}
+        destination={primary}
         title={isGroup ? name : undefined}
         visible={drawer.drawerOpen}
         sections={drawer.sections}
@@ -110,12 +108,12 @@ function CountryCard({ esims, region, accent = false }: CountryCardProps) {
 }
 
 /**
- * renderItem (index.tsx) recrée `[item.esim]` à chaque appel — une
+ * renderItem (index.tsx) recrée `[item.destination]` à chaque appel — une
  * comparaison shallow par défaut ne bloquerait donc jamais rien. On compare
  * plutôt le contenu réellement affiché par la carte.
  */
-function esimsFingerprint(esims: EsimSummary[]): string {
-  return esims.map((e) => `${e.id}:${e.hasStock}:${e.minPrice}:${e.hasPromo}`).join('|');
+function destinationsFingerprint(destinations: Destination[]): string {
+  return destinations.map((e) => `${e.id}:${e.minPrice}:${e.hasPromo}`).join('|');
 }
 
 export default React.memo(
@@ -123,5 +121,5 @@ export default React.memo(
   (prev, next) =>
     prev.region === next.region &&
     prev.accent === next.accent &&
-    esimsFingerprint(prev.esims) === esimsFingerprint(next.esims),
+    destinationsFingerprint(prev.destinations) === destinationsFingerprint(next.destinations),
 );

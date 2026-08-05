@@ -19,7 +19,7 @@ import { DEBUG_ORDER_ID, IS_LOCAL } from '@/constants/env';
 import { apiError } from '@/i18n/i18n';
 import { fetchOrder } from '@/service/orders';
 import { useCartStore } from '@/store/useCartStore';
-import { Colors, DEFAULT_LANG, LOCALE_TIME_MAP, OrderWithDetails, SUPPORT_EMAIL } from '@ilotel/shared';
+import { Colors, DEFAULT_LANG, getDisplayName, LOCALE_TIME_MAP, Order, SUPPORT_EMAIL } from '@ilotel/shared';
 import { styles } from './index.styles';
 
 // ─── Composant code d'activation + QR + copie ────────────────────────────────
@@ -76,7 +76,7 @@ export default function DetailsScreen() {
   const { t, i18n } = useTranslation();
   const { orderId, clearCart } = useCartStore();
 
-  const [order, setOrder] = useState<OrderWithDetails | null>(null);
+  const [order, setOrder] = useState<Order | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [retries, setRetries] = useState(0);
@@ -115,7 +115,7 @@ export default function DetailsScreen() {
     poll();
   }, [orderId, retries]);
 
-  const handleNewEsim = () => {
+  const returnToHomePage = () => {
     clearCart();
     router.replace('/');
   };
@@ -133,12 +133,12 @@ export default function DetailsScreen() {
     return (
       <View style={styles.centered}>
         <Text style={styles.errorText}>{error ?? t('details.error')}</Text>
-        <PrimaryButton label={t('details.provisioningError.home')} onPress={handleNewEsim} />
+        <PrimaryButton label={t('details.provisioningError.home')} onPress={returnToHomePage} />
       </View>
     );
   }
 
-  if (!order.esimInventory) {
+  if (!order.destination) {
     return (
       <View style={styles.centered}>
         <Text style={styles.errorText}>{t('details.provisioningError.text')}</Text>
@@ -151,7 +151,7 @@ export default function DetailsScreen() {
         </Text>
         <PrimaryButton
           label={t('details.provisioningError.home')}
-          onPress={handleNewEsim}
+          onPress={returnToHomePage}
           style={{ marginTop: 24 }}
         />
       </View>
@@ -196,7 +196,7 @@ export default function DetailsScreen() {
           <View style={styles.infoRow}>
             <Text style={styles.infoLabel}>{t('details.info.country')}</Text>
             <Text style={styles.infoValue}>
-              {order.offer.esim.flag} {t(`${order.offer.esim.type}.${order.offer.esim.code}`)}
+              {order.destination.flag} {t(`${getDisplayName(order.destination.code, i18n.resolvedLanguage)}`)}
             </Text>
           </View>
           <View style={styles.divider} />
@@ -204,7 +204,7 @@ export default function DetailsScreen() {
           <View style={styles.infoRow}>
             <Text style={styles.infoLabel}>{t('details.info.offer')}</Text>
             <Text style={styles.infoValue}>
-              {order.offer.dataGb} Go / {order.offer.durationDays}j
+              {order.offer.dataQuantity} {order.offer.dataUnit} / {order.offer.durationQuantity} {t(`offerDrawer.${order.offer.durationUnit}`)}
             </Text>
           </View>
           <View style={styles.divider} />
@@ -219,7 +219,7 @@ export default function DetailsScreen() {
 
           <View style={styles.infoRow}>
             <Text style={styles.infoLabel}>{t('details.info.iccid')}</Text>
-            <Text style={styles.iccidValue}>{order.esimInventory.iccid}</Text>
+            <Text style={styles.iccidValue}>{order.esim && order.esim.iccid}</Text>
           </View>
           <View style={styles.divider} />
 
@@ -234,15 +234,15 @@ export default function DetailsScreen() {
           </View>
         </Card>
 
-        {order.esimInventory.activationCode && (
-          <ActivationCodeBlock code={order.esimInventory.activationCode} />
+        {order.esim && order.esim.activationCode && (
+          <ActivationCodeBlock code={order.esim.activationCode} />
         )}
 
         <ActivationSteps />
 
         <PrimaryButton
           label={t('details.newEsim')}
-          onPress={handleNewEsim}
+          onPress={returnToHomePage}
           variant="secondary"
         />
       </ScrollView>

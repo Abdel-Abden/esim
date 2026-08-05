@@ -1,18 +1,18 @@
 /**
- * RegionCountriesButton
+ * CountryCoverageModal
  * ─────────────────────
- * Badge affichant soit le nombre de pays couverts (esims région/monde),
- * soit le nombre d'opérateurs disponibles (esims pays), remplaçant
- * l'ancien "ⓘ". Au tap, ouvre un tableau détaillant, pour chaque
+ * Badge affichant soit le nombre de pays couverts (destinationss région/monde),
+ * soit le nombre d'opérateurs disponibles (destinationss pays). 
+ * Au tap, ouvre un tableau détaillant, pour chaque
  * pays et chaque opérateur, la disponibilité des réseaux 3G / 4G / 5G.
  *
- * Modèle de données (@ilotel/shared → EsimSummary) :
- *   regionCountries: Record<codeISO, Record<nomOperateur, {
+ * Modèle de données (@ilotel/shared → Destination) :
+ *   coverage: Record<codeISO, Record<nomOperateur, {
  *     '3G': boolean; '4G': boolean; '5G': boolean;
  *   }>>
  *
- * Deux modes d'affichage, selon `esim.type` :
- *   - "country"            → un seul pays dans regionCountries. Le tableau
+ * Deux modes d'affichage, selon `destinations.type` :
+ *   - "country"            → un seul pays dans coverage. Le tableau
  *                             liste directement les opérateurs (pas de
  *                             regroupement par pays, ce serait redondant).
  *   - "region" / "global"  → plusieurs pays. Le tableau groupe les
@@ -26,15 +26,15 @@
  *
  *   <View style={rcbStyles.wrapper}>
  *     <TouchableOpacity onPress={...}>...</TouchableOpacity>
- *     <RegionCountriesButton esim={esim} />
+ *     <coverageButton destinations={destinations} />
  *   </View>
  *
  * Pattern d'usage "en ligne" (ex: en-tête de section dans GroupOfferDrawer) :
  *
- *   <RegionCountriesButton esim={esim} inline showLabel />
+ *   <coverageButton destinations={destinations} inline showLabel />
  */
 import { Ionicons } from '@expo/vector-icons';
-import { Colors, CountryNetworkInfo, EsimSummary, getDisplayName } from '@ilotel/shared';
+import { Colors, CountryNetworkInfo, Destination, DestinationType, getDisplayName } from '@ilotel/shared';
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
@@ -49,10 +49,10 @@ import {
   View
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { btnStyles, sheetStyles } from './RegionCountryButton.styles';
+import { btnStyles, sheetStyles } from './CountryCoverageModal.styles';
 
 interface Props {
-  esim: EsimSummary;
+  destinations: Destination;
   /** true = affichage en ligne (dans un en-tête de section), false = badge flottant sur une carte */
   inline?: boolean;
   /** affiche un libellé à côté du nombre — utile en mode inline */
@@ -66,7 +66,7 @@ type TableRow =
 /** Construit les lignes du tableau, groupées par pays uniquement en mode multi-pays */
 function buildRows(
   countries: Record<string, Record<string, CountryNetworkInfo>>,
-  isCountryEsim: boolean,
+  isCountrydestinations: boolean,
   lang?: string,
 ): TableRow[] {
   const codes = [...Object.keys(countries)].sort((a, b) =>
@@ -78,23 +78,23 @@ function buildRows(
     const operators = countries[code] ?? {};
     const operatorNames = [...Object.keys(operators)].sort((a, b) => a.localeCompare(b));
 
-    if (!isCountryEsim) {
+    if (!isCountrydestinations) {
       rows.push({ kind: 'countryHeader', label: getDisplayName(code, lang) });
     }
     for (const operator of operatorNames) {
-      rows.push({ kind: 'operatorRow', operator, networks: operators[operator], indented: !isCountryEsim });
+      rows.push({ kind: 'operatorRow', operator, networks: operators[operator], indented: !isCountrydestinations });
     }
   }
   return rows;
 }
 
-function RegionCountriesButton({ esim, inline = false, showLabel = false }: Props) {
+function CountryCoverageModal({ destinations, inline = false, showLabel = false }: Props) {
   const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
 
-  const isCountryEsim = esim.type === 'local';
-  const regionCountriesData = esim.regionCountries;
-  const countryCodes = regionCountriesData ? Object.keys(regionCountriesData) : [];
+  const isCountrydestinations = destinations.type === DestinationType.LOCAL;
+  const coverageData = destinations.coverage;
+  const countryCodes = coverageData ? Object.keys(coverageData) : [];
 
   const SHEET_HEIGHT = Dimensions.get('window').height;
   const backdropOpacity = useRef(new Animated.Value(0)).current;
@@ -123,34 +123,34 @@ function RegionCountriesButton({ esim, inline = false, showLabel = false }: Prop
   const [rowsLoading, setRowsLoading] = useState(false);
 
   useEffect(() => {
-    if (!open || !regionCountriesData) {
+    if (!open || !coverageData) {
       setRows([]);
       return;
     }
     setRowsLoading(true);
     const task = InteractionManager.runAfterInteractions(() => {
-      setRows(buildRows(regionCountriesData, isCountryEsim, i18n.resolvedLanguage));
+      setRows(buildRows(coverageData, isCountrydestinations, i18n.resolvedLanguage));
       setRowsLoading(false);
     });
     return () => task.cancel();
-  }, [open, regionCountriesData, isCountryEsim, i18n.resolvedLanguage]);
+  }, [open, coverageData, isCountrydestinations, i18n.resolvedLanguage]);
 
   if (countryCodes.length === 0) return null;
 
   // Badge : nb de pays (région/monde) ou nb d'opérateurs (pays unique)
-  const badgeCount = isCountryEsim
-    ? Object.keys(regionCountriesData?.[countryCodes[0]] ?? {}).length
+  const badgeCount = isCountrydestinations
+    ? Object.keys(coverageData?.[countryCodes[0]] ?? {}).length
     : countryCodes.length;
 
   if (badgeCount === 0) return null;
 
-  const regionLabel = getDisplayName(esim.code, i18n.resolvedLanguage);
+  const regionLabel = getDisplayName(destinations.code, i18n.resolvedLanguage);
 
-  const unitLabel = isCountryEsim
+  const unitLabel = isCountrydestinations
     ? t('home.regionTooltip.network')
     : t('home.regionTooltip.country');
 
-  const headerCellLabel = isCountryEsim
+  const headerCellLabel = isCountrydestinations
     ? t('home.regionTooltip.network')
     : t('home.regionTooltip.country');
 
@@ -185,7 +185,7 @@ function RegionCountriesButton({ esim, inline = false, showLabel = false }: Prop
 
               <View style={sheetStyles.header}>
                 <View style={sheetStyles.headerLeft}>
-                  <Text style={sheetStyles.flag}>{esim.flag}</Text>
+                  <Text style={sheetStyles.flag}>{destinations.flag}</Text>
                   <View>
                     <Text style={sheetStyles.title}>{regionLabel}</Text>
                     <Text style={sheetStyles.subtitle}>
@@ -270,8 +270,4 @@ function RegionCountriesButton({ esim, inline = false, showLabel = false }: Prop
   );
 }
 
-// Beaucoup d'instances de ce composant peuvent coexister (une par section
-// dans GroupOfferDrawer / WorldOffersSection) — memo évite de les re-render
-// toutes à chaque fois que le parent change d'état pour une autre raison
-// (ex: chargement des offres d'une autre section).
-export default React.memo(RegionCountriesButton);
+export default React.memo(CountryCoverageModal);
