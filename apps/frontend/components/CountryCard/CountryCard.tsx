@@ -43,9 +43,7 @@ function CountryCard({ destinations, region, accent = false }: CountryCardProps)
 
   const hasPromo = isGroup ? destinations.some((e) => e.hasPromo) : primary.hasPromo;
   const minPrice = isGroup ? computeGroupMinPrice(destinations) : primary.minPrice;
-  const name = isGroup && region
-    ? getDisplayName(region, i18n.resolvedLanguage)
-    : getDisplayName(primary.code, i18n.resolvedLanguage);
+  const name = getDisplayName(primary.code, i18n.resolvedLanguage)
 
   const card = (
     <TouchableOpacity
