@@ -1,12 +1,26 @@
 {
   "region": {
-    "eu": "Europa",
-    "as": "Asien",
-    "af": "Afrika",
-    "am": "Amerika",
-    "oc": "Ozeanien",
-    "me": "Naher Osten",
-    "ww": "Welt"
+    "EU28PLUS": "Europa",
+    "ASIA": "Asien",
+    "AFRICA2": "Afrika",
+    "BESTAFRICA2": "Afrika (Auswahl)",
+    "AMERICA": "Amerika",
+    "OCEANIA": "Ozeanien",
+    "ME_Wo_Israel": "Naher Osten (ohne Israel)",
+    "WORLD2": "Welt",
+    "BEST_WORLD": "Welt (Erweitert)",
+    "ANZ": "Australien & Neuseeland",
+    "BESTASIA3": "Asien (Auswahl)",
+    "CARIBBEAN2": "Karibik",
+    "BESTCARIBBEAN2": "Karibik (Auswahl)",
+    "EU_EXTENDED": "Europa (Erweitert)",
+    "JEY-GGY-IMN": "Jersey, Guernsey & Isle of Man",
+    "BESTLATAM2": "Lateinamerika (Auswahl)",
+    "BEST_ME": "Naher Osten (Auswahl)",
+    "MYS_SGP": "Malaysia & Singapur",
+    "SCANDINAVIA": "Skandinavien & Baltikum",
+    "USA": "USA",
+    "USACAN": "USA & Kanada"
   },
   "country": {
     "af": "Afghanistan",
