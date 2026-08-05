@@ -48,8 +48,8 @@ orders.post('/reserve', async (c) => {
   const reservedUntil = new Date(
     Date.now() + RESERVATION_DURATION_MINUTES * 60 * 1000
   ).toISOString();
-
-  const lang = resolveLang(c.req.header('accept-language'));
+  
+  const lang = resolveLang(c.req.header('Accept-Language'));
 
   const order = await createOrder({
     lang,

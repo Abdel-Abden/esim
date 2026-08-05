@@ -1,3 +1,4 @@
+import i18n from '@/i18n/i18n';
 import {
   CancelOrderResponse,
   CheckoutOrderRequest,
@@ -12,6 +13,9 @@ import { apiFetch } from './api';
 export async function reserveOrder(payload: ReserveOrderRequest) {
   return apiFetch<ReserveOrderResponse>('/orders/reserve', {
     method: 'POST',
+    headers: {
+      'Accept-Language': i18n.language
+    },
     body: JSON.stringify(payload),
   });
 }
