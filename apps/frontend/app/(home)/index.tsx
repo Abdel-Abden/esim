@@ -8,6 +8,8 @@ import {
   AppState, AppStateStatus,
   FlatList,
   Image,
+  Keyboard,
+  LayoutChangeEvent,
   StatusBar,
   Text, TouchableOpacity, View,
 } from 'react-native';
@@ -109,6 +111,23 @@ export default function HomeScreen() {
   // d'un écran figé.
   const [filterLoading, setFilterLoading] = useState(false);
   const lastLoadRef = useRef(0);
+
+  const flatListRef = useRef<FlatList<DisplayItem>>(null);
+  const segmentOffsetRef = useRef(0);
+
+  const handleSegmentLayout = useCallback((e: LayoutChangeEvent) => {
+    segmentOffsetRef.current = e.nativeEvent.layout.y;
+  }, []);
+
+  useEffect(() => {
+    const sub = Keyboard.addListener('keyboardDidShow', () => {
+      flatListRef.current?.scrollToOffset({
+        offset: segmentOffsetRef.current,
+        animated: true,
+      });
+    });
+    return () => sub.remove();
+  }, []);
 
   /* ── Tutoriel ── */
   const [tutorialVisible, setTutorialVisible] = useState(false);
@@ -274,6 +293,7 @@ export default function HomeScreen() {
         </View>
 
         <FlatList
+          ref={flatListRef}
           style={styles.scroll}
           contentContainerStyle={styles.content}
           keyboardShouldPersistTaps="handled"
@@ -328,7 +348,7 @@ export default function HomeScreen() {
               )}
 
               {/* ── Segmented filter ─────────────────────────────────────── */}
-              <View style={styles.segmentWrap}>
+              <View style={styles.segmentWrap} onLayout={handleSegmentLayout}>
                 <View style={styles.segmentContent}>
                   {Object.values(DestinationType).map((type) => (
                     <TouchableOpacity
