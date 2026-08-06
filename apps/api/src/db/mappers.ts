@@ -15,7 +15,7 @@ import {
   OrderStatus
 } from '@ilotel/shared';
 
-// ─── Esim ─────────────────────────────────────────────────────────────────────
+// ─── Destination ─────────────────────────────────────────────────────────────────────
 
 export function mapDestinationEntity(row: Record<string, unknown>): DestinationEntity {
   return {
