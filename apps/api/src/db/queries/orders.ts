@@ -64,6 +64,7 @@ export async function getOrderById(id: string): Promise<Order | null> {
     o.base_price,
     o.stripe_price_id,
     o.available,
+    o.provider_product_id
 
     -- Discount
     v.discount_id,

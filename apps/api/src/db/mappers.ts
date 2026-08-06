@@ -166,7 +166,7 @@ export function mapOrderDetails(row: Record<string, unknown>): Order {
           type: row.discount_type as DiscountType,
         }
         : undefined,
-      providerProductId: row.stripe_payment_intent_id as string,
+      providerProductId: row.provider_product_id as string,
     },
 
     destination: {
