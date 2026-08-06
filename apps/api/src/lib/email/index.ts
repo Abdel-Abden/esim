@@ -54,12 +54,15 @@ export interface LegalDeleteParams {
 // ─── Transporter (singleton) ──────────────────────────────────────────────────
 
 const transporter = nodemailer.createTransport({
-  host:   process.env.SMTP_HOST   ?? 'ssl0.ovh.net',
-  port:   Number(process.env.SMTP_PORT ?? 465),
+  host: process.env.SMTP_HOST ?? 'ssl0.ovh.net',
+  port: Number(process.env.SMTP_PORT ?? 465),
   secure: process.env.SMTP_SECURE !== 'false',
+  pool: true,
+  maxConnections: 5,
+  maxMessages: 100,
   auth: {
     user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
+    pass: process.env.SMTP_PASS
   },
   tls: { rejectUnauthorized: true },
 });
@@ -99,6 +102,7 @@ export async function sendEsimEmail(params: EsimEmailParams): Promise<void> {
       break;
     case OfferDurationUnit.YEARS:
       params.durationUnit = content.years
+      break;
     default:
       params.durationUnit = content.days
       break
