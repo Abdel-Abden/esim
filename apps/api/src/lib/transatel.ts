@@ -125,7 +125,7 @@ export async function assignOfferToEsim(
       product:   { productId: transatelProductId },
       payment:   { provider: process.env.TRANSATEL_PAYMENT_PROVIDER ?? 'customer' },
       source:    'api',
-      orderType: 'preload',
+      orderType: 'subscribe',
       mvnoRef:   MVNO_REF,
     })
   const res = await transatelFetch('/ocs/subscriptions/api/orders/products', {
