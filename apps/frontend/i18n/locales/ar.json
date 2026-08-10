@@ -46,6 +46,9 @@
     "empty": "لم يُعثر على أي وجهة.",
     "error": {
       "retry": "إعادة المحاولة"
+    },
+    "coverage": {
+      "bestNetworkAvailable": "أفضل شبكة متاحة"
     }
   },
   "countryCard": {

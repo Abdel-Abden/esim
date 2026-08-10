@@ -45,6 +45,9 @@
     "empty": "Aucune destination trouvée.",
     "error": {
       "retry": "Réessayer"
+    },
+    "coverage": {
+      "bestNetworkAvailable": "Meilleur réseau disponible"
     }
   },
   "countryCard": {

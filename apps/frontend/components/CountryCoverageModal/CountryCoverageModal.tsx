@@ -61,7 +61,8 @@ interface Props {
 
 type TableRow =
   | { kind: 'countryHeader'; label: string }
-  | { kind: 'operatorRow'; operator: string; networks: CountryNetworkInfo; indented: boolean };
+  | { kind: 'operatorRow'; operator: string; networks: CountryNetworkInfo; indented: boolean }
+  | { kind: 'bestNetwork'; label: string; indented: boolean };
 
 /** Construit les lignes du tableau, groupées par pays uniquement en mode multi-pays */
 function buildRows(
@@ -81,9 +82,25 @@ function buildRows(
     if (!isCountrydestinations) {
       rows.push({ kind: 'countryHeader', label: getDisplayName(code, lang) });
     }
-    for (const operator of operatorNames) {
-      rows.push({ kind: 'operatorRow', operator, networks: operators[operator], indented: !isCountrydestinations });
+
+    if (operatorNames.length === 0) {
+      rows.push({
+        kind: 'bestNetwork',
+        label: getDisplayName(code, lang),
+        indented: !isCountrydestinations,
+      });
+      continue;
     }
+    for (const operator of operatorNames) {
+      const networks = operators[operator];
+      if (!networks || Object.keys(networks).length === 0) {
+        console.error(
+          `[CountryCoverageModal] coverage invalide: pays="${code}" opérateur="${operator}" a un réseau vide`,
+        );
+        continue;
+      }
+      rows.push({ kind: 'operatorRow', operator, networks, indented: !isCountrydestinations });
+     }
   }
   return rows;
 }
@@ -227,7 +244,9 @@ function CountryCoverageModal({ destinations, inline = false, showLabel = false 
                   showsVerticalScrollIndicator={false}
                   data={rows}
                   keyExtractor={(row, idx) =>
-                    row.kind === 'countryHeader' ? `country-${row.label}-${idx}` : `op-${row.operator}-${idx}`
+                    row.kind === 'countryHeader' || row.kind === 'bestNetwork'
+                    ? `country-${row.label}-${idx}`
+                    : `op-${row.operator}-${idx}`
                   }
                   initialNumToRender={16}
                   windowSize={7}
@@ -237,6 +256,18 @@ function CountryCoverageModal({ destinations, inline = false, showLabel = false 
                       return (
                         <View style={sheetStyles.countryHeaderRow}>
                           <Text style={sheetStyles.countryHeaderText}>{row.label}</Text>
+                        </View>
+                      );
+                    }
+                    if (row.kind === 'bestNetwork') {
+                      return (
+                        <View style={[sheetStyles.row, row.indented && sheetStyles.rowIndented]}>
+                          <Text
+                            style={[sheetStyles.countryName, row.indented && sheetStyles.operatorNameIndented]}
+                            numberOfLines={1}
+                          >
+                            {t('home.coverage.bestNetworkAvailable')}
+                          </Text>
                         </View>
                       );
                     }
