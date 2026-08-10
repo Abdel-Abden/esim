@@ -56,7 +56,7 @@ export async function confirmEsim(esimId: string): Promise<void> {
     UPDATE esims
     SET status  = 'sold',
         sold_at = NOW()
-    WHERE id = ${esimId}
+    WHERE id = (SELECT esim_id FROM esim_history where order_id = ${esimId})
       AND status   = 'reserved'
   `;
 }
