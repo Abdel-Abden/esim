@@ -39,6 +39,6 @@ export const BRAND = {
   appName:     'ILOTEL',
   support:     'support@ilotel.com',
   dpo:         'dpo@ilotel.com',
-  legalUrl:    'https://api.ilotel.com/legal',
+  legalUrl:    'https://www.ilotel.com/legal',
   year:        new Date().getFullYear(),
 } as const;

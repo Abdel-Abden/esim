@@ -138,7 +138,7 @@ const body = `
   <p>
     Diese Erklärung kann aktualisiert werden. Die jeweils gültige Fassung ist stets
     abrufbar unter
-    <a href="https://api.ilotel.com/legal/privacy">api.ilotel.com/legal/privacy</a>.
+    <a href="https://www.ilotel.com/legal/privacy">www.ilotel.com/legal/privacy</a>.
     Bei wesentlichen Änderungen werden Nutzer per E-Mail informiert.
   </p>
 `;

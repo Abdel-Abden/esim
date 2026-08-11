@@ -136,7 +136,7 @@ const body = `
   <h2>9. التعديلات</h2>
   <p>
     قد تُحدَّث هذه السياسة. يمكن الاطلاع على النسخة السارية دائماً على الرابط
-    <a href="https://api.ilotel.com/legal/privacy">api.ilotel.com/legal/privacy</a>.
+    <a href="https://www.ilotel.com/legal/privacy">www.ilotel.com/legal/privacy</a>.
     في حال إجراء تعديلات جوهرية، سيُبلَّغ المستخدمون عبر البريد الإلكتروني.
   </p>
 `;

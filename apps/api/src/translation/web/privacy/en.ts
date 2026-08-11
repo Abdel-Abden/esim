@@ -136,7 +136,7 @@ const body = `
   <h2>9. Changes</h2>
   <p>
     This policy may be updated. The current version is always accessible at
-    <a href="https://api.ilotel.com/legal/privacy">api.ilotel.com/legal/privacy</a>.
+    <a href="https://www.ilotel.com/legal/privacy">www.ilotel.com/legal/privacy</a>.
     In the event of a material change, users will be notified by email.
   </p>
 `;

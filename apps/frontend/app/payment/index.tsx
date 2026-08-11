@@ -3,15 +3,15 @@ import { useRouter } from 'expo-router';
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
-  Alert,
-  KeyboardAvoidingView,
-  Linking,
-  Platform,
-  ScrollView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View
+    Alert,
+    KeyboardAvoidingView,
+    Linking,
+    Platform,
+    ScrollView,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View
 } from 'react-native';
 
 import BackButton from '@/components/BackButton/BackButton';
@@ -275,7 +275,7 @@ export default function PaymentScreen() {
               .split('{cguLink}')[0]}
             <Text
               style={cguStyles.link}
-              onPress={() => Linking.openURL('https://api.ilotel.com/legal/cgu')}
+              onPress={() => Linking.openURL('https://www.ilotel.com/legal/cgu')}
             >
               {t('payment.cgu.cgu')}
             </Text>
@@ -284,7 +284,7 @@ export default function PaymentScreen() {
               ?.split('{privacyLink}')[0]}
             <Text
               style={cguStyles.link}
-              onPress={() => Linking.openURL('https://api.ilotel.com/legal/privacy')}
+              onPress={() => Linking.openURL('https://www.ilotel.com/legal/privacy')}
             >
               {t('payment.cgu.privacy')}
             </Text>
