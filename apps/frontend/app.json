@@ -16,7 +16,8 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.ilotel.esim",
       "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSCameraUsageDescription": "This app may request camera access for certain features."
       }
     },
     "android": {
