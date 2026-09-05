@@ -54,7 +54,7 @@ export async function reserveEsim(): Promise<Esim | null> {
 export async function confirmEsim(esimId: string): Promise<void> {
   await sql`
     UPDATE esims
-    SET status  = 'sold',
+    SET status  = 'assigned',
         sold_at = NOW()
     WHERE id = (SELECT esim_id FROM esim_history where order_id = ${esimId})
       AND status   = 'reserved'
