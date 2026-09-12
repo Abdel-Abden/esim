@@ -7,11 +7,6 @@
     "icon": "./assets/images/icon.png",
     "scheme": "ilotel",
     "userInterfaceStyle": "automatic",
-    "splash": {
-      "image": "./assets/images/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#FFFFFF"
-    },
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.ilotel.esim",
@@ -35,6 +30,14 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash.png",
+          "resizeMode": "contain",
+          "backgroundColor": "#FFFFFF"
+        }
+      ],
       "expo-router",
       [
         "expo-splash-screen",
@@ -57,7 +60,8 @@
       ],
       "expo-font",
       "expo-localization",
-      "expo-web-browser"
+      "expo-web-browser",
+      "./plugins/withAndroidWhatsappQuery"
     ],
     "experiments": {
       "typedRoutes": true,

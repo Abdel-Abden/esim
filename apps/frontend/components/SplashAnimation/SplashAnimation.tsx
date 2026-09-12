@@ -178,8 +178,10 @@ export default function SplashAnimation({ onFinish }: SplashAnimationProps) {
 const styles = StyleSheet.create({
   overlay: {
     position:        'absolute',
-    width:           W,
-    height:          H,
+    top:             0,
+    left:            0,
+    right:           0,
+    bottom:          0,
     zIndex:          999,
     backgroundColor: '#1A0D04',   // légèrement plus sombre que l'ancien #2A1508
     alignItems:      'center',
