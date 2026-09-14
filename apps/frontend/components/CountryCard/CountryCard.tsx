@@ -79,21 +79,26 @@ function CountryCard({ destinations, region, accent = false }: CountryCardProps)
             </>
           )}
         </View>
-        {hasPromo && (
-          <View style={cardStyles.promoBadge}>
-            <Text style={cardStyles.promoText}>{t('countryCard.promo')}</Text>
-          </View>
-        )}
       </View>
     </TouchableOpacity>
   );
 
   return (
     <>
-      {/* rcbStyles.wrapper (position:relative) n'est nécessaire que pour
-          ancrer le badge CountryCoverageModal en absolu — inutile pour
-          un groupe qui ne l'affiche pas sur la carte */}
-      {isGroup ? card : <View style={rcbStyles.wrapper}>{card}</View>}
+      <View style={rcbStyles.wrapper}>
+        {card}
+        {hasPromo && (
+          <View
+            style={[
+              cardStyles.promoBadge,
+              cardStyles.promoBadgeFloating,
+              { top: isGroup ? 8 : 38 },
+            ]} 
+          >
+            <Text style={cardStyles.promoText}>{t('countryCard.promo')}</Text>
+          </View>
+        )}
+      </View>
 
       <OffersDrawerModal
         destination={primary}

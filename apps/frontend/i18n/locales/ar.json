@@ -51,6 +51,25 @@
       "bestNetworkAvailable": "أفضل شبكة متاحة"
     }
   },
+  "contactFab": {
+    "accessibilityLabel": "تواصل معنا",
+    "sheetTitle": "كيف يمكننا مساعدتك؟",
+    "whatsapp": {
+      "title": "واتساب",
+      "subtitle": "رد سريع، للحالات العاجلة"
+    },
+    "email": {
+      "title": "البريد الإلكتروني",
+      "subtitle": "للطلبات غير العاجلة",
+      "subject": "طلب تواصل - ilotel"
+    },
+    "cancel": "إلغاء",
+    "installAlert": {
+      "title": "واتساب غير مثبت",
+      "message": "للتواصل معنا عبر واتساب، يجب عليك تثبيته أولاً.",
+      "install": "تثبيت"
+    }
+  },
   "countryCard": {
     "from": "ابتداءً من",
     "exhausted": "نفد المخزون",

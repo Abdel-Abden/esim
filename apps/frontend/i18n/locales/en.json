@@ -51,6 +51,25 @@
       "bestNetworkAvailable": "Best network available"
     }
   },
+  "contactFab": {
+    "accessibilityLabel": "Contact us",
+    "sheetTitle": "How can we help you?",
+    "whatsapp": {
+      "title": "WhatsApp",
+      "subtitle": "Quick reply, for urgent matters"
+    },
+    "email": {
+      "title": "Email",
+      "subtitle": "For non-urgent requests",
+      "subject": "Contact request - ilotel"
+    },
+    "cancel": "Cancel",
+    "installAlert": {
+      "title": "WhatsApp not installed",
+      "message": "To contact us via WhatsApp, you need to install it first.",
+      "install": "Install"
+    }
+  },
   "countryCard": {
     "from": "from",
     "exhausted": "Sold Out",

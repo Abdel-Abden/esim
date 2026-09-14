@@ -42,5 +42,10 @@ export const cardStyles = StyleSheet.create({
     paddingVertical: 2,
     alignSelf: 'flex-start',
   },
+    promoBadgeFloating: {
+    position: 'absolute',
+    right: 8,
+    zIndex: 9,
+  },
   promoText: { fontSize: 9, fontWeight: '800', color: Colors.promoGreen },
 });

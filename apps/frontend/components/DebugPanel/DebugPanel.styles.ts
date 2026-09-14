@@ -8,8 +8,8 @@ export const styles = StyleSheet.create({
   /* ── Wrapper positionné en overlay ──────────────────────────────────── */
   container: {
     position: 'absolute',
-    bottom: Platform.OS === 'ios' ? 44 : 24,
-    right: 16,
+    bottom: Platform.OS === 'ios' ? 44 : 44,
+    left: 16,
     alignItems: 'flex-end',
     zIndex: 999,
   },

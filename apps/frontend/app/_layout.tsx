@@ -3,11 +3,12 @@ import SplashAnimation from '@/components/SplashAnimation/SplashAnimation';
 import i18n from '@/i18n/i18n';
 import { Colors, RTL_LANGS } from '@ilotel/shared';
 import { StripeProvider } from '@stripe/stripe-react-native';
-import { Stack } from 'expo-router';
+import { Stack, usePathname } from 'expo-router';
 import * as Updates from 'expo-updates';
 import React, { useEffect, useState } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { I18nManager, View } from 'react-native';
+import ContactFab from '../components/ContactFab/ContactFab';
 
 const STRIPE_KEY = process.env.EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY ?? '';
 
@@ -34,6 +35,7 @@ function useSyncRtl(language: string) {
 
 export default function RootLayout() {
   const [splashDone, setSplashDone] = useState(false);
+  const pathname = usePathname();
 
   useSyncRtl(i18n.language);
 
@@ -51,6 +53,7 @@ export default function RootLayout() {
               animation: 'slide_from_right',
             }}
           />
+          <ContactFab currentRoute={pathname} />
           {!splashDone && (
             <SplashAnimation onFinish={() => setSplashDone(true)} />
           )}
