@@ -186,5 +186,17 @@ export function mapOrderDetails(row: Record<string, unknown>): Order {
           : null,
       hasPromo: Boolean(row.destination_has_promo),
     },
+
+    esim: row.esim_id
+      ? {
+          id: row.esim_id as string,
+          iccid: row.iccid as string,
+          msisdn: row.msisdn as string,
+          activationCode: row.activation_code as string,
+          reservedAt: row.reserved_at != null ? String(row.reserved_at) : null,
+          soldAt: row.sold_at != null ? String(row.sold_at) : null,
+          status: row.esim_status as EsimStatus,
+        }
+      : undefined,
   };
 }

@@ -80,6 +80,15 @@ export async function getOrderById(id: string): Promise<Order | null> {
     d.region,
     d.coverage,
 
+    -- eSIM associée (peut être NULL si pas encore assignée)
+    e.id                              AS esim_id,
+    e.iccid,
+    e.msisdn,
+    e.activation_code,
+    e.reserved_at,
+    e.sold_at,
+    e.status                          AS esim_status,
+
     -- Agrégats destination
     MIN(COALESCE(v2.final_price, o2.base_price)) AS destination_min_price,
     BOOL_OR(v2.discount_id IS NOT NULL)          AS destination_has_promo
@@ -101,6 +110,21 @@ export async function getOrderById(id: string): Promise<Order | null> {
   LEFT JOIN offers_with_active_discount v2
     ON v2.id = o2.id
 
+  -- LATERAL + LIMIT 1 : garantit au plus une ligne d'historique par order,
+  -- même si esim_history venait à contenir plusieurs entrées pour un même
+  -- order_id (remplacement d'eSIM, retry...). Sans ça, un simple LEFT JOIN
+  -- dupliquerait les lignes du résultat, faussant row[0] et les agrégats.
+  LEFT JOIN LATERAL (
+    SELECT eh.esim_id
+    FROM esim_history eh
+    WHERE eh.order_id = ord.id
+    ORDER BY eh.created_at DESC
+    LIMIT 1
+  ) eh ON true
+
+  LEFT JOIN esims e
+    ON e.id = eh.esim_id
+
   WHERE ord.id = ${id}
 
   GROUP BY
@@ -109,10 +133,17 @@ export async function getOrderById(id: string): Promise<Order | null> {
     d.id,
     v.discount_id,
     v.discount_type,
-    v.discount_value;
+    v.discount_value,
+    e.id,
+    e.iccid,
+    e.msisdn,
+    e.activation_code,
+    e.reserved_at,
+    e.sold_at,
+    e.status;
   `;
 
-  return row[0] ? mapOrderDetails(row[0]) : null
+  return row[0] ? mapOrderDetails(row[0]) : null;
 }
 
 export async function getOrderByPaymentIntentId(
