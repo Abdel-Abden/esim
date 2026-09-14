@@ -1,9 +1,18 @@
 import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Alert, Linking, Modal, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
-import Animated, { FadeIn, FadeOut, SlideInDown, SlideOutDown } from 'react-native-reanimated';
+import {
+  Alert,
+  Animated,
+  Linking,
+  Modal,
+  Platform,
+  Pressable,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { fabStyle } from './ContactFab.styles';
 
@@ -20,6 +29,29 @@ export default function ContactFab({ currentRoute }: ContactFabProps) {
   const [open, setOpen] = useState(false);
   const insets = useSafeAreaInsets();
   const { t } = useTranslation();
+
+  // Animated classique (react-native), même pattern que TutorialModal —
+  // évite le bug connu de react-native-reanimated où les zones tactiles
+  // des vues entering/exiting restent mortes en build de production sur
+  // Android (cf. issues software-mansion/react-native-reanimated).
+  const backdropAnim = useRef(new Animated.Value(0)).current;
+  const slideAnim = useRef(new Animated.Value(300)).current;
+
+  useEffect(() => {
+    if (open) {
+      backdropAnim.setValue(0);
+      slideAnim.setValue(300);
+      Animated.parallel([
+        Animated.timing(backdropAnim, { toValue: 1, duration: 200, useNativeDriver: true }),
+        Animated.spring(slideAnim, { toValue: 0, damping: 26, stiffness: 260, mass: 0.8, useNativeDriver: true }),
+      ]).start();
+    } else {
+      Animated.parallel([
+        Animated.timing(backdropAnim, { toValue: 0, duration: 180, useNativeDriver: true }),
+        Animated.timing(slideAnim, { toValue: 300, duration: 180, useNativeDriver: true }),
+      ]).start();
+    }
+  }, [open]);
 
   if (currentRoute && EXCLUDED_ROUTES.includes(currentRoute)) {
     return null;
@@ -83,23 +115,18 @@ export default function ContactFab({ currentRoute }: ContactFabProps) {
       </Pressable>
 
       <Modal visible={open} transparent animationType="none" onRequestClose={handleClose}>
-        <Pressable style={fabStyle.backdrop} onPress={handleClose}>
-          <Animated.View
-            entering={FadeIn.duration(150)}
-            exiting={FadeOut.duration(150)}
-            style={StyleSheet.absoluteFill}
-          />
-        </Pressable>
+        <Animated.View style={[fabStyle.backdrop, { opacity: backdropAnim }]}>
+          <TouchableOpacity style={{ flex: 1 }} activeOpacity={1} onPress={handleClose} />
+        </Animated.View>
 
         <Animated.View
-          entering={SlideInDown.duration(220)}
-          exiting={SlideOutDown.duration(180)}
-          style={[fabStyle.sheet, { paddingBottom: insets.bottom + 16 }]}
+          style={[fabStyle.sheet, { paddingBottom: insets.bottom + 16, transform: [{ translateY: slideAnim }] }]}
+          pointerEvents="box-none"
         >
           <View style={fabStyle.handle} />
           <Text style={fabStyle.title}>{t('contactFab.sheetTitle')}</Text>
 
-          <Pressable style={fabStyle.option} onPress={openWhatsApp}>
+          <TouchableOpacity style={fabStyle.option} onPress={openWhatsApp} activeOpacity={0.75}>
             <View style={[fabStyle.iconCircle, { backgroundColor: '#25D366' }]}>
               <Ionicons name="logo-whatsapp" size={22} color="#FFFFFF" />
             </View>
@@ -107,9 +134,9 @@ export default function ContactFab({ currentRoute }: ContactFabProps) {
               <Text style={fabStyle.optionTitle}>{t('contactFab.whatsapp.title')}</Text>
               <Text style={fabStyle.optionSubtitle}>{t('contactFab.whatsapp.subtitle')}</Text>
             </View>
-          </Pressable>
+          </TouchableOpacity>
 
-          <Pressable style={fabStyle.option} onPress={openEmail}>
+          <TouchableOpacity style={fabStyle.option} onPress={openEmail} activeOpacity={0.75}>
             <View style={[fabStyle.iconCircle, { backgroundColor: '#4A90D9' }]}>
               <Ionicons name="mail" size={20} color="#FFFFFF" />
             </View>
@@ -117,11 +144,11 @@ export default function ContactFab({ currentRoute }: ContactFabProps) {
               <Text style={fabStyle.optionTitle}>{t('contactFab.email.title')}</Text>
               <Text style={fabStyle.optionSubtitle}>{t('contactFab.email.subtitle')}</Text>
             </View>
-          </Pressable>
+          </TouchableOpacity>
 
-          <Pressable style={fabStyle.cancel} onPress={handleClose}>
+          <TouchableOpacity style={fabStyle.cancel} onPress={handleClose} activeOpacity={0.75}>
             <Text style={fabStyle.cancelText}>{t('contactFab.cancel')}</Text>
-          </Pressable>
+          </TouchableOpacity>
         </Animated.View>
       </Modal>
     </>
