@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-CONTAINER_NAME="postgres-local-dev"
+CONTAINER_NAME="iloteldb"
 ENV_FILE="${1:-.env.local}"
 STRIPE_FORWARD_TO="${STRIPE_FORWARD_TO:-localhost:3000/webhooks/stripe}"
 
