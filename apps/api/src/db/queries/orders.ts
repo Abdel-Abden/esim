@@ -274,9 +274,8 @@ export async function markOrderRefunded(orderId: string): Promise<void> {
 export async function releaseExpiredReservations(): Promise<string[]> {
   const rows = await sql`
     SELECT id FROM orders
-    WHERE status = 'pending'
-      AND stripe_payment_intent_id IS NULL
-      AND reserved_until < NOW()
+    WHERE status in('pending', 'failed') 
+      AND reserved_until < (NOW() - INTERVAL '5 minute')
   `;
 
   const expiredIds = rows.map((r) => r.id as string);
@@ -287,10 +286,12 @@ export async function releaseExpiredReservations(): Promise<string[]> {
       WHERE id = ANY(${expiredIds})
     `;
     await sql`
-      UPDATE esim_inventory
-      SET status = 'available', order_id = NULL, reserved_at = NULL
-      WHERE order_id = ANY(${expiredIds})
-        AND status = 'reserved'
+      UPDATE esims e
+      SET status = 'available', reserved_at = NULL
+      FROM esim_history eh
+      WHERE eh.esim_id = e.id
+        AND eh.order_id = ANY(${expiredIds})
+        AND e.status = 'reserved'
     `;
   }
 
