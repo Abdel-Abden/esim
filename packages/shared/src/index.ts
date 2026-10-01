@@ -5,7 +5,7 @@ export * from './constants.js';
 export * from './contracts.js';
 export * from './entities/index.js';
 export * from './errors.js';
-export * from './helpers.js';
+export * from './formatters.js';
 export * from './models/index.js';
 export * from './theme.js';
 export * from './translation/index.js';
