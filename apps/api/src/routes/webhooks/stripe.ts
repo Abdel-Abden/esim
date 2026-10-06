@@ -117,7 +117,7 @@ stripeWebhook.post('/', async (c) => {
           result = {subscriptionId: "local-env"}
         }
         console.log(
-          `[webhook] 📦 Forfait assigné — MSISDN: ${esim.msisdn}, subscriptionId: ${result.subscriptionId}`
+          `[webhook] 📦 Forfait assigné — Order: ${order.id}, subscriptionId: ${result.subscriptionId}`
         );
       } catch (ocsError) {
         console.error(`[webhook] ❌ Échec OCS pour commande ${order.id}:`, ocsError);
@@ -168,8 +168,19 @@ stripeWebhook.post('/', async (c) => {
       const paymentIntent = event.data.object;
       const order = await getOrderByPaymentIntentId(paymentIntent.id);
       if (order) {
+        console.log(
+          `[webhook] ⚠️ Tentative de paiement échouée (le client peut retenter) — commande: ${order.id}`
+        );
+      }
+      break;
+    }
+
+    case 'payment_intent.canceled': {
+      const paymentIntent = event.data.object;
+      const order = await getOrderByPaymentIntentId(paymentIntent.id);
+      if (order && order.status === 'pending') {
         await updateOrderStatus(order.id, 'failed');
-        console.log(`[webhook] ❌ Paiement échoué — commande: ${order.id}`);
+        console.log(`[webhook] 🛑 PaymentIntent annulé — commande marquée 'failed': ${order.id}`);
       }
       break;
     }
