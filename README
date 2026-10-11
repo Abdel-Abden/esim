@@ -1,0 +1,361 @@
+# Documentation ILOTEL
+
+Documentation fonctionnelle et technique d'ILOTEL — à destination de la passation.
+
+---
+
+## 1. Aspect technique
+
+### 1.1 Technologies
+
+| Composant | Technologie |
+| --- | --- |
+| Backend | Hono / TypeScript |
+| Frontend | Expo / TypeScript |
+| Base de données | PostgreSQL |
+| Paiement | Stripe |
+
+### 1.2 Outils utilisés pour les tests en local
+
+- **Docker** — base de données PostgreSQL locale
+- **script.sh** — scripts de test et de développement (tests réalisés sur environnement Linux)
+- **Expo Go** — permet de tester l'application sur un téléphone physique (Android/iPhone) sans émulateur
+
+### 1.3 Environnement de test (local)
+
+```bash
+npm run api        # lance l'API backend en local
+npm run frontend    # lance l'application Expo, accessible sur le réseau local
+```
+
+pour les .env leur configuration est la suivant : 
+les nom attendue sont : 
+- .env.local
+- .env.preprod
+- .env.prod
+
+> ⚠️ .env.prod est majoritèrement inutiliser car les information sont sur expo et vercel.
+
+#### API
+```txt
+ENVIRONMENT=local ## ou "preprod" ou "prod"
+
+DATABASE_URL=postgresql://dev:dev@localhost:5433/appdb ## ou autre connexion string
+
+## Stripe 
+STRIPE_SECRET_KEY=...
+STRIPE_WEBHOOK_SECRET=whsec_....
+
+## Email
+SMTP_HOST=ssl0.ovh.net
+SMTP_PORT=465
+SMTP_SECURE=true
+SMTP_USER=...
+SMTP_PASS=...
+
+EMAIL_FROM="ILOTEL <...>"
+
+## Transatel
+TRANSATEL_API_URL=https://api.transatel.com
+TRANSATEL_CLIENT_ID=...
+TRANSATEL_CLIENT_SECRET=...
+TRANSATEL_MVNO_REF=...
+TRANSATEL_PAYMENT_PROVIDER=customer
+```
+
+#### FRONTEND
+
+```txt
+EXPO_PUBLIC_API_URL=http://...:3000
+
+EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY=...
+
+EXPO_PUBLIC_ENVIRONMENT=local ## local uniquement, inutile en preprod ou prod. sert a couper les appelle a l'API transatel
+```
+
+### 1.4 Environnement de production
+
+| Service | Rôle | Offre |
+| --- | --- | --- |
+| [Neon](https://console.neon.tech/app/projects/calm-cloud-88055487/branches/br-plain-sun-alfvwlwm) | Base de données PostgreSQL | **Free tier** |
+| [Vercel](https://vercel.com/devs-projects-a9646966/esim-api) | Hébergement du backend | **Free tier** |
+| [Expo](https://expo.dev/accounts/devilotel/projects/ilotel) | Build des applications mobiles (iOS/Android) | — |
+| [Stripe](https://dashboard.stripe.com/acct_1T2tStBKEBxLEx8E/dashboard) | Gestion des paiements | — |
+
+> ⚠️ **Neon et Vercel sont actuellement sur des plans gratuits.** Ces offres imposent des limites qu'il faut garder à l'esprit pour la suite du projet :
+>
+> - **Neon (free tier)** : quota de calcul mensuel limité, la base peut se mettre en veille après une période d'inactivité (latence au premier appel après réveil), taille de stockage plafonnée, et un nombre restreint de branches de base de données.
+> - **Vercel (free tier / Hobby)** : limite de durée d'exécution par fonction serverless, quota de bande passante et d'invocations mensuel, et usage strictement non-commercial selon les conditions Vercel — un point à valider avec l'équipe si le trafic ou la nature commerciale du projet grandit.
+>
+> À anticiper avant une mise à l'échelle ou une hausse de trafic significative : passage à un plan payant sur l'un ou l'autre (voire les deux) pour lever ces limitations.
+
+#### Lancement de l'environement
+
+Le lancement des builds de production ne se font que sur le frontend. vercel rebuild l'app a chaque "git push". pour le frontend. les command sont : 
+
+```
+npm run android:prod
+npm run ios:prod
+```
+
+> ⚠️ Attention sur les scripts :
+>
+> - les "submit" étant en phase d'intégration il peuvent échouer ou sont probablement mal configurer. a vérifier avant tous utilisation.
+> - du netoyage devais êtres mis en place sur c'est script, afin de supprimer les élément non utiliser. 
+
+### 1.5 Organisation du monorepo
+
+```txt
+.
+├── apps
+│   ├── api                    # code backend
+│   │   ├── init                 # schéma SQL et données d'initialisation pour les tests locaux
+│   │   ├── scripts               # scripts de démarrage Docker
+│   │   └── src                   # code de l'application
+│   └── frontend                # code Expo (iOS et Android)
+│       ├── app                   # pages de l'application (expo-router)
+│       ├── assets                # ressources graphiques du projet
+│       ├── components            # composants réutilisés par les différentes pages
+│       ├── constants              # constantes partagées ou spécifiques au frontend
+│       ├── i18n                   # tout ce qui est lié à la traduction spécifique à l'app
+│       ├── services               # code gérant les appels au backend
+│       └── store                  # gestion de l'état du panier
+└── packages
+    └── shared                  # éléments partagés entre apps : classes, traductions,
+                                  # constantes et utilitaires (codes d'erreur, etc.)
+```
+
+---
+
+## 2. Base de données
+
+### 2.1 Vue d'ensemble des relations
+
+- Une **destination** possède plusieurs **offers** (`offers.destination_id`, `ON DELETE CASCADE` — supprimer une destination supprime ses offres).
+- Une **offer** peut avoir plusieurs **discounts** (`discounts.offer_id`, `ON DELETE CASCADE`).
+- Une **offer** est référencée par plusieurs **orders** (`orders.offer_id`) — ⚠️ voir point de vigilance ci-dessous.
+- Une **eSIM** (`esims`) est reliée à un ou plusieurs **orders** via la table de jointure **`esim_history`** (`esim_id` + `order_id`), plutôt que par une colonne directe. Ce choix permet de conserver un historique complet même après libération d'une réservation expirée (cf. §3 Cron) ou remplacement d'une eSIM défectueuse.
+- La vue **`offers_with_active_discount`** calcule à la volée le prix final d'une offre en tenant compte d'une éventuelle réduction active (`discounts.active = true` et dans la fenêtre `starts_at`/`ends_at`), et enrichit le résultat avec les informations de la destination associée.
+
+### 2.2 Point de vigilance — `orders.offer_id` sans contrainte `FOREIGN KEY`
+
+À la relecture du schéma, **`orders.offer_id` n'a aucune contrainte de clé étrangère** vers `offers.id` (contrairement à `esim_history`, qui déclare bien ses FK). Rien n'empêche donc, au niveau base de données, qu'un `order` référence un `offer_id` qui n'existe plus (offre supprimée, erreur de migration, etc.).
+
+**Conséquence concrète rencontrée en développement** : une requête utilisant un `JOIN` classique (`INNER JOIN`) entre `orders` et `offers` retourne silencieusement **aucun résultat** pour un order dont l'offer a disparu — alors que l'order existe bel et bien dans `orders`.
+
+> ⚠️ **À clarifier avec l'équipe avant toute correction** : L'absence de contrainte FK sur `offre_id` peut être vue comme un oubli ou comme une contrainte métier. Il faut vérifier s'il peut exister un cas métier dans lequel on souhaite supprimer des offres sans jamais supprimer les `orders`, qui constituent la vérité client de l'application En dehors de la mécanique d'`availability` déjà présente sur `destinations` et `offers`.
+
+### 2.3 Schéma relationnel simplifié
+
+Vue d'ensemble des relations entre les tables principales, sous forme de flux plutôt que de diagramme (pas de Mermaid ici) :
+
+```txt
+destinations ──▶ offers ──▶ orders ◀──▶ esim_history ◀── esims
+     │              │                        
+     │              └──▶ discounts            (table de jointure :
+     │                                          relie un order à une eSIM,
+     └── 1 destination peut avoir                sans lien direct entre
+          plusieurs offers                        les deux tables)
+```
+
+- **`destinations → offers`** : une destination a plusieurs offres (`ON DELETE CASCADE`).
+- **`offers → discounts`** : une offre peut avoir plusieurs réductions (`ON DELETE CASCADE`).
+- **`offers → orders`** : un order référence l'offre achetée — voir le point de vigilance en §2.2 sur l'absence de FK ici.
+- **`orders ◀──▶ esim_history ◀──▶ esims`** : le lien entre un order et son eSIM ne se fait jamais directement — toujours via `esim_history`, qui journalise chaque rattachement (réservation, remplacement, etc.) sans jamais être supprimée, même après une libération.
+
+Le schéma SQL complet (tables, contraintes, index, vue `offers_with_active_discount`) vit dans `apps/api/init/` — s'y référer directement pour le détail exact des colonnes et contraintes plutôt que de le dupliquer ici.
+
+### 2.4 Cycle de vie d'une eSIM (`esims.status`)
+
+```txt
+available  →  reserved  →  assigned
+    ↑             │
+    └─────────────┘
+      (libération après expiration
+       de la réservation, cf. §3)
+```
+
+- **`available`** : eSIM libre, prête à être réservée.
+- **`reserved`** : réservée pour un order `pending` (fenêtre de 5 minutes, cf. §3). `reserved_at` est renseigné.
+- **`assigned`** : eSIM définitivement attribuée à un order payé et provisionné avec succès. `sold_at` est renseigné.
+- **`disabled`** / **`retired`** : statuts de gestion opérationnelle (eSIM désactivée ou retirée du parc), hors du parcours d'achat standard.
+
+---
+
+### 2.5 Gestion des réductions (`discounts`)
+
+Une réduction est toujours rattachée à une offre unique (`discounts.offer_id`, `ON DELETE CASCADE` — supprimer l'offre supprime ses réductions associées). Chaque réduction définit :
+
+- **`type`** : `percentage` (pourcentage du prix de base) ou `fixed` (montant fixe déduit).
+- **`value`** : la valeur associée au type (ex. `20` pour 20 % si `percentage`, ou `5.00` pour 5 € si `fixed`).
+- **`active`** : active/désactive la réduction sans la supprimer (historique conservé).
+- **`starts_at`** / **`ends_at`** : fenêtre temporelle optionnelle. `NULL` sur l'un ou l'autre signifie respectivement "déjà commencée" / "sans date de fin".
+
+Le prix final d'une **offre** (avant tout achat) n'est jamais stocké sur `offers` : il est calculé à la volée par la vue `offers_with_active_discount`, qui applique la formule correspondant au `type` (`ROUND(base_price * (1 - value / 100), 2)` pour `percentage`, `GREATEST(0, ROUND(base_price - value, 2))` pour `fixed`, avec un plancher à 0 pour éviter un prix négatif). C'est logique : le prix affiché au catalogue doit refléter les réductions en cours à l'instant où le client regarde l'offre, pas un prix gelé au moment de la création de l'offre.
+
+Ce prix calculé est ensuite **figé définitivement** dans `orders.final_price` (avec `orders.base_price` conservé en parallèle) au moment où la commande est créée — garantissant qu'un changement ultérieur de réduction sur l'offre (désactivation, modification de la valeur) n'affecte jamais rétroactivement une commande déjà passée.
+
+> ⚠️ **Point de vigilance** : rien dans le schéma n'empêche qu'une offre ait **plusieurs réductions actives simultanément** (aucune contrainte d'unicité sur `offer_id` parmi les lignes `active = true` dont la fenêtre `starts_at`/`ends_at` est valide). Si ce cas survient, la vue `offers_with_active_discount` — qui fait un simple `LEFT JOIN` sans agrégation — retournerait **plusieurs lignes pour la même offre**, une par réduction active, ce qui peut fausser silencieusement les résultats des requêtes qui s'appuient sur cette vue (ex. `MIN(...)` sur plusieurs lignes au lieu d'une seule ligne attendue par offre). À valider avec le métier : une offre doit-elle être limitée à une seule réduction active à la fois ? Si oui, il faudrait soit une contrainte d'exclusion en base, soit une règle applicative claire à l'écriture (désactiver toute réduction active existante avant d'en activer une nouvelle).
+
+## 3. Cron — libération des réservations expirées
+
+### 3.1 Objectif — un filet de sécurité, pas le mécanisme principal
+
+Un client dispose de **5 minutes** pour finaliser son paiement après avoir réservé une eSIM. Le mécanisme *principal* de libération n'est pas ce cron : c'est **l'application elle-même** qui déclenche la libération de la réservation quand le client quitte l'app ou revient au menu principal avant paiement.
+
+Le cron n'intervient qu'en **complément**, comme garantie supplémentaire : il existe pour couvrir les cas où la libération côté app ne s'est pas produite à cause d'un incident temporaire (perte réseau au moment de quitter l'app, crash, fermeture forcée, etc.). Sans ce filet de sécurité, une eSIM pourrait rester bloquée en `reserved` indéfiniment si l'app n'a pas pu prévenir le backend à temps.
+
+### 3.2 Endpoint
+
+```txt
+GET /cron/release-expired
+```
+
+Le header `x-cron-secret` est comparé à la variable d'environnement `CRON_SECRET`.
+
+> ⚠️ **État actuel — `CRON_SECRET` n'est pas configuré sur Vercel.** Le code de vérification est en place, mais la variable d'environnement elle-même n'a pas été ajoutée dans la configuration Vercel. En l'état, n'importe qui connaissant l'URL peut donc appeler cet endpoint sans authentification.
+>
+> Impact réel limité : la fonction ne fait rien d'autre que ce qu'elle ferait normalement (libérer des réservations déjà expirées) — elle n'accepte aucun paramètre exploitable, ne renvoie aucune donnée sensible, et un appel répété est sans effet destructeur (idempotent : rien à libérer si rien n'est expiré). Le seul vrai risque est un usage abusif en boucle pour du spam de requêtes, sans réel vecteur d'attaque au-delà de ça. Reste à faire : ajouter `CRON_SECRET` dans les variables d'environnement Vercel pour fermer ce point.
+
+### 3.3 Logique (`releaseExpiredReservations`)
+
+1. Sélectionne tous les `orders` avec `status = 'pending'`, `stripe_payment_intent_id IS NULL` et `reserved_until < NOW()`.
+2. Passe leur `status` à `'failed'`.
+3. Libère l'eSIM associée (via `esim_history`) **uniquement si sa propre réservation (`esims.reserved_at`) dépasse également 5 minutes** — ce second contrôle, indépendant de `orders.reserved_until`, garantit que l'eSIM n'est jamais libérée prématurément même en cas de léger désynchronisme entre les deux horodatages.
+4. La ligne dans `esim_history` n'est **jamais supprimée** : elle reste une trace factuelle qu'une réservation a eu lieu, même si elle a échoué.
+
+### 3.4 Fréquence recommandée
+
+Puisque c'est un filet de sécurité et non le mécanisme principal, une fréquence de **5 à 15 minutes** suffit largement est **potentiellement overkill** pour une application qui doit encore faire ses preuves face au marché — l'essentiel est qu'il finisse par passer, pas qu'il soit instantané.
+
+> ⚠️ À vérifier avec le plan Vercel : les Cron Jobs sont disponibles sur le plan **Hobby (free tier)**, mais avec une fréquence minimale imposée (une seule exécution par jour sur Hobby, contre une fréquence libre sur les plans payants). Si une fréquence de quelques minutes est souhaitée, il faudra soit passer sur un plan payant Vercel, soit héberger ce déclenchement via un scheduler externe (ex. cron-job.org, GitHub Actions planifiées, etc.) qui appelle l'endpoint `/cron/release-expired`.
+
+---
+
+## 4. Parcours utilisateur
+
+### 4.1 Parcours classique
+
+Un client souhaite acheter une eSIM pour se rendre au Maroc.
+
+**Côté client :**
+
+1. Le client télécharge l'app sur Android ou iPhone.
+2. Une fois sur l'app, il consulte le tutoriel d'installation d'une eSIM sur son appareil.
+3. Il recherche la destination « Maroc » et choisit son offre.
+4. Il arrive sur la page de paiement, où il doit accepter les CGU, renseigner une adresse email et effectuer le paiement dans la limite des 5 minutes liées à la réservation de l'eSIM.
+5. Après validation du paiement, il est redirigé vers une page affichant le détail de son eSIM.
+
+**Cas particuliers :**
+
+- **Carte invalide** → paiement refusé. Le client peut retenter avec une nouvelle carte, dans la limite des 5 minutes autorisées.
+- **Carte valide mais erreur de provisioning** → le client est remboursé instantanément et un message l'en informe.
+
+**Côté technique :**
+
+1. Un appel au backend récupère toutes les destinations disponibles.
+2. À la sélection d'une destination, l'app récupère les offres associées.
+3. Le client choisit son offre, et l'application demande au backend de réserver une eSIM pour 5 minutes.
+4. Après validation des CGU et saisie de l'email, le client peut initier le paiement (bouton « Payer »).
+5. L'app crée un `payment_intent` et le rattache à l'`order_id` qui référence l'eSIM réservée.
+6. Une fois la carte saisie et validée côté client, le backend transmet la demande à Stripe pour vérification du moyen de paiement. Pendant ce temps, l'application mobile tente d'appeler l'endpoint de détail de commande.
+7. Le paiement validé, **Stripe appelle le webhook du backend** pour signaler la réussite. Le backend tente alors d'assigner l'offre à l'eSIM réservée ; en cas de succès, il met à jour l'order, passe l'eSIM au statut `assigned` et envoie un email de confirmation à l'adresse enregistrée.
+8. L'application mobile peut alors consulter le détail de l'achat et amener l'utilisateur sur la page de détails.
+
+**Cas particuliers :**
+
+- Si la commande est annulée (retour à l'écran de sélection / délai dépassé / etc.), la commande est annulée, et l'`order`, `esim_history` et `esims` sont supprimés ou remis à leur état d'origine.
+
+### 4.2 Gestion des erreurs
+
+Les codes d'erreur métier sont centralisés dans `packages/shared` et traduits dans chaque langue (`errors.*` dans les fichiers i18n). Principaux cas :
+
+| Code | Situation |
+|---|---|
+| `STOCK_EXHAUSTED` | Plus aucune eSIM disponible pour l'offre demandée |
+| `RESERVATION_EXPIRED` | La réservation de 5 minutes a expiré avant paiement |
+| `REFUND_IN_PROGRESS` | Échec de provisioning après paiement réussi — remboursement automatique déclenché, sous 5 à 10 jours ouvrés |
+| `DESTINATION_NOT_FOUND` / `OFFER_NOT_FOUND` / `ORDER_NOT_FOUND` | Ressource introuvable (id invalide, ou donnée orpheline — cf. §2.2) |
+
+---
+
+## 5. Application mobile — points spécifiques
+
+### 5.1 Multilingue (i18n)
+
+- Langues supportées : **français, anglais, arabe**.
+- Bibliothèque : `i18next` / `react-i18next`.
+- L'arabe est la seule langue **RTL** (`RTL_LANGS`). Le passage en RTL (`I18nManager.forceRTL`) **nécessite un redémarrage natif complet de l'application**, pas un simple rechargement du bundle JS — `Updates.reloadAsync()` seul ne suffit pas toujours à faire percoler le changement de direction, d'où la nécessité d'un garde-fou persistant (`AsyncStorage`) pour éviter une boucle de rechargement infinie si la valeur native ne se met pas à jour immédiatement.
+
+### 5.2 Écran de démarrage (Splash animé)
+
+Composant `SplashAnimation`, basé sur `react-native-reanimated` (`useSharedValue`/`useAnimatedStyle`, sans `entering`/`exiting`). Point de vigilance Android : ne jamais dimensionner l'overlay via `Dimensions.get('window')` fixé une fois au chargement — utiliser un ancrage `top/left/right/bottom: 0`, car le comportement *edge-to-edge* (Android 15, actif par défaut depuis Expo SDK 54) peut faire varier la valeur retournée par `Dimensions`, laissant un bandeau non couvert par l'animation.
+
+### 5.3 Bouton de contact flottant (FAB)
+
+Composant `ContactFab` : bouton flottant permanent proposant **WhatsApp** ou **email** selon l'urgence, masqué sur les routes sensibles (`/checkout`).
+
+- **Numéro WhatsApp** : conçu pour être compatible nativement avec WhatsApp Business API (numéro dédié, multi-agents) — un lien `wa.me`/`whatsapp://send?phone=...` ne dépend en rien du type de compte WhatsApp derrière le numéro ; seul le numéro dans la configuration doit être mis à jour le jour où le compte Business API du client est actif.
+- **Point de vigilance technique majeur** : les animations `entering`/`exiting` de `react-native-reanimated` provoquent, en build de production Android, des zones tactiles mortes à l'intérieur d'un `Modal` (bug documenté côté Software Mansion). Le composant a été réécrit avec l'API `Animated` classique de React Native pour fiabiliser le comportement, avec un verrou (`pointerEvents="none"` jusqu'à la fin de l'animation) empêchant tout tap dans la fenêtre d'incertitude entre fin d'animation visuelle et disponibilité réelle de la zone tactile.
+- Le bouton email inclut une vérification `canOpenURL` + gestion d'erreur : sans app mail configurée sur l'appareil, une alerte informe l'utilisateur plutôt que d'échouer silencieusement.
+
+---
+
+## 6. Publication sur les stores — points de vigilance retenus
+
+### 6.1 iOS (App Store Connect)
+
+- **`NSCameraUsageDescription` obligatoire dans `Info.plist`**, même sans usage réel de la caméra dans le code applicatif : le SDK `@stripe/stripe-react-native` embarque une référence native à l'API caméra (scan de carte), ce qui suffit à déclencher le rejet Apple (règle générale : toute dépendance tierce référençant une API sensible impose la déclaration, indépendamment de l'usage réel).
+- **PassKit / Apple Pay (Guideline 2.1)** : le framework PassKit est également embarqué par le SDK Stripe, même sans intégration Apple Pay réelle. Apple demande confirmation via les Review Notes si la fonctionnalité n'est pas utilisée.
+
+### 6.2 Android (Google Play Console)
+
+- Programme **App access** : sur un compte développeur récent, un passage obligatoire par le **test fermé** (minimum 14 jours, 12 testeurs opt-in actifs) est requis avant l'accès à la production.
+- Déclarations obligatoires avant soumission : **Data safety**, **Content rating**, **Ads declaration**, **Target audience**, ainsi que la vérification d'identité du compte développeur.
+
+
+## 7 Import des offres — TRANSATEL
+
+Les offres du catalogue proviennent d'un fournisseur externe, **TRANSATEL**, qui transmet périodiquement un fichier Excel listant les offres avec leur statut :
+
+- **Nouveau** — offre à créer.
+- **Supprimé** — offre à retirer du catalogue (voir §2.2 : à désactiver via `available = false`, pas à supprimer physiquement, pour préserver l'historique des commandes déjà passées).
+- **Modifié** — offre existante dont le prix ou les caractéristiques changent.
+
+**Règle tarifaire** : le prix appliqué dans `offers.base_price` est calculé à **-5 % du prix conseillé** transmis par TRANSATEL.
+
+> ⚠️ **Point de vigilance — régions et traductions** : chaque nouvelle offre doit être vérifiée manuellement, en particulier lorsqu'elle porte sur une **région** plutôt qu'un pays unique. Les libellés de région ne sont pas dynamiques : ils vivent dans les fichiers de traduction (`packages/shared` / `i18n`), codés en dur pour chaque langue supportée (fr, en, de, ar). Si TRANSATEL introduit une nouvelle région jamais vue jusque-là, il faut :
+>
+>1. Ajouter la clé de traduction correspondante dans chaque langue.
+>2. **Rebuild et republier l'application mobile** — un simple ajout côté backend/base de données ne suffit pas, puisque le libellé de la région n'existe nulle part côté client tant que l'app n'a pas été mise à jour.
+>
+>Ce point est à surveiller particulièrement à chaque import TRANSATEL : une offre "Nouveau" sur une région non traduite s'afficherait avec une clé de traduction manquante (ou un fallback anglais/code brut) jusqu'au prochain déploiement de l'app — un décalage de délai à anticiper entre la mise à jour du catalogue (rapide, côté backend) et la disponibilité réelle de l'offre pour l'utilisateur (liée au cycle de review App Store/Play Store).
+>
+>Autre point a surveiller, certaine offre on un code différent mais les même couverture de pays et d'opérateur comme par exemple JEY-GGY-IMN et JEY-GGY-IMN2 correspondant au "Jersey, Guernesey & Île de Man"
+
+## 8 Site vitrine et pages légales
+
+En complément de l'application mobile, un **site vitrine** existe, avec les endpoints/pages légales suivantes :
+
+| Endpoint | Contenu |
+|---|---|
+| `/legals/cgu` | Conditions Générales de Vente/Utilisation |
+| `/legals/privacy` | Politique de confidentialité |
+| `/legals/mentions` | Mentions légales |
+| `/legals/delete` | Formulaire de demande de suppression de données (RGPD) |
+
+> ⚠️ **Point de vigilance — contenu générique à repasser** : les textes CGU, politique de confidentialité et mentions légales ont été vérifiés de façon **générique** au moment de l'intégration, sans passage par un professionnel du droit spécifique au projet. Il serait pertinent de les faire relire/valider juridiquement avant une mise en production définitive, ou en cas d'évolution du modèle économique (nouveaux moyens de paiement, nouveaux pays desservis, etc.), pour s'assurer qu'ils reflètent fidèlement l'activité réelle d'ILOTEL.
+>
+>**`/legals/delete`** : ce formulaire permet à un utilisateur de faire une demande de suppression de ses données personnelles, conformément au RGPD. À vérifier avec l'équipe : le traitement de cette demande est-il actuellement automatisé (déclenchement d'une suppression réelle en base) ou seulement transmis manuellement à quelqu'un pour traitement ? Ce point mérite d'être clarifié pour la passation, la conformité RGPD imposant un délai de traitement (habituellement 1 mois).
+>
+>**Origine du site** : le site vitrine lui-même (structure, design) n'est pas une création du projet — il a été **intégré** tel quel, avec une traduction ajoutée en **français, anglais et arabe**.
+
+## Contact Transatel & information
+
+Chez Transatel, le contact privilégier est **Emeline GERNET** (emeline.gernet@transatel.com)
+
+> ⚠️ une discution est en cours sur le problème d'association d'une e-sim:
+> 
+> **Problème constater** : Lors de payment d'un utilisateur, le backend gère la demande a l'API de Transalel pour associer une offre a une e-sim. le problème est que cette dernière revoie une erreur (Pas assez de privilège) malgrer le fait que l'association a été effectuer. le backend considérant l'association a échouer, rembourse automatiquement le client alors que la e-sim est prête a l'emploie.
+>
+> Les retour actuelle sont que les droit nécéssaire sont ouvert. malgrer cela et quelque correction, le problème persiste.
