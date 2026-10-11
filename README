@@ -350,7 +350,7 @@ En complément de l'application mobile, un **site vitrine** existe, avec les end
 >
 >**Origine du site** : le site vitrine lui-même (structure, design) n'est pas une création du projet — il a été **intégré** tel quel, avec une traduction ajoutée en **français, anglais et arabe**.
 
-## Contact Transatel & information
+## Transatel & information
 
 Chez Transatel, le contact privilégier est **Emeline GERNET** (emeline.gernet@transatel.com)
 
@@ -359,3 +359,74 @@ Chez Transatel, le contact privilégier est **Emeline GERNET** (emeline.gernet@t
 > **Problème constater** : Lors de payment d'un utilisateur, le backend gère la demande a l'API de Transalel pour associer une offre a une e-sim. le problème est que cette dernière revoie une erreur (Pas assez de privilège) malgrer le fait que l'association a été effectuer. le backend considérant l'association a échouer, rembourse automatiquement le client alors que la e-sim est prête a l'emploie.
 >
 > Les retour actuelle sont que les droit nécéssaire sont ouvert. malgrer cela et quelque correction, le problème persiste.
+
+### API
+
+Assistant IA :
+- https://tsl-phn.github.io/tsl-ai-assistant/
+
+Documentation : 
+- https://developers.transatel.com/docs/sim-management-overview/
+- https://docs.transatel.com/getting-started/api-integration/iot-service-provider-connect-api-integration/
+- https://developers.transatel.com/api/sim-management/sims/
+- https://api.transatel.com/sim-management/sims/docs/index.html?utm_source=chatgpt.com#tag/eSIM-management/operation/getEsimDetailsUsingGET
+- https://developers.transatel.com/docs/guides-authentication/
+
+#### Endpoint
+**Récupérer un Token**
+```
+POST https://api.transatel.com/authentication/api/token
+
+header: 
+  Content-Type = application/x-www-form-urlencoded
+
+body: x-www-form-urlencoded
+  grant_type = client_credentials
+
+Authorization
+  Basic Auth = {{username}}/{{password}}
+```
+
+**Status e-sim**
+```
+GET https://api.transatel.com/sim-management/sims/api/esims/sim-serial/8988247000147953138
+
+header: 
+  Authorization = Bearer {{token}}
+```
+
+**OCS catalog** - catalogue des produit de l'API
+seul les "One-off" sont séléctionner car l'app ne gère pas pour l'instant les rechargement
+```
+GET https://api.transatel.com/ocs/catalog/api/cos/{{COS}}/products?categories=One-off
+
+header:
+  Authorization = Bearer {{token}}
+```
+
+**Détails d'une offre spécifique**
+```
+GET https://api.transatel.com/ocs/catalog/api/cos/{{COS}}/products/{{OFFERS_PRODUCT_ID}}
+
+header:
+  Authorization = Bearer {{token}}
+```
+
+**Assignation offre a une e-sim**
+```
+POST https://api.transatel.com/ocs/subscriptions/api/orders/products
+
+header:
+  Authorization = Bearer {{token}}
+
+body:
+   {
+    "bind": { "msisdn": "{{MSISDN}}" },
+    "product": { "productId": "{{OFFERS_PRODUCT_ID}}" },
+    "payment": { "provider": "customer" },
+    "source": "api",
+    "orderType": "preload",
+    "mvnoRef": "{{NVMOREF}}"
+  }
+```
+
